@@ -8,19 +8,20 @@ import MainPage from "./main/main_page";
 import LoginFormContainer from "./session/login_form_container";
 import SignupFormContainer from "./session/signup_form_container";
 import ProfileContainer from "./profile/profile_container";
-import TweetsComposeContainer from "./tweets/tweets_compose_container";
+// import TweetsComposeContainer from "./tweets/tweets_compose_container";
+import './reset.css';
 
 const App = () => (
-  <div>
+  <div className="page-container">
     <NavBarContainer />
     <Switch>
       <AuthRoute exact path="/" component={MainPage} />
       <AuthRoute exact path="/login" component={LoginFormContainer} />
       <AuthRoute exact path="/signup" component={SignupFormContainer} />
 
-      <ProtectedRoute exact path="/tweets" component={TweetsContainer} />
+      <ProtectedRoute exact path="/home" component={TweetsContainer} />
       <ProtectedRoute exact path="/profile" component={ProfileContainer} />
-      <ProtectedRoute exact path="/new_tweet" component={TweetsComposeContainer} />
+      {/* <ProtectedRoute exact path="/new_tweet" component={TweetsComposeContainer} /> */}
     </Switch>
   </div>
 );

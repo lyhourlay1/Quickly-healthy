@@ -4,7 +4,6 @@ import { withRouter } from "react-router";
 class LoginForm extends React.Component {
   constructor(props) {
     super(props);
-
     this.state = {
       email: "",
       password: "",
@@ -15,17 +14,13 @@ class LoginForm extends React.Component {
     this.renderErrors = this.renderErrors.bind(this);
   }
 
-  // Once the user has been authenticated, redirect to the Tweets page
-  componentWillReceiveProps(nextProps) {
-    if (nextProps.currentUser === true) {
-      this.props.history.push("/tweets");
-    }
+  // componentWillReceiveProps(nextProps) {
+  //   if (nextProps.currentUser === true) {
+  //     this.props.history.push("/home");
+  //   }
+  //   this.setState({ errors: nextProps.errors });
+  // }
 
-    // Set or clear errors
-    this.setState({ errors: nextProps.errors });
-  }
-
-  // Handle field updates (called in the render method)
   update(field) {
     return (e) =>
       this.setState({
@@ -33,7 +28,6 @@ class LoginForm extends React.Component {
       });
   }
 
-  // Handle form submission
   handleSubmit(e) {
     e.preventDefault();
 
@@ -42,10 +36,10 @@ class LoginForm extends React.Component {
       password: this.state.password,
     };
 
-    this.props.login(user);
+    this.props.login(user)
+      .then(() => this.props.history.push('/home'));
   }
 
-  // Render the session errors if there are any
   renderErrors() {
     return (
       <ul>
