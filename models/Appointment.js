@@ -16,7 +16,7 @@ const AppointmentSchema = new Schema({
   },
   checkin: {
     type: Date,
-    required: true,
+    required: false,
   },
   diagnosis: {
     type: String,
@@ -32,7 +32,7 @@ const AppointmentSchema = new Schema({
   },
   checkout: { // need to know when this appointment ends for another appointment to occur or just assume every appointment is 1 hr
     type: Date,
-    required: true,
+    required: false,
   },
   dateCreated: {
     type: Date,
