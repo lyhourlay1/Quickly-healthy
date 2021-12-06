@@ -8,11 +8,18 @@ const passport = require('passport');
 const validateRegisterInput = require('../../validation/register');
 const validateLoginInput = require('../../validation/login');
 
+router.get("/", (req, res) => {
+  User.find()
+      .then((users) => res.json(users))
+      .catch((err) => res.status(404).json({nousersfound: "No users found"}));
+});
+
 router.get('/current', passport.authenticate('jwt', { session: false }), (req, res) => {
   res.json({
     id: req.user.id,
     handle: req.user.handle,
-    email: req.user.email
+    email: req.user.email,
+    insurance: req.user.insurance
   });
 });
 
@@ -31,7 +38,8 @@ router.post('/register', (req, res) => {
       const newUser = new User({
         handle: req.body.handle,
         email: req.body.email,
-        password: req.body.password
+        password: req.body.password,
+        insurance: req.body.insurance
       });
 
       bcrypt.genSalt(10, (err, salt) => {
@@ -39,7 +47,7 @@ router.post('/register', (req, res) => {
           if (err) throw err;
           newUser.password = hash;
           newUser
-            .save()
+            .save().then(user=> res.json(user))
             .then((user) => {
               const payload = { id: user.id, handle: user.handle };
 
