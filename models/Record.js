@@ -2,9 +2,9 @@ const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
 const RecordSchema = new Schema({
-  patientId: {
-    type: String,
-    required: true,
+  user: {
+    type: Schema.Types.ObjectId,
+    ref: "users"
   },
   /* This is needed in User db
   firstName: {
