@@ -1,6 +1,6 @@
 # Quickly-healthy
 
-##Background and Overview
+## Background and Overview
 Quickly Healthy is a minimal viable product that serves as a proof of concept for 
 application development, software engineering, and the user experience. These 
 challenges are expressed in the following ideals:
