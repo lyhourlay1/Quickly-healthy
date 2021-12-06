@@ -1,0 +1,28 @@
+* {
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+div.navbar {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  background-color: lightgray;
+  padding: 10px;
+}
+
+div.navbar .logo {
+  /* color: rgb(103, 112, 131); */
+  color: rgb(13, 28, 61);
+  font-size: 32px;
+}
+
+div.right-buttons a {
+  max-height: 52px;
+  padding: 16px;
+  border-radius: 8px;
+}
+
+div.right-buttons a:hover {
+  background-color: gray;
+}
