@@ -6,6 +6,10 @@ const AppointmentSchema = new Schema({
     type: Schema.Types.ObjectId,
     ref: "users"
   },
+  doctor: {
+    type: Schema.Types.ObjectId,
+    ref: "doctors"
+  },
   reason: {
     type: String,
     required: true,

@@ -19,7 +19,22 @@ router.get("/", (req, res) => {
 
 
 
-/** Gets all appointments of a user
+/** Gets all appointment from a user (Authentication Required)
+ * POST: http://localhost:5000/api/appointments
+ * @response {Array} json - List of appointments by user_id, sorted from most recent to least recent
+ * @body - user {User}
+ */
+router.post("/", passport.authenticate("jwt", {session: false}), (req, res) => {
+        Appointment.find({user: req.user.id})
+            .sort({date: -1})
+            .then((appointments) => res.json(appointments))
+            .catch((err) =>
+                res.status(404).json({noappointmentsfound: "No appointments found from that user"})
+            );
+    });
+
+
+/** Gets all appointments by user id (No Authentication required - Testing only)
  * GET: http://localhost:5000/api/appointments/user/:user_id
  * @response {Array} json - List of appointments by user_id, sorted from most recent to least recent
  */
@@ -33,8 +48,7 @@ router.get("/user/:user_id", (req, res) => {
 });
 
 
-
-/** Gets appointment by id
+/** Gets appointment by the appointment id
  * GET: http://localhost:5000/api/appointments/:id
  * @response {Object} json - The appointment
  */
@@ -47,8 +61,7 @@ router.get("/:id", (req, res) => {
 });
 
 
-
-/** Create an appointment from a user
+/** Create an appointment as a user (Authentication Required)
  * POST: http://localhost:5000/api/appointments
  * @response {Object} json - The appointment created
  * @body - user {User}, reason {String}, date {Date}, checkin {Date}
@@ -70,7 +83,6 @@ router.post("/", passport.authenticate("jwt", {session: false}), (req, res) => {
         newAppointment.save().then((appointment) => res.json(appointment));
     }
 );
-
 
 
 /** Create an appointment by user id
@@ -98,13 +110,13 @@ router.post("/user/:user_id", (req, res) => {
 );
 
 
-
-/** Update an appointment from a user
- * PATCH: http://localhost:5000/api/appointments
- * @response {Object} json - The appointment updated for a user
+/** Update an appointment as a user (Authentication required)
+ * PATCH: http://localhost:5000/api/appointments/:id
+ * @response {Object} json - The appointment's previous value
+ * @param {String} id - The appointment id
  * @body - user {User}, reason {String}, date {Date}, checkin {Date}
  */
-router.patch("/", passport.authenticate("jwt", {session: false}), (req, res) => {
+router.patch("/:id", passport.authenticate("jwt", {session: false}), (req, res) => {
         const {errors, isValid} = validateAppointmentInput(req.body);
 
         if (!isValid) {
@@ -115,36 +127,53 @@ router.patch("/", passport.authenticate("jwt", {session: false}), (req, res) => 
             appointment => {
                 appointment.update(appointment).then(appointment => res.json(appointment));
             }).catch(
-                err => res.status(404).json({ noappointmentfound: `No appointment found from that user` })
+            err => res.status(404).json({noappointmentfound: `No appointment found from that user`})
         );
     }
 );
 
 
-
-/** Update an appointment by user id
- * PATCH: http://localhost:5000/api/appointments/user/:user_id
- * @response {Object} json - The appointment created
- * @param {String} user_id - The user id
+/** Update an appointment by appointment id
+ * PATCH: http://localhost:5000/api/appointments/:id
+ * @response {Object} json - The appointment's previous value
+ * @param {String} id - The appointment id
  * @body - reason {String}, date {Date}, checkin {Date}
  */
-router.patch("/:id", async (req, res) => {
+router.patch("/:id/update", (req, res) => {
         const {errors, isValid} = validateAppointmentInput(req.body);
 
         if (!isValid) {
             return res.status(400).json(errors);
         }
 
-        const appointment = await Appointment.findById(req.params.id)
-            .then(appointment => res.json(appointment))
-            .catch(err => res.status(404).json({noappointmentfound: `No appointment found from that id: ${req.params.id}`})
-        );
-        let appt = await Appointment.findById(req.params.id);
-        console.log("body: ", req.body);
-        console.log("appt: ", appt);
-        let a = {...appt, ...req.body};
-        console.log("Updated: ", a);
-        return appointment;
+        return Appointment.findByIdAndUpdate(req.params.id, req.body)
+            .then(appointment => res.json(appointment)) // will not return the updated but the previous version
+            .catch(err => res.status(404).json(err.toJSON()))
+    }
+);
+
+
+/** Delete an appointment by id (Authentication Required)
+ * PATCH: http://localhost:5000/api/appointments/:id
+ * @response {Object} json - The appointment deleted
+ * @param {String} id - The appointment id
+ */
+router.delete("/:id", (req, res) => {
+        return Appointment.findByIdAndDelete(req.params.id)
+            .then(appointment => res.json(appointment)) // will not return the updated but the previous version
+            .catch(err => res.status(404).json(err.toJSON()))
+    }
+);
+
+/** Delete an appointment by id
+ * PATCH: http://localhost:5000/api/appointments/:id/delete
+ * @response {Object} json - The appointment deleted
+ * @param {String} id - The appointment id
+ */
+router.delete("/:id/delete", (req, res) => {
+        return Appointment.findByIdAndDelete(req.params.id)
+            .then(appointment => res.json(appointment)) // will not return the updated but the previous version
+            .catch(err => res.status(404).json({noappointmentfound: `No appointment found from id ${req.params.id}`}))
     }
 );
 
