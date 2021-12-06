@@ -13,6 +13,8 @@
 .DS_Store
 **/.DS_Store
 
+/config/keys_dev.js
+
 
 ## Documentation cache and generated files:
 /doc/
