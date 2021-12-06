@@ -1,4 +1,18 @@
 # Quickly-healthy
+## Background and Overview
+Quickly Healthy is a minimal viable product that serves as a proof of concept for 
+application development, software engineering, and the user experience. These 
+challenges are expressed in the following ideals:
+
+### Auth-feature: Signup/Login as patient
+
+| Feature       | Patient                                                                       | Doctor                           |
+|---------------|-------------------------------------------------------------------------------|----------------------------------|
+| User          | Sign-in Sign-up update insurance                                              | sign-in sign-up verify doctor id |
+| Health Record | View, upload, delete, update                                                  | Create, delete, view, and update |
+| Map API       | Locate doctors that accept the insurance and currently accepting new patients | Create location when sign up     |
+| Appointment Checkin | View todo list, medications, etc. | Create todo list and customize medication | 
+| Chat | Like Slack | Like Slack |
 
 ## Functionality and MVP
 
@@ -36,3 +50,57 @@ Technical Challenges with React/Node.js:
 * Reading data from MongoDB and organizing for display
 * Setting up the appropriate actions when making appointments and checking-in, without having actual users behaving as doctors
 * Implementing enough doctor seeds to give useful feedback and realistic circumstances when using the application
+
+
+## Group Members and Work Breakdown
+### Day 1
+Emmett
+* backend user auth/setup api
+
+Lee
+* front end user auth
+
+Grayson
+* front end user auth
+
+Mauricio
+* backend user auth/setup api
+
+### Day 2
+Emmett
+* setup map api(backend)
+
+Lee
+* implement appointments/check in (backend)
+
+Grayson
+* start splash page and connect map to the front end
+
+Mauricio
+* setup health record (backend)
+### Day 3
+Emmett
+* work on map (backend)
+
+Lee
+* implement appointments/check in (frontend)
+
+Grayson
+* work on frontend map
+
+Mauricio
+* finish health record (backend) and connect to frontend
+### Day 4
+Emmett
+* complete backend map/test/debug
+
+Lee
+* complete backend map/test/debug
+
+Grayson
+* finish map on front end
+
+Mauricio
+* complete frontend health record and assist with finishing frontend map
+### Day 5
+* update readMe, deploy to heroku
