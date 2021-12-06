@@ -14,3 +14,4 @@ challenges are expressed in the following ideals:
 | Map API       | Locate doctors that accept the insurance and currently accepting new patients | Create location when sign up     |
 | Appointment Checkin | View todo list, medications, etc. | Create todo list and customize medication | 
 | Chat | Like Slack | Like Slack |
+
