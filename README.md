@@ -51,6 +51,21 @@ Technical Challenges with React/Node.js:
 * Setting up the appropriate actions when making appointments and checking-in, without having actual users behaving as doctors
 * Implementing enough doctor seeds to give useful feedback and realistic circumstances when using the application
 
+###Backend: Node, Express, MongoDB
+
+* Using Express from Node.js as our workframe and MonogDB as our database.
+* MongoDB provides a scalable which is great for a quick coding developnent stage.
+* MongoDB uses non-relational database which allows the developers to retrieve the 
+data easily.
+* NoSQL database provides benefits to developers like availbility, simple,
+inexpensive to query, and flexible model. 
+
+###MAP API
+
+We will be using MAP API from google to include the location of doctors and to
+allow user to find the doctor by location. 
+
+
 
 ## Group Members and Work Breakdown
 ### Day 1
