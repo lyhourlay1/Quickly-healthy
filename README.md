@@ -17,3 +17,6 @@
 
 ## WireFrames
 
+![alt text](https://github.com/lyhourlay1/Quickly-healthy/blob/main/assets/wireframes/splash.jpg?raw=true)
+![alt text](https://github.com/lyhourlay1/Quickly-healthy/blob/main/assets/wireframes/home.jpg?raw=true)
+![alt text](https://github.com/lyhourlay1/Quickly-healthy/blob/main/assets/wireframes/profile_page.jpg?raw=true)
