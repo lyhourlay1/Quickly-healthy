@@ -12,7 +12,8 @@ router.get('/current', passport.authenticate('jwt', { session: false }), (req, r
   res.json({
     id: req.user.id,
     handle: req.user.handle,
-    email: req.user.email
+    email: req.user.email,
+    insurance: req.user.insurance
   });
 });
 
@@ -31,7 +32,8 @@ router.post('/register', (req, res) => {
       const newUser = new User({
         handle: req.body.handle,
         email: req.body.email,
-        password: req.body.password
+        password: req.body.password,
+        insurance: req.body.insurance
       });
 
       bcrypt.genSalt(10, (err, salt) => {
