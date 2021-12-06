@@ -19,9 +19,9 @@
 **/.key
 */master.key
 master.key
-/config/keys.js
-**/keys.js
-/keys.js
+# /config/keys.js
+# **/keys.js
+# /keys.js
 
 ## Documentation cache and generated files:
 /doc/
