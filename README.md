@@ -62,7 +62,7 @@ inexpensive to query, and flexible model.
 
 ###MAP API
 
-We will be using MAP API from google to include the location of doctors and to
+* We will be using MAP API from google to include the location of doctors and to
 allow user to find the doctor by location. 
 
 
