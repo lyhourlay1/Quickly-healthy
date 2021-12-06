@@ -1,5 +1,8 @@
 import React from "react";
 import { withRouter } from "react-router";
+import { Link } from "react-router-dom";
+
+import './session.css'
 
 class LoginForm extends React.Component {
   constructor(props) {
@@ -54,23 +57,35 @@ class LoginForm extends React.Component {
     return (
       <div>
         <form onSubmit={this.handleSubmit}>
-          <div>
-            <input
-              type="text"
-              value={this.state.email}
-              onChange={this.update("email")}
-              placeholder="Email"
-            />
-            <br />
-            <input
-              type="password"
-              value={this.state.password}
-              onChange={this.update("password")}
-              placeholder="Password"
-            />
-            <br />
-            <input type="submit" value="Submit" />
-            {this.renderErrors()}
+          <div className ='session-box'>
+            <div className='inputs'>
+              Welcome back! Please Sign In!
+              <input
+                  type="text"
+                  value={this.state.email}
+                  onChange={this.update("email")}
+                  placeholder="Email"
+                />
+              <br />
+                <input
+                  type="password"
+                  value={this.state.password}
+                  onChange={this.update("password")}
+                  placeholder="Password"
+                />
+                
+              <br />
+              <input type="submit" value="Submit" className="submit-button" />
+
+              <br/>
+              <h1 className="static-already">
+                Don't Have an Account Yet? Sing up
+                <Link to={"/signup"}> Here!</Link> 
+              </h1>
+
+              {this.renderErrors()}
+              
+            </div> 
           </div>
         </form>
       </div>
