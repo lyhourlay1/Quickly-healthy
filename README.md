@@ -1,5 +1,3 @@
-# Hi Grayson, This is me editing the main branch
-
 # Quickly-healthy
 ## Background and Overview
 Quickly Healthy is a minimal viable product that serves as a proof of concept for 
