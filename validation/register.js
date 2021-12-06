@@ -8,6 +8,7 @@ module.exports = validateRegisterInput = (data) => {
   data.email = validText(data.email) ? data.email : '';
   data.password = validText(data.password) ? data.password : '';
   data.password2 = validText(data.password2) ? data.password2 : '';
+  data.insurance = validText(data.insurance) ? data.insurance : '';
 
   if (!Validator.isLength(data.handle, { min: 2, max: 30 })) {
     errors.handle = 'Handle must be between 2 and 30 characters';
@@ -39,6 +40,10 @@ module.exports = validateRegisterInput = (data) => {
   
   if (Validator.isEmpty(data.password2)) {
     errors.password2 = 'Confirm Password field is required';
+  };
+
+  if (Validator.isEmpty(data.insurance)) {
+    errors.insurance = 'Insurance field is required';
   };
 
   return {
