@@ -7,6 +7,8 @@ import SignupFormContainer from "./session/signup_form_container";
 import ProfileContainer from "./profile/profile_container";
 import Splash from "./splash/splash";
 import './reset.css';
+import Home from "./home/home";
+
 
 import {fetchRecord} from "../util/records_util";
 import {fetchAppointment} from "../util/appointments_util";
@@ -21,6 +23,7 @@ const App = () => (
       <AuthRoute exact path="/login" component={LoginFormContainer} />
       <AuthRoute exact path="/signup" component={SignupFormContainer} />
 
+      <ProtectedRoute exact path="/home" component={Home} />
       <ProtectedRoute exact path="/profile" component={ProfileContainer} />
     </Switch>
   </div>

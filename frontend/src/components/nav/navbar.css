@@ -5,7 +5,7 @@ div.navbar {
   align-items: center;
   background-color: lightgray;
   padding: 10px;
-  position: sticky;
+  z-index: 10;
   top: 0;
   left: 0;
   padding: 8px;

@@ -1,0 +1,31 @@
+div.home-container {
+  position: fixed;
+  top: 71px;
+  bottom: 0px;
+  width: 100%;
+  object-fit: contain;
+}
+
+.doctors-index {
+  display: flex;
+  flex-direction: column;
+  width: 30%;
+  position: absolute;
+  top: 0px;
+  bottom: 0px;
+  overflow-y: scroll;
+  object-fit: contain;
+}
+
+.doctors-index ul li {
+  font-size: 100px;
+}
+
+#map-container {
+  cursor: pointer;
+  position: absolute;
+  top: 0px;
+  bottom: 0px;
+  right: 0px;
+  width: 70%; 
+} 
