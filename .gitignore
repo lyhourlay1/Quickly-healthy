@@ -13,6 +13,10 @@
 .DS_Store
 **/.DS_Store
 
+/config/keys_dev.js
+api_keys.js
+**/api_keys.js
+/api_keys.js
 config/keys_dev.js
 frontend/src/util/api_keys.js
 
@@ -119,5 +123,4 @@ template/src/__tests__/__snapshots__/
 lerna-debug.log
 /.changelog
 .npm/
-
 

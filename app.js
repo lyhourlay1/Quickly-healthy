@@ -16,7 +16,7 @@ if (process.env.NODE_ENV === "production") {
 const users = require("./routes/api/users");
 const appointments = require("./routes/api/appointments");
 const records = require("./routes/api/records");
-// const physicians = require("./routes/api/physicians");
+const doctors = require("./routes/api/doctors");
 
 mongoose
   .connect(db, { useNewUrlParser: true })
@@ -32,6 +32,7 @@ app.use(bodyParser.json());
 app.use("/api/users", users);
 app.use("/api/appointments", appointments);
 app.use("/api/records", records);
+app.use("/api/doctors", doctors);
 // app.use("/seed");
 
 const port = process.env.PORT || 5000;

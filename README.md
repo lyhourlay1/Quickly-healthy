@@ -26,8 +26,8 @@ challenges are expressed in the following ideals:
 ### Bonus Features
 
 - [ ] Daily journaling with timely spaced memories to reflect on progress over the course of weeks/months/years
-- [ ] Interactive activity/progress monitoring with the user's physician(s)
-- [ ] One-on-one chat feature between patient and physician
+- [ ] Interactive activity/progress monitoring with the user's dcotor(s)
+- [ ] One-on-one chat feature between patient and doctor
 
 ## WireFrames
 
