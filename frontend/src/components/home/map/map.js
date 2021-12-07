@@ -9,7 +9,7 @@ import mapboxgl from "mapbox-gl";
 
 export default class Map extends React.Component {
   componentDidMount() {
-    mapboxgl.accessToken = mapboxToken || process.env.MAPBOX_TOKEN;
+    mapboxgl.accessToken =  process.env.MAPBOX_TOKEN || mapboxToken;
     this.map = new mapboxgl.Map({
       container: "map-container",
       style: "mapbox://styles/mapbox/streets-v11",
