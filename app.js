@@ -35,6 +35,7 @@ app.use("/api/tweets", tweets);
 app.use("/api/appointments", appointments);
 app.use("/api/records", records);
 app.use("/api/doctors", doctors);
+// app.use("/seed");
 
 const port = process.env.PORT || 5000;
 app.listen(port, () => console.log(`Server is running on port ${port}`));

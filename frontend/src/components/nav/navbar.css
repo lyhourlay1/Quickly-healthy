@@ -1,0 +1,32 @@
+div.navbar {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  background-color: lightgray;
+  padding: 10px;
+  position: sticky;
+  top: 0;
+  left: 0;
+  padding: 8px;
+}
+
+div.navbar .logo {
+  font-family: Didot, serif;
+  color: rgb(13, 28, 61);
+  font-size: 55px;
+  font-weight: 600;
+}
+
+div.right-buttons a {
+  max-height: 52px;
+  padding: 16px;
+  border-radius: 8px;
+  font-size: 24px;
+  color: rgb(13, 28, 61);
+  text-decoration: none;
+}
+
+div.right-buttons a:hover {
+  background-color: rgb(194, 194, 194);
+}

@@ -1,10 +1,12 @@
 import React from "react";
 import { withRouter } from "react-router";
+import { Link } from "react-router-dom";
+
+import './session.css'
 
 class LoginForm extends React.Component {
   constructor(props) {
     super(props);
-
     this.state = {
       email: "",
       password: "",
@@ -15,17 +17,13 @@ class LoginForm extends React.Component {
     this.renderErrors = this.renderErrors.bind(this);
   }
 
-  // Once the user has been authenticated, redirect to the Tweets page
-  componentWillReceiveProps(nextProps) {
-    if (nextProps.currentUser === true) {
-      this.props.history.push("/tweets");
-    }
+  // componentWillReceiveProps(nextProps) {
+  //   if (nextProps.currentUser === true) {
+  //     this.props.history.push("/home");
+  //   }
+  //   this.setState({ errors: nextProps.errors });
+  // }
 
-    // Set or clear errors
-    this.setState({ errors: nextProps.errors });
-  }
-
-  // Handle field updates (called in the render method)
   update(field) {
     return (e) =>
       this.setState({
@@ -33,7 +31,6 @@ class LoginForm extends React.Component {
       });
   }
 
-  // Handle form submission
   handleSubmit(e) {
     e.preventDefault();
 
@@ -42,10 +39,10 @@ class LoginForm extends React.Component {
       password: this.state.password,
     };
 
-    this.props.login(user);
+    this.props.login(user)
+      .then(() => this.props.history.push('/home'));
   }
 
-  // Render the session errors if there are any
   renderErrors() {
     return (
       <ul>
@@ -60,23 +57,35 @@ class LoginForm extends React.Component {
     return (
       <div>
         <form onSubmit={this.handleSubmit}>
-          <div>
-            <input
-              type="text"
-              value={this.state.email}
-              onChange={this.update("email")}
-              placeholder="Email"
-            />
-            <br />
-            <input
-              type="password"
-              value={this.state.password}
-              onChange={this.update("password")}
-              placeholder="Password"
-            />
-            <br />
-            <input type="submit" value="Submit" />
-            {this.renderErrors()}
+          <div className ='session-box'>
+            <div className='inputs'>
+              Welcome back! Please Sign In!
+              <input
+                  type="text"
+                  value={this.state.email}
+                  onChange={this.update("email")}
+                  placeholder="Email"
+                />
+              <br />
+                <input
+                  type="password"
+                  value={this.state.password}
+                  onChange={this.update("password")}
+                  placeholder="Password"
+                />
+                
+              <br />
+              <input type="submit" value="Submit" className="submit-button" />
+
+              <br/>
+              <h1 className="static-already">
+                Don't Have an Account Yet? Sing up
+                <Link to={"/signup"}> Here!</Link> 
+              </h1>
+
+              {this.renderErrors()}
+              
+            </div> 
           </div>
         </form>
       </div>

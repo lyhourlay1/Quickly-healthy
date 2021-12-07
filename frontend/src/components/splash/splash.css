@@ -1,0 +1,46 @@
+div.splash-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  background-color: rgb(235, 235, 235);
+}
+
+div.splash-component {
+  display: flex;
+  width: inherit;
+  justify-content: space-between;
+  align-items: center;
+}
+
+div.splash-text {
+  color: rgb(34, 60, 116);
+  font-family: Didot, serif;
+  font-weight: 600;
+  font-size: 45px;
+  text-align: center;
+  text-overflow: wrap;
+}
+
+div.splash-text:nth-child(odd) {
+  padding-left: 100px;
+}
+
+div.splash-text:nth-child(even) {
+  padding-right: 100px;
+}
+
+div.splash-image-container {
+  height: 300px;
+  width: 550px;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+div.splash-image-container img {
+  height: 300px;
+  width: 550px;
+  object-fit: contain;
+}
