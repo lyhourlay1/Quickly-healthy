@@ -1,15 +1,25 @@
 import React from "react";
-import { mapboxToken } from "../../../util/api_keys";
+// import { mapboxToken } from "../../../util/api_keys";
 // import { useState } from "react";
 // import ReactMapGL from "react-map-gl";
 import mapboxgl from "mapbox-gl";
+require("dotenv").config();
 
 // const dotenv = require('dotenv');
 // dotenv.config();
+// let mapboxToken = require("../../../../../config/keys").mapBoxToken;
+
+// if (process.env.NODE_ENV === "production") {
+//   let mapboxToken = require("config/keys").mapBoxToken;
+// }
+// else{
+//   import { mapboxToken } from "../../../util/api_keys"; 
+// }
+
 
 export default class Map extends React.Component {
   componentDidMount() {
-    mapboxgl.accessToken =  process.env.MAPBOX_TOKEN || mapboxToken;
+    mapboxgl.accessToken =  process.env.REACT_APP_MAPBOX_TOKEN;
     this.map = new mapboxgl.Map({
       container: "map-container",
       style: "mapbox://styles/mapbox/streets-v11",
