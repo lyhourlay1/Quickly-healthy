@@ -29,7 +29,7 @@ class NavBar extends React.Component {
     } else {
       return (
         <div className="navbar">
-          <div className="logo">Quickly-healthy</div>
+          <Link className="logo" to={"/"}>Quickly-healthy</Link>
           <div className="right-buttons">
             <Link to={"/signup"}>Signup</Link> 
             <Link to={"/login"}>Login</Link>
