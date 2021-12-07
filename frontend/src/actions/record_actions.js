@@ -1,4 +1,4 @@
-import * as RecordUtil from './../util/records_util'
+import * as RecordUtil from '../util/record_util'
 
 export const RECEIVE_RECORD = "RECEIVE_RECORD";
 export const RECEIVE_RECORDS = "RECEIVE_RECORDS";

@@ -1,5 +1,5 @@
 import axios from "axios";
-import {createAppointment} from "./appointments_util";
+import {createAppointment} from "./appointment_util";
 
 /** API fetchRecords gets all records from the database
  * @returns {Promise} - A promise of records as an array

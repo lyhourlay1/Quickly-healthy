@@ -1,4 +1,4 @@
-import * as DoctorUtil from './../util/doctors_util'
+import * as DoctorUtil from './../util/doctor_util'
 
 export const RECEIVE_DOCTOR = "RECEIVE_DOCTOR";
 export const RECEIVE_DOCTORS = "RECEIVE_DOCTORS";

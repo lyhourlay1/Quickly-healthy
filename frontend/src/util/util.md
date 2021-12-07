@@ -1,5 +1,5 @@
 ## Appointments
-Import from ```/frontend/util/appointments_util.js```
+Import from ```/frontend/util/appointment_util.js```
 
 ### Fetching All Appointments
 API fetchAppointments gets all appointments from the database
@@ -61,7 +61,7 @@ console.log(appointment.data) // => Appointment objects
 
 
 ## Records
-Import from ```/frontend/util/records_util.js```
+Import from ```/frontend/util/record_util.js```
 
 ### Fetching All Records
 API fetchRecords gets all records from the database
