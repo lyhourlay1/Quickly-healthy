@@ -72,8 +72,8 @@ export const deleteDoctor = doctorId => dispatch =>(
 )
 
 
-// window.fetchDoctors = fetchDoctors;
-// window.fetchDoctor = fetchDoctor;
-// window.createDoctor = createDoctor;
-// window.updateDoctor = updateDoctor;
-// window.deleteDoctor = deleteDoctor;
+window.fetchDoctors = fetchDoctors;
+window.fetchDoctor = fetchDoctor;
+window.createDoctor = createDoctor;
+window.updateDoctor = updateDoctor;
+window.deleteDoctor = deleteDoctor;

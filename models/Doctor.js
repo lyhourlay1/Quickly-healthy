@@ -23,8 +23,8 @@ const DoctorSchema = new Schema({
         required: false
     },
     location: {
-        type: String,
-        required: false,
+        type: Array,
+        required: true
     },
     schedule: {
         type: Object,

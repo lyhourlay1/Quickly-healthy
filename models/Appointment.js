@@ -14,15 +14,11 @@ const AppointmentSchema = new Schema({
     type: String,
     required: false
   },
-  reason: {
-    type: String,
-    required: true,
-  },
   date: {
     type: Date,
     required: true
   },
-  checkin: {
+  start: {
     type: Date,
     required: false,
   },
@@ -38,7 +34,7 @@ const AppointmentSchema = new Schema({
     type: String,
     required: false
   },
-  checkout: { // need to know when this appointment ends for another appointment to occur or just assume every appointment is 1 hr
+  end: { // need to know when this appointment ends for another appointment to occur or just assume every appointment is 1 hr
     type: Date,
     required: false,
   },
