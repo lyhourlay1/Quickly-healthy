@@ -9,10 +9,7 @@ import ProfileContainer from "./profile/profile_container";
 // import TweetsComposeContainer from "./tweets/tweets_compose_container";
 import Splash from "./splash/splash";
 import './reset.css';
-import Map from "./map/map";
-
-
-
+import Home from "./home/home";
 
 
 const App = () => (
@@ -24,11 +21,10 @@ const App = () => (
       <AuthRoute exact path="/login" component={LoginFormContainer} />
       <AuthRoute exact path="/signup" component={SignupFormContainer} />
 
-      <ProtectedRoute exact path="/home" component={TweetsContainer} />
+      <ProtectedRoute exact path="/home" component={Home} />
       <ProtectedRoute exact path="/profile" component={ProfileContainer} />
       {/* <ProtectedRoute exact path="/new_tweet" component={TweetsComposeContainer} /> */}
     </Switch>
-    <Map />
   </div>
 );
 
