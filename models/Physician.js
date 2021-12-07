@@ -7,7 +7,7 @@ const PhysicianSchema = new Schema({
     required: true
   },
   location: {
-    type: Object,
+    type: Array,
     required: true
   },
   address: {

@@ -1,5 +1,7 @@
 import React from "react";
 import mapboxgl from "mapbox-gl";
+import { physicians } from "../../../util/doctor_seeds";
+
 require("dotenv").config();
 
 export default class Map extends React.Component {
@@ -12,21 +14,25 @@ export default class Map extends React.Component {
       zoom: 12,
     });
 
-    this.map.on("idle", () => {
-      this.map.resize();
-    })
+    let that = this;
 
-    const marker = new mapboxgl.Marker()
-      .setLngLat([-122.4376, 37.7577])
-      .addTo(this.map);
+    physicians.map((physician) => {
+      return new mapboxgl.Marker({ color: "red" })
+        .setLngLat(physician.location)
+        .addTo(that.map);
+    });
 
-    const marker2 = new mapboxgl.Marker({ color: "black", rotation: 45 })
-      .setLngLat([-122.4376, 37.7577])
-      .addTo(this.map);
+    // const marker = new mapboxgl.Marker()
+    //   .setLngLat([-122.4376, 37.7577])
+    //   .addTo(this.map);
 
-    const marker3 = new mapboxgl.Marker({ color: "red"})
-      .setLngLat([-117.178950, 32.905810])
-      .addTo(this.map);
+    // const marker2 = new mapboxgl.Marker({ color: "black", rotation: 45 })
+    //   .setLngLat([-122.4376, 37.7577])
+    //   .addTo(this.map);
+
+    // const marker3 = new mapboxgl.Marker({ color: "red"})
+    //   .setLngLat([-117.178950, 32.905810])
+    //   .addTo(this.map);
   }
 
   render() {

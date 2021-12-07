@@ -8,22 +8,89 @@ const db = require("./config/keys").mongoURI;
 // const date11 = new Date('December 17, 1995 11:00:00');
 
 
-const physicians = [   
+const physicians = [
   new Physician({
     name: "doctor1",
     address: "6480 Weathers Pl #106, San Diego, CA 92121",
-    location: {latitude: 32.905810, longitude: -117.178950},
+    location: [-117.17895, 32.90581], // [longitude, latitude]
     specialty: ["family doctor"],
-    insurances: ["Aetna Life Insurance Company", "American National Insurance Company", "Kaiser Permanente Insurance Company"],
-    availabilites: {Monday: {start:9, end: 14}, Tuesday: {start: 13, end: 17}, Thursday: {start:10, end:16}}
-    }), new Physician({
+    insurances: [
+      "Aetna Life Insurance Company",
+      "American National Insurance Company",
+      "Kaiser Permanente Insurance Company",
+    ],
+    availabilites: {
+      Monday: { start: 9, end: 14 },
+      Tuesday: { start: 13, end: 17 },
+      Thursday: { start: 10, end: 16 },
+    },
+  }),
+  new Physician({
     name: "doctor2",
     address: "6480 Weathers Pl #106, San Diego, CA 92121",
-    location: {latitude: 32.905810, longitude: -117.178950},
+    location: [-122.44896470689393, 37.75276357933445],
     specialty: ["family doctor"],
-    insurances: ["Aetna Life Insurance Company", "American National Insurance Company", "Kaiser Permanente Insurance Company"],
-    availabilites: {Monday: {start:8, end:11}, Tuesday: {start:14, end:17}, Wednesday: {start: 9, end:13 }}
-})]
+    insurances: [
+      "Aetna Life Insurance Company",
+      "American National Insurance Company",
+      "Kaiser Permanente Insurance Company",
+    ],
+    availabilites: {
+      Monday: { start: 8, end: 11 },
+      Tuesday: { start: 14, end: 17 },
+      Wednesday: { start: 9, end: 13 },
+    },
+  }),
+  new Physician({
+    name: "doctor3",
+    address: "6480 Weathers Pl #106, San Diego, CA 92121",
+    location: [-122.43279047072105, 37.777547798227154],
+    specialty: ["family doctor"],
+    insurances: [
+      "Aetna Life Insurance Company",
+      "American National Insurance Company",
+      "Kaiser Permanente Insurance Company",
+    ],
+    availabilites: {
+      Monday: { start: 8, end: 11 },
+      Tuesday: { start: 14, end: 17 },
+      Wednesday: { start: 9, end: 13 },
+    },
+  }),
+  new Physician({
+    name: "doctor4",
+    address: "6480 Weathers Pl #106, San Diego, CA 92121",
+    location: [-122.42618213880252, 37.766726033405746],
+    specialty: ["family doctor"],
+    insurances: [
+      "Aetna Life Insurance Company",
+      "American National Insurance Company",
+      "Kaiser Permanente Insurance Company",
+    ],
+    availabilites: {
+      Monday: { start: 8, end: 11 },
+      Tuesday: { start: 14, end: 17 },
+      Wednesday: { start: 9, end: 13 },
+    },
+  }),
+  new Physician({
+    name: "doctor5",
+    address: "6480 Weathers Pl #106, San Diego, CA 92121",
+    location: [-122.40622531560443, 37.80483011318142],
+    specialty: ["family doctor"],
+    insurances: [
+      "Aetna Life Insurance Company",
+      "American National Insurance Company",
+      "Kaiser Permanente Insurance Company",
+    ],
+    availabilites: {
+      Monday: { start: 8, end: 11 },
+      Tuesday: { start: 14, end: 17 },
+      Wednesday: { start: 9, end: 13 },
+    },
+  }),
+];
+
 // connect mongoose
 mongoose
   .connect(db, { useNewUrlParser: true })
