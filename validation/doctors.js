@@ -11,8 +11,11 @@ const validText = require('./valid-text');
 
 module.exports = function validateAppointmentInput(data) {
     let errors = {};
+    if (Object.keys(data).length === 0){
+        errors.data = "Input must be given to create a doctor";
+    }
 
-    if (Validator.isEmpty(data.name)) {
+    if (!data.name || Validator.isEmpty(data.name)) {
         errors.name = "A doctor's name is required";
     }
 

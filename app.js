@@ -17,6 +17,7 @@ const users = require("./routes/api/users");
 const tweets = require("./routes/api/tweets");
 const appointments = require("./routes/api/appointments");
 const records = require("./routes/api/records");
+const doctors = require("./routes/api/doctors");
 
 mongoose
   .connect(db, { useNewUrlParser: true })
@@ -33,6 +34,7 @@ app.use("/api/users", users);
 app.use("/api/tweets", tweets);
 app.use("/api/appointments", appointments);
 app.use("/api/records", records);
+app.use("/api/doctors", doctors);
 
 const port = process.env.PORT || 5000;
 app.listen(port, () => console.log(`Server is running on port ${port}`));

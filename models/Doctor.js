@@ -4,23 +4,53 @@ const Schema = mongoose.Schema;
 const DoctorSchema = new Schema({
     license: {
         type: String,
-        required: true,
+        required: false,
     },
     specialty: {
         type: Array,
-        required: true
+        required: false
     },
     name: {
         type: String,
-        required: true,
+        required: false,
     },
     location: {
         type: String,
-        required: true,
+        required: false,
     },
     schedule: {
-        type: Array,
-        required: true
+        type: Object,
+        required: false,
+        default: {
+            Sunday: {
+                start: new Date(),
+                end: new Date()
+            },
+            Monday: {
+                start: new Date(),
+                end: new Date()
+            },
+            Tuesday: {
+                start: new Date(),
+                end: new Date()
+            },
+            Wednesday: {
+                start: new Date(),
+                end: new Date()
+            },
+            Thursday: {
+                start: new Date(),
+                end: new Date()
+            },
+            Friday: {
+                start: new Date(),
+                end: new Date()
+            },
+            Saturday: {
+                start: new Date(),
+                end: new Date()
+            }
+        }
     },
     dateCreated: {
         type: Date,

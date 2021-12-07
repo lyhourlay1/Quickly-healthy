@@ -1,6 +1,6 @@
 const Validator = require('validator');
 const validText = require('./valid-text');
-
+const Doctor = require("../models/Doctor");
 /*
   TODO: validates conflict of schedules between doctor and patient
   TODO: cannot sign up for another appointment for the same doctor
@@ -8,6 +8,24 @@ const validText = require('./valid-text');
   TODO: add location to schema for doctor's work place
   TODO: add availabilities to doctor [{Monday: start-time, endtime}... Saturday: [start-tie, endtime]}]
  */
+
+const DAYOFWEEK = {
+    "0": "Sunday",
+    "1": "Monday",
+    "2": "Tuesday",
+    "3": "Wednesday",
+    "4": "Thursday",
+    "5": "Friday",
+    "6": "Saturday"
+}
+
+function isInScheduleRange(date, schedule){
+  let dayOfWeek = DAYOFWEEK[date.getDay()]
+  let shift = schedule[dayOfWeek];
+  if (typeof shift.start === 'number')
+    return shift.start <= date.getHours() && date.getHours() <= shift.end;
+  return shift.start <= date && date <= shift.end;
+}
 
 module.exports = function validateAppointmentInput(data) {
   let errors = {};
@@ -31,6 +49,17 @@ module.exports = function validateAppointmentInput(data) {
   if (data.checkout - now < 0) {
     errors.date = `The checkin date must be now or after: ${now.toLocaleString()}`;
   }
+
+  let doctor = Doctor.findById(data.doctor);
+  if (!doctor) {
+    errors.doctor = `The doctor ${data.doctor} doesn't exist`;
+  }
+
+  if (!isInScheduleRange(data.date, doctor.schedule)) {
+    errors.date = "The appointment schedule doesn't match the doctor's availability";
+  }
+
+
 
   return {
     errors,
