@@ -1,6 +1,5 @@
 import React from "react";
 import mapboxgl from "mapbox-gl";
-import { physicians } from "../../../util/doctor_seeds";
 
 require("dotenv").config();
 
@@ -16,9 +15,9 @@ export default class Map extends React.Component {
 
     let that = this;
 
-    physicians.map((physician) => {
+    doctors.map((doctor) => {
       return new mapboxgl.Marker({ color: "red" })
-        .setLngLat(physician.location)
+        .setLngLat(doctor.location)
         .addTo(that.map);
     });
 

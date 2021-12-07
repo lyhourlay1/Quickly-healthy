@@ -1,4 +1,4 @@
-const Physician = require('./models/Physician');
+const Doctor = require('./models/Doctor');
 const mongoose = require("mongoose");
 const db = require("./config/keys").mongoURI;
 // const date9 = new Date('December 17, 1995 09:00:00').getHours();
@@ -8,8 +8,8 @@ const db = require("./config/keys").mongoURI;
 // const date11 = new Date('December 17, 1995 11:00:00');
 
 
-const physicians = [
-  new Physician({
+const doctors = [
+  new Doctor({
     name: "doctor1",
     address: "6480 Weathers Pl #106, San Diego, CA 92121",
     location: [-117.17895, 32.90581], // [longitude, latitude]
@@ -25,7 +25,7 @@ const physicians = [
       Thursday: { start: 10, end: 16 },
     },
   }),
-  new Physician({
+  new Doctor({
     name: "doctor2",
     address: "6480 Weathers Pl #106, San Diego, CA 92121",
     location: [-122.44896470689393, 37.75276357933445],
@@ -41,7 +41,7 @@ const physicians = [
       Wednesday: { start: 9, end: 13 },
     },
   }),
-  new Physician({
+  new Doctor({
     name: "doctor3",
     address: "6480 Weathers Pl #106, San Diego, CA 92121",
     location: [-122.43279047072105, 37.777547798227154],
@@ -57,7 +57,7 @@ const physicians = [
       Wednesday: { start: 9, end: 13 },
     },
   }),
-  new Physician({
+  new Doctor({
     name: "doctor4",
     address: "6480 Weathers Pl #106, San Diego, CA 92121",
     location: [-122.42618213880252, 37.766726033405746],
@@ -73,7 +73,7 @@ const physicians = [
       Wednesday: { start: 9, end: 13 },
     },
   }),
-  new Physician({
+  new Doctor({
     name: "doctor5",
     address: "6480 Weathers Pl #106, San Diego, CA 92121",
     location: [-122.40622531560443, 37.80483011318142],
@@ -103,11 +103,11 @@ mongoose
   });
 //save your data. this is an async operation
 //after you make sure you seeded all the products, disconnect automatically\
-// db.collection("physicians").drop();
+// db.collection("doctors").drop();
 
-physicians.map(async (p, index) => {
+doctors.map(async (p, index) => {
     await p.save((err, result) => {
-    if (index === physicians.length - 1) {
+    if (index === doctors.length - 1) {
       console.log("DONE!");
       debugger
       mongoose.disconnect();

@@ -16,7 +16,7 @@ if (process.env.NODE_ENV === "production") {
 const users = require("./routes/api/users");
 const appointments = require("./routes/api/appointments");
 const records = require("./routes/api/records");
-// const physicians = require("./routes/api/physicians");
+// const doctors = require("./routes/api/doctors");
 
 mongoose
   .connect(db, { useNewUrlParser: true })
