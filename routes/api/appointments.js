@@ -34,8 +34,9 @@ router.post("/", passport.authenticate("jwt", {session: false}), (req, res) => {
     });
 
 
-/** Gets all appointments by user id (No Authentication required - Testing only)
+/** Gets all appointments by user id
  * GET: http://localhost:5000/api/appointments/user/:user_id
+ * @param {String} user_id - The user id
  * @response {Array} json - List of appointments by user_id, sorted from most recent to least recent
  */
 router.get("/user/:user_id", (req, res) => {
@@ -155,7 +156,7 @@ router.patch("/:id/update", (req, res) => {
 
 
 /** Delete an appointment by id (Authentication Required)
- * PATCH: http://localhost:5000/api/appointments/:id
+ * DELETE: http://localhost:5000/api/appointments/:id
  * @response {Object} json - The appointment deleted
  * @param {String} id - The appointment id
  */
@@ -167,7 +168,7 @@ router.delete("/:id", passport.authenticate("jwt", {session: false}), (req, res)
 );
 
 /** Delete an appointment by id
- * PATCH: http://localhost:5000/api/appointments/:id/delete
+ * DELETE: http://localhost:5000/api/appointments/:id/delete
  * @response {Object} json - The appointment deleted
  * @param {String} id - The appointment id
  */
