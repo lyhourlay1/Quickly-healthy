@@ -79,7 +79,7 @@ class LoginForm extends React.Component {
 
               <br/>
               <h1 className="static-already">
-                Don't Have an Account Yet? Sing up
+                Don't Have an Account Yet? Sign up 
                 <Link to={"/signup"}> Here!</Link> 
               </h1>
 

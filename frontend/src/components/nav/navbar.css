@@ -5,17 +5,26 @@ div.navbar {
   align-items: center;
   background-color: lightgray;
   padding: 10px;
-  position: sticky;
+  z-index: 10;
   top: 0;
   left: 0;
   padding: 8px;
 }
 
-div.navbar .logo {
+div.navbar a.logo {
   font-family: Didot, serif;
   color: rgb(13, 28, 61);
   font-size: 55px;
   font-weight: 600;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+div.right-buttons {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: 'Times New Roman', Times, serif;
 }
 
 div.right-buttons a {
@@ -28,5 +37,22 @@ div.right-buttons a {
 }
 
 div.right-buttons a:hover {
+  background-color: rgb(194, 194, 194);
+}
+
+div.right-buttons button {
+  font-family: 'Times New Roman', Times, serif;
+  font-size: 24px;
+  padding: 10px;
+  border: none;
+  font-weight: 400;
+  background-color: transparent;
+  cursor: pointer;
+  border-radius: 8px;
+  color: rgb(13, 28, 61);
+
+}
+
+div.right-buttons button:hover {
   background-color: rgb(194, 194, 194);
 }

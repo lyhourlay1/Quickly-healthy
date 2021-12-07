@@ -14,6 +14,7 @@
 **/.DS_Store
 
 /config/keys_dev.js
+frontend/src/util/api_keys.js
 
 
 ## Documentation cache and generated files:
@@ -119,4 +120,3 @@ lerna-debug.log
 /.changelog
 .npm/
 
-.env

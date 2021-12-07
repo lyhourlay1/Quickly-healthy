@@ -14,7 +14,6 @@ if (process.env.NODE_ENV === "production") {
 }
 
 const users = require("./routes/api/users");
-const tweets = require("./routes/api/tweets");
 const appointments = require("./routes/api/appointments");
 const records = require("./routes/api/records");
 // const physicians = require("./routes/api/physicians");
@@ -31,7 +30,6 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
 app.use("/api/users", users);
-app.use("/api/tweets", tweets);
 app.use("/api/appointments", appointments);
 app.use("/api/records", records);
 // app.use("/seed");
