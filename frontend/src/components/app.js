@@ -9,6 +9,11 @@ import ProfileContainer from "./profile/profile_container";
 // import TweetsComposeContainer from "./tweets/tweets_compose_container";
 import Splash from "./splash/splash";
 import './reset.css';
+import Map from "./map/map";
+
+
+
+
 
 const App = () => (
   <div className="page-container">
@@ -23,6 +28,7 @@ const App = () => (
       <ProtectedRoute exact path="/profile" component={ProfileContainer} />
       {/* <ProtectedRoute exact path="/new_tweet" component={TweetsComposeContainer} /> */}
     </Switch>
+    <Map />
   </div>
 );
 
