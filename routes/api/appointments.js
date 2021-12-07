@@ -159,7 +159,7 @@ router.patch("/:id/update", (req, res) => {
  * @response {Object} json - The appointment deleted
  * @param {String} id - The appointment id
  */
-router.delete("/:id", (req, res) => {
+router.delete("/:id", passport.authenticate("jwt", {session: false}), (req, res) => {
         return Appointment.findByIdAndDelete(req.params.id)
             .then(appointment => res.json(appointment)) // will not return the updated but the previous version
             .catch(err => res.status(404).json(err.toJSON()))

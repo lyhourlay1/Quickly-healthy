@@ -20,6 +20,6 @@
 - ```GET /api/records/:id``` - Fetches a record's information.
 - ```GET /api/records/users/:user_id``` - Fetches all records by user id.
 - ```POST /api/records/user/:user_id``` - Creates a new record by user id.
-- ```PATCH /api/records/:id``` - Updates a record.
-- ```DELETE /api/records/:id``` - Removes a record.
+- ```PATCH /api/records/:id/update``` - Updates a record.
+- ```DELETE /api/records/:id/delete``` - Removes a record.
 
