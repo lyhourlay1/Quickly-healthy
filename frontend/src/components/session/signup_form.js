@@ -12,6 +12,7 @@ class SignupForm extends React.Component {
       handle: "",
       password: "",
       password2: "",
+      insurance: "",
       errors: {},
     };
 
@@ -21,7 +22,7 @@ class SignupForm extends React.Component {
 
   componentWillReceiveProps(nextProps) {
     if (nextProps.signedIn === true) {
-      this.props.history.push("/login");
+      this.props.history.push("/home");
     }
 
     this.setState({ errors: nextProps.errors });
@@ -41,6 +42,7 @@ class SignupForm extends React.Component {
       handle: this.state.handle,
       password: this.state.password,
       password2: this.state.password2,
+      insurance: this.state.insurance
     };
 
     this.props.signup(user, this.props.history);
@@ -92,6 +94,13 @@ class SignupForm extends React.Component {
                 value={this.state.password2}
                 onChange={this.update("password2")}
                 placeholder="Confirm Password"
+              />
+              <br />
+              <input
+                type="text"
+                value={this.state.insurance}
+                onChange={this.update("insurance")}
+                placeholder="Insurance"
               />
               <br />
               <input type="submit" value="Submit" />
