@@ -14,8 +14,14 @@ const recordParams = (req) => {
         return schema.includes(key);
     }).map(pair => {
         let [key, value] = pair;
-        if (["conditions", "medications", "allergies"].includes(key))
-            return [key, value && JSON.parse(value) || []];
+        if (["conditions", "medications", "allergies"].includes(key)) {
+            if (value instanceof Array)
+                return [key, value]
+            else if (typeof value === 'string')
+                return [key, value && JSON.parse(value) || []];
+            else
+                return [key, []]
+        }
         return [key, value];
     }))
 }
@@ -28,22 +34,19 @@ const recordParams = (req) => {
 router.get("/", (req, res) => {
     Record.find()
         .then((records) => res.json(records))
-        .catch((err) => res.status(404).json({norecordsfound: "No records found"}));
+        .catch((err) => res.status(404).json({norecordsfound: "No records database was found"}));
 });
 
 
-
 /** Gets all record from a user (Authentication Required)
- * POST: http://localhost:5000/api/records
+ * GET: http://localhost:5000/api/records
  * @response {Array} json - List of records by user_id, sorted from most recent to least recent
  * @body - user {User}
  */
-router.post("/", passport.authenticate("jwt", {session: false}), (req, res) => {
+router.get("/", passport.authenticate("jwt", {session: false}), (req, res) => {
     Record.find({user: req.user.id})
         .then((records) => res.json(records))
-        .catch((err) =>
-            res.status(404).json({norecordsfound: "No records found from that user"})
-        );
+        .catch((err) => res.status(404).json({norecordsfound: `No records found from that user: ${req.user.id}`}));
 });
 
 
@@ -53,11 +56,9 @@ router.post("/", passport.authenticate("jwt", {session: false}), (req, res) => {
  * @response {Array} json - List of records by user_id
  */
 router.get("/user/:user_id", (req, res) => {
-    Record.find({user: req.params.user_id})
+    return Record.find({user: req.params.user_id})
         .then((records) => res.json(records))
-        .catch((err) =>
-            res.status(404).json({norecordsfound: "No records found from that user"})
-        );
+        .catch(err => res.status(404).json({nouserfound: `No user found with that ID: ${req.params.user_id}`}))
 });
 
 
@@ -69,9 +70,7 @@ router.get("/user/:user_id", (req, res) => {
 router.get("/:id", (req, res) => {
     Record.findById(req.params.id)
         .then((record) => res.json(record))
-        .catch((err) =>
-            res.status(404).json({norecordfound: "No record found with that ID"})
-        );
+        .catch((err) => res.status(404).json({norecordfound: `No record found with that ID: ${req.params.id}`}));
 });
 
 
@@ -87,9 +86,15 @@ router.post("/", passport.authenticate("jwt", {session: false}), (req, res) => {
             return res.status(400).json(errors);
         }
 
-        const newRecord = new Record(recordParams(req));
-
-        newRecord.save().then((record) => res.json(record));
+        return User.findById(req.body.user.id).then(  // Checks if a user exists
+            user => {
+                const newRecord = new Record(recordParams(req));
+                newRecord.user = req.params.user_id;
+                newRecord.save().then((record) => res.json(record));
+            }
+        ).catch(
+            err => res.status(404).json({nouserfound: `No user found with that ID: ${req.body.user.id}`})
+        )
     }
 );
 
@@ -107,9 +112,15 @@ router.post("/user/:user_id", (req, res) => {
             return res.status(400).json(errors);
         }
 
-        const newRecord = new Record(recordParams(req));
-
-        newRecord.save().then((record) => res.json(record));
+        return User.findById(req.params.user_id).then(  // Checks if a user exists
+            user => {
+                const newRecord = new Record(recordParams(req));
+                newRecord.user = req.params.user_id;
+                newRecord.save().then((record) => res.json(record));
+            }
+        ).catch(
+            err => res.status(404).json({nouserfound: `No user found with that ID: ${req.params.user_id}`})
+        )
     }
 );
 

@@ -23,24 +23,23 @@ router.get("/", (req, res) => {
     Appointment.find()
         .sort({date: -1})
         .then((appointments) => res.json(appointments))
-        .catch((err) => res.status(404).json({noappointmentsfound: "No appointments found"}));
+        .catch((err) => res.status(404).json({noappointmentsfound: `No appointments found`}));
 });
 
 
-
 /** Gets all appointment from a user (Authentication Required)
- * POST: http://localhost:5000/api/appointments
+ * GET: http://localhost:5000/api/appointments
  * @response {Array} json - List of appointments by user_id, sorted from most recent to least recent
  * @body - user {User}
  */
-router.post("/", passport.authenticate("jwt", {session: false}), (req, res) => {
-        Appointment.find({user: req.user.id})
-            .sort({date: -1})
-            .then((appointments) => res.json(appointments))
-            .catch((err) =>
-                res.status(404).json({noappointmentsfound: "No appointments found from that user"})
-            );
-    });
+router.get("/", passport.authenticate("jwt", {session: false}), (req, res) => {
+    Appointment.find({user: req.user.id})
+        .sort({date: -1})
+        .then((appointments) => res.json(appointments))
+        .catch((err) =>
+            res.status(404).json({noappointmentsfound: `No appointments found from that user ${req.user.id}`})
+        );
+});
 
 
 /** Gets all appointments by user id
@@ -49,11 +48,11 @@ router.post("/", passport.authenticate("jwt", {session: false}), (req, res) => {
  * @response {Array} json - List of appointments by user_id, sorted from most recent to least recent
  */
 router.get("/user/:user_id", (req, res) => {
-    Appointment.find({user: req.params.user_id})
+    return Appointment.find({user: req.params.user_id})
         .sort({date: -1})
         .then((appointments) => res.json(appointments))
         .catch((err) =>
-            res.status(404).json({noappointmentsfound: "No appointments found from that user"})
+            res.status(404).json({noappointmentsfound: `No appointments found from that user ${req.params.user_id}`})
         );
 });
 
@@ -67,7 +66,7 @@ router.get("/:id", (req, res) => {
     Appointment.findById(req.params.id)
         .then((appointment) => res.json(appointment))
         .catch((err) =>
-            res.status(404).json({noappointmentfound: "No appointment found with that ID"})
+            res.status(404).json({noappointmentfound: `No appointment found with that ID: ${req.params.id}`})
         );
 });
 
@@ -84,14 +83,15 @@ router.post("/", passport.authenticate("jwt", {session: false}), (req, res) => {
             return res.status(400).json(errors);
         }
 
-        const newAppointment = new Appointment({
-            user: req.user.id,
-            reason: req.body.reason,
-            date: req.body.date,
-            checkin: req.body.checkin
-        });
-
-        newAppointment.save().then((appointment) => res.json(appointment));
+        return User.findById(req.user.id).then(  // Checks if a user exists
+            user => {
+                const newAppointment = new Appointment(appointmentParams(req));
+                newAppointment.user = req.user.id;
+                newAppointment.save().then((appointment) => res.json(appointment));
+            }
+        ).catch(
+            err => res.status(404).json({nouserfound: `No user found with that ID: ${req.user.id}`})
+        )
     }
 );
 
@@ -109,14 +109,15 @@ router.post("/user/:user_id", (req, res) => {
             return res.status(400).json(errors);
         }
 
-        const newAppointment = new Appointment({
-            user: req.params.user_id,
-            reason: req.body.reason,
-            date: req.body.date,
-            checkin: req.body.checkin
-        });
-
-        newAppointment.save().then((appointment) => res.json(appointment));
+        return User.findById(req.params.user_id).then(  // Checks if a user exists
+            user => {
+                const newAppointment = new Appointment(appointmentParams(req));
+                newAppointment.user = req.params.user_id;
+                newAppointment.save().then((appointment) => res.json(appointment));
+            }
+        ).catch(
+            err => res.status(404).json({nouserfound: `No user found with that ID: ${req.params.user_id}`})
+        )
     }
 );
 
@@ -134,12 +135,9 @@ router.patch("/:id", passport.authenticate("jwt", {session: false}), (req, res) 
             return res.status(400).json(errors);
         }
 
-        Appointment.find({id: req.appointment.id}).then(
-            appointment => {
-                appointment.update(appointment).then(appointment => res.json(appointment));
-            }).catch(
-            err => res.status(404).json({noappointmentfound: `No appointment found from that user`})
-        );
+        return Appointment.findByIdAndUpdate(req.appointment.id, appointmentParams(req))
+            .then(appointment => res.json(appointment)) // will not return the updated but the previous version
+            .catch(err => res.status(404).json(err.toJSON()))
     }
 );
 
