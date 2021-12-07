@@ -1,4 +1,5 @@
 import axios from "axios";
+import {createAppointment} from "./appointments_util";
 
 /** API fetchRecords gets all records from the database
  * @returns {Promise} - A promise of records as an array
@@ -62,5 +63,6 @@ export const deleteRecord = (recordId) => {
 window.fetchRecords = fetchRecords;
 window.fetchRecord = fetchRecord;
 window.fetchUserRecords = fetchUserRecords;
+window.createRecord = createRecord;
 window.updateRecord = updateRecord;
 window.deleteRecord = deleteRecord;
