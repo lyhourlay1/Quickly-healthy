@@ -145,4 +145,4 @@ const RecordSchema = new Schema({
   },
 });
 
-module.exports = User = mongoose.model("record", RecordSchema);
+module.exports = Record = mongoose.model("record", RecordSchema);
