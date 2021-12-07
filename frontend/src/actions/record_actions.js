@@ -77,9 +77,9 @@ export const deleteRecord = recordId => dispatch =>(
 )
 
 
-window.fetchRecords = fetchRecords;
-window.fetchRecord = fetchRecord;
-window.fetchUserRecords = fetchUserRecords;
-window.createRecord = createRecord;
-window.updateRecord = updateRecord;
-window.deleteRecord = deleteRecord;
+// window.fetchRecords = fetchRecords;
+// window.fetchRecord = fetchRecord;
+// window.fetchUserRecords = fetchUserRecords;
+// window.createRecord = createRecord;
+// window.updateRecord = updateRecord;
+// window.deleteRecord = deleteRecord;
