@@ -10,6 +10,10 @@ import ProfileContainer from "./profile/profile_container";
 import Splash from "./splash/splash";
 import './reset.css';
 
+import {fetchRecord} from "../util/records_util";
+import {fetchAppointment} from "../util/appointments_util";
+
+
 const App = () => (
   <div className="page-container">
     <NavBarContainer />

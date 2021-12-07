@@ -1,5 +1,8 @@
 import React from "react";
 import { withRouter } from "react-router";
+import { Link } from "react-router-dom";
+import './session.css'
+
 
 class SignupForm extends React.Component {
   constructor(props) {
@@ -57,38 +60,49 @@ class SignupForm extends React.Component {
     return (
       <div className="signup-form-container">
         <form onSubmit={this.handleSubmit}>
-          <div className="signup-form">
-            <br />
-            <input
-              type="text"
-              value={this.state.email}
-              onChange={this.update("email")}
-              placeholder="Email"
-            />
-            <br />
-            <input
-              type="text"
-              value={this.state.handle}
-              onChange={this.update("handle")}
-              placeholder="Handle"
-            />
-            <br />
-            <input
-              type="password"
-              value={this.state.password}
-              onChange={this.update("password")}
-              placeholder="Password"
-            />
-            <br />
-            <input
-              type="password"
-              value={this.state.password2}
-              onChange={this.update("password2")}
-              placeholder="Confirm Password"
-            />
-            <br />
-            <input type="submit" value="Submit" />
-            {this.renderErrors()}
+          <div className="session-box">     
+            <div className="inputs">
+              <h1>
+                Welcome to Quickly Healthy!
+              </h1>
+              <br />
+              <input
+                type="text"
+                value={this.state.email}
+                onChange={this.update("email")}
+                placeholder="Email"
+              />
+              <br />
+              <input
+                type="text"
+                value={this.state.handle}
+                onChange={this.update("handle")}
+                placeholder="Handle"
+              />
+              <br />
+              <input
+                type="password"
+                value={this.state.password}
+                onChange={this.update("password")}
+                placeholder="Password"
+              />
+              <br />
+              <input
+                type="password"
+                value={this.state.password2}
+                onChange={this.update("password2")}
+                placeholder="Confirm Password"
+              />
+              <br />
+              <input type="submit" value="Submit" />
+              <br/> 
+              <h1 className="static-already">
+                Already have an account! Log in 
+                <Link to={"/login"}> Here!</Link> 
+              </h1>
+            
+              {this.renderErrors()}
+            </div>
           </div>
         </form>
       </div>
