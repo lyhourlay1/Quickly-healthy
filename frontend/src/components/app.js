@@ -10,9 +10,6 @@ import './reset.css';
 import Home from "./home/home";
 
 
-import {fetchRecord} from "../util/records_util";
-import {fetchAppointment} from "../util/appointments_util";
-
 
 const App = () => (
   <div className="page-container">

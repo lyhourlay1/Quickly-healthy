@@ -1,4 +1,5 @@
 ## Appointments
+Import from ```/frontend/util/appointment_util.js```
 
 ### Fetching All Appointments
 API fetchAppointments gets all appointments from the database
@@ -60,6 +61,7 @@ console.log(appointment.data) // => Appointment objects
 
 
 ## Records
+Import from ```/frontend/util/record_util.js```
 
 ### Fetching All Records
 API fetchRecords gets all records from the database
@@ -118,4 +120,87 @@ API deleteRecord deletes an record from the database, returns the record deleted
 let id: "kdjfs_appt_id_34123";
 let record = await deleteRecord(id);
 console.log(record.data) // => Record objects
+```
+
+
+## Doctors
+Import from ```/frontend/util/doctors_util.js```
+
+### Fetching All Doctors
+API fetchDoctors gets all doctors from the database
+```javascript
+let doctors = await fetchDoctors();
+console.log(doctors.data) // => Array[Doctor objects]
+```
+
+### Fetching Doctor by id
+API fetchDoctor gets a doctor from the database, given the doctor id
+```javascript
+let id = "jkdkfsjal3421321"
+let doctor = await fetchDoctor(id);
+console.log(doctor.data) // => doctor object
+```
+
+### Create Doctors
+API createDoctor creates a doctor in the database
+```javascript
+
+let doctor = await createDoctor({
+    name: "Katie",
+    license: "fjkldsajfkdj2331",
+    location: "Choc Hospital",
+    address: "1234 Ave Dr",
+    schedule: {
+        Sunday: {
+            start: new Date('2021-12-05T08:00:00.000Z'),
+            end: new Date('2021-12-05T15:00:00.000Z')
+        },
+        Monday: {
+            start: new Date('2021-12-06T08:00:00.000Z'),
+            end: new Date('2021-12-06T15:00:00.000Z')
+        },
+        Tuesday: {
+            start: new Date('2021-12-07T08:00:00.000Z'),
+            end: new Date('2021-12-07T15:00:00.000Z')
+        },
+        Wednesday: {
+            start: new Date('2021-12-08T08:00:00.000Z'),
+            end: new Date('2021-12-08T15:00:00.000Z')
+        },
+        Thursday: {
+            start: new Date('2021-12-09T08:00:00.000Z'),
+            end: new Date('2021-12-09T15:00:00.000Z')
+        },
+        Friday: {
+            start: new Date('2021-12-10T08:00:00.000Z'),
+            end: new Date('2021-12-10T15:00:00.000Z')
+        },
+        Saturday: {
+            start: new Date('2021-12-11T08:00:00.000Z'),
+            end: new Date('2021-12-11T15:00:00.000Z')
+        }
+    },
+});
+console.log(doctor.data) // => Doctor objects
+```
+
+### Update Doctor
+API updateDoctor updates a doctor from the database, but returns the previous value
+```javascript
+
+let doctor = await updateDoctor({
+    id: "232_doctorid_jkjs",    // needs the id passed in the body
+    location: "Choc Hospital"   // changing location
+});
+console.log(doctor.data) // => Doctor objects
+```
+
+
+### Delete Doctor
+API deleteDoctor deletes a doctor from the database, returns the doctor deleted
+```javascript
+
+let id: "kdjfs_appt_id_34123";
+let doctor = await deleteDoctor(id);
+console.log(doctor.data) // => Doctor objects
 ```

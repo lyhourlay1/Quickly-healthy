@@ -6,10 +6,14 @@ const AppointmentSchema = new Schema({
     type: Schema.Types.ObjectId,
     ref: "users"
   },
-  // doctor: {
-  //   type: Schema.Types.ObjectId,
-  //   ref: "doctors"
-  // },
+  doctor: {
+    type: Schema.Types.ObjectId,
+    ref: "doctors"
+  },
+  id: {
+    type: String,
+    required: false
+  },
   reason: {
     type: String,
     required: true,
@@ -44,4 +48,4 @@ const AppointmentSchema = new Schema({
   }
 });
 
-module.exports = User = mongoose.model("appointments", AppointmentSchema);
+module.exports = Appointment = mongoose.model("appointments", AppointmentSchema);

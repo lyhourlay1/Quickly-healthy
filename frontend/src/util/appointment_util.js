@@ -60,9 +60,9 @@ export const deleteAppointment = (appointmentId) => {
 };
 
 
-window.fetchAppointments = fetchAppointments;
-window.fetchAppointment = fetchAppointment;
-window.fetchUserAppointments = fetchUserAppointments;
-window.createAppointment = createAppointment;
-window.updateAppointment = updateAppointment;
-window.deleteAppointment = deleteAppointment;
+// window.fetchAppointments = fetchAppointments;
+// window.fetchAppointment = fetchAppointment;
+// window.fetchUserAppointments = fetchUserAppointments;
+// window.createAppointment = createAppointment;
+// window.updateAppointment = updateAppointment;
+// window.deleteAppointment = deleteAppointment;

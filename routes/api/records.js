@@ -90,6 +90,7 @@ router.post("/", passport.authenticate("jwt", {session: false}), (req, res) => {
             user => {
                 const newRecord = new Record(recordParams(req));
                 newRecord.user = req.params.user_id;
+                newRecord.id = newRecord._id;
                 newRecord.save().then((record) => res.json(record));
             }
         ).catch(
@@ -116,6 +117,7 @@ router.post("/user/:user_id", (req, res) => {
             user => {
                 const newRecord = new Record(recordParams(req));
                 newRecord.user = req.params.user_id;
+                newRecord.id = newRecord._id;
                 newRecord.save().then((record) => res.json(record));
             }
         ).catch(
