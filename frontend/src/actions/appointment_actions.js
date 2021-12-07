@@ -35,7 +35,7 @@ const removeAppointment = id =>({
 export const fetchAppointments = () => dispatch =>(
     AppointmentUtil.fetchAppointments().then(
         appointments => {
-            return dispatch(receiveAppointments(appointments))
+            return dispatch(receiveAppointments(appointments.data))
         },
         err => dispatch(receiveAppointmentError(err.responseJSON))
     )
@@ -44,7 +44,7 @@ export const fetchAppointments = () => dispatch =>(
 
 export const fetchAppointment = appointmentId => (dispatch) => {
     return AppointmentUtil.fetchAppointment(appointmentId).then(
-        appointment => dispatch(receiveAppointment(appointment)),
+        appointment => dispatch(receiveAppointment(appointment.data)),
         err => dispatch(receiveAppointmentError(err.responseJSON))
     )
 }
@@ -52,21 +52,29 @@ export const fetchAppointment = appointmentId => (dispatch) => {
 
 export const createAppointment = appointment => dispatch =>(
     AppointmentUtil.createAppointment(appointment).then(
-        appointment => dispatch(receiveAppointment(appointment)),
+        appointment => dispatch(receiveAppointment(appointment.data)),
         err => dispatch(receiveAppointmentError(err.responseJSON))
     )
 )
 
 export const updateAppointment = appointment => dispatch =>(
     AppointmentUtil.updateAppointment(appointment).then(
-        appointment => dispatch(receiveAppointment(appointment)),
+        appointment => dispatch(receiveAppointment(appointment.data)),
         err => dispatch(receiveAppointmentError(err.responseJSON))
     )
 )
 
 export const deleteAppointment = appointmentId => dispatch =>(
     AppointmentUtil.deleteAppointment(appointmentId).then(
-        appointment => dispatch(removeAppointment(appointment.id)),
+        appointment => dispatch(removeAppointment(appointment.data.id)),
         err => dispatch(receiveAppointmentError(err.responseJSON))
     )
 )
+
+
+// window.fetchAppointments = fetchAppointments;
+// window.fetchAppointment = fetchAppointment;
+// window.fetchUserAppointments = fetchUserAppointments;
+// window.createAppointment = createAppointment;
+// window.updateAppointment = updateAppointment;
+// window.deleteAppointment = deleteAppointment;

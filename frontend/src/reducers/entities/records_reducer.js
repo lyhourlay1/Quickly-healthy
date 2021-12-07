@@ -9,7 +9,10 @@ export default function RecordReducer(prevState={}, action){
     let newState = Object.assign({}, prevState) // this isn't a deep copy
     switch(action.type){
         case RECEIVE_RECORDS:
-            return {...newState, ...action.records};
+            let records = Object.fromEntries(action.records.map(record => {
+                return [record.id, record]
+            }))
+            return {...newState, ...records};
         case RECEIVE_RECORD:
             newState[action.record.id] = action.record;
             return newState;

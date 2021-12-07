@@ -35,7 +35,7 @@ const removeDoctor = id =>({
 export const fetchDoctors = () => dispatch =>(
     DoctorUtil.fetchDoctors().then(
         doctors => {
-            return dispatch(receiveDoctors(doctors))
+            return dispatch(receiveDoctors(doctors.data))
         },
         err => dispatch(receiveDoctorError(err.responseJSON))
     )
@@ -44,7 +44,7 @@ export const fetchDoctors = () => dispatch =>(
 
 export const fetchDoctor = doctorId => (dispatch) => {
     return DoctorUtil.fetchDoctor(doctorId).then(
-        doctor => dispatch(receiveDoctor(doctor)),
+        doctor => dispatch(receiveDoctor(doctor.data)),
         err => dispatch(receiveDoctorError(err.responseJSON))
     )
 }
@@ -52,21 +52,28 @@ export const fetchDoctor = doctorId => (dispatch) => {
 
 export const createDoctor = doctor => dispatch =>(
     DoctorUtil.createDoctor(doctor).then(
-        doctor => dispatch(receiveDoctor(doctor)),
+        doctor => dispatch(receiveDoctor(doctor.data)),
         err => dispatch(receiveDoctorError(err.responseJSON))
     )
 )
 
 export const updateDoctor = doctor => dispatch =>(
     DoctorUtil.updateDoctor(doctor).then(
-        doctor => dispatch(receiveDoctor(doctor)),
+        doctor => dispatch(receiveDoctor(doctor.data)),
         err => dispatch(receiveDoctorError(err.responseJSON))
     )
 )
 
 export const deleteDoctor = doctorId => dispatch =>(
     DoctorUtil.deleteDoctor(doctorId).then(
-        doctor => dispatch(removeDoctor(doctor.id)),
+        doctor => dispatch(removeDoctor(doctor.data.id)),
         err => dispatch(receiveDoctorError(err.responseJSON))
     )
 )
+
+
+window.fetchDoctors = fetchDoctors;
+window.fetchDoctor = fetchDoctor;
+window.createDoctor = createDoctor;
+window.updateDoctor = updateDoctor;
+window.deleteDoctor = deleteDoctor;

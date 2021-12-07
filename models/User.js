@@ -2,6 +2,10 @@ const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
 const UserSchema = new Schema({
+  id: {
+    type: String,
+    required: false
+  },
   handle: {
     type: String,
     required: true,

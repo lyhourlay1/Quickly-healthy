@@ -9,7 +9,10 @@ export default function AppointmentReducer(prevState={}, action){
     let newState = Object.assign({}, prevState) // this isn't a deep copy
     switch(action.type){
         case RECEIVE_APPOINTMENTS:
-            return {...newState, ...action.appointment};
+            let appointment = Object.fromEntries(action.appointments.map(appointment => {
+                return [appointment.id, appointment]
+            }))
+            return {...newState, ...appointment};
         case RECEIVE_APPOINTMENT:
             newState[action.appointment.id] = action.appointment;
             return newState;
