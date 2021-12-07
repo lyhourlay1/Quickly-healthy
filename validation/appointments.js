@@ -1,6 +1,14 @@
 const Validator = require('validator');
 const validText = require('./valid-text');
 
+/*
+  TODO: validates conflict of schedules between doctor and patient
+  TODO: cannot sign up for another appointment for the same doctor
+  TODO: cannot sign up for another appointment for the same doctor
+  TODO: add location to schema for doctor's work place
+  TODO: add availabilities to doctor [{Monday: start-time, endtime}... Saturday: [start-tie, endtime]}]
+ */
+
 module.exports = function validateAppointmentInput(data) {
   let errors = {};
 

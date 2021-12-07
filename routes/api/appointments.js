@@ -6,6 +6,15 @@ const passport = require("passport");
 const Appointment = require("../../models/Appointment");
 const validateAppointmentInput = require("../../validation/appointments");
 
+const appointmentParams = (req) => {
+    let schema = Object.keys(Appointment.schema.obj);
+    return Object.fromEntries(Object.entries(req.body).filter(pair => {
+        let [key, value] = pair;
+        return schema.includes(key);
+    }));
+}
+
+
 /** Gets all appointments
  * GET: http://localhost:5000/api/appointments
  * @response {Array} json - List of appointments
