@@ -1,11 +1,11 @@
 import React from "react";
 // import { mapboxToken } from "../../../util/api_keys";
 // import { useState } from "react";
-// import ReactMapGL from "react-map-gl";
+import ReactMapGL from "react-map-gl";
 import mapboxgl from "mapbox-gl";
 require("dotenv").config();
 
-// const dotenv = require('dotenv');
+const dotenv = require('dotenv');
 // dotenv.config();
 // let mapboxToken = require("../../../../../config/keys").mapBoxToken;
 
