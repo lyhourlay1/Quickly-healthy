@@ -1,0 +1,41 @@
+.session-box{
+    background-color: lightgray;
+    width: 400px;
+    display: flex;
+    justify-content: center;
+    margin-top: 5%;
+    border: solid 6px lightblue;
+    border-radius: 10px;
+
+}
+form{
+    display: flex;
+    justify-content: center;
+}
+
+.inputs{
+    padding: 50px 0px 50px 0px;
+    width: 70%;
+}
+input{
+    width: 100%;
+    margin-top: 10px;
+}
+
+input[type="text"] , input[type="password"]{
+    width: 92%;
+    padding: 10px;
+}
+
+input[type="submit"] {
+    margin-top: 20px;
+
+}
+
+input[type="submit"]:hover{
+    background-color: lightskyblue;
+}
+
+.static-already{
+    padding-top: 10px;
+}

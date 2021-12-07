@@ -31,7 +31,7 @@ export const logoutUser = () => ({
 // Upon signup, dispatch the approporiate action depending on which type of response we receieve from the backend
 export const signup = (user) => (dispatch) =>
   APIUtil.signup(user).then(
-    () => dispatch(receiveUserSignIn()),
+    (user) => dispatch(receiveCurrentUser(user)),
     (err) => dispatch(receiveErrors(err.response.data))
   );
 
@@ -40,6 +40,7 @@ export const login = (user) => (dispatch) =>
   APIUtil.login(user)
     .then((res) => {
       const { token } = res.data;
+      
       localStorage.setItem("jwtToken", token);
       APIUtil.setAuthToken(token);
       const decoded = jwt_decode(token);
