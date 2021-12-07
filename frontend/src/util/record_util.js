@@ -60,9 +60,9 @@ export const deleteRecord = (recordId) => {
     return axios.delete(`/api/records/${recordId}/delete`);
 };
 
-window.fetchRecords = fetchRecords;
-window.fetchRecord = fetchRecord;
-window.fetchUserRecords = fetchUserRecords;
-window.createRecord = createRecord;
-window.updateRecord = updateRecord;
-window.deleteRecord = deleteRecord;
+// window.fetchRecords = fetchRecords;
+// window.fetchRecord = fetchRecord;
+// window.fetchUserRecords = fetchUserRecords;
+// window.createRecord = createRecord;
+// window.updateRecord = updateRecord;
+// window.deleteRecord = deleteRecord;

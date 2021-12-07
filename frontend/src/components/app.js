@@ -10,10 +10,6 @@ import SignupFormContainer from "./session/signup_form_container";
 import ProfileContainer from "./profile/profile_container";
 import TweetsComposeContainer from "./tweets/tweets_compose_container";
 
-import {fetchRecord} from "../util/record_util";
-import {fetchAppointment} from "../util/appointment_util";
-import {fetchDoctor} from "../util/doctor_util";
-
 
 const App = () => (
   <div>

@@ -3,7 +3,7 @@ import {
     RECEIVE_APPOINTMENT_ERROR
 } from "../../actions/appointment_actions";
 
-export default (prevState = [], action) => {
+export default function appointmentErrorsReducer(prevState = [], action){
     Object.freeze(prevState);
     switch (action.type) {
         case RECEIVE_APPOINTMENT_ERROR:

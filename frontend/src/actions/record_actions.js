@@ -75,3 +75,11 @@ export const deleteRecord = recordId => dispatch =>(
         err => dispatch(receiveRecordError(err.responseJSON))
     )
 )
+
+
+window.fetchRecords = fetchRecords;
+window.fetchRecord = fetchRecord;
+window.fetchUserRecords = fetchUserRecords;
+window.createRecord = createRecord;
+window.updateRecord = updateRecord;
+window.deleteRecord = deleteRecord;
