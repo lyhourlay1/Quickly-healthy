@@ -12,6 +12,7 @@ import TweetsComposeContainer from "./tweets/tweets_compose_container";
 
 import {fetchRecord} from "../util/records_util";
 import {fetchAppointment} from "../util/appointments_util";
+import {fetchDoctor} from "../util/doctor_util";
 
 
 const App = () => (

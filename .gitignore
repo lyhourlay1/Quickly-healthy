@@ -14,7 +14,9 @@
 **/.DS_Store
 
 /config/keys_dev.js
-
+api_keys.js
+**/api_keys.js
+/api_keys.js
 
 ## Documentation cache and generated files:
 /doc/

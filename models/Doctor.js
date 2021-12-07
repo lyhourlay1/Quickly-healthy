@@ -14,6 +14,10 @@ const DoctorSchema = new Schema({
         type: String,
         required: false,
     },
+    address: {
+        type: String,
+        required: false
+    },
     location: {
         type: String,
         required: false,
