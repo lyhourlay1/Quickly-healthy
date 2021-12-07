@@ -14,14 +14,14 @@ const physicians = [
     location: {latitude: 32.905810, longitude: -117.178950},
     specialty: ["family doctor"],
     insurances: ["Aetna Life Insurance Company", "American National Insurance Company", "Kaiser Permanente Insurance Company"],
-    availabilites: {Monday: [9, 15], Tuesday: [13, 17], Thursday: [10, 16 ]}
-}), new Physician({
+    availabilites: {Monday: {start:9, end: 14}, Tuesday: {start: 13, end: 17}, Thursday: {start:10, end:16}}
+    }), new Physician({
     name: "doctor2",
     address: "6480 Weathers Pl #106, San Diego, CA 92121",
     location: {latitude: 32.905810, longitude: -117.178950},
     specialty: ["family doctor"],
     insurances: ["Aetna Life Insurance Company", "American National Insurance Company", "Kaiser Permanente Insurance Company"],
-    availabilites: {Monday: [8, 11], Tuesday: [14, 17], Wednesday: [9, 13 ]}
+    availabilites: {Monday: {start:8, end:11}, Tuesday: {start:14, end:17}, Wednesday: {start: 9, end:13 }}
 })]
 // connect mongoose
 mongoose
