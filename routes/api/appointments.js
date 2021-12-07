@@ -50,6 +50,7 @@ router.get("/user/:user_id", (req, res) => {
 
 /** Gets appointment by the appointment id
  * GET: http://localhost:5000/api/appointments/:id
+ * @param {String} id - The appointment id
  * @response {Object} json - The appointment
  */
 router.get("/:id", (req, res) => {
