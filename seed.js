@@ -64,16 +64,16 @@ const sample = (arr) => {
   return arr[Math.floor(Math.random() * arr.length)];
 };
 
-// return random subset arr of size length
+// return random subset arr of size length and sorts it
 const randSubset = (arr, size) => {
-  return shuffle(arr).slice(0, arr.length - size);
+  return shuffle(arr).slice(0, arr.length - size).sort();
 };
 
 const doctors = [
   new Doctor({
     name: "doctor1",
     address: "6480 Weathers Pl #106, San Diego, CA 92121",
-    location: [-117.17895, 32.90581], // [longitude, latitude]
+    location: [-122.5057681778429, 37.789066681921675], // [longitude, latitude]
     specialty: sample(doctorSpecialties),
     insurances: randSubset(
       insuranceCompanies,
@@ -218,6 +218,126 @@ const doctors = [
       Monday: { start: 8, end: 11 },
       Tuesday: { start: 14, end: 17 },
       Wednesday: { start: 9, end: 13 },
+    },
+  }),
+  new Doctor({
+    name: "doctor11",
+    address: "6480 Weathers Pl #106, San Diego, CA 92121",
+    location: [-122.41453459469342, 37.70785296055047], // [longitude, latitude]
+    specialty: sample(doctorSpecialties),
+    insurances: randSubset(
+      insuranceCompanies,
+      Math.floor(Math.random() * insuranceCompanies.length)
+    ),
+    availabilites: {
+      Monday: { start: 9, end: 14 },
+      Tuesday: { start: 13, end: 17 },
+      Thursday: { start: 10, end: 16 },
+    },
+  }),
+  new Doctor({
+    name: "doctor12",
+    address: "6480 Weathers Pl #106, San Diego, CA 92121",
+    location: [-122.39343775145362, 37.73039523481756], // [longitude, latitude]
+    specialty: sample(doctorSpecialties),
+    insurances: randSubset(
+      insuranceCompanies,
+      Math.floor(Math.random() * insuranceCompanies.length)
+    ),
+    availabilites: {
+      Monday: { start: 9, end: 14 },
+      Tuesday: { start: 13, end: 17 },
+      Thursday: { start: 10, end: 16 },
+    },
+  }),
+  new Doctor({
+    name: "doctor13",
+    address: "6480 Weathers Pl #106, San Diego, CA 92121",
+    location: [-122.39735087582618, 37.78830076650904], // [longitude, latitude]
+    specialty: sample(doctorSpecialties),
+    insurances: randSubset(
+      insuranceCompanies,
+      Math.floor(Math.random() * insuranceCompanies.length)
+    ),
+    availabilites: {
+      Monday: { start: 9, end: 14 },
+      Tuesday: { start: 13, end: 17 },
+      Thursday: { start: 10, end: 16 },
+    },
+  }),
+  new Doctor({
+    name: "doctor14",
+    address: "6480 Weathers Pl #106, San Diego, CA 92121",
+    location: [-122.43018709225478, 37.785409928291045], // [longitude, latitude]
+    specialty: sample(doctorSpecialties),
+    insurances: randSubset(
+      insuranceCompanies,
+      Math.floor(Math.random() * insuranceCompanies.length)
+    ),
+    availabilites: {
+      Monday: { start: 9, end: 14 },
+      Tuesday: { start: 13, end: 17 },
+      Thursday: { start: 10, end: 16 },
+    },
+  }),
+  new Doctor({
+    name: "doctor15",
+    address: "6480 Weathers Pl #106, San Diego, CA 92121",
+    location: [-122.44837318466766, 37.78554656642497], // [longitude, latitude]
+    specialty: sample(doctorSpecialties),
+    insurances: randSubset(
+      insuranceCompanies,
+      Math.floor(Math.random() * insuranceCompanies.length)
+    ),
+    availabilites: {
+      Monday: { start: 9, end: 14 },
+      Tuesday: { start: 13, end: 17 },
+      Thursday: { start: 10, end: 16 },
+    },
+  }),
+  new Doctor({
+    name: "doctor16",
+    address: "6480 Weathers Pl #106, San Diego, CA 92121",
+    location: [-122.4549644147198, 37.725554206704984], // [longitude, latitude]
+    specialty: sample(doctorSpecialties),
+    insurances: randSubset(
+      insuranceCompanies,
+      Math.floor(Math.random() * insuranceCompanies.length)
+    ),
+    availabilites: {
+      Monday: { start: 9, end: 14 },
+      Tuesday: { start: 13, end: 17 },
+      Thursday: { start: 10, end: 16 },
+    },
+  }),
+  new Doctor({
+    name: "doctor17",
+    address: "6480 Weathers Pl #106, San Diego, CA 92121",
+    location: [-122.50534723409108, 37.735045887170685], // [longitude, latitude]
+    specialty: sample(doctorSpecialties),
+    insurances: randSubset(
+      insuranceCompanies,
+      Math.floor(Math.random() * insuranceCompanies.length)
+    ),
+    availabilites: {
+      Monday: { start: 9, end: 14 },
+      Tuesday: { start: 13, end: 17 },
+      Thursday: { start: 10, end: 16 },
+    },
+  }),
+  new Doctor({
+    name: "doctor18",
+    address: "6480 Weathers Pl #106, San Diego, CA 92121",
+    location: [-122.51085648044035, 37.76054056441713], // [longitude, latitude]
+    specialty: sample(doctorSpecialties),
+    insurances: randSubset(
+      insuranceCompanies,
+      Math.floor(Math.random() * insuranceCompanies.length)
+    ),
+    availabilites: {
+      Monday: { start: 9, end: 14 },
+      Tuesday: { start: 13, end: 17 },
+      Thursday: { start: 10, end: 16 },
     },
   }),
 ];
