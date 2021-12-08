@@ -1,4 +1,4 @@
-import * as ApiAppointmentUtil from "../util/appointments_util";
+import * as ApiAppointmentUtil from "../util/appointment_util";
 
 export const RECEIVE_APPOINTMENT = 'RECEIVE_APPOINTMENT'
 export const RECEIVE_APPOINTMENTS = 'RECEIVE_APPOINTMENTS'

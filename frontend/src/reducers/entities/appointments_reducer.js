@@ -1,4 +1,4 @@
-import { RECEIVE_APPOINTMENT, RECEIVE_APPOINTMENTS } from "../actions/appointment_actions"
+import { RECEIVE_APPOINTMENT, RECEIVE_APPOINTMENTS } from "../../actions/appointment_actions"
 
 const AppointmentsReducer = (state={}, action)=>{
     let newState = Object.assign({}, state)
