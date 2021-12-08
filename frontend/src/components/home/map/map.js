@@ -1,5 +1,6 @@
 import React from "react";
 import mapboxgl from "mapbox-gl";
+import '../home.css'
 require("dotenv").config();
 
 export default class Map extends React.Component {
@@ -11,29 +12,16 @@ export default class Map extends React.Component {
       center: [-122.4376, 37.7577],
       zoom: 12,
     });
-
-    let that = this;
-
-    // doctors.map((doctor) => {
-    //   return new mapboxgl.Marker({ color: "red" })
-    //     .setLngLat(doctor.location)
-    //     .addTo(that.map);
-    // });
-
-    // const marker = new mapboxgl.Marker()
-    //   .setLngLat([-122.4376, 37.7577])
-    //   .addTo(this.map);
-
-    // const marker2 = new mapboxgl.Marker({ color: "black", rotation: 45 })
-    //   .setLngLat([-122.4376, 37.7577])
-    //   .addTo(this.map);
-
-    // const marker3 = new mapboxgl.Marker({ color: "red"})
-    //   .setLngLat([-117.178950, 32.905810])
-    //   .addTo(this.map);
   }
 
   render() {
+    let that = this;
+    Object.values(this.props.doctors).map((doctor) => {
+      return new mapboxgl.Marker({ color: "red" })
+        .setLngLat(doctor.location)
+        .addTo(that.map);
+    });
+
     return (
       <div id="map-container"></div>
     )
