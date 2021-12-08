@@ -10,7 +10,7 @@ export default class Map extends React.Component {
       container: "map-container",
       style: "mapbox://styles/mapbox/streets-v11",
       center: [-122.4376, 37.7577],
-      zoom: 11,
+      zoom: 12,
     });
   }
 
