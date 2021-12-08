@@ -17,13 +17,6 @@ class LoginForm extends React.Component {
     this.renderErrors = this.renderErrors.bind(this);
   }
 
-  // componentWillReceiveProps(nextProps) {
-  //   if (nextProps.currentUser === true) {
-  //     this.props.history.push("/home");
-  //   }
-  //   this.setState({ errors: nextProps.errors });
-  // }
-
   update(field) {
     return (e) =>
       this.setState({
@@ -39,8 +32,7 @@ class LoginForm extends React.Component {
       password: this.state.password,
     };
 
-    this.props.login(user)
-      .then(() => this.props.history.push('/home'));
+    this.props.login(user);
   }
 
   renderErrors() {

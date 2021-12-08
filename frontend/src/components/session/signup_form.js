@@ -20,14 +20,6 @@ class SignupForm extends React.Component {
     this.clearedErrors = false;
   }
 
-  componentWillReceiveProps(nextProps) {
-    if (nextProps.signedIn === true) {
-      this.props.history.push("/home");
-    }
-
-    this.setState({ errors: nextProps.errors });
-  }
-
   update(field) {
     return (e) =>
       this.setState({
@@ -45,11 +37,7 @@ class SignupForm extends React.Component {
       insurance: this.state.insurance
     };
 
-    this.props.signup(user, this.props.history);
-    // debugger
-    // this.props.signup(user, ()=>{this.props.login({email: this.state.handle, password: this.state.password})
-    //   .then(() => this.props.history.push('/home'));
-    // })
+    this.props.signup(user);
   }
 
   renderErrors() {

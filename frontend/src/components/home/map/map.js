@@ -30,7 +30,7 @@ export default class Map extends React.Component {
       `;
 
       let popup = new mapboxgl.Popup().setHTML(description);
-      new mapboxgl.Marker({ color: "red" })
+      return new mapboxgl.Marker({ color: "red" })
         .setLngLat(doctor.location)
         .setPopup(popup)
         .addTo(that.map);
