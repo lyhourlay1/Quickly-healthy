@@ -64,9 +64,9 @@ class AppointmentForm extends React.Component{
         }
         this.month = thisMonth
         let thisYear = today.getFullYear();
-        if(thisMonth ===12){
-            this.month = 0
-        }
+        // if(thisMonth ===12){
+        //     this.month = 0
+        // }
         let firstDayOfMonth = new Date(thisYear, thisMonth, 1)
         let firstDayStr = firstDayOfMonth.toDateString().split(" ")
         days[firstDayStr[0]].push(firstDayOfMonth.toDateString())
