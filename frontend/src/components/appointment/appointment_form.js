@@ -1,5 +1,9 @@
 import React from 'react'
-const availabilites = {"Tue Dec 07 2021": [9,10,11], "Wed Dec 08 2021": [9,10,11,12]}
+import DateIndexItem from './date_index_item'
+import './appointment_form.css'
+const availabilitesInt = {10: [9,10,11], 12: [9,10,11,12]}
+
+process.env.TZ = 'America/Los Angeles' 
 class AppointmentForm extends React.Component{
     constructor(props){
         super(props)
@@ -8,8 +12,9 @@ class AppointmentForm extends React.Component{
             availabilites:"",
             name: this.props.currentUser.handle,
             reason:"",
-            date: ""
+            date: "",
         }
+        this.grid = this.generateCalenderList();
     }
 
     update(field){
@@ -17,19 +22,55 @@ class AppointmentForm extends React.Component{
             this.setState({[field]: e.target.value})
         } 
     }
+
+    generateCalenderList(){
+        const availabilites = {"Tue Dec 07 2021": [9,10,11], "Wed Dec 08 2021": [9,10,11,12]}
+        let days ={"Mon": [], "Tue":[], "Wed":[], "Thu":[], "Fri":[], "Sat":[], "Sun":[]}
+        let today= new Date(Date.now())
+        let thisMonth = today.getMonth()
+        let thisYear = today.getFullYear()
+        let firstDayOfMonth = new Date(thisYear, thisMonth, 1)
+        let firstDayStr = firstDayOfMonth.toDateString().split(" ")
+        days[firstDayStr[0]].push(firstDayOfMonth.toDateString())
+        let firstDay= new Date(thisYear, thisMonth, 1)
+        while(firstDay.toDateString().split(" ")[0]!=="Mon"){
+            let firstDate = new Date(firstDay.setDate(firstDay.getDate()- 1)).toDateString()
+            let firstDateArr= firstDate.split(" ")
+            days[firstDateArr[0]].push(firstDate)
+        }
+        let i=0;
+        while(firstDayOfMonth.toDateString().split(" ")[0]!== "Sun" || i< 30 ){
+            let date = new Date(firstDayOfMonth.setDate(firstDayOfMonth.getDate()+ 1)).toDateString()
+            let dateArr = date.split(" ")
+            days[dateArr[0]].push(date)
+            i++
+        }
+        let arrayOfDays =[]
+        for (let [key, value] of Object.entries(days)) {
+        arrayOfDays.push(value)
+        }
+        let transposeArr=[]
+        for(let i=0; i< arrayOfDays[0].length; i++){
+            for(let j=0; j<arrayOfDays.length; j++){
+                transposeArr.push(arrayOfDays[j][i])
+            }
+        }
+
+        let schedules = []  
+        for(let i=0; i< transposeArr.length ;i++){
+            // console.log(oneD[i])
+            let obj;
+            if(availabilites[transposeArr[i]]) {
+                obj = {day: `${transposeArr[i]}`, slots: availabilites[transposeArr[i]]}
+            }else{
+                obj = {day: `${transposeArr[i]}`, slots: []}
+            }
+            schedules.push(obj)
+        }
+        return schedules
+    }
     render(){
-        let todayYr = new Date(Date.now()).getFullYear().toString()
-        let todayMn = (new Date(Date.now()).getMonth()+1).toString()
-        let todayDt = new Date(Date.now()).getDate().toString()
-        if (todayDt.length<2){
-            todayDt = "0" + todayDt
-        }
-        if(todayMn.length<2){
-            todayMn = "0"+ todayMn
-        }
-        let today = todayYr + "-" + todayMn + "-" + todayDt
-        let min = todayYr + "-01" + "-01"
-        let max = (new Date(Date.now()).getFullYear()+1).toString()
+        
         let display = (<div></div>)
         if(this.state.availabilites.length===0){
             display = (<h1> No Slots available</h1>) 
@@ -45,38 +86,27 @@ class AppointmentForm extends React.Component{
                         Reason:
                         <input type="text" value={this.state.reason} onChange={this.update('reason')}/>
                     </div>
-
                 </div>
-
             )
         }
         return(
             <div>
-                <input type="date" value={today} min={min} max={max} onChange={this.update('date')}/>
+                {/* <input type="date" value={today} min={min} max={max} onChange={this.update('date')}/> */}
                 {display}
+                <div className= "grid-flex">
+                    <div className= "grid">Monday</div>
+                    <div className= "grid">Tuesday</div>
+                    <div className= "grid">Wednesday</div>
+                    <div className= "grid">Thursday</div>
+                    <div className= "grid">Friday</div>
+                    <div className= "grid">Saturday</div>
+                    <div className= "grid">Sunday</div>
+                    {this.grid.map((date, idx)=> <DateIndexItem date = {date.day} slots={date.slots} key={idx}/>) }                
+                </div>
+
             </div>
         )
     }
 }
 
 export default AppointmentForm
-
-{/* <div className="calender">
-    <h2 class="dom-heading dom-heading-1">Mon &nbsp;Tue &nbsp;Wed &nbsp;Thur &nbsp;Fri </h2>
-</div> */}
-{/* <div >
-    <div class="rectangle">
-        <div class="rectangle-1">
-            <div class="rectangle-2">
-            <h2 class="dom-heading dom-heading-1">01 &nbsp;02 &nbsp;03 &nbsp;04 &nbsp;05 &nbsp;06 &nbsp;07</h2>
-            <h2 class="dom-heading dom-heading-2">08 &nbsp;09 &nbsp;10 &nbsp;11 &nbsp;12 &nbsp;13 &nbsp;14</h2>
-            <h2 class="dom-heading dom-heading-3">15 &nbsp;16 &nbsp;17 &nbsp;18 &nbsp;19 &nbsp;20 &nbsp;21</h2>
-            <h2 class="dom-heading dom-heading-4">22 &nbsp;23 &nbsp;24 &nbsp;25 &nbsp;26 &nbsp;27 &nbsp;28</h2>
-            <h2 class="dom-heading dom-heading-5">29 &nbsp;30 &nbsp;31</h2>
-            </div>
-        </div>
-        </div>
-        <div class="rectangle-3">
-        <h2 class="dom-heading dom-heading-6">November</h2>
-        </div>
-</div> */}
