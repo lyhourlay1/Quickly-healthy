@@ -45,8 +45,10 @@ export const fetchDoctors = () => dispatch =>(
 
 export const fetchDoctor = doctorId => (dispatch) => {
     return DoctorUtil.fetchDoctor(doctorId).then(
+        // doctor =>
+        // console.log(doctor)
         doctor => dispatch(receiveDoctor(doctor.data)),
-        err => dispatch(receiveDoctorError(err))
+        // err => dispatch(receiveDoctorError(err))
     )
 }
 
