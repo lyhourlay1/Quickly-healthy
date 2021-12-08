@@ -19,7 +19,6 @@
   position: sticky;
   top: 0px;
   left: 0px;
-  /* background-color: rgb(245, 245, 245); */
   background-color: white;
   border-bottom: 1px solid black;
 }
@@ -77,6 +76,12 @@ a.doctors-image > img {
   font-size: 16px;
   font-weight: 600;
   color: rgb(13, 28, 61);
+  width: fit-content;
+  padding-bottom: 6px;
+}
+
+.doctors-titles > a:hover {
+  text-decoration: underline;
 }
 
 .doctors-titles > div {
