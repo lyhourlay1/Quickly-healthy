@@ -5,6 +5,7 @@ import { fetchDoctors } from "../../actions/doctor_actions";
 const mSTP = (state) => {
   return {
     doctors: state.entities.doctor,
+    currentUser: state.session.user,
   };
 };
 

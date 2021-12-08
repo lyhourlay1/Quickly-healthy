@@ -1,3 +1,4 @@
+import mapboxgl from "mapbox-gl";
 import React from "react"
 import { Link } from "react-router-dom";
 import { DEFAULT_PROFILE_PICTURE } from "../../../util/icons_and_images_util";
@@ -11,12 +12,14 @@ const showPopup = (doctor) => {
 };
 
 const getPopupInfo = (doctor) => {
-  
+  // new mapboxgl.Popup()
+  //   .setLngLat(doctor.location)
+  //   .addTo(map);
 }
 
 const DoctorIndexItem = ({ doctor }) => {
   return (
-    <Link to={`/doctors/${doctor._id}`} className="doctors-index-item">
+    <li className="doctors-index-item">
       <div className="item-header">
         <Link className="doctors-image" to={`/doctors/${doctor._id}`}>
           <img src={DEFAULT_PROFILE_PICTURE} alt="" />
@@ -37,7 +40,7 @@ const DoctorIndexItem = ({ doctor }) => {
           </div>
         ))}
       </div>
-    </Link>
+    </li>
   );
 };
 

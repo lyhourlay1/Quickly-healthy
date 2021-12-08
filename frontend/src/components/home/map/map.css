@@ -5,4 +5,25 @@
   bottom: 0px;
   right: 0px;
   width: 70%; 
-} 
+}
+
+.mapboxgl-marker:hover {
+  cursor: pointer;
+}
+
+.popup-text {
+  width: 200px;
+  height: fit-content;
+}
+
+.popup-text > div:first-child {
+  font-size: 16px;
+  font-weight: 600;
+  padding: 3px;
+}
+
+.popup-text > div {
+  padding: 3px;
+  font-size: 16px;
+  font-weight: 400;
+}
