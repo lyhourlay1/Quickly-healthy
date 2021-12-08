@@ -6,19 +6,19 @@ const AppointmentSchema = new Schema({
     type: Schema.Types.ObjectId,
     ref: "users"
   },
-  // doctor: {
-  //   type: Schema.Types.ObjectId,
-  //   ref: "doctors"
-  // },
-  reason: {
+  doctor: {
+    type: Schema.Types.ObjectId,
+    ref: "doctors"
+  },
+  id: {
     type: String,
-    required: true,
+    required: false
   },
   date: {
     type: Date,
     required: true
   },
-  checkin: {
+  start: {
     type: Date,
     required: false,
   },
@@ -34,7 +34,7 @@ const AppointmentSchema = new Schema({
     type: String,
     required: false
   },
-  checkout: { // need to know when this appointment ends for another appointment to occur or just assume every appointment is 1 hr
+  end: { // need to know when this appointment ends for another appointment to occur or just assume every appointment is 1 hr
     type: Date,
     required: false,
   },
@@ -44,4 +44,4 @@ const AppointmentSchema = new Schema({
   }
 });
 
-module.exports = User = mongoose.model("appointments", AppointmentSchema);
+module.exports = Appointment = mongoose.model("appointments", AppointmentSchema);

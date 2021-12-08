@@ -23,3 +23,11 @@
 - ```PATCH /api/records/:id/update``` - Updates a record.
 - ```DELETE /api/records/:id/delete``` - Removes a record.
 
+### `doctors`
+- ```GET /api/doctors``` - Fetches the doctors index.
+- ```GET /api/doctors/:id``` - Fetches a doctor's information.
+- ```POST /api/doctors``` - Creates a new doctors.
+- ```PATCH /api/doctors/:id``` - Updates a doctors.
+- ```DELETE /api/doctors/:id``` - Removes a doctors.
+
+

@@ -1,15 +1,10 @@
 import React from "react";
-import { mapboxToken } from "../../../util/api_keys";
-// import { useState } from "react";
-// import ReactMapGL from "react-map-gl";
 import mapboxgl from "mapbox-gl";
-
-// const dotenv = require('dotenv');
-// dotenv.config();
+require("dotenv").config();
 
 export default class Map extends React.Component {
   componentDidMount() {
-    mapboxgl.accessToken = mapboxToken;
+    mapboxgl.accessToken =  process.env.REACT_APP_MAPBOX_TOKEN;
     this.map = new mapboxgl.Map({
       container: "map-container",
       style: "mapbox://styles/mapbox/streets-v11",
@@ -17,25 +12,30 @@ export default class Map extends React.Component {
       zoom: 12,
     });
 
-    this.map.on("idle", () => {
-      this.map.resize();
-    })
+    let that = this;
 
-    const marker = new mapboxgl.Marker()
-      .setLngLat([-122.4376, 37.7577])
-      .addTo(this.map);
+    // doctors.map((doctor) => {
+    //   return new mapboxgl.Marker({ color: "red" })
+    //     .setLngLat(doctor.location)
+    //     .addTo(that.map);
+    // });
 
-    const marker2 = new mapboxgl.Marker({ color: "black", rotation: 45 })
-      .setLngLat([-122.4376, 37.7577])
-      .addTo(this.map);
+    // const marker = new mapboxgl.Marker()
+    //   .setLngLat([-122.4376, 37.7577])
+    //   .addTo(this.map);
+
+    // const marker2 = new mapboxgl.Marker({ color: "black", rotation: 45 })
+    //   .setLngLat([-122.4376, 37.7577])
+    //   .addTo(this.map);
+
+    // const marker3 = new mapboxgl.Marker({ color: "red"})
+    //   .setLngLat([-117.178950, 32.905810])
+    //   .addTo(this.map);
   }
-
 
   render() {
     return (
       <div id="map-container"></div>
     )
   }
-}
-
-// export default Map;
+};

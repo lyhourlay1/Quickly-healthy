@@ -5,7 +5,7 @@ const ImageSchema = new Schema(
   {
     imagePath: {
       type: String,
-      required: false
+      required: true
     }
   },
   {
