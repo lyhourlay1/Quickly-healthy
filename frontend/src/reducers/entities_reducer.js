@@ -5,7 +5,9 @@ import RecordReducer from "./entities/records_reducer"
 
 const entitiesReducer = combineReducers({
     doctor: DoctorReducer,
-    record: RecordReducer
+    record: RecordReducer,
+    appointments: AppointmentsReducer
 });
 
 export default entitiesReducer;
+
