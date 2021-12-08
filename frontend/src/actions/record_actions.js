@@ -37,42 +37,42 @@ export const fetchRecords = () => dispatch =>(
         records => {
             return dispatch(receiveRecords(records.data))
         },
-        err => dispatch(receiveRecordError(err.responseJSON))
+        err => dispatch(receiveRecordError(err.response.data))
     )
 )
 
 export const fetchUserRecords = user_id => dispatch =>(
     RecordUtil.fetchUserRecords(user_id).then(
         records => dispatch(receiveRecords(records.data)),
-        err => dispatch(receiveRecordError(err.responseJSON))
+        err => dispatch(receiveRecordError(err.response.data))
     )
 )
 
 export const fetchRecord = recordId => (dispatch) => {
     return RecordUtil.fetchRecord(recordId).then(
         record => dispatch(receiveRecord(record.data)),
-        err => dispatch(receiveRecordError(err.responseJSON))
+        err => dispatch(receiveRecordError(err.response.data))
     )
 }
 
 export const createRecord = record => dispatch =>(
     RecordUtil.createRecord(record).then(
         record => dispatch(receiveRecord(record.data)),
-        err => dispatch(receiveRecordError(err.responseJSON))
+        err => dispatch(receiveRecordError(err.response.data))
     )
 )
 
 export const updateRecord = record => dispatch =>(
     RecordUtil.updateRecord(record).then(
         record => dispatch(receiveRecord(record.data)),
-        err => dispatch(receiveRecordError(err.responseJSON))
+        err => dispatch(receiveRecordError(err.response.data))
     )
 )
 
 export const deleteRecord = recordId => dispatch =>(
     RecordUtil.deleteRecord(recordId).then(
         record => dispatch(removeRecord(record.data._id)),
-        err => dispatch(receiveRecordError(err.responseJSON))
+        err => dispatch(receiveRecordError(err.response.data))
     )
 )
 

@@ -48,7 +48,7 @@ const DoctorSchema = new Schema({
             }
         }
     },
-    availablilityInteger: {
+    availablility: {
         type: Object,
         required: false,
         default: {

@@ -22,9 +22,8 @@ const doctorParams = (req) => {
 router.get("/", (req, res) => {
     Doctor.find()
         .then((doctors) => res.json(doctors))
-        .catch((err) => res.status(404).json({nodoctorsfound: `No doctors found`}));
+        .catch((err) => res.status(404).json(`No doctors database found`));
 });
-
 
 
 /** Gets doctor by the doctor id
@@ -36,7 +35,7 @@ router.get("/:id", (req, res) => {
     Doctor.findById(req.params.id)
         .then((doctor) => res.json(doctor))
         .catch((err) =>
-            res.status(404).json({nodoctorfound: `No doctor found with that ID: ${req.params.id}`})
+            res.status(404).json(`No doctor found with ID: ${req.params.id}`)
         );
 });
 
@@ -49,11 +48,9 @@ router.get("/:id", (req, res) => {
  */
 router.post("/", (req, res) => {
         const {errors, isValid} = validateDoctorInput(req.body);
-
         if (!isValid) {
             return res.status(400).json(errors);
         }
-
         const newDoctor = new Doctor(doctorParams(req));
         newDoctor.save().then((doctor) => res.json(doctor));
     }
@@ -73,12 +70,11 @@ router.patch("/:id", (req, res) => {
             return res.status(400).json(errors);
         }
 
-        return Doctor.findByIdAndUpdate(req.params.id, req.body)
+        return Doctor.findByIdAndUpdate(req.params.id, doctorParams(req))
             .then(doctor => res.json(doctor)) // will not return the updated but the previous version
-            .catch(err => res.status(404).json(err.toJSON()))
+            .catch(err => res.status(404).json(`Unable to update doctor with ID: ${req.params.id}`))
     }
 );
-
 
 
 /** Delete a doctor by id
@@ -89,7 +85,7 @@ router.patch("/:id", (req, res) => {
 router.delete("/:id", (req, res) => {
         return Doctor.findByIdAndDelete(req.params.id)
             .then(doctor => res.json(doctor)) // will not return the updated but the previous version
-            .catch(err => res.status(404).json({nodoctorfound: `No doctor found from id ${req.params.id}`}))
+            .catch(err => res.status(404).json(`No doctor found with ID: ${req.params.id}`))
     }
 );
 

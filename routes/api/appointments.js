@@ -23,7 +23,7 @@ router.get("/", (req, res) => {
     Appointment.find()
         .sort({date: -1})
         .then((appointments) => res.json(appointments))
-        .catch((err) => res.status(404).json({noappointmentsfound: `No appointments found`}));
+        .catch((err) => res.status(404).json( `No appointment database found`));
 });
 
 
@@ -37,7 +37,7 @@ router.get("/", passport.authenticate("jwt", {session: false}), (req, res) => {
         .sort({date: -1})
         .then((appointments) => res.json(appointments))
         .catch((err) =>
-            res.status(404).json({noappointmentsfound: `No appointments found from that user ${req.user.id}`})
+            res.status(404).json(`No appointments found for user ID: ${req.user.id}`)
         );
 });
 
@@ -52,7 +52,7 @@ router.get("/user/:user_id", (req, res) => {
         .sort({date: -1})
         .then((appointments) => res.json(appointments))
         .catch((err) =>
-            res.status(404).json({noappointmentsfound: `No appointments found from that user ${req.params.user_id}`})
+            res.status(404).json(`No appointments found for user ID: ${req.params.user_id}`)
         );
 });
 
@@ -66,7 +66,7 @@ router.get("/:id", (req, res) => {
     Appointment.findById(req.params.id)
         .then((appointment) => res.json(appointment))
         .catch((err) =>
-            res.status(404).json({noappointmentfound: `No appointment found with that ID: ${req.params.id}`})
+            res.status(404).json( `No appointment found with ID: ${req.params.id}`)
         );
 });
 
@@ -90,7 +90,7 @@ router.post("/", passport.authenticate("jwt", {session: false}), (req, res) => {
                 newAppointment.save().then((appointment) => res.json(appointment));
             }
         ).catch(
-            err => res.status(404).json({nouserfound: `No user found with that ID: ${req.user.id}`})
+            err => res.status(404).json( `No user found with ID: ${req.user.id}`)
         )
     }
 );
@@ -116,7 +116,7 @@ router.post("/user/:user_id", (req, res) => {
                 newAppointment.save().then((appointment) => res.json(appointment));
             }
         ).catch(
-            err => res.status(404).json({nouserfound: `No user found with that ID: ${req.params.user_id}`})
+            err => res.status(404).json(`No user found with ID: ${req.params.user_id}`)
         )
     }
 );
@@ -137,7 +137,7 @@ router.patch("/:id", passport.authenticate("jwt", {session: false}), (req, res) 
 
         return Appointment.findByIdAndUpdate(req.appointment.id, appointmentParams(req))
             .then(appointment => res.json(appointment)) // will not return the updated but the previous version
-            .catch(err => res.status(404).json(err.toJSON()))
+            .catch(err => res.status(404).json(`No user found with ID: ${req.params.user_id}`))
     }
 );
 
@@ -157,7 +157,7 @@ router.patch("/:id/update", (req, res) => {
 
         return Appointment.findByIdAndUpdate(req.params.id, req.body)
             .then(appointment => res.json(appointment)) // will not return the updated but the previous version
-            .catch(err => res.status(404).json(err.toJSON()))
+            .catch(err => res.status(404).json(`Unable to update appointment with ID: ${req.params.id}`))
     }
 );
 
@@ -170,7 +170,7 @@ router.patch("/:id/update", (req, res) => {
 router.delete("/:id", passport.authenticate("jwt", {session: false}), (req, res) => {
         return Appointment.findByIdAndDelete(req.params.id)
             .then(appointment => res.json(appointment)) // will not return the updated but the previous version
-            .catch(err => res.status(404).json(err.toJSON()))
+            .catch(err => res.status(404).json(`Unable to delete appointment with ID: ${req.params.id}`))
     }
 );
 
@@ -182,7 +182,7 @@ router.delete("/:id", passport.authenticate("jwt", {session: false}), (req, res)
 router.delete("/:id/delete", (req, res) => {
         return Appointment.findByIdAndDelete(req.params.id)
             .then(appointment => res.json(appointment)) // will not return the updated but the previous version
-            .catch(err => res.status(404).json({noappointmentfound: `No appointment found from id ${req.params.id}`}))
+            .catch(err => res.status(404).json(`No appointment found with ID: ${req.params.id}`))
     }
 );
 

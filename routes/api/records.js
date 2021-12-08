@@ -34,7 +34,7 @@ const recordParams = (req) => {
 router.get("/", (req, res) => {
     Record.find()
         .then((records) => res.json(records))
-        .catch((err) => res.status(404).json({norecordsfound: "No records database was found"}));
+        .catch((err) => res.status(404).json("No records database was found"));
 });
 
 
@@ -46,7 +46,7 @@ router.get("/", (req, res) => {
 router.get("/", passport.authenticate("jwt", {session: false}), (req, res) => {
     Record.find({user: req.user.id})
         .then((records) => res.json(records))
-        .catch((err) => res.status(404).json({norecordsfound: `No records found from that user: ${req.user.id}`}));
+        .catch((err) => res.status(404).json(`No records found with user ID: ${req.user.id}`));
 });
 
 
@@ -58,7 +58,7 @@ router.get("/", passport.authenticate("jwt", {session: false}), (req, res) => {
 router.get("/user/:user_id", (req, res) => {
     return Record.find({user: req.params.user_id})
         .then((records) => res.json(records))
-        .catch(err => res.status(404).json({nouserfound: `No user found with that ID: ${req.params.user_id}`}))
+        .catch(err => res.status(404).json(`No records found with user ID: ${req.params.user_id}`))
 });
 
 
@@ -70,7 +70,7 @@ router.get("/user/:user_id", (req, res) => {
 router.get("/:id", (req, res) => {
     Record.findById(req.params.id)
         .then((record) => res.json(record))
-        .catch((err) => res.status(404).json({norecordfound: `No record found with that ID: ${req.params.id}`}));
+        .catch((err) => res.status(404).json(`No record found with ID: ${req.params.id}`));
 });
 
 
@@ -93,7 +93,7 @@ router.post("/", passport.authenticate("jwt", {session: false}), (req, res) => {
                 newRecord.save().then((record) => res.json(record));
             }
         ).catch(
-            err => res.status(404).json({nouserfound: `No user found with that ID: ${req.body.user.id}`})
+            err => res.status(404).json(`No user found with ID: ${req.body.user.id}`)
         )
     }
 );
@@ -119,7 +119,7 @@ router.post("/user/:user_id", (req, res) => {
                 newRecord.save().then((record) => res.json(record));
             }
         ).catch(
-            err => res.status(404).json({nouserfound: `No user found with that ID: ${req.params.user_id}`})
+            err => res.status(404).json(`No user found with ID: ${req.params.user_id}`)
         )
     }
 );
@@ -140,7 +140,7 @@ router.patch("/:id", passport.authenticate("jwt", {session: false}), (req, res) 
 
         return Record.findByIdAndUpdate(req.record.id, recordParams(req))
             .then(record => res.json(record)) // will not return the updated but the previous version
-            .catch(err => res.status(404).json(err.toJSON()))
+            .catch(err => res.status(404).json(`Unable to update record with ID: ${req.params.id}`))
     }
 );
 
@@ -160,7 +160,7 @@ router.patch("/:id/update", (req, res) => {
 
         return Record.findByIdAndUpdate(req.params.id, recordParams(req))
             .then(record => res.json(record)) // will not return the updated but the previous version
-            .catch(err => res.status(404).json(err.toJSON()))
+            .catch(err => res.status(404).json(`Unable to update record with ID: ${req.params.id}`))
     }
 );
 
@@ -173,7 +173,7 @@ router.patch("/:id/update", (req, res) => {
 router.delete("/:id", passport.authenticate("jwt", {session: false}), (req, res) => {
         return Record.findByIdAndDelete(req.params.id)
             .then(record => res.json(record)) // will not return the updated but the previous version
-            .catch(err => res.status(404).json(err.toJSON()))
+            .catch(err => res.status(404).json(`Unable to delete record with ID: ${req.params.id}`))
     }
 );
 
@@ -185,7 +185,7 @@ router.delete("/:id", passport.authenticate("jwt", {session: false}), (req, res)
 router.delete("/:id/delete", (req, res) => {
         return Record.findByIdAndDelete(req.params.id)
             .then(record => res.json(record)) // will not return the updated but the previous version
-            .catch(err => res.status(404).json({norecordfound: `No record found from id ${req.params.id}`}))
+            .catch(err => res.status(404).json(`Unable to delete record with ID: ${req.params.id}`))
     }
 );
 

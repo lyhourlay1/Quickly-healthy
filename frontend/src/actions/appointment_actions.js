@@ -37,7 +37,7 @@ export const fetchAppointments = () => dispatch =>(
         appointments => {
             return dispatch(receiveAppointments(appointments.data))
         },
-        err => dispatch(receiveAppointmentError(err.responseJSON))
+        err => dispatch(receiveAppointmentError(err.response.data))
     )
 )
 
@@ -45,7 +45,7 @@ export const fetchAppointments = () => dispatch =>(
 export const fetchAppointment = appointmentId => (dispatch) => {
     return AppointmentUtil.fetchAppointment(appointmentId).then(
         appointment => dispatch(receiveAppointment(appointment.data)),
-        err => dispatch(receiveAppointmentError(err.responseJSON))
+        err => dispatch(receiveAppointmentError(err.response.data))
     )
 }
 
@@ -53,21 +53,21 @@ export const fetchAppointment = appointmentId => (dispatch) => {
 export const createAppointment = appointment => dispatch =>(
     AppointmentUtil.createAppointment(appointment).then(
         appointment => dispatch(receiveAppointment(appointment.data)),
-        err => dispatch(receiveAppointmentError(err.responseJSON))
+        err => dispatch(receiveAppointmentError(err.response.data))
     )
 )
 
 export const updateAppointment = appointment => dispatch =>(
     AppointmentUtil.updateAppointment(appointment).then(
         appointment => dispatch(receiveAppointment(appointment.data)),
-        err => dispatch(receiveAppointmentError(err.responseJSON))
+        err => dispatch(receiveAppointmentError(err.response.data))
     )
 )
 
 export const deleteAppointment = appointmentId => dispatch =>(
     AppointmentUtil.deleteAppointment(appointmentId).then(
         appointment => dispatch(removeAppointment(appointment.data._id)),
-        err => dispatch(receiveAppointmentError(err.responseJSON))
+        err => dispatch(receiveAppointmentError(err.response.data))
     )
 )
 

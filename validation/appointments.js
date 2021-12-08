@@ -27,39 +27,39 @@ function isInScheduleRange(date, schedule){
   return shift.start <= date && date <= shift.end;
 }
 
-module.exports = function validateAppointmentInput(data) {
+module.exports = function validateAppointmentInput(appointment) {
   let errors = {};
 
-  if (Validator.isEmpty(data.reason)) {
+  if (Validator.isEmpty(appointment.reason)) {
     errors.reason = "A reason for the doctor visit is required";
   }
 
+  /*
   // Validation: Appointment dates can be set as the current date or future date.
   let now = new Date();
-  if (data.date - now < 0) {
+  if (appointment.date - now < 0) {
     errors.date = `The appointment date must be now or after: ${now.toLocaleString()}`;
   }
 
   // Validation: Checkin dates can be set as the current date or future date.
-  if (data.checkin - now < 0) {
+  if (appointment.checkin - now < 0) {
     errors.date = `The checkin date must be now or after: ${now.toLocaleString()}`;
   }
 
   // Validation: Checkout dates can be set as the current date or future date.
-  if (data.checkout - now < 0) {
+  if (appointment.checkout - now < 0) {
     errors.date = `The checkin date must be now or after: ${now.toLocaleString()}`;
   }
 
-  let doctor = Doctor.findById(data.doctor);
+  let doctor = Doctor.findById(appointment.doctor);
   if (!doctor) {
-    errors.doctor = `The doctor ${data.doctor} doesn't exist`;
+    errors.doctor = `The doctor ${appointment.doctor} doesn't exist`;
   }
 
-  if (!isInScheduleRange(data.date, doctor.schedule)) {
+  if (!isInScheduleRange(appointment.date, doctor.schedule)) {
     errors.date = "The appointment schedule doesn't match the doctor's availability";
   }
-
-
+  */
 
   return {
     errors,

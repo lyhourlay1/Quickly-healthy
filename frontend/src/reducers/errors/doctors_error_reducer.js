@@ -7,7 +7,7 @@ export default function doctorsErrorsReducer(prevState = [], action) {
     Object.freeze(prevState);
     switch (action.type) {
         case RECEIVE_DOCTOR_ERROR:
-            return action.errors;
+            return [...prevState, action.error];
         case RECEIVE_DOCTOR:
             return [];
         default:
