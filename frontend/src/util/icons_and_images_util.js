@@ -1,0 +1,1 @@
+export const DEFAULT_PROFILE_PICTURE = "https://github.com/lyhourlay1/Quickly-healthy/blob/main/assets/icons/default_profile_picture.png?raw=true";

@@ -10,11 +10,11 @@ export default function RecordReducer(prevState={}, action){
     switch(action.type){
         case RECEIVE_RECORDS:
             let records = Object.fromEntries(action.records.map(record => {
-                return [record.id, record]
+                return [record._id, record]
             }))
             return {...newState, ...records};
         case RECEIVE_RECORD:
-            newState[action.record.id] = action.record;
+            newState[action.record._id] = action.record;
             return newState;
         case REMOVE_RECORD:
             delete newState[action.id]

@@ -46,7 +46,7 @@ export const createAppointment = (appointment) => {
  * @returns {Promise} - A promise of appointment of its previous state
  */
 export const updateAppointment = (appointment) => {
-    return axios.patch(`/api/appointments/${appointment.id}/update`, appointment);
+    return axios.patch(`/api/appointments/${appointment._id}/update`, appointment);
 };
 
 

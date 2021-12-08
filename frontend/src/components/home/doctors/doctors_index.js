@@ -1,26 +1,21 @@
 import React from "react";
+import '../home.css';
+import DoctorIndexItem from "./doctors_index_item";
 
 export default class DoctorIndex extends React.Component {
   render() {
+    let { doctors } = this.props;
+
     return (
       <div className="doctors-index">
-        <div className="doctor-index-header">
-          
+        <div className="doctors-index-header">
+          Doctors Near: San Francisco, CA
         </div>
 
-        <ul>
-          {/* <DoctorIndexItem /> */}
-          <li>hi</li>
-          <li>hi</li>
-          <li>hi</li>
-          <li>hi</li>
-          <li>hi</li>
-          <li>hi</li>
-          <li>hi</li>
-          <li>hi</li>
-          <li>hi</li>
-          <li>hi</li>
-          <li>hi</li>
+        <ul className="doctors-list">
+          {Object.values(doctors).map((doctor) => (
+            <DoctorIndexItem key={doctor._id} doctor={doctor} />
+          ))}
         </ul>
       </div>
     );

@@ -10,11 +10,11 @@ export default function DoctorReducer(prevState={}, action){
     switch(action.type){
         case RECEIVE_DOCTORS:
             let doctors = Object.fromEntries(action.doctors.map(doctor => {
-                return [doctor.id, doctor]
+                return [doctor._id, doctor]
             }))
             return {...newState, ...doctors};
         case RECEIVE_DOCTOR:
-            newState[action.doctor.id] = action.doctor;
+            newState[action.doctor._id] = action.doctor;
             return newState;
         case REMOVE_DOCTOR:
             delete newState[action.id]

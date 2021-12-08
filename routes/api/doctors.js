@@ -52,28 +52,28 @@ router.post("/", (req, res) => {
 
         if (!isValid) {
             return res.status(400).json(errors);
-        }
+        }     
+        
+        // let params = doctorParams(req);
+        // let date = new Date(params.date)
+        // let nextThirtyDays = [];
+        // let nextDay = new Date(date)
 
-        let params = doctorParams(req);
-        let date = new Date(params.date)
-        let nextThirtyDays = [];
-        let nextDay = new Date(date)
+        // for(let i = 0; i < 30; i++) {
+        //     nextDay.setDate(nextDay.getDate() + 1);
+        //     nextThirtyDays.push(new Date(nextDay));
+        // }
 
-        for(let i = 0; i < 30; i++) {
-            nextDay.setDate(nextDay.getDate() + 1);
-            nextThirtyDays.push(new Date(nextDay));
-        }
-        let availabilityInteger = nextDay.getDate();
-        let availabilityString = nextDay.toString().split(" ").slice(0,-5).join(" ");
-        params[availabilityString] = [9, 10, 11, 12, 13, 14, 15, 16, 17];
-        params[availabilityInteger] = [9, 10, 11, 12, 13, 14, 15, 16, 17];
+        // let availabilityInteger = nextDay.getDate();
+        // let availabilityString = nextDay.toString().split(" ").slice(0,-5).join(" ");
+        // params[availabilityString] = [9, 10, 11, 12, 13, 14, 15, 16, 17];
+        // params[availabilityInteger] = [9, 10, 11, 12, 13, 14, 15, 16, 17];
 
-        const newDoctor = new Doctor(params);
-        newDoctor.id = newDoctor._id;
-        newDoctor.save().then((doctor) => res.json(doctor));
+        const newDoctor = new Doctor(doctorParams(req));
+        newDoctor._id = newDoctor._id;
+        newDoctor.save().then(doc => res.json(doc));
     }
 );
-
 
 /** Update a doctor by doctor id
  * PATCH: http://localhost:5000/api/doctors/:id

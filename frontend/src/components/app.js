@@ -5,9 +5,10 @@ import NavBarContainer from "./nav/navbar_container";
 import LoginFormContainer from "./session/login_form_container";
 import SignupFormContainer from "./session/signup_form_container";
 import ProfileContainer from "./profile/profile_container";
+import AppointmentFormContainer from "./appointment/appointment_form_container"
 import Splash from "./splash/splash";
 import './reset.css';
-import Home from "./home/home";
+import HomeContainer from "./home/home_container";
 
 
 
@@ -20,8 +21,9 @@ const App = () => (
       <AuthRoute exact path="/login" component={LoginFormContainer} />
       <AuthRoute exact path="/signup" component={SignupFormContainer} />
 
-      <ProtectedRoute exact path="/home" component={Home} />
+      <ProtectedRoute exact path="/home" component={HomeContainer} />
       <ProtectedRoute exact path="/profile" component={ProfileContainer} />
+      <ProtectedRoute exact path="/appointmentForm" component={AppointmentFormContainer} />
     </Switch>
   </div>
 );

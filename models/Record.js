@@ -6,10 +6,6 @@ const RecordSchema = new Schema({
     type: Schema.Types.ObjectId,
     ref: "users"
   },
-  id: {
-    type: String,
-    required: false
-  },
   /* This is needed in User db
   firstName: {
     type: String,
