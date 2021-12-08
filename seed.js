@@ -7,7 +7,6 @@ const db = require("./config/keys").mongoURI;
 // const date15 = new Date('December 17, 1995 15:00:00');
 // const date11 = new Date('December 17, 1995 11:00:00');
 
-
 const doctors = [
   new Doctor({
     name: "doctor1",
