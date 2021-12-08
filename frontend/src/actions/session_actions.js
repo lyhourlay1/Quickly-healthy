@@ -39,6 +39,7 @@ export const signup = (user) => (dispatch) =>
       const decoded = jwt_decode(token);
       dispatch(receiveCurrentUser(decoded));
     });
+
 // Upon login, set the session token and dispatch the current user. Dispatch errors on failure.
 export const login = (user) => (dispatch) =>
   APIUtil.login(user).then(
