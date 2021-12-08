@@ -9,15 +9,25 @@ const validText = require('./valid-text');
   TODO: add availabilities to doctor [{Monday: start-time, endtime}... Saturday: [start-tie, endtime]}]
  */
 
-module.exports = function validateAppointmentInput(data) {
+module.exports = function validateDoctorInput(doctor) {
     let errors = {};
-    if (Object.keys(data).length === 0){
+    if (Object.keys(doctor).length === 0){
         errors.data = "Input must be given to create a doctor";
     }
 
-    if (!data.name || Validator.isEmpty(data.name)) {
+    /*
+    if (!doctor.name || Validator.isEmpty(doctor.name))
         errors.name = "A doctor's name is required";
-    }
+
+    if (!doctor.license || Validator.isEmpty(doctor.license))
+        errors.license = "A license must be provided"
+
+    if (!doctor.location || Validator.isEmpty(doctor.location))
+        errors.location = "A location must be provided"
+
+    if (!doctor.address || Validator.isEmpty(doctor.address))
+        errors.address = "An address must be provided"
+     */
 
     return {
         errors,
