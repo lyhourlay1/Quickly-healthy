@@ -6,10 +6,6 @@ import {Link} from 'react-router-dom'
 
 
 class Appointment extends React.Component{
-    constructor(props){
-        super(props)
-
-    }
     componentDidMount(){
         this.props.fetchUserAppointments(this.props.currentUser.id)
     }
