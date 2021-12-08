@@ -5,13 +5,14 @@ class AppointmentForm extends React.Component{
         super(props)
 
         this.state = {
+            availabilites:"",
             name: this.props.currentUser.handle,
             reason:"",
             date: ""
         }
-   }
+    }
 
-    updateDate(field){
+    update(field){
          return (e)=>{
             this.setState({[field]: e.target.value})
         } 
@@ -29,22 +30,30 @@ class AppointmentForm extends React.Component{
         let today = todayYr + "-" + todayMn + "-" + todayDt
         let min = todayYr + "-01" + "-01"
         let max = (new Date(Date.now()).getFullYear()+1).toString()
-        
+        let display = (<div></div>)
+        if(this.state.availabilites.length===0){
+            display = (<h1> No Slots available</h1>) 
+        }
+        else{
+            display = (
+                <div>
+                    <div>
+                        Name:
+                        <input type="text" value={this.state.name} onChange={this.update('name')}/>
+                    </div>
+                    <div>
+                        Reason:
+                        <input type="text" value={this.state.reason} onChange={this.update('reason')}/>
+                    </div>
+
+                </div>
+
+            )
+        }
         return(
             <div>
                 <input type="date" value={today} min={min} max={max} onChange={this.update('date')}/>
-                <div>
-                    <div>
-                        Name
-                    </div>
-                    <input type="text" value={this.state.name} onChange={this.update('name')} id='text-box'/>
-                </div>
-                <div>
-                    <div>
-                        Reason
-                    </div>
-                    <input type="text" value={this.state.reason} onChange={this.update('reason')} id='text-box'/>
-                </div>
+                {display}
             </div>
         )
     }
