@@ -1,10 +1,16 @@
 import React from "react";
 import mapboxgl from "mapbox-gl";
 import './map.css';
+const key = require('../../../../../config/keys').reactAppMapboxToken;
 require("dotenv").config();
 
 export default class Map extends React.Component {
   componentDidMount() {
+    // if (process.env.NODE_ENV === "production") {
+
+    // } else {
+    //   // mapboxgl.accessToken = process.env.REACT_APP_MAPBOX_TOKEN;
+    // }
     mapboxgl.accessToken = process.env.REACT_APP_MAPBOX_TOKEN;
     this.map = new mapboxgl.Map({
       container: "map-container",
