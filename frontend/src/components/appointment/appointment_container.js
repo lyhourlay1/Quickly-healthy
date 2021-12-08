@@ -12,7 +12,6 @@ const mSTP = (state)=> {
 const mDTP = dispatch =>({
     fetchUserAppointments: (userId)=> dispatch(fetchUserAppointments(userId)),
     fetchAppointment: (appointmentId) => dispatch(fetchAppointment(appointmentId)),
-    createAppointment: (appointment)=> dispatch(createAppointment(appointment))
 })
 
 export default connect(mSTP, mDTP)(Appointment)

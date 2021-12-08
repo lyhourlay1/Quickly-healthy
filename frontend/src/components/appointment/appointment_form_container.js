@@ -1,6 +1,6 @@
 import { connect } from "react-redux"
 import AppointmentForm from "./appointment_form"
-// import { fetchUserAppointments} from "../../actions/appointment_actions"
+import { createAppointment} from "../../actions/appointment_actions"
 
 const mSTP = (state)=> {
     return {
@@ -10,6 +10,8 @@ const mSTP = (state)=> {
 
 const mDTP = dispatch =>({
     // fetchAvailbilities: (date)=> dispatch(fetchAvailabilities(date)),
+    createAppointment: (appointment)=> dispatch(createAppointment(appointment))
+
 })
 
-export default connect(mSTP, null)(AppointmentForm)
+export default connect(mSTP, mDTP)(AppointmentForm)
