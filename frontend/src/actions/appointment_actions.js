@@ -66,7 +66,7 @@ export const updateAppointment = appointment => dispatch =>(
 
 export const deleteAppointment = appointmentId => dispatch =>(
     AppointmentUtil.deleteAppointment(appointmentId).then(
-        appointment => dispatch(removeAppointment(appointment.data.id)),
+        appointment => dispatch(removeAppointment(appointment.data._id)),
         err => dispatch(receiveAppointmentError(err.responseJSON))
     )
 )

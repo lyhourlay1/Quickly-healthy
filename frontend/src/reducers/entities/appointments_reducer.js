@@ -10,11 +10,11 @@ export default function AppointmentReducer(prevState={}, action){
     switch(action.type){
         case RECEIVE_APPOINTMENTS:
             let appointment = Object.fromEntries(action.appointments.map(appointment => {
-                return [appointment.id, appointment]
+                return [appointment._id, appointment]
             }))
             return {...newState, ...appointment};
         case RECEIVE_APPOINTMENT:
-            newState[action.appointment.id] = action.appointment;
+            newState[action.appointment._id] = action.appointment;
             return newState;
         case REMOVE_APPOINTMENT:
             delete newState[action.id]

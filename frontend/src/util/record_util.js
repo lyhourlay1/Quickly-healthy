@@ -47,7 +47,7 @@ export const createRecord = (record) => {
  * @returns {Promise} - A promise of record of its previous state
  */
 export const updateRecord = (record) => {
-    return axios.patch(`/api/records/${record.id}/update`, record);
+    return axios.patch(`/api/records/${record._id}/update`, record);
 };
 
 

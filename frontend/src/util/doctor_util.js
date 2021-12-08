@@ -36,7 +36,7 @@ export const createDoctor = (doctor) => {
  * @returns {Promise} - A promise of doctor of its previous state
  */
 export const updateDoctor = (doctor) => {
-    return axios.patch(`/api/doctors/${doctor.id || doctor._id}`, doctor);
+    return axios.patch(`/api/doctors/${doctor._id}`, doctor);
 };
 
 

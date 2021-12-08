@@ -66,7 +66,7 @@ export const updateDoctor = doctor => dispatch =>(
 
 export const deleteDoctor = doctorId => dispatch =>(
     DoctorUtil.deleteDoctor(doctorId).then(
-        doctor => dispatch(removeDoctor(doctor.data.id)),
+        doctor => dispatch(removeDoctor(doctor.data._id)),
         err => dispatch(receiveDoctorError(err.responseJSON))
     )
 )

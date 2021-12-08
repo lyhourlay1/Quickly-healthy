@@ -55,7 +55,6 @@ router.post("/", (req, res) => {
         }
 
         const newDoctor = new Doctor(doctorParams(req));
-        newDoctor.id = newDoctor._id;
         newDoctor.save().then((doctor) => res.json(doctor));
     }
 );

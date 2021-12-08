@@ -71,7 +71,7 @@ export const updateRecord = record => dispatch =>(
 
 export const deleteRecord = recordId => dispatch =>(
     RecordUtil.deleteRecord(recordId).then(
-        record => dispatch(removeRecord(record.data.id)),
+        record => dispatch(removeRecord(record.data._id)),
         err => dispatch(receiveRecordError(err.responseJSON))
     )
 )

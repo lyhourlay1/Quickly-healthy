@@ -87,7 +87,6 @@ router.post("/", passport.authenticate("jwt", {session: false}), (req, res) => {
             user => {
                 const newAppointment = new Appointment(appointmentParams(req));
                 newAppointment.user = req.user.id;
-                newAppointment.id = newAppointment._id;
                 newAppointment.save().then((appointment) => res.json(appointment));
             }
         ).catch(
@@ -114,7 +113,6 @@ router.post("/user/:user_id", (req, res) => {
             user => {
                 const newAppointment = new Appointment(appointmentParams(req));
                 newAppointment.user = req.params.user_id;
-                newAppointment.id = newAppointment._id;
                 newAppointment.save().then((appointment) => res.json(appointment));
             }
         ).catch(
