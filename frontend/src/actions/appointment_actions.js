@@ -1,26 +1,26 @@
-import * as ApiAppointmentUtil from "../util/appointments_utils";
+import * as ApiAppointmentUtil from "../util/appointments_util";
 
-export const RECEIVE_PRODUCT = 'RECEIVE_PRODUCT'
-export const RECEIVE_PRODUCTS = 'RECEIVE_PRODUCTS'
+export const RECEIVE_APPOINTMENT = 'RECEIVE_APPOINTMENT'
+export const RECEIVE_APPOINTMENTS = 'RECEIVE_APPOINTMENTS'
 
-export const receiveProducts = products =>({
-    type: RECEIVE_PRODUCTS,
-    products,
+const receiveAppointments = appointments =>({
+    type: RECEIVE_APPOINTMENTS,
+    appointments,
 })
 
-export const receiveProduct = product => ({
-    type: RECEIVE_PRODUCT,
-    product,
+const receiveAppointment = appointment => ({
+    type: RECEIVE_APPOINTMENT,
+    appointment,
 })
 
-export const fetchProducts = () =>dispatch=> (
-    ApiAppointmentUtil.fetchProducts().then((products)=> dispatch(receiveProducts(products)))
+export const fetchUserAppointments = (userId) =>dispatch=> (
+    ApiAppointmentUtil.fetchUserAppointments(userId).then((appointments)=> dispatch(receiveAppointments(appointments)))
 )
 
-export const fetchProduct = (productId) => dispatch=> (
-    ApiAppointmentUtil.fetchProduct(productId).then((product=> dispatch(receiveProduct(product))))
+export const fetchAppointment = (appointmentId) => dispatch=> (
+    ApiAppointmentUtil.fetchAppointment(appointmentId).then((appointment=> dispatch(receiveAppointment(appointment))))
 )
 
-export const fetchSearchProducts = query => dispatch => (
-    ApiAppointmentUtil.fetchSearchProducts(query).then(products => dispatch(receiveProducts(products)))
+export const createAppointment = (appointment) => dispatch => (
+    ApiAppointmentUtil.createAppointment(appointment).then((appointment=> dispatch(receiveAppointment(appointment))))
 )

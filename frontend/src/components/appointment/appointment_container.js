@@ -1,17 +1,18 @@
 import { connect } from "react-redux"
-import Product from "./products"
-import { fetchUserAppointments, createAppointment} from "../../actions/product_action"
+import Appointment from "./appointment"
+import { fetchUserAppointments, createAppointment, fetchAppointment} from "../../actions/appointment_actions"
 
-const mSTP = (state,ownProps)=> {
+const mSTP = (state)=> {
     
     return {
     appointments: Object.values(state.entities.appointments),
-    query: ownProps.match.params.query
+    currentUser: state.session.user
 }}
 
 const mDTP = dispatch =>({
-    // fetchProducts: ()=> dispatch(fetchProducts()),
-    fetchSearchProducts: query=> dispatch(fetchSearchProducts(query))
+    fetchUserAppointments: (userId)=> dispatch(fetchUserAppointments(userId)),
+    fetchAppointment: (appointmentId) => dispatch(fetchAppointment(appointmentId)),
+    createAppointment: (appointment)=> dispatch(createAppointment(appointment))
 })
 
-export default connect(mSTP, mDTP)(Product)
+export default connect(mSTP, mDTP)(Appointment)

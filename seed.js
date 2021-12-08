@@ -20,7 +20,7 @@ const physicians = [
     address: "6480 Weathers Pl #106, San Diego, CA 92121",
     location: {latitude: 32.905810, longitude: -117.178950},
     specialty: ["family doctor"],
-    insurances: ["Aetna Life Insurance Company", "American National Insurance Company", "Kaiser Permanente Insurance Company"],
+    insurances: ["Aetna Life Insurance Company", "American National Insurance Company", "Kaiser Permanente Insurance Company"],  
     availabilites: {Monday: {start:8, end:11}, Tuesday: {start:14, end:17}, Wednesday: {start: 9, end:13 }}
 })]
 // connect mongoose
