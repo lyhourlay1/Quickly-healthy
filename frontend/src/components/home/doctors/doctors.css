@@ -33,6 +33,7 @@
   flex-direction: column;
   padding: 8px;
   border-bottom: 1px solid black;
+  text-decoration: none;
 }
 
 .doctors-index-item:hover {
@@ -81,6 +82,10 @@ a.doctors-image > img {
 }
 
 .doctors-titles > a:hover {
+  text-decoration: underline;
+}
+
+.doctors-titles > #address:hover {
   text-decoration: underline;
 }
 

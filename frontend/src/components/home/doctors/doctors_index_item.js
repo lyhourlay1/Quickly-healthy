@@ -3,9 +3,20 @@ import { Link } from "react-router-dom";
 import { DEFAULT_PROFILE_PICTURE } from "../../../util/icons_and_images_util";
 import './doctors.css'
 
+const showPopup = (doctor) => {
+  return (event) => {
+    event.preventDefault();
+    getPopupInfo(doctor);
+  }
+};
+
+const getPopupInfo = (doctor) => {
+  
+}
+
 const DoctorIndexItem = ({ doctor }) => {
   return (
-    <li className="doctors-index-item">
+    <Link to={`/doctors/${doctor._id}`} className="doctors-index-item">
       <div className="item-header">
         <Link className="doctors-image" to={`/doctors/${doctor._id}`}>
           <img src={DEFAULT_PROFILE_PICTURE} alt="" />
@@ -14,7 +25,7 @@ const DoctorIndexItem = ({ doctor }) => {
         <div className="doctors-titles">
           <Link to={`/doctors/${doctor._id}`}>{doctor.name}</Link>
           <div>{doctor.specialty}</div>
-          <div>{doctor.address}</div>
+          <div id="address" onClick={() => showPopup(doctor)}>{doctor.address}</div>
         </div>
       </div>
 
@@ -26,7 +37,7 @@ const DoctorIndexItem = ({ doctor }) => {
           </div>
         ))}
       </div>
-    </li>
+    </Link>
   );
 };
 
