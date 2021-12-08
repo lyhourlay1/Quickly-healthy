@@ -16,17 +16,6 @@ export default class DoctorIndex extends React.Component {
           {Object.values(doctors).map((doctor) => (
             <DoctorIndexItem key={doctor._id} doctor={doctor} />
           ))}
-          {/* <li>hi</li>
-          <li>hi</li>
-          <li>hi</li>
-          <li>hi</li>
-          <li>hi</li>
-          <li>hi</li>
-          <li>hi</li>
-          <li>hi</li>
-          <li>hi</li>
-          <li>hi</li>
-          <li>hi</li> */}
         </ul>
       </div>
     );
