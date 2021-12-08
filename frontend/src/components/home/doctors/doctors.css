@@ -1,0 +1,107 @@
+.doctors-index {
+  display: flex;
+  flex-direction: column;
+  width: 30%;
+  position: absolute;
+  top: 0px;
+  bottom: 0px;
+  overflow-y: scroll;
+  object-fit: contain;
+  background-color: rgb(245, 245, 245);
+  font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+}
+
+.doctors-index-header {
+  font-size: 18px;
+  font-weight: 600;
+  padding: 8px;
+  text-align: center;
+  position: sticky;
+  top: 0px;
+  left: 0px;
+  background-color: white;
+  border-bottom: 1px solid black;
+}
+
+.doctors-list {
+  display: flex;
+  flex-direction: column;
+}
+
+.doctors-index-item {
+  display: flex;
+  flex-direction: column;
+  padding: 8px;
+  border-bottom: 1px solid black;
+}
+
+.doctors-index-item:hover {
+  background-color: rgb(231, 231, 231);
+  cursor: pointer;
+}
+
+.item-header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 12px;
+}
+
+a.doctors-image {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  border: 1px solid rgb(13, 28, 61);
+  cursor: pointer;
+  background-color: white;
+}
+
+a.doctors-image > img {
+  width: 50px;
+  height: 50px;
+  object-fit: cover;
+}
+
+.doctors-titles {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-left: 8px;
+}
+
+.doctors-titles > a {
+  text-decoration: none;
+  font-size: 16px;
+  font-weight: 600;
+  color: rgb(13, 28, 61);
+  width: fit-content;
+  padding-bottom: 6px;
+}
+
+.doctors-titles > a:hover {
+  text-decoration: underline;
+}
+
+.doctors-titles > div {
+  font-size: 14px;
+  font-weight: 400;
+  color: rgba(0, 0, 0, 0.8);
+}
+
+.doctors-insurances {
+  font-size: 14px;
+  font-weight: 400;
+  color: rgba(0, 0, 0, 0.8);
+}
+
+.doctors-insurances > div:first-child {
+  font-weight: 600;
+}
+
+#insurance {
+  margin-left: 24px;
+  display: list-item;
+  list-style-type: disc;
+}

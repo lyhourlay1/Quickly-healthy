@@ -1,26 +1,29 @@
 import React from "react"
 import { Link } from "react-router-dom";
 import { DEFAULT_PROFILE_PICTURE } from "../../../util/icons_and_images_util";
+import './doctors.css'
 
 const DoctorIndexItem = ({ doctor }) => {
-  debugger
   return (
-    <li className="doctor-index-item">
+    <li className="doctors-index-item">
       <div className="item-header">
-        <Link to={`/doctors/${doctor._id}`} className="doctor-image">
-          <img src={DEFAULT_PROFILE_PICTURE} />
+        <Link className="doctors-image" to={`/doctors/${doctor._id}`}>
+          <img src={DEFAULT_PROFILE_PICTURE} alt="" />
         </Link>
 
-        <div className="doctor-titles">
+        <div className="doctors-titles">
           <Link to={`/doctors/${doctor._id}`}>{doctor.name}</Link>
           <div>{doctor.specialty}</div>
+          <div>{doctor.address}</div>
         </div>
       </div>
 
-      <div className="doctor-insurances">
-        <div>Accepted insuraces:</div>
+      <div className="doctors-insurances">
+        <div>In-network Insurance Providers:</div>
         {doctor.insurances.map((insurance, idx) => (
-          <div key={idx} id="insurance">{insurance}</div>
+          <div key={idx} id="insurance">
+            {insurance}
+          </div>
         ))}
       </div>
     </li>
