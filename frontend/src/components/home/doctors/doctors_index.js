@@ -9,7 +9,7 @@ export default class DoctorIndex extends React.Component {
     return (
       <div className="doctors-index">
         <div className="doctors-index-header">
-          Doctors Near You:
+          Doctors Near: San Francisco, CA
         </div>
 
         <ul className="doctors-list">

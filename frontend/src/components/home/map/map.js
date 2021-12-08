@@ -1,6 +1,6 @@
 import React from "react";
 import mapboxgl from "mapbox-gl";
-import '../home.css'
+import './map.css';
 require("dotenv").config();
 
 export default class Map extends React.Component {

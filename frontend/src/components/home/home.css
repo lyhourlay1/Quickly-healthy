@@ -5,12 +5,3 @@ div.home-container {
   width: 100%;
   object-fit: contain;
 }
-
-#map-container {
-  cursor: pointer;
-  position: absolute;
-  top: 0px;
-  bottom: 0px;
-  right: 0px;
-  width: 70%; 
-} 

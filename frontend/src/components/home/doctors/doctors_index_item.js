@@ -7,7 +7,7 @@ const DoctorIndexItem = ({ doctor }) => {
   return (
     <li className="doctors-index-item">
       <div className="item-header">
-        <Link to={`/doctors/${doctor._id}`} className="doctors-image">
+        <Link className="doctors-image" to={`/doctors/${doctor._id}`}>
           <img src={DEFAULT_PROFILE_PICTURE} alt="" />
         </Link>
 
@@ -19,9 +19,11 @@ const DoctorIndexItem = ({ doctor }) => {
       </div>
 
       <div className="doctors-insurances">
-        <div>Accepted insuraces:</div>
+        <div>In-network Insurance Providers:</div>
         {doctor.insurances.map((insurance, idx) => (
-          <div key={idx} id="insurance">{insurance}</div>
+          <div key={idx} id="insurance">
+            {insurance}
+          </div>
         ))}
       </div>
     </li>
