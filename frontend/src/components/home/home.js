@@ -5,12 +5,10 @@ import DoctorIndex from "./doctors/doctors_index";
 export default class Home extends React.Component {
   componentDidMount() {
     this.props.fetchDoctors();
-    // this.props.fetchCurrentUser();
   }
 
   render() {
     let { doctors, currentUser } = this.props;
-
     if (!doctors) return null;
     
     return (
