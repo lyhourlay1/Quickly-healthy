@@ -7,7 +7,7 @@ export default function appointmentErrorsReducer(prevState = [], action){
     Object.freeze(prevState);
     switch (action.type) {
         case RECEIVE_APPOINTMENT_ERROR:
-            return [...prevState, action.error];
+            return [action.error];
         case RECEIVE_APPOINTMENT:
             return [];
         default:

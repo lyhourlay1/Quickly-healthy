@@ -34,9 +34,7 @@ const removeDoctor = id =>({
 
 export const fetchDoctors = () => dispatch =>(
     DoctorUtil.fetchDoctors().then(
-        doctors => {
-            return dispatch(receiveDoctors(doctors.data))
-        },
+        doctors => dispatch(receiveDoctors(doctors.data)),
         err => dispatch(receiveDoctorError(err.response.data))
     )
 )
@@ -46,7 +44,7 @@ export const fetchDoctor = doctorId => (dispatch) => {
     return DoctorUtil.fetchDoctor(doctorId).then(
         doctor => dispatch(receiveDoctor(doctor.data)),
         err => dispatch(receiveDoctorError(err.response.data))
-    ).catch(error => "some error")
+    )
 }
 
 
