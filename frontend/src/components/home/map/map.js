@@ -5,6 +5,11 @@ require("dotenv").config();
 
 export default class Map extends React.Component {
   componentDidMount() {
+    // if (process.env.NODE_ENV === "production") {
+
+    // } else {
+    //   // mapboxgl.accessToken = process.env.REACT_APP_MAPBOX_TOKEN;
+    // }
     mapboxgl.accessToken = process.env.REACT_APP_MAPBOX_TOKEN;
     this.map = new mapboxgl.Map({
       container: "map-container",
@@ -30,7 +35,7 @@ export default class Map extends React.Component {
       `;
 
       let popup = new mapboxgl.Popup().setHTML(description);
-      new mapboxgl.Marker({ color: "red" })
+      return new mapboxgl.Marker({ color: "red" })
         .setLngLat(doctor.location)
         .setPopup(popup)
         .addTo(that.map);

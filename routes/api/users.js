@@ -47,7 +47,7 @@ router.post('/register', (req, res) => {
           if (err) throw err;
           newUser.password = hash;
           newUser
-            .save().then(user=> res.json(user))
+            .save() //.then(user=> res.json(user))
             .then((user) => {
               const payload = { id: user.id, handle: user.handle, insurance: user.insurance };
 
