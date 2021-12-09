@@ -21,7 +21,7 @@ class Appointment extends React.Component{
                     {this.props.appointments.map(appointment => <AppointmentIndexItem appointment={appointment} key = {appointment.id} />)}
                 </div>
                 <div>
-                    <Link to={`/appointmentForm/`}>
+                    <Link to={`/appointmentForm/61b1037031b9d300be983f46`}>
                         <button className='create-appoint-button'>
                             Create an appointment
                         </button>

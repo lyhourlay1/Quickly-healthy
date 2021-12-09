@@ -12,9 +12,16 @@ class AppointmentForm extends React.Component{
             name: this.props.currentUser.handle,
             reason:"",
             date: "",
-            selectedSlot: ""
+            selectedSlot: "",
+            grid: this.generateCalenderList(0)
         }
-        this.grid = this.generateCalenderList();
+        
+        this.month = "";
+        
+    }
+
+    componentDidMount(){
+        this.props.fetchDoctor(this.props.doctorId)
     }
 
     update(field){
@@ -33,13 +40,33 @@ class AppointmentForm extends React.Component{
         }
 
     }
+    handleClickNext(field){
+        let newGrid = this.generateCalenderList(+1)
+        return (e)=>{
+            this.setState({[field]: newGrid})
+        }
+    }
+    handleClickBack(field){
+        let newGrid = this.generateCalenderList(-1)
+        return (e)=>{
+            this.setState({[field]: newGrid})
+        }
+    }
 
-    generateCalenderList(){
-        const availabilites = {"Tue Dec 07 2021": [9,10,11], "Wed Dec 08 2021": [9,10,11,12]}
+    generateCalenderList(num){
+        const availabilites = {"Tue Dec 07 2021": [9, 10, 11], "Wed Dec 08 2021": [9,10, 11]}
         let days ={"Mon": [], "Tue":[], "Wed":[], "Thu":[], "Fri":[], "Sat":[], "Sun":[]}
-        let today= new Date(Date.now())
-        let thisMonth = today.getMonth()
-        let thisYear = today.getFullYear()
+        let today= new Date(Date.now());
+        let thisMonth = today.getMonth();
+        debugger
+        if(this.month){
+            thisMonth = new Date(Date.parse(this.state.grid[15].day)).getMonth()+num
+        }
+        this.month = thisMonth
+        let thisYear = today.getFullYear();
+        // if(thisMonth ===12){
+        //     this.month = 0
+        // }
         let firstDayOfMonth = new Date(thisYear, thisMonth, 1)
         let firstDayStr = firstDayOfMonth.toDateString().split(" ")
         days[firstDayStr[0]].push(firstDayOfMonth.toDateString())
@@ -81,11 +108,12 @@ class AppointmentForm extends React.Component{
         return schedules
     }
     render(){
+        debugger
         let submissionForm= <div></div>
         if(this.state.selectedSlot){
             submissionForm= 
             <div>
-                <div>Appointment on {this.state.date} at {this.state.selectedSlot}</div>
+                <div>Appointment on {this.state.date} at {this.state.selectedSlot} with Dr.{this.props.doctor.name}</div>
                 <div>
                     Name:
                     <input type="text" value={this.state.name} onChange={this.update('name')}/>
@@ -106,6 +134,7 @@ class AppointmentForm extends React.Component{
             <div>
                 {/* <input type="date" value={today} min={min} max={max} onChange={this.update('date')}/> */}
                 {display}
+                <div>{this.state.grid[15].day.split(" ")[1]} {this.state.grid[15].day.split(" ")[3]}</div>
                 <div className= "grid-flex">
                     <div className= "grid">Monday</div>
                     <div className= "grid">Tuesday</div>
@@ -115,16 +144,17 @@ class AppointmentForm extends React.Component{
                     <div className= "grid">Saturday</div>
                     <div className= "grid">Sunday</div>
                     {/* {this.grid.map((date, idx)=> <DateIndexItem date = {date.day} slots={date.slots} key={idx}/>) }                 */}
-                    {this.grid.map((date, idx)=> 
+                    {this.state.grid.map((date, idx)=> 
                         <div>
                             {date.day.split(" ")[2]}
                             <div>
                                 {date.slots.map(slot=> <button onClick={this.handleClickUpdate('selectedSlot', date.day)} value = {slot}> {slot}</button>)}
                             </div>
-
                         </div>)}                 
                 </div>
                 {submissionForm}
+                <button onClick= {this.handleClickBack('grid')}>Back </button>
+                <button onClick= {this.handleClickNext('grid')}>Next</button>
 
             </div>
         )
