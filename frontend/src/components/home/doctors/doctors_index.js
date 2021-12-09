@@ -6,17 +6,29 @@ export default class DoctorIndex extends React.Component {
   render() {
     let { doctors, currentUser } = this.props;
 
+    debugger
     return (
       <div className="doctors-index">
         <div className="doctors-index-header">
-          Doctors Near: San Francisco, CA that are in-network with {currentUser.insurance}
+          {currentUser.insurance === "None" ? (
+            <div>
+              Doctors Near: San Francisco, CA that don't require insurance
+            </div>
+          ) : (
+            <div>
+              Doctors Near: San Francisco, CA that are in-network with
+              {currentUser.insurance}
+            </div>
+          )}
         </div>
 
         <ul className="doctors-list">
           {Object.values(doctors).map((doctor) => {
-            return doctor.insurances.includes(currentUser.insurance)
-              ? <DoctorIndexItem key={doctor._id} doctor={doctor} />
-              : null
+            debugger;
+            return doctor.insurances.includes(currentUser.insurance) ||
+              doctor.insurances.includes("Insurance not required") ? (
+              <DoctorIndexItem key={doctor._id} doctor={doctor} />
+            ) : null;
           })}
         </ul>
       </div>
