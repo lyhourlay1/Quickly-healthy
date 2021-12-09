@@ -8,6 +8,9 @@ export default class AppointmentIndex extends React.Component {
     
     return (
       <div className="appointment-index">
+        <div className="index-header">
+          Upcoming appointments
+        </div>
         <ul className="appointment-list">
           {appointments.map((appointment, idx) => (
             <AppointmentIndexItem
