@@ -85,10 +85,6 @@ a.doctors-image > img {
   text-decoration: underline;
 }
 
-.doctors-titles > #address:hover {
-  text-decoration: underline;
-}
-
 .doctors-titles > div {
   font-size: 14px;
   font-weight: 400;

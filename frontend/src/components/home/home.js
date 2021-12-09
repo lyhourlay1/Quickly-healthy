@@ -8,12 +8,13 @@ export default class Home extends React.Component {
   }
 
   render() {
-    if (!this.props.doctors) return null;
+    let { doctors, currentUser } = this.props;
+    if (!doctors) return null;
     
     return (
       <div className="home-container">
-        <DoctorIndex doctors={this.props.doctors} />
-        <Map doctors={this.props.doctors} />
+        <DoctorIndex doctors={this.props.doctors} currentUser={currentUser} />
+        <Map doctors={this.props.doctors} currentUser={currentUser} />
       </div>
     );
   }
