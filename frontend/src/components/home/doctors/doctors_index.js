@@ -16,7 +16,7 @@ export default class DoctorIndex extends React.Component {
           ) : (
             <div>
               Doctors Near: San Francisco, CA that are in-network with
-              {currentUser.insurance}
+              {` ${currentUser.insurance}`}
             </div>
           )}
         </div>

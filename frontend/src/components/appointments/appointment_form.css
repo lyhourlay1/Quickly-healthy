@@ -33,8 +33,21 @@
     background-color: beige;
 }
 
-.doctors-titles {
+#profile.doctors-titles {
     background: beige;
+    padding: 8px;
+}
+
+#profile.doctors-titles > div:first-child {
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 24px;
+    font-weight: 600;
+}
+
+#profile.doctors-titles > div {
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 18px;
+    font-weight: 400;
 }
 
 .image-container {
