@@ -1,4 +1,4 @@
-import appointments from "../../../../validation/appointments";
+// import appointments from "../../../../validation/appointments";
 import {
     RECEIVE_DOCTORS,
     RECEIVE_DOCTOR,
