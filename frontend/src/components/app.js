@@ -26,7 +26,7 @@ const App = () => (
       <ProtectedRoute exact path="/doctors/:id" component={DoctorProfileContainer} />
       <ProtectedRoute exact path="/home" component={HomeContainer} />
       <ProtectedRoute exact path="/profile" component={ProfileContainer} />
-      <ProtectedRoute exact path="/appointmentForm" component={AppointmentFormContainer} />
+      <ProtectedRoute exact path="/appointmentForm/:doctorId" component={AppointmentFormContainer} />
     </Switch>
   </div>
 );
