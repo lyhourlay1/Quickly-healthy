@@ -32,7 +32,6 @@ router.get("/", (req, res) => {
  * @response {Object} json - The doctor
  */
 router.get("/:id", (req, res) => {
-    // debugger
     let today = Date.now();
     let date = new Date(today);
     let nextThirtyDays = {};
