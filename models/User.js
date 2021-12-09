@@ -22,6 +22,14 @@ const UserSchema = new Schema({
     type: String,
     required: true
   },
+  image: {
+    type: Object,
+    required: false
+  },
+  files: {
+    type: Object,
+    required: false
+  },
   date: {
     type: Date,
     default: Date.now
