@@ -34,6 +34,7 @@ router.get("/", (req, res) => {
  */
 router.get("/:id", (req, res) => {
     Doctor.findById(req.params.id)
+    
         .then((doctor) => res.json(doctor))
         .catch((err) =>
             res.status(404).json({nodoctorfound: `No doctor found with that ID: ${req.params.id}`})
