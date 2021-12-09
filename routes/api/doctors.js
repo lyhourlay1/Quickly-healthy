@@ -32,39 +32,40 @@ router.get("/", (req, res) => {
  * @response {Object} json - The doctor
  */
 router.get("/:id", (req, res) => {
+    debugger
+    let today = Date.now();
+    let date = new Date(today);
+    let nextThirtyDays = {};
+    let nextDay = new Date(date);
+
+    for (let i = 0; i < 30; i++) {
+      nextDay.setDate(nextDay.getDate() + 1);
+
+      nextDay = new Date(nextDay);
+      let stringDate = nextDay.toString().split(' ').slice(0, -5).join(' ');
+      if(!nextThirtyDays[stringDate]) {
+        nextThirtyDays[stringDate] = [9, 10, 11, 12, 13, 14, 15, 16, 17];
+      }
+      // nextThirtyDays[stringDate] = [9, 10, 11, 12, 13, 14, 15, 16, 17];
+    }
+    let doctor = Doctor.findById(req.params.id);
+    // let doctorAvailability = Doctor.findById(req.params.id).availabilityString;
     Doctor.findById(req.params.id)
-        // .then((doctor) => {
-        //     let today = Date.now();
-        //     let date = new Date(today);
-        //     let nextThirtyDays = {};
-        //     let nextDay = new Date(date);
-
-        //     for (let i = 0; i < 30; i++) {
-        //       nextDay.setDate(nextDay.getDate() + 1);
-
-        //       nextDay = new Date(nextDay);
-        //       let stringDate = nextDay
-        //         .toString()
-        //         .split(" ")
-        //         .slice(0, -5)
-        //         .join(" ");
-        //       if (!nextThirtyDays[stringDate]) {
-        //         nextThirtyDays[stringDate] = [
-        //           9, 10, 11, 12, 13, 14, 15, 16, 17,
-        //         ];
-        //       }
-        //       // nextThirtyDays[stringDate] = [9, 10, 11, 12, 13, 14, 15, 16, 17];
-        //     }
-        //     return nextThirtyDays;
-        // });
-
-        .then((doctor) => {
-            console.log(doctor);
-            res.json(doctor);
+        .then(dr => {
+            debugger
+            for (const k, v in nextThirtyDays) {
+                if(dr.availabilityString[k]) {
+                    nextThirtyDays[k] = dr.availabilityString[k]
+                }
+            }
+            dr.availabilityString = nextThirtyDays;
+            dr.save();
         })
-        .catch((err) =>
-            res.status(404).json(`No doctor found with ID: ${req.params.id}`)
-        );
+        
+        // .then((doctor) => res.json(doctor))
+        // .catch((err) =>
+        //     res.status(404).json(`No doctor found with ID: ${req.params.id}`)
+        // );
 });
 
 
@@ -79,22 +80,7 @@ router.post("/", (req, res) => {
         if (!isValid) {
             return res.status(400).json(errors);
         }     
-        
-        // let params = doctorParams(req);
-        // let date = new Date(params.date)
-        // let nextThirtyDays = [];
-        // let nextDay = new Date(date)
-
-        // for(let i = 0; i < 30; i++) {
-        //     nextDay.setDate(nextDay.getDate() + 1);
-        //     nextThirtyDays.push(new Date(nextDay));
-        // }
-
-        // let availabilityInteger = nextDay.getDate();
-        // let availabilityString = nextDay.toString().split(" ").slice(0,-5).join(" ");
-        // params[availabilityString] = [9, 10, 11, 12, 13, 14, 15, 16, 17];
-        // params[availabilityInteger] = [9, 10, 11, 12, 13, 14, 15, 16, 17];
-
+    
         const newDoctor = new Doctor(doctorParams(req));
         newDoctor._id = newDoctor._id;
         newDoctor.save().then(doc => res.json(doc));
