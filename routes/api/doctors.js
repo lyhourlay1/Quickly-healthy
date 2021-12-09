@@ -33,8 +33,35 @@ router.get("/", (req, res) => {
  */
 router.get("/:id", (req, res) => {
     Doctor.findById(req.params.id)
-    
-        .then((doctor) => res.json(doctor))
+        // .then((doctor) => {
+        //     let today = Date.now();
+        //     let date = new Date(today);
+        //     let nextThirtyDays = {};
+        //     let nextDay = new Date(date);
+
+        //     for (let i = 0; i < 30; i++) {
+        //       nextDay.setDate(nextDay.getDate() + 1);
+
+        //       nextDay = new Date(nextDay);
+        //       let stringDate = nextDay
+        //         .toString()
+        //         .split(" ")
+        //         .slice(0, -5)
+        //         .join(" ");
+        //       if (!nextThirtyDays[stringDate]) {
+        //         nextThirtyDays[stringDate] = [
+        //           9, 10, 11, 12, 13, 14, 15, 16, 17,
+        //         ];
+        //       }
+        //       // nextThirtyDays[stringDate] = [9, 10, 11, 12, 13, 14, 15, 16, 17];
+        //     }
+        //     return nextThirtyDays;
+        // });
+
+        .then((doctor) => {
+            console.log(doctor);
+            res.json(doctor);
+        })
         .catch((err) =>
             res.status(404).json(`No doctor found with ID: ${req.params.id}`)
         );
