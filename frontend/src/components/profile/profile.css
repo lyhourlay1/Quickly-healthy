@@ -10,13 +10,7 @@
     padding: 1vw;
 }
 
-.profile-picture-grid-item {
-    display: flex;
-    align-items: center;
-    align-content: center;
-    justify-content: center;
-    justify-items: center;
-}
+
 
 .profile-img {
     border-radius: 50%;
