@@ -5,7 +5,7 @@ import AppointmentDetails from "./appointment_details";
 
 const Modal = ({ modal }) => {
   if (!modal) {
-    document.body.style.overflow = "scroll-y";
+    document.body.style.overflow = "scroll";
     return null;
   }
 
@@ -22,7 +22,7 @@ const Modal = ({ modal }) => {
   }
 };
 
-const mSTP = (state) => {
+const mSTP = (state, ownProps) => {
   return {
     modal: state.modal,
   };

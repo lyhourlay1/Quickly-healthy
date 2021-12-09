@@ -1,6 +1,7 @@
 import React from "react";
 import AppointmentIndex from "../appointments/appointment_index";
 import { DEFAULT_PROFILE_PICTURE } from "../../util/icons_and_images_util";
+import './user_profile.css';
 
 class UserProfile extends React.Component {
   componentDidMount() {

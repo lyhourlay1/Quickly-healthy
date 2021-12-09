@@ -1,16 +1,24 @@
 import React from "react";
-import { closeModal } from "../../actions/modal_actions";
+import { connect } from "react-redux";
+import { closeModal } from '../../actions/modal_actions';
+import './appointment_details.css';
 
-const AppointmentDetails = ({ appointment, currentUser, updateAppointment }) => {
+const AppointmentDetails = ({ appointment, currentUser, updateAppointment, closeModal }) => {
   return (
     <div className="appointment-details-modal-background">
       <div className="appointment-details">
         <div><button onClick={closeModal}>close</button></div>
-        <div>{appointment.date}</div>
-        <div>{appointment.reason}</div>
+        <div>Date and time: {appointment.date}</div>
+        <div>Reason for visit: {appointment.reason}</div>
       </div>
     </div>
   )
 };
 
-export default AppointmentDetails;
+const mDTP =(dispatch) => {
+  return {
+    closeModal: () => dispatch(closeModal()),
+  }
+}
+
+export default connect(null, mDTP)(AppointmentDetails);

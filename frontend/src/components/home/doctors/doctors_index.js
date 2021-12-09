@@ -5,7 +5,8 @@ import DoctorIndexItem from "./doctors_index_item";
 export default class DoctorIndex extends React.Component {
   render() {
     let { doctors, currentUser } = this.props;
-    
+    if (Object.values(doctors).legnth === 0) return null;
+
     return (
       <div className="doctors-index">
         <div className="doctors-index-header">
@@ -16,7 +17,7 @@ export default class DoctorIndex extends React.Component {
           ) : (
             <div>
               Doctors Near: San Francisco, CA that are in-network with
-              {currentUser.insurance}
+              {` ${currentUser.insurance}`}
             </div>
           )}
         </div>

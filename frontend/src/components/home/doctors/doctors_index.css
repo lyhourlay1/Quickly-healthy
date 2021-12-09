@@ -46,7 +46,7 @@
   margin-bottom: 12px;
 }
 
-a.doctors-image {
+.doctors-image > div {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -56,9 +56,10 @@ a.doctors-image {
   border: 1px solid rgb(13, 28, 61);
   cursor: pointer;
   background-color: white;
+  overflow: hidden;
 }
 
-a.doctors-image > img {
+.doctors-image > div > img {
   width: 50px;
   height: 50px;
   object-fit: cover;

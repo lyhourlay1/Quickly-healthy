@@ -86,7 +86,7 @@ class SignupForm extends React.Component {
                 placeholder="Confirm Password"
               />
               <br />
-              <label for="insurance-list">
+              <label htmlFor="insurance-list">
                 Who is your insurance provider?
               </label>
               <select onChange={this.update("insurance")}>
