@@ -6,6 +6,8 @@ export default class DoctorIndex extends React.Component {
   render() {
     let { doctors, currentUser } = this.props;
 
+    if (Object.values(doctors).legnth === 0) return null;
+
     return (
       <div className="doctors-index">
         <div className="doctors-index-header">

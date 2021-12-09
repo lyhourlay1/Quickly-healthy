@@ -66,7 +66,9 @@ const sample = (arr) => {
 
 // return random subset arr of size length and sorts it
 const randSubset = (arr, size) => {
-  return shuffle(arr).slice(0, arr.length - size).sort();
+  let sub = shuffle(arr).slice(0, size).sort();
+  if (sub.length === 0) return sample(arr);
+  return sub;
 };
 
 const doctors = [
@@ -77,7 +79,7 @@ const doctors = [
     specialty: sample(doctorSpecialties),
     insurances: randSubset(
       insuranceCompanies,
-      Math.floor(Math.random() * insuranceCompanies.length)
+      Math.ceil(Math.random() * insuranceCompanies.length)
     ),
     availabilites: {
       "Monday Jan 21": [10, 11, 12, 13, 14],
@@ -92,7 +94,7 @@ const doctors = [
     specialty: sample(doctorSpecialties),
     insurances: randSubset(
       insuranceCompanies,
-      Math.floor(Math.random() * insuranceCompanies.length)
+      Math.ceil(Math.random() * insuranceCompanies.length)
     ),
     availabilites: {
       Monday: { start: 8, end: 11 },
@@ -107,7 +109,7 @@ const doctors = [
     specialty: sample(doctorSpecialties),
     insurances: randSubset(
       insuranceCompanies,
-      Math.floor(Math.random() * insuranceCompanies.length)
+      Math.ceil(Math.random() * insuranceCompanies.length)
     ),
     availabilites: {
       Monday: { start: 8, end: 11 },
@@ -122,7 +124,7 @@ const doctors = [
     specialty: sample(doctorSpecialties),
     insurances: randSubset(
       insuranceCompanies,
-      Math.floor(Math.random() * insuranceCompanies.length)
+      Math.ceil(Math.random() * insuranceCompanies.length)
     ),
     availabilites: {
       Monday: { start: 8, end: 11 },
@@ -137,7 +139,7 @@ const doctors = [
     specialty: sample(doctorSpecialties),
     insurances: randSubset(
       insuranceCompanies,
-      Math.floor(Math.random() * insuranceCompanies.length)
+      Math.ceil(Math.random() * insuranceCompanies.length)
     ),
     availabilites: {
       Monday: { start: 8, end: 11 },
@@ -152,7 +154,7 @@ const doctors = [
     specialty: sample(doctorSpecialties),
     insurances: randSubset(
       insuranceCompanies,
-      Math.floor(Math.random() * insuranceCompanies.length)
+      Math.ceil(Math.random() * insuranceCompanies.length)
     ),
     availabilites: {
       Monday: { start: 8, end: 11 },
@@ -167,7 +169,7 @@ const doctors = [
     specialty: sample(doctorSpecialties),
     insurances: randSubset(
       insuranceCompanies,
-      Math.floor(Math.random() * insuranceCompanies.length)
+      Math.ceil(Math.random() * insuranceCompanies.length)
     ),
     availabilites: {
       Monday: { start: 8, end: 11 },
@@ -182,7 +184,7 @@ const doctors = [
     specialty: sample(doctorSpecialties),
     insurances: randSubset(
       insuranceCompanies,
-      Math.floor(Math.random() * insuranceCompanies.length)
+      Math.ceil(Math.random() * insuranceCompanies.length)
     ),
     availabilites: {
       Monday: { start: 8, end: 11 },
@@ -197,7 +199,7 @@ const doctors = [
     specialty: sample(doctorSpecialties),
     insurances: randSubset(
       insuranceCompanies,
-      Math.floor(Math.random() * insuranceCompanies.length)
+      Math.ceil(Math.random() * insuranceCompanies.length)
     ),
     availabilites: {
       Monday: { start: 8, end: 11 },
@@ -212,7 +214,7 @@ const doctors = [
     specialty: sample(doctorSpecialties),
     insurances: randSubset(
       insuranceCompanies,
-      Math.floor(Math.random() * insuranceCompanies.length)
+      Math.ceil(Math.random() * insuranceCompanies.length)
     ),
     availabilites: {
       Monday: { start: 8, end: 11 },
@@ -227,7 +229,7 @@ const doctors = [
     specialty: sample(doctorSpecialties),
     insurances: randSubset(
       insuranceCompanies,
-      Math.floor(Math.random() * insuranceCompanies.length)
+      Math.ceil(Math.random() * insuranceCompanies.length)
     ),
     availabilites: {
       Monday: { start: 9, end: 14 },
@@ -242,7 +244,7 @@ const doctors = [
     specialty: sample(doctorSpecialties),
     insurances: randSubset(
       insuranceCompanies,
-      Math.floor(Math.random() * insuranceCompanies.length)
+      Math.ceil(Math.random() * insuranceCompanies.length)
     ),
     availabilites: {
       Monday: { start: 9, end: 14 },
@@ -257,7 +259,7 @@ const doctors = [
     specialty: sample(doctorSpecialties),
     insurances: randSubset(
       insuranceCompanies,
-      Math.floor(Math.random() * insuranceCompanies.length)
+      Math.ceil(Math.random() * insuranceCompanies.length)
     ),
     availabilites: {
       Monday: { start: 9, end: 14 },
@@ -272,7 +274,7 @@ const doctors = [
     specialty: sample(doctorSpecialties),
     insurances: randSubset(
       insuranceCompanies,
-      Math.floor(Math.random() * insuranceCompanies.length)
+      Math.ceil(Math.random() * insuranceCompanies.length)
     ),
     availabilites: {
       Monday: { start: 9, end: 14 },
@@ -287,7 +289,7 @@ const doctors = [
     specialty: sample(doctorSpecialties),
     insurances: randSubset(
       insuranceCompanies,
-      Math.floor(Math.random() * insuranceCompanies.length)
+      Math.ceil(Math.random() * insuranceCompanies.length)
     ),
     availabilites: {
       Monday: { start: 9, end: 14 },
@@ -302,7 +304,7 @@ const doctors = [
     specialty: sample(doctorSpecialties),
     insurances: randSubset(
       insuranceCompanies,
-      Math.floor(Math.random() * insuranceCompanies.length)
+      Math.ceil(Math.random() * insuranceCompanies.length)
     ),
     availabilites: {
       Monday: { start: 9, end: 14 },
@@ -317,7 +319,7 @@ const doctors = [
     specialty: sample(doctorSpecialties),
     insurances: randSubset(
       insuranceCompanies,
-      Math.floor(Math.random() * insuranceCompanies.length)
+      Math.ceil(Math.random() * insuranceCompanies.length)
     ),
     availabilites: {
       Monday: { start: 9, end: 14 },
@@ -332,7 +334,7 @@ const doctors = [
     specialty: sample(doctorSpecialties),
     insurances: randSubset(
       insuranceCompanies,
-      Math.floor(Math.random() * insuranceCompanies.length)
+      Math.ceil(Math.random() * insuranceCompanies.length)
     ),
     availabilites: {
       Monday: { start: 9, end: 14 },

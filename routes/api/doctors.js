@@ -32,39 +32,29 @@ router.get("/", (req, res) => {
  * @response {Object} json - The doctor
  */
 router.get("/:id", (req, res) => {
-    Doctor.findById(req.params.id)
-        // .then((doctor) => {
-        //     let today = Date.now();
-        //     let date = new Date(today);
-        //     let nextThirtyDays = {};
-        //     let nextDay = new Date(date);
+    Doctor.findById(req.params.id).then((doctor) => {
+      let dupAS = Object.assign({}, doctor.availabilityString);
+      let today = Date.now();
+      let date = new Date(today);
+      console.log(doctor, "DOCTOR");
+      let nextDay = new Date(date);
 
-        //     for (let i = 0; i < 30; i++) {
-        //       nextDay.setDate(nextDay.getDate() + 1);
+      for (let i = 0; i < 30; i++) {
+        nextDay.setDate(nextDay.getDate() + 1);
 
-        //       nextDay = new Date(nextDay);
-        //       let stringDate = nextDay
-        //         .toString()
-        //         .split(" ")
-        //         .slice(0, -5)
-        //         .join(" ");
-        //       if (!nextThirtyDays[stringDate]) {
-        //         nextThirtyDays[stringDate] = [
-        //           9, 10, 11, 12, 13, 14, 15, 16, 17,
-        //         ];
-        //       }
-        //       // nextThirtyDays[stringDate] = [9, 10, 11, 12, 13, 14, 15, 16, 17];
-        //     }
-        //     return nextThirtyDays;
-        // });
+        nextDay = new Date(nextDay);
+        let stringDate = nextDay.toString().split(' ').slice(0, -5).join(' ');
+        if (!dupAS[stringDate]) {
+          dupAS[stringDate] = [9, 10, 11, 12, 13, 14, 15, 16, 17];
+        }
+      }
 
-        .then((doctor) => {
-            console.log(doctor);
-            res.json(doctor);
-        })
-        .catch((err) =>
-            res.status(404).json(`No doctor found with ID: ${req.params.id}`)
-        );
+      doctor.availabilityString = dupAS;
+      return res.json(doctor);
+    })
+    .catch((err) =>
+        res.status(404).json(`No doctor found with ID: ${req.params.id}`)
+    );
 });
 
 
