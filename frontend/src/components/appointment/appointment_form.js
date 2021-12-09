@@ -54,7 +54,7 @@ class AppointmentForm extends React.Component{
     }
 
     generateCalenderList(num){
-        const availabilites = {"Tue Dec 07 2021": [9,10,11], "Wed Dec 08 2021": [9,10,11,12]}
+        const availabilites = {"Tue Dec 07 2021": [9, 10, 11], "Wed Dec 08 2021": [9,10, 11]}
         let days ={"Mon": [], "Tue":[], "Wed":[], "Thu":[], "Fri":[], "Sat":[], "Sun":[]}
         let today= new Date(Date.now());
         let thisMonth = today.getMonth();
@@ -150,12 +150,11 @@ class AppointmentForm extends React.Component{
                             <div>
                                 {date.slots.map(slot=> <button onClick={this.handleClickUpdate('selectedSlot', date.day)} value = {slot}> {slot}</button>)}
                             </div>
-
                         </div>)}                 
                 </div>
                 {submissionForm}
-{                <button onClick= {this.handleClickBack('grid')}>Back </button>
-}                <button onClick= {this.handleClickNext('grid')}>Next</button>
+                <button onClick= {this.handleClickBack('grid')}>Back </button>
+                <button onClick= {this.handleClickNext('grid')}>Next</button>
 
             </div>
         )
