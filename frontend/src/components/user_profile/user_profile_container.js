@@ -1,18 +1,20 @@
 import { connect } from "react-redux";
-import Profile from "./user_profile";
+import { fetchUserAppointments } from "../../actions/appointment_actions";
+import { openModal } from "../../actions/modal_actions";
+import UserProfile from "./user_profile";
 
-// const mapStateToProps = (state) => {
-//   return {
-//     // tweets: Object.values(state.tweets.user),
-//     // currentUser: state.session.user,
-//     null
-//   };
-// };
+const mSTP = (state) => {
+  return {
+    currentUser: state.session.user,
+    appointments: Object.values(state.entities.appointments),
+  };
+};
 
-// const mapDispatchToProps = (dispatch) => {
-//   return {
-//     fetchUserTweets: (id) => dispatch(fetchUserTweets(id)),
-//   };
-// };
+const mDTP = (dispatch) => {
+  return {
+    fetchUserAppointments: (userId) => dispatch(fetchUserAppointments(userId)),
+    openModal: (modalType, entity) => dispatch(openModal(modalType, entity)),
+  };
+};
 
-export default connect(null, null)(Profile);
+export default connect(mSTP, mDTP)(UserProfile);
