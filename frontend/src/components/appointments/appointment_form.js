@@ -128,15 +128,9 @@ class AppointmentForm extends React.Component{
 
             </div>
         }
-        let display = (<div></div>)
-        if(this.state.availabilites.length===0){
-            display = (<h1> No Slots available</h1>) 
-        }
         return(
-            <div>
-                {/* <input type="date" value={today} min={min} max={max} onChange={this.update('date')}/> */}
-                {display}
-                <div>{this.state.grid[15].day.split(" ")[1]} {this.state.grid[15].day.split(" ")[3]}</div>
+            <div className="form-container">
+                <div className="month-year">{this.state.grid[15].day.split(" ")[1]} {this.state.grid[15].day.split(" ")[3]}</div>
                 <div className= "grid-flex">
                     <div className= "grid">Monday</div>
                     <div className= "grid">Tuesday</div>
@@ -147,7 +141,7 @@ class AppointmentForm extends React.Component{
                     <div className= "grid">Sunday</div>
                     {/* {this.grid.map((date, idx)=> <DateIndexItem date = {date.day} slots={date.slots} key={idx}/>) }                 */}
                     {this.state.grid.map((date, idx)=> 
-                        <div>
+                        <div className ="grid">
                             {date.day.split(" ")[2]}
                             <div>
                                 {date.slots.map(slot=> <button onClick={this.handleClickUpdate('selectedSlot', date.day)} value = {slot}> {slot}</button>)}
@@ -156,7 +150,7 @@ class AppointmentForm extends React.Component{
                 </div>
                 {submissionForm}
                 <button onClick= {this.handleClickBack('grid')}>Back </button>
-                <button onClick= {this.handleClickNext('grid')}>Next</button>
+                <button onClick= {this.handleClickNext('grid')} className="next-button">Next</button>
 
             </div>
         )

@@ -14,11 +14,13 @@ export default class DoctorProfile extends React.Component {
     return (
       <div className="doctor-profile">
         <div className="doctor-profile-header">
-          <div className="image-container"><img src={DEFAULT_PROFILE_PICTURE} alt="" /></div>
-          <div className="doctors-titles">
-            <div>{doctor.name}</div>
-            <div>{doctor.specialty}</div>
-            <div id="address">{doctor.address}</div>
+          <div className="image-container"><img src={DEFAULT_PROFILE_PICTURE} alt="" width="300px"/>
+            <div className="doctors-titles">
+              <div>{doctor.name}</div>
+              <div>{doctor.specialty}</div>
+              <div id="address">{doctor.address}</div>
+            </div>
+          
           </div>
         </div>
 
