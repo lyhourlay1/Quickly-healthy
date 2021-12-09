@@ -1,16 +1,11 @@
 import React from "react"
 import { Link } from "react-router-dom";
 import { DEFAULT_PROFILE_PICTURE } from "../../../util/icons_and_images_util";
-import './doctors.css'
-
-const handleClick = (doctor) => {
-  // redirect to doctor show page
-  console.log('hello');
-};
+import './doctors_index.css'
 
 const DoctorIndexItem = ({ doctor }) => {
   return (
-    <li className="doctors-index-item" onClick={() => handleClick(doctor)}>
+    <li className="doctors-index-item">
       <div className="item-header">
         <Link className="doctors-image" to={`/doctors/${doctor._id}`}>
           <img src={DEFAULT_PROFILE_PICTURE} alt="" />

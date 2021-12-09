@@ -69,21 +69,15 @@ allow user to find the doctor by location.
 
 ## Group Members and Work Breakdown
 ### Day 1
-Emmett
+Emmett/Mauricio
 * backend user auth/setup api
 
-Lee
+Lee/Grayson
 * front end user auth
-
-Grayson
-* front end user auth
-
-Mauricio
-* backend user auth/setup api
 
 ### Day 2
 Emmett
-* setup map api(backend)
+* connect aws to backend
 
 Lee
 * implement appointments/check in (backend)
@@ -95,7 +89,7 @@ Mauricio
 * setup health record (backend)
 ### Day 3
 Emmett
-* work on map (backend)
+* work on appointment backend
 
 Lee
 * implement appointments/check in (frontend)
@@ -107,15 +101,15 @@ Mauricio
 * finish health record (backend) and connect to frontend
 ### Day 4
 Emmett
-* complete backend map/test/debug
+* complete backend/test/debug
 
 Lee
-* complete backend map/test/debug
+* complete appointment system
 
 Grayson
 * finish map on front end
 
 Mauricio
-* complete frontend health record and assist with finishing frontend map
+* complete health records and assist with finishing frontend map
 ### Day 5
 * update readMe, deploy to heroku

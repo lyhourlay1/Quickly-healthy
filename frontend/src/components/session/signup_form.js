@@ -54,11 +54,9 @@ class SignupForm extends React.Component {
     return (
       <div className="signup-form-container">
         <form onSubmit={this.handleSubmit}>
-          <div className="session-box">     
+          <div className="session-box">
             <div className="inputs">
-              <h1>
-                Welcome to Quickly Healthy!
-              </h1>
+              <h1>Welcome to Quickly Healthy!</h1>
               <br />
               <input
                 type="text"
@@ -88,20 +86,36 @@ class SignupForm extends React.Component {
                 placeholder="Confirm Password"
               />
               <br />
-              <input
-                type="text"
-                value={this.state.insurance}
-                onChange={this.update("insurance")}
-                placeholder="Insurance"
-              />
+              <label for="insurance-list">
+                Who is your insurance provider?
+              </label>
+              <select onChange={this.update("insurance")}>
+                <option selected disabled hidden>choose one...</option>
+                <option value="None">None</option>
+                <option value="Aetna">Aetna</option>
+                <option value="Blue Cross Blue Shield">
+                  Blue Cross Blue Shield
+                </option>
+                <option value="Blue Shield of CA">Blue Shield of CA</option>
+                <option value="Cigna">Cigna</option>
+                <option value="UnitedHealthCare">UnitedHealthCare</option>
+                <option value="Kaiser Permanente">Kaiser Permanente</option>
+                <option value="Medicare">Medicare</option>
+                <option value="Medi-Cal">Medi-Cal</option>
+                <option value="Sutter Health">Sutter Health</option>
+                <option value="Health Net">Health Net</option>
+                <option value="Centene">Centene</option>
+                <option value="CVS Health">CVS Health</option>
+                <option value="Humana">Humana</option>
+              </select>
               <br />
               <input type="submit" value="Submit" />
-              <br/> 
+              <br />
               <h1 className="static-already">
-                Already have an account! Log in 
-                <Link to={"/login"}> Here!</Link> 
+                Already have an account! Log in
+                <Link to={"/login"}> Here!</Link>
               </h1>
-            
+
               {this.renderErrors()}
             </div>
           </div>

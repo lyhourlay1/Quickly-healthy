@@ -360,7 +360,6 @@ doctors.map(async (p, index) => {
     await p.save((err, result) => {
     if (index === doctors.length - 1) {
       console.log("DONE!");
-      debugger
       mongoose.disconnect();
     }
   });
