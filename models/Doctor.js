@@ -1,10 +1,10 @@
-const mongoose = require('mongoose');
+const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
 const DoctorSchema = new Schema({
   name: {
     type: String,
-    required: false
+    required: false,
   },
   specialty: {
     type: Array,
@@ -21,6 +21,14 @@ const DoctorSchema = new Schema({
   location: {
     type: Array,
     required: true
+  },
+  image: {
+    type: Object,
+    required: false
+  },
+  files: {
+    type: Object,
+    required: false
   },
   availabilityString: {
     type: Object,

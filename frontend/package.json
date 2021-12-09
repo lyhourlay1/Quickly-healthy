@@ -9,8 +9,7 @@
     "axios": "^0.24.0",
     "dotenv": "^10.0.0",
     "jwt-decode": "^3.1.2",
-    "mapbox-gl": "^1.10.1",
-    "multer": "^1.4.4",
+    "mapbox-gl": "^2.6.1",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-map-gl": "^5.2.11",
@@ -25,6 +24,7 @@
   "proxy": "http://localhost:5000",
   "scripts": {
     "start": "react-scripts start",
+    "start:options": "export NODE_OPTIONS=--openssl-legacy-provider && react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"

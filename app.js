@@ -1,27 +1,25 @@
-const express = require('express');
+const express = require("express");
 const app = express();
-const db = require('./config/keys').mongoURI;
-const mongoose = require('mongoose');
-const bodyParser = require('body-parser');
+const db = require("./config/keys").mongoURI;
+const mongoose = require("mongoose");
+const bodyParser = require("body-parser");
 const passport = require('passport');
-const path = require('path');
 
-if (process.env.NODE_ENV === 'production') {
-  app.use(express.static('frontend/build'));
-  app.get('/', (req, res) => {
-    res.sendFile(path.resolve(__dirname, 'frontend', 'build', 'index.html'));
+if (process.env.NODE_ENV === "production") {
+  app.use(express.static("frontend/build"));
+  app.get("/", (req, res) => {
+    res.sendFile(path.resolve(__dirname, "frontend", "build", "index.html"));
   });
 }
 
-const users = require('./routes/api/users');
-const appointments = require('./routes/api/appointments');
-const records = require('./routes/api/records');
-const doctors = require('./routes/api/doctors');
-const images = require('./routes/api/images');
+const users = require("./routes/api/users");
+const appointments = require("./routes/api/appointments");
+const records = require("./routes/api/records");
+const doctors = require("./routes/api/doctors");
 
 mongoose
   .connect(db, { useNewUrlParser: true })
-  .then(() => console.log('Connected to MongoDB successfully'))
+  .then(() => console.log("Connected to MongoDB successfully"))
   .catch((err) => console.log(err));
 
 app.use(passport.initialize());
@@ -34,8 +32,6 @@ app.use('/api/users', users);
 app.use('/api/appointments', appointments);
 app.use('/api/records', records);
 app.use('/api/doctors', doctors);
-app.use('/uploads', express.static('uploads'));
-app.use('/api/images', images);
 // app.use("/seed");
 
 const port = process.env.PORT || 5000;

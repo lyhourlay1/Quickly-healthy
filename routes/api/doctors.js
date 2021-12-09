@@ -122,4 +122,71 @@ router.delete("/:id", (req, res) => {
     }
 );
 
+
+/** Get an image
+ * GET: http://localhost:5000/api/doctors/image
+ * @response {Object} json - The image of a doctor
+ */
+router.get("/:id/image", (req, res) => {
+        Doctor.findById(req.params.id)
+            .then((doctor) => res.json(doctor.image))
+            .catch((err) => res.status(404).json(`No doctors found with ID: ${req.params.id}`));
+    }
+);
+
+
+/** Get Files
+ * GET: http://localhost:5000/api/doctors/files
+ * @response {Object} json - The files from a doctor
+ */
+router.get("/:id/files", (req, res) => {
+        Doctor.findById(req.params.id)
+            .then((doctor) => res.json(doctor.files))
+            .catch((err) => res.status(404).json(`No doctors found with ID: ${req.params.id}`));
+    }
+);
+
+
+/** Upload an image
+ * POST: http://localhost:5000/api/doctors/:id/image
+ * @response {Object} json - The doctor's previous state
+ */
+router.post("/:id/image", (req, res) => {
+    if (!req.files)
+        return res.send("You must select a file");
+
+    Doctor.findById(req.params.id)
+        .then((doctor) => {
+            doctor.image = req.files.image;
+            console.log(doctor)
+            return Doctor.findByIdAndUpdate(req.params.id, doctor)
+                .then(doctor => res.json(doctor)) // will not return the updated but the previous version
+                .catch(err => res.status(404).json(`Unable to update doctor with ID: ${req.params.id}`))
+        })
+        .catch((err) => res.status(404).json(`No doctor found with ID: ${req.params.id}`));
+    }
+);
+
+/** Upload files
+ * POST: http://localhost:5000/api/doctors/:id/files
+ * @response {Object} json - The doctor's previous state
+ */
+router.post("/:id/files", (req, res) => {
+        if (!req.files)
+            return res.send("You must select a file");
+
+        Doctor.findById(req.params.id)
+            .then((doctor) => {
+                doctor.files = doctor.files || {};
+                for (let key in req.files)
+                    doctor.files[key] = req.files[key];
+                return Doctor.findByIdAndUpdate(req.params.id, doctor)
+                    .then(doctor => res.json(doctor)) // will not return the updated but the previous version
+                    .catch(err => res.status(404).json(`Unable to update doctor with ID: ${req.params.id}`))
+            })
+            .catch((err) => res.status(404).json(`No doctor found with ID: ${req.params.id}`));
+    }
+);
+
+
 module.exports = router;
