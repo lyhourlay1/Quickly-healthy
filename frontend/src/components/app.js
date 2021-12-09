@@ -5,15 +5,17 @@ import NavBarContainer from "./nav/navbar_container";
 import LoginFormContainer from "./session/login_form_container";
 import SignupFormContainer from "./session/signup_form_container";
 import ProfileContainer from "./user_profile/user_profile_container";
-import AppointmentFormContainer from "./appointment/appointment_form_container"
+import AppointmentFormContainer from "./appointments/appointment_form_container"
 import Splash from "./splash/splash";
-import './reset.css';
 import HomeContainer from "./home/home_container";
 import DoctorProfileContainer from "./doctor_profile/doctor_profile_container";
+import Modal from "./modals/modal";
+import './reset.css';
 
 
 const App = () => (
   <div className="page-container">
+    <Modal />
     <NavBarContainer />
     <Switch>
       {/* <AuthRoute exact path="/" component={MainPage} /> */}
