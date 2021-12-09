@@ -10,7 +10,7 @@ const DoctorIndexItem = ({ doctor }) => {
         <Link className="doctors-image" to={`/doctors/${doctor._id}`}>
           <img src={DEFAULT_PROFILE_PICTURE} alt="" />
         </Link>
-
+    
         <div className="doctors-titles">
           <Link to={`/doctors/${doctor._id}`}>{doctor.name}</Link>
           <div>{doctor.specialty}</div>
