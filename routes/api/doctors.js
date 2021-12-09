@@ -32,7 +32,7 @@ router.get("/", (req, res) => {
  * @response {Object} json - The doctor
  */
 router.get("/:id", (req, res) => {
-    debugger
+    // debugger
     let today = Date.now();
     let date = new Date(today);
     let nextThirtyDays = {};
@@ -49,23 +49,24 @@ router.get("/:id", (req, res) => {
       // nextThirtyDays[stringDate] = [9, 10, 11, 12, 13, 14, 15, 16, 17];
     }
     let doctor = Doctor.findById(req.params.id);
-    // let doctorAvailability = Doctor.findById(req.params.id).availabilityString;
     Doctor.findById(req.params.id)
         .then(dr => {
-            debugger
-            for (const k, v in nextThirtyDays) {
+            // debugger
+            // for (const k, v in nextThirtyDays) {
+            for(let [k, v] of Object.entries(nextThirtyDays)) {
                 if(dr.availabilityString[k]) {
+                    // nextThirtyDays[k] = dr.availabilityString[k]
                     nextThirtyDays[k] = dr.availabilityString[k]
                 }
             }
             dr.availabilityString = nextThirtyDays;
             dr.save();
+            return res.json(dr)
         })
-        
         // .then((doctor) => res.json(doctor))
-        // .catch((err) =>
-        //     res.status(404).json(`No doctor found with ID: ${req.params.id}`)
-        // );
+        .catch((err) =>
+            res.status(404).json(`No doctor found with ID: ${req.params.id}`)
+        );
 });
 
 
