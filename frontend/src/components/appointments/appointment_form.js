@@ -1,15 +1,14 @@
 import React from 'react'
 import './appointment_form.css'
-const availabilitesInt = {10: [9,10,11], 12: [9,10,11,12]}
 
-process.env.TZ = 'America/Los Angeles' 
+
 class AppointmentForm extends React.Component{
     constructor(props){
         super(props)
-
+        
         this.state = {
             availabilites:"",
-            name: this.props.currentUser.handle,
+            name: props.currentUser.handle,
             reason:"",
             date: "",
             selectedSlot: "",
@@ -17,16 +16,12 @@ class AppointmentForm extends React.Component{
         }
         
         this.month = "";
+        this.handleClickCreateAppointment = this.handleClickCreateAppointment.bind(this)
         
-    }
-
-    componentDidMount(){
-        this.props.fetchDoctor(this.props.doctorId)
     }
 
     update(field){
         return (e)=>{
-            
             this.setState({[field]: e.target.value})
         }
     }
@@ -51,6 +46,14 @@ class AppointmentForm extends React.Component{
         return (e)=>{
             this.setState({[field]: newGrid})
         }
+    }
+
+    handleClickCreateAppointment(e){
+        e.preventDefault()
+        debugger
+        this.props.createAppointment({user_id: this.props.userId, name: this.state.name, reason: this.state.reason, selectedSlot: this.state.selectedSlot, date: this.state.date})
+        this.setState({["selectedSlot"]: ""})
+
     }
 
     generateCalenderList(num){
@@ -107,7 +110,8 @@ class AppointmentForm extends React.Component{
         return schedules
     }
     render(){
-        let submissionForm= <div></div>
+        
+        let submissionForm = <div></div>
         if(this.state.selectedSlot){
             submissionForm= 
             <div>
@@ -120,19 +124,13 @@ class AppointmentForm extends React.Component{
                     Reason:
                     <input type="text" value={this.state.reason} onChange={this.update('reason')}/>
                 </div>
-                <button onClick= {this.props.createAppointment}>Submit</button>
+                <button onClick= {this.handleClickCreateAppointment}>Submit</button>
 
             </div>
         }
-        let display = (<div></div>)
-        if(this.state.availabilites.length===0){
-            display = (<h1> No Slots available</h1>) 
-        }
         return(
-            <div>
-                {/* <input type="date" value={today} min={min} max={max} onChange={this.update('date')}/> */}
-                {display}
-                <div>{this.state.grid[15].day.split(" ")[1]} {this.state.grid[15].day.split(" ")[3]}</div>
+            <div className="form-container">
+                <div className="month-year">{this.state.grid[15].day.split(" ")[1]} {this.state.grid[15].day.split(" ")[3]}</div>
                 <div className= "grid-flex">
                     <div className= "grid">Monday</div>
                     <div className= "grid">Tuesday</div>
@@ -143,7 +141,7 @@ class AppointmentForm extends React.Component{
                     <div className= "grid">Sunday</div>
                     {/* {this.grid.map((date, idx)=> <DateIndexItem date = {date.day} slots={date.slots} key={idx}/>) }                 */}
                     {this.state.grid.map((date, idx)=> 
-                        <div>
+                        <div className ="grid">
                             {date.day.split(" ")[2]}
                             <div>
                                 {date.slots.map(slot=> <button onClick={this.handleClickUpdate('selectedSlot', date.day)} value = {slot}> {slot}</button>)}
@@ -152,7 +150,7 @@ class AppointmentForm extends React.Component{
                 </div>
                 {submissionForm}
                 <button onClick= {this.handleClickBack('grid')}>Back </button>
-                <button onClick= {this.handleClickNext('grid')}>Next</button>
+                <button onClick= {this.handleClickNext('grid')} className="next-button">Next</button>
 
             </div>
         )
