@@ -1,8 +1,7 @@
 import React from "react"
-import { Redirect } from "react-router";
 import { Link } from "react-router-dom";
 import { DEFAULT_PROFILE_PICTURE } from "../../../util/icons_and_images_util";
-import './doctors.css'
+import './doctors_index.css'
 
 const DoctorIndexItem = ({ doctor }) => {
   return (

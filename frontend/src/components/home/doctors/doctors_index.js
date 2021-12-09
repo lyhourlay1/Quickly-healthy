@@ -1,5 +1,5 @@
 import React from "react";
-import '../home.css';
+import './doctors_index.css';
 import DoctorIndexItem from "./doctors_index_item";
 
 export default class DoctorIndex extends React.Component {
