@@ -1,6 +1,6 @@
 import React from "react";
 import AppointmentIndexItem from "./appointment_index_item";
-import "./appointment.css";
+import "./appointment_index.css";
 
 export default class AppointmentIndex extends React.Component {
   render() {
