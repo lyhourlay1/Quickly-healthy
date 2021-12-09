@@ -33,7 +33,7 @@
     "express": "^4.17.1",
     "express-fileupload": "^1.2.1",
     "jsonwebtoken": "^8.5.1",
-    "mapbox-gl": "^2.6.1",
+    "mapbox-gl": "^1.10.1",
     "mongoose": "^5.10.10",
     "passport": "^0.5.0",
     "passport-jwt": "^4.0.0",
