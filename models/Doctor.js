@@ -36,7 +36,7 @@ const DoctorSchema = new Schema({
 
         nextDay = new Date(nextDay);
         let stringDate = nextDay.toString().split(' ').slice(0, -5).join(' ');
-        if(!nextThirtyDays[stringDate]) {
+        if (!nextThirtyDays[stringDate]) {
           nextThirtyDays[stringDate] = [9, 10, 11, 12, 13, 14, 15, 16, 17];
         }
         // nextThirtyDays[stringDate] = [9, 10, 11, 12, 13, 14, 15, 16, 17];
@@ -44,23 +44,6 @@ const DoctorSchema = new Schema({
       return nextThirtyDays;
     }
   },
-  // availabilityInteger: {
-  //   type: Object,
-  //   required: false,
-  //   default: function () {
-  //     let nextThirtyDays = {};
-  //     let nextDay = new Date();
-
-  //     for (let i = 0; i < 30; i++) {
-  //       nextDay.setDate(nextDay.getDate() + 1);
-
-  //       let integerDate = nextDay.toString().split(' ').slice(2, -6).join(' ');
-
-  //       nextThirtyDays[integerDate] = [9, 10, 11, 12, 13, 14, 15, 16, 17];
-  //     }
-  //     return nextThirtyDays;
-  //   }
-  // },
   dateCreated: {
     type: Date,
     default: Date.now

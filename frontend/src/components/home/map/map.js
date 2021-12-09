@@ -38,7 +38,7 @@ export default class Map extends React.Component {
 
     if (this.state.map) {
       Object.values(doctors).map((doctor) => {
-        debugger;
+        // debugger;
         if (
           doctor.insurances.includes(currentUser.insurance) ||
           doctor.insurances.includes("Insurance not required")
