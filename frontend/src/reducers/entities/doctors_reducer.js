@@ -1,10 +1,9 @@
-import appointments from "../../../../validation/appointments";
+// import appointments from "../../../../validation/appointments";
 import {
     RECEIVE_DOCTORS,
     RECEIVE_DOCTOR,
     REMOVE_DOCTOR
 } from "../../actions/doctor_actions";
-import { fetchDoctor } from "../../util/doctor_util";
 
 export default function DoctorReducer(prevState={}, action){
     Object.freeze(prevState);

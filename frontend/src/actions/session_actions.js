@@ -32,24 +32,24 @@ export const logoutUser = () => ({
 export const signup = (user) => (dispatch) =>
   APIUtil.signup(user).then(
     (res) => {
-      const { token } = res.data;
+      const { token, payload } = res.data;
       
-      localStorage.setItem("jwtToken", token);
+      localStorage.setItem("jwtToken", token); 
       APIUtil.setAuthToken(token);
-      const decoded = jwt_decode(token);
-      dispatch(receiveCurrentUser(decoded));
+      dispatch(receiveCurrentUser(payload));
     });
 
 // Upon login, set the session token and dispatch the current user. Dispatch errors on failure.
 export const login = (user) => (dispatch) =>
   APIUtil.login(user).then(
     (res) => {
-      const { token } = res.data;
+      const { token, payload } = res.data;
+      
+      console.log(res, "LOGIN RESPONSE");
       
       localStorage.setItem("jwtToken", token);
       APIUtil.setAuthToken(token);
-      const decoded = jwt_decode(token);
-      dispatch(receiveCurrentUser(decoded));
+      dispatch(receiveCurrentUser(payload));
     }).catch((err) => {
       dispatch(receiveErrors(err.response.data));
     });

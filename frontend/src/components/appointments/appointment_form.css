@@ -1,0 +1,57 @@
+.grid-flex {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    grid-auto-rows: 100px;
+}
+
+.month-year{
+
+    display: flex;
+    justify-content: left;
+    padding-bottom: 30px;
+    font-size: 40px;
+    text-decoration: underline;
+    font-weight: bold;
+    padding-top: 30px;
+    background-color: aliceblue;
+
+}
+
+.doctor-profile-header {
+    display: flex;
+    justify-content: center;
+}
+
+.appointment-form{
+    display: flex;
+    justify-content: center;
+    /* margin-left: 10%; */
+}
+
+.grid{
+    padding: 0px 10px 0px 10px;
+    background-color: beige;
+}
+
+.doctors-titles {
+    background: beige;
+}
+
+.image-container {
+    background: aliceblue;
+    border: lightblue 20px solid;
+    border-radius: 30px;
+}
+.image-container {
+    display: flex;
+    margin-top: 1%;
+}
+.form-container {
+    border: lightblue 20px solid;
+    border-radius: 20px;
+    margin-top: 10px;
+}
+
+.next-button{
+    float: right;
+}

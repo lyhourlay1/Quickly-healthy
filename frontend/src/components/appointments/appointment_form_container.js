@@ -2,16 +2,21 @@ import { connect } from "react-redux"
 import AppointmentForm from "./appointment_form"
 import { createAppointment} from "../../actions/appointment_actions"
 
-const mSTP = (state)=> {
+const mSTP = (state, ownProps)=> {
+    
     return {
     // availabilites: Object.values(state.entities.availabilites),
-    currentUser: state.session.user
+    userId: state.session.user.id
 }}
 
-const mDTP = dispatch =>({
+const mDTP = dispatch =>{
     // fetchAvailbilities: (date)=> dispatch(fetchAvailabilities(date)),
-    createAppointment: (appointment)=> dispatch(createAppointment(appointment))
+    
+    return{
 
-})
+        createAppointment: (appointment)=> dispatch(createAppointment(appointment)),
+    }
+
+}
 
 export default connect(mSTP, mDTP)(AppointmentForm)

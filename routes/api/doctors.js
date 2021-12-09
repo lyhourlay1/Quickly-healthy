@@ -32,8 +32,38 @@ router.get("/", (req, res) => {
  * @response {Object} json - The doctor
  */
 router.get("/:id", (req, res) => {
+    // debugger
+    let today = Date.now();
+    let date = new Date(today);
+    let nextThirtyDays = {};
+    let nextDay = new Date(date);
+
+    for (let i = 0; i < 30; i++) {
+      nextDay.setDate(nextDay.getDate() + 1);
+
+      nextDay = new Date(nextDay);
+      let stringDate = nextDay.toString().split(' ').slice(0, -5).join(' ');
+      if(!nextThirtyDays[stringDate]) {
+        nextThirtyDays[stringDate] = [9, 10, 11, 12, 13, 14, 15, 16, 17];
+      }
+      // nextThirtyDays[stringDate] = [9, 10, 11, 12, 13, 14, 15, 16, 17];
+    }
+    let doctor = Doctor.findById(req.params.id);
     Doctor.findById(req.params.id)
-        .then((doctor) => res.json(doctor))
+        .then(dr => {
+            // debugger
+            // for (const k, v in nextThirtyDays) {
+            for(let [k, v] of Object.entries(nextThirtyDays)) {
+                if(dr.availabilityString[k]) {
+                    // nextThirtyDays[k] = dr.availabilityString[k]
+                    nextThirtyDays[k] = dr.availabilityString[k]
+                }
+            }
+            dr.availabilityString = nextThirtyDays;
+            dr.save();
+            return res.json(dr)
+        })
+        // .then((doctor) => res.json(doctor))
         .catch((err) =>
             res.status(404).json(`No doctor found with ID: ${req.params.id}`)
         );
@@ -50,12 +80,13 @@ router.post("/", (req, res) => {
         const {errors, isValid} = validateDoctorInput(req.body);
         if (!isValid) {
             return res.status(400).json(errors);
-        }
+        }     
+    
         const newDoctor = new Doctor(doctorParams(req));
-        newDoctor.save().then((doctor) => res.json(doctor));
+        newDoctor._id = newDoctor._id;
+        newDoctor.save().then(doc => res.json(doc));
     }
 );
-
 
 /** Update a doctor by doctor id
  * PATCH: http://localhost:5000/api/doctors/:id
