@@ -80,9 +80,9 @@ const doctors = [
       Math.floor(Math.random() * insuranceCompanies.length)
     ),
     availabilites: {
-      Monday: { start: 9, end: 14 },
-      Tuesday: { start: 13, end: 17 },
-      Thursday: { start: 10, end: 16 },
+      "Monday Jan 21": [10, 11, 12, 13, 14],
+      "Tuesday Jan 22": [10, 11, 12, 13, 14],
+      "Wednesday Jan 23": [10, 11, 12, 13, 14]
     },
   }),
   new Doctor({
