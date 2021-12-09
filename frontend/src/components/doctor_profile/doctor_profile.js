@@ -1,6 +1,7 @@
 import React from "react";
 import { DEFAULT_PROFILE_PICTURE } from "../../util/icons_and_images_util";
 import AppointmentForm from "../appointments/appointment_form";
+import './doctor_profile.css';
 
 export default class DoctorProfile extends React.Component {
   componentDidMount() {

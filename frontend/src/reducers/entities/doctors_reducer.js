@@ -6,7 +6,7 @@ import {
 
 export default function DoctorReducer(prevState={}, action){
     Object.freeze(prevState);
-    let newState = Object.assign({}, prevState) // this isn't a deep copy
+    let newState = Object.assign({}, prevState)
     switch(action.type){
         case RECEIVE_DOCTORS:
             action.doctors.map((doctor) => {
@@ -14,11 +14,10 @@ export default function DoctorReducer(prevState={}, action){
             });
             return newState;
         case RECEIVE_DOCTOR:
-            debugger
             newState[action.doctor._id] = action.doctor;
             return newState;
         case REMOVE_DOCTOR:
-            delete newState[action.id]
+            delete newState[action.doctor._id];
             return newState;
         default:
             return newState
