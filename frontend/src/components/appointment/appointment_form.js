@@ -58,7 +58,6 @@ class AppointmentForm extends React.Component{
         let days ={"Mon": [], "Tue":[], "Wed":[], "Thu":[], "Fri":[], "Sat":[], "Sun":[]}
         let today= new Date(Date.now());
         let thisMonth = today.getMonth();
-        debugger
         if(this.month){
             thisMonth = new Date(Date.parse(this.state.grid[15].day)).getMonth()+num
         }
@@ -108,7 +107,6 @@ class AppointmentForm extends React.Component{
         return schedules
     }
     render(){
-        debugger
         let submissionForm= <div></div>
         if(this.state.selectedSlot){
             submissionForm= 

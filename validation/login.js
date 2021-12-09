@@ -2,7 +2,6 @@ const Validator = require('validator');
 const validText = require('./valid-text');
 
 module.exports = validateLoginInput = (data) => {
-  debugger
   let errors = {};
 
   data.email = validText(data.email) ? data.email : '';
