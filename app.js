@@ -5,6 +5,8 @@ const mongoose = require("mongoose");
 const bodyParser = require("body-parser");
 const passport = require('passport');
 const path = require("path");
+const fs = require('fs');
+
 
 if (process.env.NODE_ENV === "production") {
   app.use(express.static("frontend/build"));
@@ -29,6 +31,17 @@ require('./config/passport')(passport);
 
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
+
+
+/* Storage Files */
+
+const fileUpload = require('express-fileupload');
+
+app.use(fileUpload({
+  createParentPath: true
+}));
+/* End of Storage Files */
+
 
 app.use("/api/users", users);
 app.use("/api/tweets", tweets);

@@ -22,6 +22,14 @@ const DoctorSchema = new Schema({
         type: String,
         required: false,
     },
+    image: {
+        type: Object,
+        required: false
+    },
+    files: {
+        type: Object,
+        required: false
+    },
     schedule: {
         type: Object,
         required: false,
