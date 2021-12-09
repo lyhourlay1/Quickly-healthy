@@ -29,20 +29,24 @@ export default class Map extends React.Component {
     if (!doctors) return null;
 
     Object.values(doctors).map((doctor) => {
-      if (!doctor.insurances.includes(currentUser.insurance)) return null;
-      let description = `
-        <div class="popup-text">
-          <div>${doctor.name}</div>
-          <div>${doctor.specialty}</div>
-          <div>${doctor.address}</div>
-        </div>
-      `;
+      if (
+        doctor.insurances.includes(currentUser.insurance) ||
+        doctor.insurances.includes("Insurance not required")
+      ) {
+        let description = `
+          <div class="popup-text">
+            <div>${doctor.name}</div>
+            <div>${doctor.specialty}</div>
+            <div>${doctor.address}</div>
+          </div>
+        `;
 
-      let popup = new mapboxgl.Popup().setHTML(description);
-      return new mapboxgl.Marker({ color: "red" })
-        .setLngLat(doctor.location)
-        .setPopup(popup)
-        .addTo(that.map);
+        let popup = new mapboxgl.Popup().setHTML(description);
+        return new mapboxgl.Marker({ color: "red" })
+          .setLngLat(doctor.location)
+          .setPopup(popup)
+          .addTo(that.map);
+      }
     });
 
     return (
