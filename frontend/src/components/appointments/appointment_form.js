@@ -16,6 +16,7 @@ class AppointmentForm extends React.Component{
         }
         
         this.month = "";
+        this.handleClickCreateAppointment = this.handleClickCreateAppointment.bind(this)
         
     }
 
@@ -49,7 +50,9 @@ class AppointmentForm extends React.Component{
 
     handleClickCreateAppointment(e){
         e.preventDefault()
-        this.props.createAppointment({user_id: this.state.user.id})
+        debugger
+        this.props.createAppointment({user_id: this.props.userId, name: this.state.name, reason: this.state.reason, selectedSlot: this.state.selectedSlot, date: this.state.date})
+        this.setState({["selectedSlot"]: ""})
 
     }
 

@@ -6,7 +6,7 @@ const mSTP = (state, ownProps)=> {
     
     return {
     // availabilites: Object.values(state.entities.availabilites),
-    userId: state.session.currentUser
+    userId: state.session.user.id
 }}
 
 const mDTP = dispatch =>{

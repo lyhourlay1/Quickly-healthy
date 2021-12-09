@@ -34,7 +34,7 @@ export const signup = (user) => (dispatch) =>
     (res) => {
       const { token, payload } = res.data;
       
-      localStorage.setItem("jwtToken", token);
+      localStorage.setItem("jwtToken", token); 
       APIUtil.setAuthToken(token);
       dispatch(receiveCurrentUser(payload));
     });
