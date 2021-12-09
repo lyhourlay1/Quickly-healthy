@@ -25,7 +25,7 @@ export default class DoctorProfile extends React.Component {
         </div>
 
         <div className="appointment-form">
-          <AppointmentFormContainer doctor={doctor} currentUser={currentUser} />
+          <AppointmentFormContainer doctorId={doctor._id} currentUser={currentUser} />
         </div>
       </div>
     )

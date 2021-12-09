@@ -12,12 +12,15 @@ class AppointmentForm extends React.Component{
             reason:"",
             date: "",
             selectedSlot: "",
-            grid: this.generateCalenderList(0)
+            grid: this.generateCalenderList(0),
+            doctor: props.doctor
         }
         
         this.month = "";
         this.handleClickCreateAppointment = this.handleClickCreateAppointment.bind(this)
-        
+    }
+    componentDidMount() {
+        this.props.fetchDoctor(this.props.doctorId);
     }
 
     update(field){
@@ -52,12 +55,14 @@ class AppointmentForm extends React.Component{
         e.preventDefault()
         // debugger
         this.props.createAppointment({user_id: this.props.userId, name: this.state.name, reason: this.state.reason, selectedSlot: this.state.selectedSlot, date: this.state.date, doctor_id: this.props.doctor._id})
+        this.props.fetchDoctor(this.props.doctorId);
         this.setState({["selectedSlot"]: ""})
+
 
     }
 
     generateCalenderList(num){
-        const availabilites = {"Tue Dec 07 2021": [9, 10, 11], "Wed Dec 08 2021": [9,10, 11]}
+        let availabilites = this.props.doctor.availabilityString
         let days ={"Mon": [], "Tue":[], "Wed":[], "Thu":[], "Fri":[], "Sat":[], "Sun":[]}
         let today= new Date(Date.now());
         let thisMonth = today.getMonth();
