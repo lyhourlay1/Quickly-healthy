@@ -39,6 +39,8 @@ router.get("/:id", (req, res) => {
     let nextDay = new Date(date);
 
     for (let i = 0; i < 30; i++) {
+    nextThirtyDays[date.toString().split(' ').slice(0, -5).join(' ')] = [9, 10, 11, 12, 13, 14, 15, 16, 17];
+
       nextDay.setDate(nextDay.getDate() + 1);
 
       nextDay = new Date(nextDay);

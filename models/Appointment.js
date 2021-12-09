@@ -16,7 +16,7 @@ const AppointmentSchema = new Schema({
     required: true,
   },
   date: {
-    type: Date,
+    type: String,
     required: true
   },
   start: {
@@ -38,6 +38,14 @@ const AppointmentSchema = new Schema({
   end: { // need to know when this appointment ends for another appointment to occur or just assume every appointment is 1 hr
     type: Date,
     required: false,
+  },
+  selectedSlot: {
+    type: Number,
+    required: false
+  },
+  name: {
+    type: String,
+    required: false
   },
   dateCreated: {
     type: Date,
