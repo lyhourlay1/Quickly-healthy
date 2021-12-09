@@ -5,7 +5,6 @@ import DoctorIndexItem from "./doctors_index_item";
 export default class DoctorIndex extends React.Component {
   render() {
     let { doctors, currentUser } = this.props;
-
     if (Object.values(doctors).legnth === 0) return null;
 
     return (

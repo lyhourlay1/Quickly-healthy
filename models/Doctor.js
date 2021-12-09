@@ -44,23 +44,23 @@ const DoctorSchema = new Schema({
       return nextThirtyDays;
     }
   },
-  availabilityInteger: {
-    type: Object,
-    required: false,
-    default: function () {
-      let nextThirtyDays = {};
-      let nextDay = new Date();
+  // availabilityInteger: {
+  //   type: Object,
+  //   required: false,
+  //   default: function () {
+  //     let nextThirtyDays = {};
+  //     let nextDay = new Date();
 
-      for (let i = 0; i < 30; i++) {
-        nextDay.setDate(nextDay.getDate() + 1);
+  //     for (let i = 0; i < 30; i++) {
+  //       nextDay.setDate(nextDay.getDate() + 1);
 
-        let integerDate = nextDay.toString().split(' ').slice(2, -6).join(' ');
+  //       let integerDate = nextDay.toString().split(' ').slice(2, -6).join(' ');
 
-        nextThirtyDays[integerDate] = [9, 10, 11, 12, 13, 14, 15, 16, 17];
-      }
-      return nextThirtyDays;
-    }
-  },
+  //       nextThirtyDays[integerDate] = [9, 10, 11, 12, 13, 14, 15, 16, 17];
+  //     }
+  //     return nextThirtyDays;
+  //   }
+  // },
   dateCreated: {
     type: Date,
     default: Date.now
@@ -68,45 +68,3 @@ const DoctorSchema = new Schema({
 });
 
 module.exports = Doctor = mongoose.model('doctors', DoctorSchema);
-
-// availablilityInteger: {
-//   type: Object,
-//   required: false,
-//   default: {
-//     7: [9, 10, 11, 12, 13, 14, 15, 16, 17],
-//     31: [9, 10, 11, 12, 13, 14, 15, 16, 17],
-//     3: [9, 10, 11, 12, 13, 14, 15, 16, 17],
-//   }
-// },
-
-// schedule: {
-//     type: Object,
-//     required: false,
-//     default: {
-//       Monday: {
-//         start: 9,
-//         end: 17
-//       },
-//       Tuesday: {
-//         start: 9,
-//         end: 17
-//       },
-//       Wednesday: {
-//         start: 9,
-//         end: 17
-//       },
-//       Thursday: {
-//         start: 9,
-//         end: 17
-//       },
-//       Friday: {
-//         start: 9,
-//         end: 17
-//       }
-//     }
-//   },
-
-//   license: {
-//     type: String,
-//     required: false,
-//   },

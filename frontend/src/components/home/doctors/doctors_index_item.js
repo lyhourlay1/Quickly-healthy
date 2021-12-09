@@ -19,7 +19,7 @@ const DoctorIndexItem = ({ doctor }) => {
             />
           </div>
         </Link>
-
+    
         <div className="doctors-titles">
           <Link to={`/doctors/${doctor._id}`}>{doctor.name}</Link>
           <div>{doctor.specialty}</div>

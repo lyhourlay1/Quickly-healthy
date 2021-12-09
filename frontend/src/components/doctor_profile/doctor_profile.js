@@ -1,7 +1,8 @@
 import React from "react";
 import { DEFAULT_PROFILE_PICTURE } from "../../util/icons_and_images_util";
-import AppointmentForm from "../appointments/appointment_form";
 import './doctor_profile.css';
+import AppointmentFormContainer from "../appointments/appointment_form_container";
+
 
 export default class DoctorProfile extends React.Component {
   componentDidMount() {
@@ -15,17 +16,19 @@ export default class DoctorProfile extends React.Component {
     return (
       <div className="doctor-profile">
         <div className="doctor-profile-header">
-          <div className="image-container"><img src={DEFAULT_PROFILE_PICTURE} alt="" /></div>
-          <div className="doctors-titles">
-            <div>{doctor.name}</div>
-            <div>{doctor.specialty}</div>
-            <div id="address">{doctor.address}</div>
+          <div className="image-container"><img src={DEFAULT_PROFILE_PICTURE} alt="" width="300px"/>
+            <div className="doctors-titles">
+              <div>{doctor.name}</div>
+              <div>{doctor.specialty}</div>
+              <div id="address">{doctor.address}</div>
+            </div>
+          
           </div>
         </div>
 
-        {/* <div className="appointment-form">
-          <AppointmentForm doctor={doctor} currentUser={currentUser} />
-        </div> */}
+        <div className="appointment-form">
+          <AppointmentFormContainer doctor={doctor} currentUser={currentUser} />
+        </div>
       </div>
     )
   }
