@@ -6,7 +6,6 @@ export default class DoctorIndex extends React.Component {
   render() {
     let { doctors, currentUser } = this.props;
 
-    debugger
     return (
       <div className="doctors-index">
         <div className="doctors-index-header">
@@ -24,7 +23,6 @@ export default class DoctorIndex extends React.Component {
 
         <ul className="doctors-list">
           {Object.values(doctors).map((doctor) => {
-            debugger;
             return doctor.insurances.includes(currentUser.insurance) ||
               doctor.insurances.includes("Insurance not required") ? (
               <DoctorIndexItem key={doctor._id} doctor={doctor} />

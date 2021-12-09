@@ -46,7 +46,7 @@ export const login = (user) => (dispatch) =>
       const { token, payload } = res.data;
       
       console.log(res, "LOGIN RESPONSE");
-      debugger
+      
       localStorage.setItem("jwtToken", token);
       APIUtil.setAuthToken(token);
       dispatch(receiveCurrentUser(payload));
