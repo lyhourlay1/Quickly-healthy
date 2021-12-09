@@ -133,7 +133,7 @@ router.get("/:id/image", (req, res) => {
 );
 
 
-/** Get an Files
+/** Get Files
  * GET: http://localhost:5000/api/doctors/files
  * @response {Object} json - The files from a doctor
  */
@@ -165,7 +165,7 @@ router.post("/:id/image", (req, res) => {
     }
 );
 
-/** Upload images
+/** Upload files
  * POST: http://localhost:5000/api/doctors/:id/files
  * @response {Object} json - The doctor's previous state
  */

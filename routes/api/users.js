@@ -116,7 +116,7 @@ router.get("/:id/image", (req, res) => {
 );
 
 
-/** Get an Files
+/** Get Files
  * GET: http://localhost:5000/api/users/files
  * @response {Object} json - The files from a user
  */
@@ -148,7 +148,7 @@ router.post("/:id/image", (req, res) => {
     }
 );
 
-/** Upload images
+/** Upload files
  * POST: http://localhost:5000/api/users/:id/files
  * @response {Object} json - The user's previous state
  */
