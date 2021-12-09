@@ -22,8 +22,12 @@ const UserSchema = new Schema({
     type: String,
     required: true
   },
-  imageUrl: {
-    type: String,
+  image: {
+    type: Object,
+    required: false
+  },
+  files: {
+    type: Object,
     required: false
   },
   date: {

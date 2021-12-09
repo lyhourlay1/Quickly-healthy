@@ -50,8 +50,8 @@ class AppointmentForm extends React.Component{
 
     handleClickCreateAppointment(e){
         e.preventDefault()
-        debugger
-        this.props.createAppointment({user_id: this.props.userId, name: this.state.name, reason: this.state.reason, selectedSlot: this.state.selectedSlot, date: this.state.date, doctorId: this.props.doctor._id})
+        // debugger
+        this.props.createAppointment({user_id: this.props.userId, name: this.state.name, reason: this.state.reason, selectedSlot: this.state.selectedSlot, date: this.state.date, doctor_id: this.props.doctor._id})
         this.setState({["selectedSlot"]: ""})
 
     }
