@@ -64,7 +64,7 @@ class AppointmentForm extends React.Component{
             // this.setState({["grid"]: this.generateCalenderList(0)})
             // debugger
             // ()=>this.setState({["grid"]: this.generateCalenderList(0, this.props.doctor)})
-            } )
+            })
        
         this.setState({["selectedSlot"]: ""})
     }
