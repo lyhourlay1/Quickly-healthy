@@ -1,0 +1,135 @@
+.footer {
+  display: flex;
+  align-self: flex-end;
+}
+
+.footer-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  justify-self: flex-end;
+  width: 100%;
+  margin-top: 10px;
+}
+
+.footer-links-container {
+  position: relative;
+  display: flex;
+  height: 250px;
+  background-color: rgb(72,129,235);
+  z-index: 5;
+}
+
+.footer-bottom-container {
+  height: 80px;
+}
+
+.footer-info {
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  margin-top: 30px;
+  padding-left: 12.5%;
+  padding-right: 12.5%;
+  text-decoration: none;
+}
+
+.footer-about > a {
+  margin-top: 0.75rem;
+  color: white;
+  font-size: 1rem;
+  font-weight: 300;
+  text-decoration: none;
+}
+
+.footer-logo {
+  display: flex;
+  align-items: center;
+  flex-wrap: nowrap;
+  width: fit-content;
+  margin: 0;
+  max-width: 2000px;
+}
+
+.terms-policies {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  right: 0;
+  height: 75px;
+}
+
+.info {
+  letter-spacing: 0.5px;
+  font-family: Arial, Helvetica, sans-serif;
+  color: white;
+  line-height: 2;
+  width: 25%;
+  height: 100%;
+  padding-left: 20px;
+}
+
+.info > h2 {
+  font-size: 1rem;
+  font-weight: bold;
+}
+
+.info > p {
+  font-size: 1rem;
+  font-weight: lighter;
+}
+
+.footer-help {
+  display: relative;
+}
+
+.footer-logo-container {
+  display: flex;
+}
+
+.footer-logo-container > a > img {
+  height: 30px;
+  width: 30px;
+  padding: 0px 5px 0px 3px;
+  margin: 5px;
+}
+
+.footer-bottom-container {
+  display: flex;
+  font-family: Arial, Helvetica, sans-serif;
+  background: rgb(34, 92, 199);
+  color: white;
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.7px;
+}
+
+.footer-logo {
+  display: flex;
+  align-items: center;
+  flex-wrap: nowrap;
+  width: fit-content;
+  margin-left: 20px;
+}
+
+.footer-logo > img {
+  height: 20px;
+  width: 20px;
+  border-radius: 50%;
+  margin: 0px 10px 3px 0px;
+  z-index: 5;
+}
+
+.terms-policies {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  right: 0;
+  margin-right: 20px;
+  height: 75px;
+}
+
+.terms-policies > p {
+  margin: 11px;
+}

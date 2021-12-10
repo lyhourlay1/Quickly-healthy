@@ -4,18 +4,17 @@ import './splash.css';
 const Splash = () => {
   return (
     <div className="splash-container">
-
       <div className="header-container">
         <div className="header-text">
           <h1 className="header-title">Making Health Care Easy</h1>
           <p className="header-description">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-            enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor
-            in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident,
-            sunt in culpa qui officia deserunt mollit anim id est laborum
+            Quickly Healthy makes it simple to find a doctor that fits your needs. Easily upload health records and check your appointments.
           </p>
         </div>
-        <img src="https://thevideoink.com/wp-content/uploads/2021/11/wysiwyg-uploads_1569586526901-doctor.jpg" className="header-bg" />
+        <img
+          src="https://p.kindpng.com/picc/s/193-1938072_connecting-patients-to-doctors-hd-png-download.png"
+          className="header-bg"
+        />
       </div>
 
       <div className="splash-service-container">
