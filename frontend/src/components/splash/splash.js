@@ -23,21 +23,21 @@ const Splash = () => {
         <div className="splash-service">
           <div className="splash-component">
             <div className="splash-image-container-doctor splash-image-container">
-              <img src="https://raw.githubusercontent.com/lyhourlay1/Quickly-healthy/home-css-emmett/assets/splash/gps.png" />
+              <img src="https://raw.githubusercontent.com/lyhourlay1/Quickly-healthy/main/assets/splash/find_doc.png" />
             </div>
             <div className="splash-text">Find doctors near you</div>
           </div>
 
           <div className="splash-component">
             <div className="splash-image-container-appt splash-image-container">
-              <img src="https://raw.githubusercontent.com/lyhourlay1/Quickly-healthy/home-css-emmett/assets/splash/calendar.jpg" />
+              <img src="https://raw.githubusercontent.com/lyhourlay1/Quickly-healthy/main/assets/splash/appt.jpg" />
             </div>
             <div className="splash-text">Schedule appointments</div>
           </div>
 
           <div className="splash-component">
             <div className="splash-image-container-insurance splash-image-container">
-              <img src="https://raw.githubusercontent.com/lyhourlay1/Quickly-healthy/home-css-emmett/assets/splash/confirm.png" />
+              <img src="https://raw.githubusercontent.com/lyhourlay1/Quickly-healthy/main/assets/splash/insurance.png" />
             </div>
             <div className="splash-text">Confirm your insurance</div>
           </div>
