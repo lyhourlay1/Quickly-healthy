@@ -29,7 +29,7 @@ const App = () => (
       <ProtectedRoute exact path="/profile" component={ProfileContainer} />
       <ProtectedRoute exact path="/appointmentForm/:doctorId" component={AppointmentFormContainer} />
     </Switch>
-    <Footer />
+    {/* <Footer /> */}
   </div>
 );
 

@@ -3,7 +3,7 @@ div.navbar {
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  background-color: lightgray;
+  background-color: rgb(38, 101, 218);
   padding: 10px;
   z-index: 10;
   top: 0;
@@ -11,13 +11,11 @@ div.navbar {
   padding: 8px;
 }
 
-div.navbar a.logo {
-  font-family: Didot, serif;
-  color: rgb(13, 28, 61);
-  font-size: 55px;
-  font-weight: 600;
+.navbar-logo {
   text-decoration: none;
   cursor: pointer;
+  width: 200px;
+  margin-left: 75px;
 }
 
 div.right-buttons {

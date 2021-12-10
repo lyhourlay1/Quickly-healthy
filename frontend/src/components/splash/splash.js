@@ -1,5 +1,6 @@
 import React from 'react';
 import './splash.css';
+import Footer from '../footer/footer';
 
 const Splash = () => {
   return (
@@ -49,6 +50,7 @@ const Splash = () => {
           </div>
         </div>
       </div>
+      <Footer />
     </div>
   );
 };
