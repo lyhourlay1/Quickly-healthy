@@ -1,0 +1,62 @@
+.user-profile {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.appointment-index {
+  margin: 24px 0 36px 0;
+  display: flex;
+  flex-direction: column;
+  background-color: aliceblue;
+}
+
+.index-header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  max-height: 62px;
+  height: 62px;
+  font-size: 20px;
+  font-weight: 600;
+  font-family: Arial, Helvetica, sans-serif;
+  border-top: 1px solid black;
+  border-left: 1px solid black;
+  border-right: 1px solid black;
+}
+
+.appointment-index-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px;
+  width: 500px;
+  border-left: 1px solid black;
+  border-right: 1px solid black;
+  border-top: 1px solid black;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.appointment-index-item:last-child {
+  border-bottom: 1px solid black;
+}
+
+div#date {
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.appointment-index-item button {
+  border: none;
+  background-color: transparent;
+  font-size: 18px;
+  font-weight: 400;
+  border-radius: 8px;
+  padding: 12px;
+  cursor: pointer;
+}
+
+.appointment-index-item button:hover {
+  background-color: lightblue;
+}

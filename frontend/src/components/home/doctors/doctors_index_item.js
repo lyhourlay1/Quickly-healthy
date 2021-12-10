@@ -8,7 +8,16 @@ const DoctorIndexItem = ({ doctor }) => {
     <li className="doctors-index-item">
       <div className="item-header">
         <Link className="doctors-image" to={`/doctors/${doctor._id}`}>
-          <img src={DEFAULT_PROFILE_PICTURE} alt="" />
+          <div>
+            <img
+              src={
+                doctor.image
+                  ? `data:${doctor.image.mimetype};base64,${doctor.image.data}`
+                  : DEFAULT_PROFILE_PICTURE
+              }
+              alt="picture"
+            />
+          </div>
         </Link>
     
         <div className="doctors-titles">

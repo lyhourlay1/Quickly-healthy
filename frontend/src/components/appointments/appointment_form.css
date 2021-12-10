@@ -17,6 +17,11 @@
 
 }
 
+.doctor-profile {
+    display: flex;
+    flex-direction: column;
+}
+
 .doctor-profile-header {
     display: flex;
     justify-content: center;
@@ -33,18 +38,36 @@
     background-color: beige;
 }
 
-.doctors-titles {
+#profile.doctors-titles {
     background: beige;
+    padding: 8px;
+}
+
+#profile.doctors-titles > div:first-child {
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 24px;
+    font-weight: 600;
+}
+
+#profile.doctors-titles > div {
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 18px;
+    font-weight: 400;
 }
 
 .image-container {
+    width: fit-content;
+    height: fit-content;
     background: aliceblue;
     border: lightblue 20px solid;
     border-radius: 30px;
-}
-.image-container {
     display: flex;
+    justify-content: center;
     margin-top: 1%;
+}
+.image-container > img {
+    width: 300px;
+    height: 300px;
 }
 .form-container {
     border: lightblue 20px solid;

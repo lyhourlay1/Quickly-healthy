@@ -1,6 +1,8 @@
 import React from "react";
 import { DEFAULT_PROFILE_PICTURE } from "../../util/icons_and_images_util";
+import './doctor_profile.css';
 import AppointmentFormContainer from "../appointments/appointment_form_container";
+
 
 export default class DoctorProfile extends React.Component {
   componentDidMount() {
@@ -15,7 +17,7 @@ export default class DoctorProfile extends React.Component {
       <div className="doctor-profile">
         <div className="doctor-profile-header">
           <div className="image-container"><img src={DEFAULT_PROFILE_PICTURE} alt="" width="300px"/>
-            <div className="doctors-titles">
+            <div className="doctors-titles" id="profile">
               <div>{doctor.name}</div>
               <div>{doctor.specialty}</div>
               <div id="address">{doctor.address}</div>

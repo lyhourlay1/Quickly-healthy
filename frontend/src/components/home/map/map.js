@@ -38,18 +38,17 @@ export default class Map extends React.Component {
 
     if (this.state.map) {
       Object.values(doctors).map((doctor) => {
-        // debugger;
         if (
           doctor.insurances.includes(currentUser.insurance) ||
           doctor.insurances.includes("Insurance not required")
         ) {
           let description = `
-          <div class="popup-text">
-            <div>${doctor.name}</div>
-            <div>${doctor.specialty}</div>
-            <div>${doctor.address}</div>
-          </div>
-        `;
+            <div class="popup-text">
+              <div>${doctor.name}</div>
+              <div>${doctor.specialty}</div>
+              <div>${doctor.address}</div>
+            </div>
+          `;
 
           let popup = new mapboxgl.Popup().setHTML(description);
           return new mapboxgl.Marker({ color: "red" })
