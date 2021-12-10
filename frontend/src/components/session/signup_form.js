@@ -2,6 +2,7 @@ import React from "react";
 import { withRouter } from "react-router";
 import { Link } from "react-router-dom";
 import './session.css'
+import Footer from '../footer/footer'
 
 
 class SignupForm extends React.Component {
@@ -120,6 +121,7 @@ class SignupForm extends React.Component {
             </div>
           </div>
         </form>
+        <Footer />
       </div>
     );
   }

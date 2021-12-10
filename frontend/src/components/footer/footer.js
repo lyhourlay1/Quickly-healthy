@@ -32,16 +32,16 @@ class Footer extends React.Component {
             <div className="footer-about info">
               <h2>Meet the Team</h2>
 
+              <a target="_blank" href="https://github.com/lyhourlay1">
+                Lee
+              </a>
+              <br />
               <a target="_blank" href="https://github.com/emmetthe">
                 Emmett
-              </a>
+                </a>
               <br />
               <a target="_blank" href="https://github.com/grayson-poon">
                 Grayson
-              </a>
-              <br />
-              <a target="_blank" href="https://github.com/lyhourlay1">
-                Lee
               </a>
               <br />
               <a target="_blank" href="https://github.com/mjlomeli">
