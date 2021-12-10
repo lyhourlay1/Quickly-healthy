@@ -24,9 +24,8 @@ class UserProfile extends React.Component {
           currentUser={currentUser} 
           openModal={openModal} 
         />
-       <div className="foot">
           <Footer />
-        </div>
+        
       </div>
     )
   }
