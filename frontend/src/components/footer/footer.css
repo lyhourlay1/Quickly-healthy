@@ -88,13 +88,6 @@
   display: flex;
 }
 
-.footer-logo-container > a > img {
-  height: 30px;
-  width: 30px;
-  padding: 0px 5px 0px 3px;
-  margin: 5px;
-}
-
 .footer-bottom-container {
   display: flex;
   font-family: Arial, Helvetica, sans-serif;
@@ -114,10 +107,8 @@
 }
 
 .footer-logo > img {
-  height: 20px;
-  width: 20px;
-  border-radius: 50%;
-  margin: 0px 10px 3px 0px;
+  width: 200px;
+  object-fit: scale-down;
   z-index: 5;
 }
 
@@ -132,4 +123,11 @@
 
 .terms-policies > p {
   margin: 11px;
+}
+
+.github-icon {
+  height: 30px;
+  width: 30px;
+  padding: 0px 5px 0px 3px;
+  margin: 5px;
 }

@@ -50,7 +50,7 @@ class Footer extends React.Component {
 
               <br />
               <a href="https://github.com/lyhourlay1/Quickly-healthy" target="_blank">
-                Github
+                <img src="https://raw.githubusercontent.com/lyhourlay1/Quickly-healthy/home-css-emmett/assets/splash/github.png" className="github-icon"/>
               </a>
             </div>
 
@@ -58,7 +58,7 @@ class Footer extends React.Component {
         </div>
 
         <div className="footer-bottom-container">
-          <div className="footer-logo">LOGO HERE</div>
+          <div className="footer-logo"><img src="https://raw.githubusercontent.com/lyhourlay1/Quickly-healthy/home-css-emmett/assets/splash/Quickly%20Healthy-logo.png"/></div>
           <div className="terms-policies">
             <p>2021 Quickly Healthy, Inc.</p>
             <p>
