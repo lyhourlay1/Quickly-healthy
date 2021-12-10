@@ -43,15 +43,15 @@
   margin-top: 0.75rem;
   color: white;
   font-size: 1rem;
-  font-weight: 300;
+  font-weight: 500;
   text-decoration: none;
   padding: 8px;
   border-radius: 8px;
 }
 
 .footer-about > a:hover {
-  color: black;
-  background-color: rgb(192, 176, 30);
+  filter: invert(1);
+  /* background-color: rgb(119, 163, 243); */
 }
 
 .footer-logo {
