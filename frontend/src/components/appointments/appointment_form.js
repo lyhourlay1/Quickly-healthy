@@ -12,15 +12,24 @@ class AppointmentForm extends React.Component{
             reason:"",
             date: "",
             selectedSlot: "",
-            grid: this.generateCalenderList(0),
-            doctor: props.doctor
+            doctor: this.props.doctor,
+            grid: this.generateCalenderList(0)
         }
         
         this.month = "";
         this.handleClickCreateAppointment = this.handleClickCreateAppointment.bind(this)
+        this.generateCalenderList = this.generateCalenderList.bind(this)
     }
     componentDidMount() {
         this.props.fetchDoctor(this.props.doctorId);
+    }
+
+    componentDidUpdate(prevProps){
+        if(prevProps.doctor.availabilityString !== this.props.doctor.availabilityString){
+            this.setState({'grid': this.generateCalenderList(0)})
+        }
+        // if(prevProps)
+        // this.generateCalenderList(0)
     }
 
     update(field){
@@ -40,29 +49,39 @@ class AppointmentForm extends React.Component{
     }
     handleClickNext(field){
         let newGrid = this.generateCalenderList(+1)
-        return (e)=>{
-            this.setState({[field]: newGrid})
-        }
+        this.setState({[field]: newGrid})
     }
     handleClickBack(field){
         let newGrid = this.generateCalenderList(-1)
-        return (e)=>{
-            this.setState({[field]: newGrid})
-        }
+        this.setState({[field]: newGrid})
     }
 
     handleClickCreateAppointment(e){
         e.preventDefault()
-        // debugger
         this.props.createAppointment({user_id: this.props.userId, name: this.state.name, reason: this.state.reason, selectedSlot: this.state.selectedSlot, date: this.state.date, doctor_id: this.props.doctor._id})
-        this.props.fetchDoctor(this.props.doctorId);
+            .then(()=> {
+            this.props.fetchDoctor(this.props.doctorId)
+            // this.setState({["grid"]: this.generateCalenderList(0)})
+            // debugger
+            // ()=>this.setState({["grid"]: this.generateCalenderList(0, this.props.doctor)})
+            } )
+       
         this.setState({["selectedSlot"]: ""})
-
-
     }
 
     generateCalenderList(num){
-        let availabilites = this.props.doctor.availabilityString
+        // let availabilites = doctor.availabilityString
+        // debugger
+        // let availabilites
+        // if(this.props.doctor){
+        // availabilites= this.props.doctor.availabilityString
+
+        // }else{
+        //     availabilites = this.state.doctor.availabilityString
+        // }
+
+        let availabilites= this.props.doctor.availabilityString
+
         let days ={"Mon": [], "Tue":[], "Wed":[], "Thu":[], "Fri":[], "Sat":[], "Sun":[]}
         let today= new Date(Date.now());
         let thisMonth = today.getMonth();
@@ -115,7 +134,12 @@ class AppointmentForm extends React.Component{
         return schedules
     }
     render(){
-        
+        // if(!this.state.doctor){
+        //     return null
+        // }
+        if (!this.props.doctor){
+            return null;
+        }
         let submissionForm = <div></div>
         if(this.state.selectedSlot){
             submissionForm = (

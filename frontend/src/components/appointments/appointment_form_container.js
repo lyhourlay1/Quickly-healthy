@@ -7,7 +7,7 @@ const mSTP = (state, ownProps)=> {
     
     
     return {
-    // availabilites: Object.values(state.entities.availabilites),
+    // availabilities: Object.values(state.entities.doctor.availabilityString),
     doctor: state.entities.doctor[ownProps.doctorId],
     userId: state.session.user.id
 }}
