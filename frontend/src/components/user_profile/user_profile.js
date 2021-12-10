@@ -14,6 +14,7 @@ class UserProfile extends React.Component {
     if (!appointments) return null;
 
     return(
+      
       <div className="user-profile">
         <div className="image-container">
           <img src={DEFAULT_PROFILE_PICTURE} alt="" />
@@ -23,7 +24,9 @@ class UserProfile extends React.Component {
           currentUser={currentUser} 
           openModal={openModal} 
         />
-        <Footer />
+       <div className="foot">
+          <Footer />
+        </div>
       </div>
     )
   }

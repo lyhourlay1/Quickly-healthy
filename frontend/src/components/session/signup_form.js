@@ -121,7 +121,10 @@ class SignupForm extends React.Component {
             </div>
           </div>
         </form>
-        <Footer />
+
+        <div className="foot">
+          <Footer />
+        </div>
       </div>
     );
   }

@@ -39,3 +39,7 @@ input[type="submit"]:hover{
 .static-already{
     padding-top: 10px;
 }
+.foot > .footer-container{
+  bottom:0;
+  position:fixed;
+}
