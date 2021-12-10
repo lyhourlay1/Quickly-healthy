@@ -22,7 +22,7 @@ class NavBar extends React.Component {
           <Link className="logo" to={"/home"}><img src="https://raw.githubusercontent.com/lyhourlay1/Quickly-healthy/main/assets/splash/logo.png" className="navbar-logo" /></Link>
           <div className="right-buttons">
             <Link className="profile" to={"/profile"}>Profile</Link>
-            <button onClick={this.logoutUser}>Logout</button>
+            <button onClick={this.logoutUser} >Logout</button>
           </div>
         </div>
       );
@@ -31,8 +31,8 @@ class NavBar extends React.Component {
         <div className="navbar">
           <Link className="logo" to={"/"}> <img src="https://raw.githubusercontent.com/lyhourlay1/Quickly-healthy/main/assets/splash/logo.png" className="navbar-logo" /> </Link>
           <div className="right-buttons">
-            <Link to={"/signup"}>Signup</Link> 
-            <Link to={"/login"}>Login</Link>
+            <Link to={"/signup"} >Signup</Link> 
+            <Link to={"/login"} >Login</Link>
           </div>
         </div>
       );

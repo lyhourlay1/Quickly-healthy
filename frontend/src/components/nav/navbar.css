@@ -14,7 +14,7 @@ div.navbar {
 .navbar-logo {
   text-decoration: none;
   cursor: pointer;
-  width: 200px;
+  width: 175px;
   margin-left: 75px;
 }
 
@@ -30,7 +30,7 @@ div.right-buttons a {
   padding: 16px;
   border-radius: 8px;
   font-size: 24px;
-  color: rgb(13, 28, 61);
+  color: rgb(240, 240, 240);
   text-decoration: none;
 }
 
@@ -47,7 +47,7 @@ div.right-buttons button {
   background-color: transparent;
   cursor: pointer;
   border-radius: 8px;
-  color: rgb(13, 28, 61);
+  color: rgb(234, 238, 246);
 
 }
 
