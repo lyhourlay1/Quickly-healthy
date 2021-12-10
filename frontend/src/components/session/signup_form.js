@@ -91,7 +91,9 @@ class SignupForm extends React.Component {
                 Who is your insurance provider?
               </label>
               <select onChange={this.update("insurance")}>
-                <option selected disabled hidden>choose one...</option>
+                <option selected disabled hidden>
+                  choose one...
+                </option>
                 <option value="None">None</option>
                 <option value="Aetna">Aetna</option>
                 <option value="Blue Cross Blue Shield">
@@ -121,7 +123,9 @@ class SignupForm extends React.Component {
             </div>
           </div>
         </form>
-        <Footer />
+        <div className="foot">
+          <Footer />
+        </div>
       </div>
     );
   }
