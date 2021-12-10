@@ -23,28 +23,28 @@ const Splash = () => {
         <div className="splash-service">
           <div className="splash-component">
             <div className="splash-image-container-doctor splash-image-container">
-              <img src="https://raw.githubusercontent.com/lyhourlay1/Quickly-healthy/home-css-emmett/assets/splash/find_doc.png" />
+              <img src="https://raw.githubusercontent.com/lyhourlay1/Quickly-healthy/home-css-emmett/assets/splash/gps.png" />
             </div>
             <div className="splash-text">Find doctors near you</div>
           </div>
 
           <div className="splash-component">
             <div className="splash-image-container-appt splash-image-container">
-              <img src="https://raw.githubusercontent.com/lyhourlay1/Quickly-healthy/home-css-emmett/assets/splash/appt.png" />
+              <img src="https://raw.githubusercontent.com/lyhourlay1/Quickly-healthy/home-css-emmett/assets/splash/calendar.jpg" />
             </div>
             <div className="splash-text">Schedule appointments</div>
           </div>
 
           <div className="splash-component">
             <div className="splash-image-container-insurance splash-image-container">
-              <img src="https://raw.githubusercontent.com/lyhourlay1/Quickly-healthy/home-css-emmett/assets/splash/insurance.png" />
+              <img src="https://raw.githubusercontent.com/lyhourlay1/Quickly-healthy/home-css-emmett/assets/splash/confirm.png" />
             </div>
             <div className="splash-text">Confirm your insurance</div>
           </div>
 
           <div className="splash-component">
             <div className="splash-image-container-record splash-image-container">
-              <img src="https://github.com/lyhourlay1/Quickly-healthy/blob/main/assets/splash/upload.png?raw=true" />
+              <img src="https://raw.githubusercontent.com/lyhourlay1/Quickly-healthy/home-css-emmett/assets/splash/upload.png" />
             </div>
             <div className="splash-text">Upload health records</div>
           </div>
