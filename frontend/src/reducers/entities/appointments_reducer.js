@@ -2,6 +2,7 @@ import { RECEIVE_APPOINTMENT, RECEIVE_APPOINTMENTS } from "../../actions/appoint
 
 const AppointmentsReducer = (state={}, action)=>{
     let newState = Object.assign({}, state)
+    // debugger
     switch(action.type){
         case RECEIVE_APPOINTMENTS:
             return action.appointments

@@ -15,6 +15,7 @@ export default function DoctorReducer(prevState={}, action){
             });
             return newState;
         case RECEIVE_DOCTOR:
+            // debugger
             newState[action.doctor._id] = action.doctor;
             return newState;
         case REMOVE_DOCTOR:
