@@ -203,8 +203,8 @@ class AppointmentForm extends React.Component{
                 {submissionForm}
 
                 <div className="toggle-buttons">
-                    <button onClick= {this.handleClickBack('grid')}>Back </button>
-                    <button onClick= {this.handleClickNext('grid')} className="next-button">Next</button>
+                    <button onClick= {() => this.handleClickBack('grid')}>Back </button>
+                    <button onClick= {() => this.handleClickNext('grid')} className="next-button">Next</button>
                 </div>
 
             </div>

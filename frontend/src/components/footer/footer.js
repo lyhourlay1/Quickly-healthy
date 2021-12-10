@@ -49,7 +49,7 @@ class Footer extends React.Component {
               </a>
 
               <br />
-              <a href="https://github.com/lyhourlay1/Quickly-healthy" target="_blank">
+              <a className="github-link" href="https://github.com/lyhourlay1/Quickly-healthy" target="_blank">
                 <img src="https://raw.githubusercontent.com/lyhourlay1/Quickly-healthy/home-css-emmett/assets/splash/github.png" className="github-icon"/>
               </a>
             </div>
