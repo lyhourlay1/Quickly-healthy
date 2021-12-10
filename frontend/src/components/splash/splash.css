@@ -10,19 +10,42 @@ div.splash-container {
 .header-container {
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: space-evenly;
+  background-color: rgb(72, 129, 235);
+  width: 100%;
 }
 
 .header-bg {
-  width: 50%;
+  width: 40%;
+  padding: 10px;
+  transform: scale(0.7, 0.7);
 }
 
 .header-text {
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: start;
   flex-direction: column;
-  z-index: 1;
+  font-family: Arial, Helvetica, sans-serif;
+  color: rgb(0, 0, 0);
+  padding: 10px;
+  width: 30%;
+}
+
+.header-title {
+  width: 100%;
+  margin-top: 0px;
+  padding: 10px;
+  font-size: 4rem;
+  line-height: 80px;
+  font-weight: 800;
+  margin-bottom: 10px;
+}
+
+.header-description {
+  font-size: 1.3rem;
+  line-height: 40px;
+  padding: 10px;
 }
 
 .splash-service-container {
@@ -44,6 +67,7 @@ div.splash-container {
   align-items: center;
   justify-content: space-evenly;
   padding: 10px;
+  margin: 10px 5px;
   flex-wrap: wrap;
 }
 
@@ -54,6 +78,7 @@ div.splash-component {
   align-items: center;
   flex-direction: column;
   padding: 10px;
+  margin-bottom: 45px;
 }
 
 div.splash-text {

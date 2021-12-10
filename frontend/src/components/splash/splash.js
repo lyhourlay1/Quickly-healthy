@@ -4,18 +4,17 @@ import './splash.css';
 const Splash = () => {
   return (
     <div className="splash-container">
-
       <div className="header-container">
         <div className="header-text">
           <h1 className="header-title">Making Health Care Easy</h1>
           <p className="header-description">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-            enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor
-            in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident,
-            sunt in culpa qui officia deserunt mollit anim id est laborum
+            Quickly Healthy makes it simple to find a doctor that fits your needs. Easily upload health records and check your appointments.
           </p>
         </div>
-        <img src="https://thevideoink.com/wp-content/uploads/2021/11/wysiwyg-uploads_1569586526901-doctor.jpg" className="header-bg" />
+        <img
+          src="https://raw.githubusercontent.com/lyhourlay1/Quickly-healthy/home-css-emmett/assets/splash/header-bg.png"
+          className="header-bg"
+        />
       </div>
 
       <div className="splash-service-container">
@@ -23,21 +22,21 @@ const Splash = () => {
         <div className="splash-service">
           <div className="splash-component">
             <div className="splash-image-container-doctor splash-image-container">
-              <img src="https://github.com/lyhourlay1/Quickly-healthy/blob/main/assets/splash/doctor.jpg?raw=true" />
+              <img src="https://raw.githubusercontent.com/lyhourlay1/Quickly-healthy/home-css-emmett/assets/splash/find_doc.png" />
             </div>
             <div className="splash-text">Find doctors near you</div>
           </div>
 
           <div className="splash-component">
             <div className="splash-image-container-appt splash-image-container">
-              <img src="https://github.com/lyhourlay1/Quickly-healthy/blob/main/assets/splash/calendar.jpg?raw=true" />
+              <img src="https://raw.githubusercontent.com/lyhourlay1/Quickly-healthy/home-css-emmett/assets/splash/appt.png" />
             </div>
             <div className="splash-text">Schedule appointments</div>
           </div>
 
           <div className="splash-component">
             <div className="splash-image-container-insurance splash-image-container">
-              <img src="https://github.com/lyhourlay1/Quickly-healthy/blob/main/assets/splash/health_insurance.jpg?raw=true" />
+              <img src="https://raw.githubusercontent.com/lyhourlay1/Quickly-healthy/home-css-emmett/assets/splash/insurance.png" />
             </div>
             <div className="splash-text">Confirm your insurance</div>
           </div>

@@ -142,20 +142,38 @@ class AppointmentForm extends React.Component{
         }
         let submissionForm = <div></div>
         if(this.state.selectedSlot){
-            submissionForm= 
-            <div>
-                <div>Appointment on {this.state.date} at {this.state.selectedSlot} with Dr.{this.props.doctor.name}</div>
+            submissionForm = (
+              <div className="submission-form">
                 <div>
-                    Name:
-                    <input type="text" value={this.state.name} onChange={this.update('name')}/>
+                  Appointment on {this.state.date} at{" "}
+                  {this.state.selectedSlot <= 12
+                    ? this.state.selectedSlot
+                    : this.state.selectedSlot % 12}{" "}
+                  with Dr.{this.props.doctor.name}
                 </div>
                 <div>
-                    Reason:
-                    <input type="text" value={this.state.reason} onChange={this.update('reason')}/>
+                  <label>Name:</label>
+                  <input
+                    type="text"
+                    value={this.state.name}
+                    onChange={this.update("name")}
+                  />
                 </div>
-                <button onClick= {this.handleClickCreateAppointment}>Submit</button>
-
-            </div>
+                <div>
+                  <label>Reason:</label>
+                  <textarea
+                    type="text"
+                    value={this.state.reason}
+                    onChange={this.update("reason")}
+                    rows="5"
+                    placeholder="reason..."
+                  />
+                </div>
+                <button onClick={this.handleClickCreateAppointment}>
+                  Submit
+                </button>
+              </div>
+            );
         }
         return(
             <div className="form-container">
@@ -168,18 +186,26 @@ class AppointmentForm extends React.Component{
                     <div className= "grid">Friday</div>
                     <div className= "grid">Saturday</div>
                     <div className= "grid">Sunday</div>
-                    {/* {this.grid.map((date, idx)=> <DateIndexItem date = {date.day} slots={date.slots} key={idx}/>) }                 */}
                     {this.state.grid.map((date, idx)=> 
                         <div className ="grid">
                             {date.day.split(" ")[2]}
-                            <div>
-                                {date.slots.map(slot=> <button onClick={this.handleClickUpdate('selectedSlot', date.day)} value = {slot}> {slot}</button>)}
+                            <div className="timeslots-container">
+                                {date.slots.map((slot) => 
+                                    slot <= 12 
+                                        ? <div className="button-container"><button onClick={this.handleClickUpdate('selectedSlot', date.day)} value={slot}>{slot}</button></div>
+                                        : <div className="button-container"><button onClick={this.handleClickUpdate('selectedSlot', date.day)} value={slot}>{slot % 12}</button></div>
+                                    
+                                )}
                             </div>
                         </div>)}                 
                 </div>
+
                 {submissionForm}
-                <button onClick= {()=>this.handleClickBack('grid')}>Back </button>
-                <button onClick= {()=>this.handleClickNext('grid')} className="next-button">Next</button>
+
+                <div className="toggle-buttons">
+                    <button onClick= {this.handleClickBack('grid')}>Back </button>
+                    <button onClick= {this.handleClickNext('grid')} className="next-button">Next</button>
+                </div>
 
             </div>
         )

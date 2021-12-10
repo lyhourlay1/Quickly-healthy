@@ -10,6 +10,7 @@ import Splash from "./splash/splash";
 import HomeContainer from "./home/home_container";
 import DoctorProfileContainer from "./doctor_profile/doctor_profile_container";
 import Modal from "./modals/modal";
+import Footer from './footer/footer'
 import './reset.css';
 
 
@@ -28,6 +29,7 @@ const App = () => (
       <ProtectedRoute exact path="/profile" component={ProfileContainer} />
       <ProtectedRoute exact path="/appointmentForm/:doctorId" component={AppointmentFormContainer} />
     </Switch>
+    <Footer />
   </div>
 );
 
