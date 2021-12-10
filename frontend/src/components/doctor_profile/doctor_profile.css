@@ -186,15 +186,32 @@
   margin: 8px;
   padding: 8px;
   background-color: rgb(240, 240, 240);
+  font-size: 18px;
 }
 
 .submission-form textarea {
   resize: none;
   width: 350px;
+  height: auto;
   border: none;
   outline: none;
   margin: 8px;
   padding: 8px;
   background-color: rgb(240, 240, 240);
+  font-size: 18px;
+  overflow: scroll-y;
+}
 
+.submission-form button {
+  margin-top: 8px;
+  width: 128px;
+  padding: 8px;
+  background-color: rgb(230, 230, 230);
+  border: none;
+  cursor: pointer;
+  font-size: 20px;
+}
+
+.submission-form button:hover {
+  background-color: lightgray;
 }

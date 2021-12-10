@@ -1,6 +1,5 @@
 import React from "react";
 import AppointmentIndexItem from "./appointment_index_item";
-import "./appointment_index.css";
 
 export default class AppointmentIndex extends React.Component {
   render() {
@@ -11,6 +10,14 @@ export default class AppointmentIndex extends React.Component {
         <div className="index-header">
           Upcoming appointments
         </div>
+
+        <div className="default-header">
+          {appointments.length === 0
+            ? <div>No appointments yet</div>
+            : null
+          }
+        </div>
+
         <ul className="appointment-list">
           {appointments.map((appointment, idx) => (
             <AppointmentIndexItem

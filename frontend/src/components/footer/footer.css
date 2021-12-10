@@ -35,12 +35,23 @@
   text-decoration: none;
 }
 
+.footer-about > h2 {
+  padding-left: 8px;
+}
+
 .footer-about > a {
   margin-top: 0.75rem;
   color: white;
   font-size: 1rem;
   font-weight: 300;
   text-decoration: none;
+  padding: 8px;
+  border-radius: 8px;
+}
+
+.footer-about > a:hover {
+  color: black;
+  background-color: rgb(192, 176, 30);
 }
 
 .footer-logo {
@@ -125,9 +136,21 @@
   margin: 11px;
 }
 
+.github-link {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 30px;
+  width: 30px;
+}
+
 .github-icon {
   height: 30px;
   width: 30px;
   padding: 0px 5px 0px 3px;
   margin: 5px;
+}
+
+.github-link:hover {
+  filter: invert(1);
 }
