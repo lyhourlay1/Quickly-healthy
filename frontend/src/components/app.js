@@ -16,6 +16,7 @@ import FileView from "./file_view/file_view";
 
 const App = () => (
   <div className="page-container">
+      <FileView doctorId="61b25e1b86296d5ee3ec25c7" viewType="doctors"/>
     <Modal />
     <NavBarContainer />
     <Switch>
@@ -29,7 +30,6 @@ const App = () => (
       <ProtectedRoute exact path="/profile" component={ProfileContainer} />
       <ProtectedRoute exact path="/appointmentForm/:doctorId" component={AppointmentFormContainer} />
     </Switch>
-      <FileView />
   </div>
 );
 
