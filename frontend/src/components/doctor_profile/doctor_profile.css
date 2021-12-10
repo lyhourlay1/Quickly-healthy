@@ -1,3 +1,200 @@
 .doctor-profile {
   display: flex;
 }
+
+.doctor-profile {
+  display: flex;
+  flex-direction: column;
+}
+
+.doctor-profile-header {
+  display: flex;
+  justify-content: center;
+}
+
+#profile.doctors-titles {
+  background: beige;
+  padding: 12px;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+#profile.doctors-titles > div:first-child {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 24px;
+  font-weight: 600;
+}
+
+#profile.doctors-titles > div {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 18px;
+  font-weight: 400;
+}
+
+#insurances {
+  margin: 24px;
+}
+
+#insurances div:not(:first-child) {
+  display: list-item;
+  list-style-type: disc;
+  margin-left: 24px;
+}
+
+#insurances div:first-child {
+  font-size: 20px;
+  font-weight: 600;
+  list-style: none;
+}
+
+.appointment-form {
+  display: flex;
+  justify-content: center;
+  /* margin-left: 10%; */
+}
+
+.grid {
+  padding: 10px;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.grid > div {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+}
+
+.button-container {
+  width: 16px;
+  height: 16px;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 5px;
+  margin: 2px;
+  border-radius: 50%;
+  background-color: lightblue;
+}
+
+.button-container button {
+  border: none;
+  background-color: transparent;
+  width: 16px;
+  height: 16px;
+  cursor: pointer;
+  padding: 0px;
+}
+
+.button-container:hover {
+  background-color: rgb(89, 162, 187);
+}
+
+.grid-flex {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  grid-auto-rows: auto;
+  grid-auto-columns: auto;
+}
+
+.month-year{
+  font-family: Arial, Helvetica, sans-serif;
+  display: flex;
+  justify-content: left;
+  padding-bottom: 30px;
+  font-size: 40px;
+  text-decoration: underline;
+  font-weight: bold;
+  padding-top: 30px;
+  background-color: aliceblue;
+}
+
+.image-container {
+  width: fit-content;
+  height: fit-content;
+  background: aliceblue;
+  border: lightblue 20px solid;
+  border-radius: 30px;
+  display: flex;
+  justify-content: center;
+  margin-top: 16px;
+  overflow: hidden;
+}
+
+.image-container > img {
+  width: 300px;
+  height: 300px;
+}
+
+.form-container {
+  margin-top: 24px;
+  width: 1000px;
+  border: lightblue 20px solid;
+  border-radius: 20px;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  margin-bottom: 48px;
+  background-color: beige;
+}
+
+.toggle-buttons {
+  margin-top: 24px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.toggle-buttons button {
+  border: none;
+  background-color: rgb(230, 230, 230);
+  padding: 8px 16px 8px 16px;
+  cursor: pointer;
+}
+
+.toggle-buttons button:hover {
+  background-color: lightgray;
+}
+
+.submission-form {
+  margin-top: 24px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: 18px;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.submission-form > div:first-child {
+  font-weight: 600;
+  padding: 16px;
+}
+
+.submission-form > div:not(:first-child) {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.submission-form label {
+  margin-right: 8px;
+}
+
+.submission-form input {
+  resize: none;
+  border: none;
+  outline: none;
+  margin: 8px;
+  padding: 8px;
+  background-color: rgb(240, 240, 240);
+}
+
+.submission-form textarea {
+  resize: none;
+  width: 350px;
+  border: none;
+  outline: none;
+  margin: 8px;
+  padding: 8px;
+  background-color: rgb(240, 240, 240);
+
+}
