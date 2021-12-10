@@ -1,5 +1,5 @@
 import { connect } from "react-redux";
-import { fetchUserAppointments} from "../../util/appointment_util";
+import { fetchUserAppointments} from "../../actions/appointment_actions";
 import { openModal } from "../../actions/modal_actions";
 import UserProfile from "./user_profile";
 

@@ -9,12 +9,13 @@ const validateAppointmentInput = require('../../validation/appointments');
 
 const appointmentParams = (req) => {
   let schema = Object.keys(Appointment.schema.obj);
-  return Object.fromEntries(
-    Object.entries(req.body).filter((pair) => {
-      let [key, value] = pair;
-      return schema.includes(key);
-    })
-  );
+  let appt = {};
+
+  Object.entries(req.body).filter(([key, value]) => {
+    schema.includes(key) ? appt[key] = value : null;
+  });
+
+  return appt;
 };
 
 /** Gets all appointments
@@ -76,14 +77,11 @@ router.post('/', passport.authenticate('jwt', { session: false }), (req, res) =>
   }
 
   return User.findById(req.user.id)
-    .then(
-      // Checks if a user exists
-      (user) => {
+    .then((user) => {
         const newAppointment = new Appointment(appointmentParams(req));
         newAppointment.user = req.user.id;
         newAppointment.save().then((appointment) => res.json(appointment));
-      }
-    )
+    })
     .catch((err) => res.status(404).json(`No user found with ID: ${req.user.id}`));
 });
 
@@ -99,29 +97,25 @@ router.post('/user/:user_id', (req, res) => {
   if (!isValid) {
     return res.status(400).json(errors);
   }
-//   debugger
+
   Doctor.findById(req.body.doctor_id).then((doctor) => {
-    //   debugger
-    // let temp = doctor.availabilityString;
-    let temp = Object.assign({}, doctor.availabilityString)
+    let temp = Object.assign({}, doctor.availabilityString);
+
     temp[req.body.date].splice(
       temp[req.body.date].indexOf(parseInt(req.body.selectedSlot)),
       temp[req.body.date].indexOf(parseInt(req.body.selectedSlot)) + 1
     );
+
     doctor.availabilityString = {};
     doctor.availabilityString = temp; 
     doctor.save();
   });
 
   return User.findById(req.params.user_id)
-    .then(
-      // Checks if a user exists
-      (user) => {
+    .then(() => {
         const newAppointment = new Appointment(appointmentParams(req));
-        newAppointment.user = req.params.user_id;
         newAppointment.save().then((appointment) => res.json(appointment));
-      }
-    )
+    })
     .catch((err) => res.status(404).json(`No user found with ID: ${req.params.user_id}`));
 });
 

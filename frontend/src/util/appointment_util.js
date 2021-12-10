@@ -18,7 +18,6 @@ export const fetchAppointment = (appointmentId) => {
     return axios.get(`/api/appointments/${appointmentId}`);
 };
 
-
 /** API fetchUserAppointments gets the appointments of a user from the database, given the user's id
  * @param {String} userId - The user id
  * @type {(userId: String)  => Promise}
