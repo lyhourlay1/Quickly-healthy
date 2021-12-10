@@ -1,8 +1,7 @@
 import React from "react";
+import AppointmentFormContainer from "../appointments/appointment_form_container";
 import { DEFAULT_PROFILE_PICTURE } from "../../util/icons_and_images_util";
 import './doctor_profile.css';
-import AppointmentFormContainer from "../appointments/appointment_form_container";
-
 
 export default class DoctorProfile extends React.Component {
   componentDidMount() {
@@ -21,8 +20,13 @@ export default class DoctorProfile extends React.Component {
               <div>{doctor.name}</div>
               <div>{doctor.specialty}</div>
               <div id="address">{doctor.address}</div>
+              <div id="insurances">
+                <div>Accepted insurance providers:</div>
+                {doctor.insurances.map((insurance) => (
+                  <div>{insurance}</div>
+                ))}
+              </div>
             </div>
-          
           </div>
         </div>
 

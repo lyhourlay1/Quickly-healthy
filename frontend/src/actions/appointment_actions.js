@@ -15,13 +15,13 @@ const receiveAppointment = appointment => ({
 })
 
 export const fetchUserAppointments = (userId) =>dispatch=> (
-    ApiAppointmentUtil.fetchUserAppointments(userId).then((appointments)=> dispatch(receiveAppointments(appointments)))
+    ApiAppointmentUtil.fetchUserAppointments(userId).then((appointments)=> dispatch(receiveAppointments(appointments.data)))
 )
 
 export const fetchAppointment = (appointmentId) => dispatch=> (
-    ApiAppointmentUtil.fetchAppointment(appointmentId).then((appointment=> dispatch(receiveAppointment(appointment))))
+    ApiAppointmentUtil.fetchAppointment(appointmentId).then((appointment=> dispatch(receiveAppointment(appointment.data))))
 )
 
 export const createAppointment = (appointment) => dispatch => (
-    ApiAppointmentUtil.createAppointment(appointment).then((appointment=> dispatch(receiveAppointment(appointment))))
+    ApiAppointmentUtil.createAppointment(appointment).then((appointment=> dispatch(receiveAppointment(appointment.data))))
 )
