@@ -18,6 +18,7 @@ div.splash-container {
 .header-bg {
   width: 40%;
   padding: 10px;
+  transform: scale(0.7, 0.7);
 }
 
 .header-text {
@@ -66,6 +67,7 @@ div.splash-container {
   align-items: center;
   justify-content: space-evenly;
   padding: 10px;
+  margin: 10px 5px;
   flex-wrap: wrap;
 }
 
@@ -76,6 +78,7 @@ div.splash-component {
   align-items: center;
   flex-direction: column;
   padding: 10px;
+  margin-bottom: 45px;
 }
 
 div.splash-text {

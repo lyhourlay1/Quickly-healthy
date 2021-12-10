@@ -12,7 +12,7 @@ const Splash = () => {
           </p>
         </div>
         <img
-          src="https://p.kindpng.com/picc/s/193-1938072_connecting-patients-to-doctors-hd-png-download.png"
+          src="https://gyazo.com/e0119e94debf3cbc93f9e87d9084a7a8"
           className="header-bg"
         />
       </div>
