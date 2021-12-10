@@ -6,26 +6,24 @@ import Footer from '../footer/footer'
 
 class UserProfile extends React.Component {
   componentDidMount() {
-    this.props.fetchUserAppointments(this.props.match.params.id);
+    this.props.fetchUserAppointments(this.props.currentUser.id);
   }
 
   render(){
     let { appointments, currentUser, openModal } = this.props;
-    if (!appointments) return null;
 
     return(
-      
       <div className="user-profile">
         <div className="image-container">
           <img src={DEFAULT_PROFILE_PICTURE} alt="" />
         </div>
         <AppointmentIndex 
-          appointments={appointments} 
+          appointments={appointments ? appointments : null} 
           currentUser={currentUser} 
           openModal={openModal} 
         />
-          <Footer />
         
+        <Footer />
       </div>
     )
   }
