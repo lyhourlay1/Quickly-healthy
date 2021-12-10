@@ -12,7 +12,7 @@ const Splash = () => {
           </p>
         </div>
         <img
-          src="https://p.kindpng.com/picc/s/193-1938072_connecting-patients-to-doctors-hd-png-download.png"
+          src="https://raw.githubusercontent.com/lyhourlay1/Quickly-healthy/home-css-emmett/assets/splash/header-bg.png"
           className="header-bg"
         />
       </div>
