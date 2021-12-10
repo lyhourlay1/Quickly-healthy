@@ -20,7 +20,6 @@ export const fetchDoctor = (doctorId) => {
 
 
 /** API createDoctor creates a doctor in the database
- * The doctor must have an associated user_id
  * @param {Object} doctor - The doctor
  * @type {(doctor: Object)  => Promise}
  * @returns {Promise} - A promise of doctor
@@ -49,6 +48,46 @@ export const deleteDoctor = (doctorId) => {
     return axios.delete(`/api/doctors/${doctorId}`);
 };
 
+
+/** API fetchDoctorImage gets an image from the database, given the doctor id
+ * @param {String} doctorId - The doctor id
+ * @type {(doctorId: String)  => Promise}
+ * @returns {Promise} - A promise of image
+ */
+export const fetchDoctorImage = (doctorId) => {
+    return axios.get(`/api/doctors/${doctorId}/image`);
+};
+
+
+/** API fetchDoctorFiles gets files from the database, given the doctor id
+ * @param {String} doctorId - The doctor id
+ * @type {(doctorId: String)  => Promise}
+ * @returns {Promise} - A promise of files
+ */
+export const fetchDoctorFiles = (doctorId) => {
+    return axios.get(`/api/doctors/${doctorId}/files`);
+};
+
+
+/** API updateDoctorImage creates or updates a doctor's image in the database
+ * @param {String} doctorId - The doctor's id
+ * @param {Object} image - The image file
+ * @type {(doctorId: String, image: Object)  => Promise}
+ * @returns {Promise} - A promise of image
+ */
+export const updateDoctorImage = (doctorId, image) => {
+    return axios.post(`/api/doctors/${doctorId}/image`, image)
+}
+
+/** API updateDoctorFiles creates or updates a doctor's files in the database
+ * @param {String} doctorId - The doctor's id
+ * @param {Object} files - The files
+ * @type {(doctorId: String, files: Object)  => Promise}
+ * @returns {Promise} - A promise of files
+ */
+export const updateDoctorFiles = (doctorId, files) => {
+    return axios.post(`/api/doctors/${doctorId}/files`, files)
+}
 
 // window.fetchDoctors = fetchDoctors;
 // window.fetchDoctor = fetchDoctor;

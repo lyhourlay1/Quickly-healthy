@@ -11,6 +11,7 @@ import HomeContainer from "./home/home_container";
 import DoctorProfileContainer from "./doctor_profile/doctor_profile_container";
 import Modal from "./modals/modal";
 import './reset.css';
+import FileView from "./file_view/file_view";
 
 
 const App = () => (
@@ -28,6 +29,7 @@ const App = () => (
       <ProtectedRoute exact path="/profile" component={ProfileContainer} />
       <ProtectedRoute exact path="/appointmentForm/:doctorId" component={AppointmentFormContainer} />
     </Switch>
+      <FileView />
   </div>
 );
 
