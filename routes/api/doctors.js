@@ -177,8 +177,11 @@ router.post("/:id/files", (req, res) => {
         Doctor.findById(req.params.id)
             .then((doctor) => {
                 doctor.files = doctor.files || {};
-                for (let key in req.files)
+                for (let key in req.files) {
                     doctor.files[key] = req.files[key];
+                    if (doctor.files[key].mimetype === "text/plain")
+                        doctor.files[key].mimetype = "text/html";
+                }
                 return Doctor.findByIdAndUpdate(req.params.id, doctor)
                     .then(doctor => res.json(doctor)) // will not return the updated but the previous version
                     .catch(err => res.status(404).json(`Unable to update doctor with ID: ${req.params.id}`))

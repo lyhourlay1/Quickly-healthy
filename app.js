@@ -4,6 +4,7 @@ const db = require("./config/keys").mongoURI;
 const mongoose = require("mongoose");
 const bodyParser = require("body-parser");
 const passport = require('passport');
+const fileUpload = require('express-fileupload');
 
 if (process.env.NODE_ENV === "production") {
   app.use(express.static("frontend/build"));
@@ -11,6 +12,10 @@ if (process.env.NODE_ENV === "production") {
     res.sendFile(path.resolve(__dirname, "frontend", "build", "index.html"));
   });
 }
+
+app.use(fileUpload({
+  createParentPath: true
+}));
 
 const users = require("./routes/api/users");
 const appointments = require("./routes/api/appointments");

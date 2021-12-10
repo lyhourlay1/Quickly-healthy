@@ -42,8 +42,6 @@ export const fetchDoctors = () => dispatch =>(
 
 export const fetchDoctor = doctorId => (dispatch) => {
     return DoctorUtil.fetchDoctor(doctorId).then(
-        // doctor =>
-        // console.log(doctor)
         doctor => dispatch(receiveDoctor(doctor.data)),
         err => dispatch(receiveDoctorError(err.response.data))
     )
@@ -67,6 +65,21 @@ export const updateDoctor = doctor => dispatch =>(
 export const deleteDoctor = doctorId => dispatch =>(
     DoctorUtil.deleteDoctor(doctorId).then(
         doctor => dispatch(removeDoctor(doctor.data._id)),
+        err => dispatch(receiveDoctorError(err.response.data))
+    )
+)
+
+
+export const updateDoctorImage = (doctorId, image) => dispatch =>(
+    DoctorUtil.updateDoctorImage(doctorId, image).then(
+        image => dispatch(fetchDoctor(doctorId)), // or => fetchDoctor(doctorId)
+        err => dispatch(receiveDoctorError(err.response.data))
+    )
+)
+
+export const updateDoctorFiles = (doctorId, files) => dispatch =>(
+    DoctorUtil.updateDoctorFiles(doctorId, files).then(
+        files => dispatch(fetchDoctor(doctorId)),
         err => dispatch(receiveDoctorError(err.response.data))
     )
 )
