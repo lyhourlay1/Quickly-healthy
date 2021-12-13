@@ -8,6 +8,9 @@ const AppointmentsReducer = (state={}, action)=>{
             return action.appointments
         case RECEIVE_APPOINTMENT:
             newState[action.appointment.id]= action.appointment
+            // console.log(action.appointment)
+            // console.log(state)
+            // console.log(newState)
             return newState
         default:
             return state
