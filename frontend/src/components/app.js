@@ -1,16 +1,16 @@
 import React from "react";
+import { Route } from "react-router";
 import { AuthRoute, ProtectedRoute } from "../util/route_util";
 import { Switch } from "react-router-dom";
 import NavBarContainer from "./nav/navbar_container";
 import LoginFormContainer from "./session/login_form_container";
 import SignupFormContainer from "./session/signup_form_container";
 import ProfileContainer from "./user_profile/user_profile_container";
-import AppointmentFormContainer from "./appointments/appointment_form_container"
 import Splash from "./splash/splash";
 import HomeContainer from "./home/home_container";
 import DoctorProfileContainer from "./doctor_profile/doctor_profile_container";
 import Modal from "./modals/modal";
-import Footer from './footer/footer'
+import Footer from './footer/footer';
 import './reset.css';
 
 
@@ -25,10 +25,10 @@ const App = () => (
       <ProtectedRoute path="/home" component={HomeContainer} />
       <ProtectedRoute path="/profile" component={ProfileContainer} />
       <ProtectedRoute path="/doctors/:id" component={DoctorProfileContainer} />
-      {/* <ProtectedRoute path="/appointmentForm/:doctorId" component={AppointmentFormContainer} /> */}
       <AuthRoute exact path="/" component={Splash} />
     </Switch>
-    {/* <Footer /> */}
+    {/* <Route path="/" component={Footer} /> */}
+    <Route path="/" component={Footer} />
   </div>
 );
 

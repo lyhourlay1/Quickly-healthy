@@ -1,8 +1,18 @@
 import React from 'react';
+import { connect } from 'react-redux';
+import { withRouter } from 'react-router';
 import './footer.css';
 
 class Footer extends React.Component {
   render() {
+    return this.props.url === "/signup" ||
+    this.props.url === "/login" ||
+    this.props.url === "/home"
+      ? null
+      : this.displayFooter();
+  }
+
+  displayFooter() {
     return (
       <div className="footer-container">
 
@@ -72,6 +82,13 @@ class Footer extends React.Component {
       </div>
     );
   }
+};
+
+const mSTP = (state, ownProps) => {
+  debugger
+  return {
+    url: ownProps.location.pathname
+  }
 }
 
-export default Footer;
+export default withRouter(connect(mSTP)(Footer));

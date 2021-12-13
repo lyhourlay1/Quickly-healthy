@@ -2,7 +2,6 @@ import React from "react";
 import AppointmentIndex from "../appointments/appointment_index";
 import { DEFAULT_PROFILE_PICTURE } from "../../util/icons_and_images_util";
 import './user_profile.css';
-import Footer from '../footer/footer'
 
 class UserProfile extends React.Component {
   componentDidMount() {
@@ -22,8 +21,6 @@ class UserProfile extends React.Component {
           currentUser={currentUser} 
           openModal={openModal} 
         />
-        
-        <Footer />
       </div>
     )
   }
