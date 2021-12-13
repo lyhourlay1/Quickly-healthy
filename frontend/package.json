@@ -21,7 +21,6 @@
     "redux-thunk": "^2.4.1",
     "web-vitals": "^1.1.2"
   },
-  "proxy": "http://localhost:5000",
   "scripts": {
     "start": "react-scripts start",
     "start:options": "export NODE_OPTIONS=--openssl-legacy-provider && react-scripts start",
@@ -48,5 +47,6 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  }
+  },
+  "proxy": "http://localhost:5000"
 }
