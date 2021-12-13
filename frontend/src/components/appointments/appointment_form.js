@@ -48,12 +48,17 @@ class AppointmentForm extends React.Component{
 
     }
     handleClickNext(field){
+        this.month = this.month +1
         let newGrid = this.generateCalenderList(+1)
         this.setState({[field]: newGrid})
+ 
     }
     handleClickBack(field){
+
+        this.month = this.month -1
         let newGrid = this.generateCalenderList(-1)
         this.setState({[field]: newGrid})
+
     }
 
     handleClickCreateAppointment(e){
@@ -70,33 +75,22 @@ class AppointmentForm extends React.Component{
     }
 
     generateCalenderList(num){
-        // let availabilites = doctor.availabilityString
-        // debugger
-        // let availabilites
-        // if(this.props.doctor){
-        // availabilites= this.props.doctor.availabilityString
-
-        // }else{
-        //     availabilites = this.state.doctor.availabilityString
-        // }
-
         let availabilites= this.props.doctor.availabilityString
 
         let days ={"Mon": [], "Tue":[], "Wed":[], "Thu":[], "Fri":[], "Sat":[], "Sun":[]}
         let today= new Date(Date.now());
         let thisMonth = today.getMonth();
-        if(this.month){
-            thisMonth = new Date(Date.parse(this.state.grid[15].day)).getMonth()+num
+
+        if(!this.month){
+            this.month = thisMonth
         }
-        this.month = thisMonth
         let thisYear = today.getFullYear();
-        // if(thisMonth ===12){
-        //     this.month = 0
-        // }
-        let firstDayOfMonth = new Date(thisYear, thisMonth, 1)
+
+        let firstDayOfMonth = new Date(thisYear, this.month, 1)
         let firstDayStr = firstDayOfMonth.toDateString().split(" ")
         days[firstDayStr[0]].push(firstDayOfMonth.toDateString())
-        let firstDay= new Date(thisYear, thisMonth, 1)
+        let firstDay= new Date(thisYear, this.month, 1)
+
         while(firstDay.toDateString().split(" ")[0]!=="Mon"){
             let firstDate = new Date(firstDay.setDate(firstDay.getDate()- 1)).toDateString()
             let firstDateArr= firstDate.split(" ")
