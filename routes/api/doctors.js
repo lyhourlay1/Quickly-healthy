@@ -62,6 +62,7 @@ router.get("/:id", (req, res) => {
             }
             dr.availabilityString = nextThirtyDays;
             dr.save();
+            console.log(dr.availabilityString["Tue Dec 14 2021"])
             return res.json(dr)
         })
         // .then((doctor) => res.json(doctor))
@@ -157,7 +158,8 @@ router.post("/:id/image", (req, res) => {
     Doctor.findById(req.params.id)
         .then((doctor) => {
             doctor.image = req.files.image;
-            console.log(doctor)
+            // console.log(doctor.availabilityString)
+
             return Doctor.findByIdAndUpdate(req.params.id, doctor)
                 .then(doctor => res.json(doctor)) // will not return the updated but the previous version
                 .catch(err => res.status(404).json(`Unable to update doctor with ID: ${req.params.id}`))

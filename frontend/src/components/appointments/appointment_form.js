@@ -193,7 +193,7 @@ class AppointmentForm extends React.Component{
                                 {date.slots.map((slot) => 
                                     slot <= 12 
                                         ? <div className="button-container"><button onClick={this.handleClickUpdate('selectedSlot', date.day)} value={slot}>{slot}</button></div>
-                                        : <div className="button-container"><button onClick={this.handleClickUpdate('selectedSlot', date.day)} value={slot}>{slot % 12}</button></div>
+                                        : <div className="button-container"><button onClick={this.handleClickUpdate('selectedSlot', date.day)} value={slot}>{slot}</button></div>
                                     
                                 )}
                             </div>
