@@ -10,13 +10,10 @@ export default class AppointmentIndex extends React.Component {
         <div className="index-header">
           Upcoming appointments
         </div>
-
-        <div className="default-header">
-          {appointments.length === 0
-            ? <div>No appointments yet</div>
-            : null
-          }
-        </div>
+        {appointments.length === 0
+          ? <div className="default-header">No appointments yet </div> 
+          : null
+        }
 
         <ul className="appointment-list">
           {appointments.map((appointment, idx) => (

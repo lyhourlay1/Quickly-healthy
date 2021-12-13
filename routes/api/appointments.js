@@ -47,7 +47,9 @@ router.get('/', passport.authenticate('jwt', { session: false }), (req, res) => 
  * @response {Array} json - List of appointments by user_id, sorted from most recent to least recent
  */
 router.get('/user/:user_id', (req, res) => {
-  return Appointment.find({ user: req.params.user_id })
+  console.log(req.params.user_id, "REQ");
+
+  return Appointment.find({ user_id: req.params.user_id })
     .sort({ date: -1 })
     .then((appointments) => res.json(appointments))
     .catch((err) => res.status(404).json(`No appointments found for user ID: ${req.params.user_id}`));
