@@ -30,7 +30,7 @@ const Splash = () => {
 
           <div className="splash-component">
             <div className="splash-image-container-appt splash-image-container">
-              <img src="https://raw.githubusercontent.com/lyhourlay1/Quickly-healthy/main/assets/splash/appt.jpg" />
+              <img src="https://raw.githubusercontent.com/lyhourlay1/Quickly-healthy/main/assets/splash/appt.png" />
             </div>
             <div className="splash-text">Schedule appointments</div>
           </div>
