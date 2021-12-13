@@ -10,16 +10,13 @@
   justify-self: flex-end;
   width: 100%;
   margin-top: 10px;
-  /* bottom: 0;
-  position: fixed; */
-
 }
 
 .footer-links-container {
   position: relative;
   display: flex;
   /* height: 250px; */
-  background-color: rgb(72,129,235);
+  background-color: rgb(72, 129, 235);
   z-index: 5;
 }
 
@@ -36,10 +33,6 @@
   padding-left: 12.5%;
   padding-right: 12.5%;
   text-decoration: none;
-}
-
-.footer-about > h2 {
-  padding-left: 8px;
 }
 
 .footer-about > a {
@@ -85,6 +78,15 @@
 .info > p {
   font-size: 1rem;
   font-weight: lighter;
+}
+
+.info > a {
+  text-decoration: none;
+  color: white;
+  font-size: 1rem;
+  font-weight: lighter;
+  padding: 5px 10px 5px 0px;
+  border-radius: 8px;
 }
 
 .footer-help {

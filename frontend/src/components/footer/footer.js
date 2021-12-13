@@ -5,15 +5,22 @@ class Footer extends React.Component {
   render() {
     return (
       <div className="footer-container">
-
         <div className="footer-links-container">
           <div className="footer-info">
             <div className="footer-tech info">
               <h2>Technologies</h2>
-              <p>MongoDB</p>
-              <p>Express</p>
-              <p>React</p>
-              <p>Node</p>
+              <a target="blank" href="https://www.mongodb.com/">
+                MongoDB
+              </a>
+              <a target="blank" href="https://expressjs.com/">
+                Express
+              </a>
+              <a target="blank" href="https://reactjs.org/">
+                React
+              </a>
+              <a target="blank" href="https://nodejs.org/en/">
+                Node
+              </a>
             </div>
 
             <div className="footer-support info">
@@ -31,16 +38,16 @@ class Footer extends React.Component {
             <div className="footer-about info">
               <h2>Meet the Team</h2>
 
-              <a target="_blank" href="https://github.com/lyhourlay1">
-                Lee
-              </a>
-              <br />
               <a target="_blank" href="https://github.com/emmetthe">
                 Emmett
-                </a>
+              </a>
               <br />
               <a target="_blank" href="https://github.com/grayson-poon">
                 Grayson
+              </a>
+              <br />
+              <a target="_blank" href="https://github.com/lyhourlay1">
+                Lee
               </a>
               <br />
               <a target="_blank" href="https://github.com/mjlomeli">
@@ -49,10 +56,12 @@ class Footer extends React.Component {
 
               <br />
               <a className="github-link" href="https://github.com/lyhourlay1/Quickly-healthy" target="_blank">
-                <img src="https://raw.githubusercontent.com/lyhourlay1/Quickly-healthy/home-css-emmett/assets/splash/github.png" className="github-icon"/>
+                <img
+                  src="https://raw.githubusercontent.com/lyhourlay1/Quickly-healthy/home-css-emmett/assets/splash/github.png"
+                  className="github-icon"
+                />
               </a>
             </div>
-
           </div>
         </div>
 
