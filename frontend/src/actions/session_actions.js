@@ -60,3 +60,25 @@ export const logout = () => (dispatch) => {
   APIUtil.setAuthToken(false);
   dispatch(logoutUser());
 };
+
+
+export const updateUserImage = (userId, image) => (dispatch, getState) =>{
+    APIUtil.updateUserFiles(userId, image).then(
+        files => {
+            let user = getState().session;
+
+            return dispatch(receiveCurrentUser(user));
+        }
+    )
+}
+
+
+export const updateUserFiles = (userId, files) => (dispatch, getState) =>(
+    APIUtil.updateUserFiles(userId, files).then(
+        files => {
+            let user = getState().session;
+
+            return dispatch(receiveCurrentUser(user));
+        }
+    )
+)
