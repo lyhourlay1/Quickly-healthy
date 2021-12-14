@@ -29,7 +29,7 @@ class NavBar extends React.Component {
     } else {
       return (
         <div className="navbar">
-          <Link className="logo" to={"/"}> <img src="https://raw.githubusercontent.com/lyhourlay1/Quickly-healthy/main/assets/splash/logo.png" className="navbar-logo" /> </Link>
+          <Link className="logo" to={"/"}> <img src="https://raw.githubusercontent.com/lyhourlay1/Quickly-healthy/home-css-emmett/assets/splash/qh-logo.png" className="navbar-logo" /> </Link>
           <div className="right-buttons">
             <Link to={"/signup"} >Signup</Link> 
             <Link to={"/login"} >Login</Link>
