@@ -47,8 +47,6 @@ router.get('/', passport.authenticate('jwt', { session: false }), (req, res) => 
  * @response {Array} json - List of appointments by user_id, sorted from most recent to least recent
  */
 router.get('/user/:user_id', (req, res) => {
-  console.log(req.params.user_id, "REQ");
-
   return Appointment.find({ user_id: req.params.user_id })
     .sort({ date: -1 })
     .then((appointments) => res.json(appointments))
@@ -101,17 +99,14 @@ router.post('/user/:user_id', (req, res) => {
   }
 
   Doctor.findById(req.body.doctor_id).then((doctor) => {
-    console.log('appointment init', req.body, doctor)
     let temp = Object.assign({}, doctor.availabilityString);
     temp[req.body.date].splice(
       temp[req.body.date].indexOf(parseInt(req.body.selectedSlot)),
       1
     );
-    // console.log(temp)
     doctor.availabilityString = {};
     doctor.availabilityString = temp; 
     doctor.save();
-      // console.log('appoint end', doctor)
   });
 
   return User.findById(req.params.user_id)
@@ -175,10 +170,8 @@ router.delete('/:id', passport.authenticate('jwt', { session: false }), (req, re
  * @param {String} id - The appointment id
  */
 router.delete('/:id/delete', (req, res) => {
-  console.log(req.params.id, "hit the backend");
   return Appointment.findByIdAndDelete(req.params.id)
     .then((appointment) => {
-      console.log(appointment._id);
       res.json(appointment);
     })
     .catch((err) => res.status(404).json(`No appointment found with ID: ${req.params.id}`));
