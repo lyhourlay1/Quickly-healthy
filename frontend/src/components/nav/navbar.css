@@ -14,7 +14,7 @@ div.navbar {
 .navbar-logo {
   text-decoration: none;
   cursor: pointer;
-  width: 175px;
+  width: 150px;
   margin-left: 75px;
 }
 
@@ -22,24 +22,26 @@ div.right-buttons {
   display: flex;
   justify-content: center;
   align-items: center;
-  font-family: 'Times New Roman', Times, serif;
+  font-family: Arial, Helvetica, sans-serif;
+  margin-right: 75px;
 }
 
 div.right-buttons a {
   max-height: 52px;
   padding: 16px;
-  border-radius: 8px;
+  /* border-radius: 8px; */
   font-size: 24px;
   color: rgb(240, 240, 240);
   text-decoration: none;
 }
 
 div.right-buttons a:hover {
-  background-color: rgb(194, 194, 194);
+  /* background-color: rgb(72,129,235); */
+  border-bottom: 1px solid white;
 }
 
 div.right-buttons button {
-  font-family: 'Times New Roman', Times, serif;
+  font-family: Arial, Helvetica, sans-serif;
   font-size: 24px;
   padding: 16px;
   border: none;
@@ -52,5 +54,6 @@ div.right-buttons button {
 }
 
 div.right-buttons button:hover {
-  background-color: rgb(194, 194, 194);
+  /* background-color: rgb(72,129,235); */
+  border-bottom: 3px solid white;
 }
