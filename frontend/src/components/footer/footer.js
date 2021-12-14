@@ -85,7 +85,6 @@ class Footer extends React.Component {
 };
 
 const mSTP = (state, ownProps) => {
-  debugger
   return {
     url: ownProps.location.pathname
   }

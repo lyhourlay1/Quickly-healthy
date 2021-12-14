@@ -174,8 +174,12 @@ router.delete('/:id', passport.authenticate('jwt', { session: false }), (req, re
  * @param {String} id - The appointment id
  */
 router.delete('/:id/delete', (req, res) => {
+  console.log(req.params.id, "hit the backend");
   return Appointment.findByIdAndDelete(req.params.id)
-    .then((appointment) => res.json(appointment)) // will not return the updated but the previous version
+    .then((appointment) => {
+      console.log(appointment._id);
+      res.json(appointment);
+    })
     .catch((err) => res.status(404).json(`No appointment found with ID: ${req.params.id}`));
 });
 
