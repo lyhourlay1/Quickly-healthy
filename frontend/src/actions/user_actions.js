@@ -18,6 +18,13 @@ const receiveUserError = error =>({
 /*    Separation      */
 
 
+/** API fetchUser gets a user from the database, given the user id
+ * @param {String} userId - The user id
+ * @type {(userId: String)  => (dispatch) => Promise}
+ * @returns {(dispatch) => Promise} - A redux dispatch promise of user
+ * @example
+ *  fetchUser(user.id)(store.dispatch)
+ */
 export const fetchUser = userId => (dispatch) => {
     return UserUtil.fetchUser(userId).then(
         user => dispatch(receiveUser(user.data)),
@@ -26,6 +33,14 @@ export const fetchUser = userId => (dispatch) => {
 }
 
 
+/** API updateUserImage creates or updates a user's profile image from the database and state
+ * @param {String} userId - The user's id
+ * @param {Object} image - The profile image
+ * @type {(userId: String, image: Object)  => (dispatch) => Promise}
+ * @returns {(dispatch) => Promise} - A redux dispatch promise of image
+ * @example
+ *  updateUserImage(user.id, image)(store.dispatch)
+ */
 export const updateUserImage = (userId, image) => dispatch =>(
     UserUtil.updateUserImage(userId, image).then(
         image => dispatch(receiveUser({image: image})),
@@ -33,6 +48,15 @@ export const updateUserImage = (userId, image) => dispatch =>(
     )
 )
 
+
+/** API updateUserFiles creates or updates a user's files image from the database and state
+ * @param {String} userId - The user's id
+ * @param {Object} files - The files
+ * @type {(userId: String, files: Object)  => (dispatch) => Promise}
+ * @returns {(dispatch) => Promise} - A redux dispatch promise of files
+ * @example
+ *  updateUserFiles(user.id, files)(store.dispatch)
+ */
 export const updateUserFiles = (userId, files) => dispatch =>(
     UserUtil.updateUserFiles(userId, files).then(
         files => dispatch(receiveUser({files: files})),
