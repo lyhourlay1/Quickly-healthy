@@ -38,12 +38,13 @@ router.get("/:id", (req, res) => {
     let nextDay = new Date(date);
 
     for (let i = 0; i < 30; i++) {
-    nextThirtyDays[date.toString().split(' ').slice(0, -5).join(' ')] = [9, 10, 11, 12, 13, 14, 15, 16, 17];
-
-      nextDay.setDate(nextDay.getDate() + 1);
-
-      nextDay = new Date(nextDay);
-      let stringDate = nextDay.toString().split(' ').slice(0, -5).join(' ');
+    let currentStringDate = date.toString().split(' ').slice(0, -5).join(' ')
+    nextThirtyDays[currentStringDate] = [9, 10, 11, 12, 13, 14, 15, 16, 17];
+    
+    nextDay.setDate(nextDay.getDate() + 1);
+    
+    nextDay = new Date(nextDay);
+    let stringDate = nextDay.toString().split(' ').slice(0, -5).join(' ');
       if(!nextThirtyDays[stringDate]) {
         nextThirtyDays[stringDate] = [9, 10, 11, 12, 13, 14, 15, 16, 17];
       }
@@ -52,6 +53,7 @@ router.get("/:id", (req, res) => {
     let doctor = Doctor.findById(req.params.id);
     Doctor.findById(req.params.id)
         .then(dr => {
+            // console.log('doctor init', req.body, dr)
             // debugger
             // for (const k, v in nextThirtyDays) {
             for(let [k, v] of Object.entries(nextThirtyDays)) {
@@ -62,7 +64,8 @@ router.get("/:id", (req, res) => {
             }
             dr.availabilityString = nextThirtyDays;
             dr.save();
-            console.log(dr.availabilityString["Tue Dec 14 2021"])
+            // console.log('doctor end', dr)
+            // console.log(dr.availabilityString["Tue Dec 14 2021"])
             return res.json(dr)
         })
         // .then((doctor) => res.json(doctor))

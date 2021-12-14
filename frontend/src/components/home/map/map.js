@@ -7,20 +7,11 @@ export default class Map extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-        map: null
+      map: null
     }
   }
 
   componentDidMount() {
-    // if (process.env.NODE_ENV === "production") {
-    // 
-    // } else {
-    //   // mapboxgl.accessToken = process.env.REACT_APP_MAPBOX_TOKEN;
-    // }
-    // new mapboxgl.accessToken({
-    //   REACT_APP_MAPBOX_TOKEN: process.env.REACT_APP_MAPBOX_TOKEN
-    // })
-
     mapboxgl.accessToken = process.env.REACT_APP_MAPBOX_TOKEN;
     let map = new mapboxgl.Map({
       container: "map-container",

@@ -87,9 +87,9 @@ class SignupForm extends React.Component {
                 placeholder="Confirm Password"
               />
               <br />
-              <label htmlFor="insurance-list">
+              <div className="insurance-list" htmlFor="insurance-list">
                 Who is your insurance provider?
-              </label>
+              </div>
               <select onChange={this.update("insurance")}>
                 <option selected disabled hidden>
                   choose one...
@@ -115,8 +115,8 @@ class SignupForm extends React.Component {
               <input type="submit" value="Submit" />
               <br />
               <h1 className="static-already">
-                Already have an account! Log in
-                <Link to={"/login"}> Here!</Link>
+                Already have an account? Log in {` `}
+                <Link to={"/login"}>here!</Link>
               </h1>
 
               {this.renderErrors()}

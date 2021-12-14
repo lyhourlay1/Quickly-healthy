@@ -48,7 +48,7 @@ class LoginForm extends React.Component {
 
   render() {
     return (
-      <div>
+      <div className="session-form-container">
         <form onSubmit={this.handleSubmit}>
           <div className ='session-box'>
             <div className='inputs'>
@@ -72,8 +72,8 @@ class LoginForm extends React.Component {
 
               <br/>
               <h1 className="static-already">
-                Don't Have an Account Yet? Sign up 
-                <Link to={"/signup"}> Here!</Link> 
+                Don't have an account yet? Sign up {` `} 
+                <Link to={"/signup"}>here!</Link> 
               </h1>
 
               {this.renderErrors()}
@@ -81,10 +81,6 @@ class LoginForm extends React.Component {
             </div> 
           </div>
         </form>
-        <div className="foot">
-          <Footer />
-
-        </div>
       </div>
     );
   }

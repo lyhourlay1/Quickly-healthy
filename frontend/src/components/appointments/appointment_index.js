@@ -4,7 +4,7 @@ import AppointmentIndexItem from "./appointment_index_item";
 export default class AppointmentIndex extends React.Component {
   render() {
     let { appointments, currentUser, openModal } = this.props;
-    
+
     return (
       <div className="appointment-index">
         <div className="index-header">
@@ -28,4 +28,4 @@ export default class AppointmentIndex extends React.Component {
       </div>
     )
   }
-}
+};
