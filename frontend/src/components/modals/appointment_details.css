@@ -49,3 +49,18 @@
 .appointment-details button:hover {
   background-color: rgb(115, 193, 219);
 }
+
+button.button {
+  padding: 12px;
+  margin: 16px 24px 0px 24px;
+  font-size: 18px;
+  font-weight: 600;
+}
+
+button#delete.button {
+  background-color: rgb(221, 54, 54);
+}
+
+button#delete.button:hover {
+  background-color: red;
+}
