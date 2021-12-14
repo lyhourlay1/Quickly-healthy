@@ -10,7 +10,8 @@ const AppointmentsReducer = (state={}, action)=>{
 
         return newState;
       case RECEIVE_APPOINTMENT:
-        newState[action.appointment.id] = action.appointment;
+        debugger
+        newState[action.appointment._id] = action.appointment;
         return newState;
       case REMOVE_APPOINTMENT:
         debugger;
