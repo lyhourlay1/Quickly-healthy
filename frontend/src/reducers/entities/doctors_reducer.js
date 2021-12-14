@@ -17,6 +17,7 @@ export default function DoctorReducer(prevState={}, action){
         case RECEIVE_DOCTOR:
             // debugger
             newState[action.doctor._id] = action.doctor;
+            // console.log(action.doctor)
             return newState;
         case REMOVE_DOCTOR:
             delete newState[action.doctor._id];
