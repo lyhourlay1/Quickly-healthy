@@ -104,7 +104,7 @@ router.post('/user/:user_id', (req, res) => {
     let temp = Object.assign({}, doctor.availabilityString);
     temp[req.body.date].splice(
       temp[req.body.date].indexOf(parseInt(req.body.selectedSlot)),
-      temp[req.body.date].indexOf(parseInt(req.body.selectedSlot)) + 1
+      1
     );
     doctor.availabilityString = {};
     doctor.availabilityString = temp; 
