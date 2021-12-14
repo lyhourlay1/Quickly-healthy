@@ -5,11 +5,7 @@ import './footer.css';
 
 class Footer extends React.Component {
   render() {
-    return this.props.url === "/signup" ||
-    this.props.url === "/login" ||
-    this.props.url === "/home"
-      ? null
-      : this.displayFooter();
+    return this.props.url === '/signup' || this.props.url === '/login' || this.props.url === '/home' ? null : this.displayFooter();
   }
 
   displayFooter() {
@@ -38,12 +34,12 @@ class Footer extends React.Component {
               <p>support@Quicklyhealthy.com</p>
             </div>
 
-            <div className="footer-help info">
+            {/* <div className="footer-help info">
               <h2>About</h2>
               <p>How it works</p>
               <p>Privacy settings</p>
               <p>Terms of Service</p>
-            </div>
+            </div> */}
 
             <div className="footer-about info">
               <h2>Meet the Team</h2>
@@ -51,44 +47,45 @@ class Footer extends React.Component {
               <a target="_blank" href="https://github.com/emmetthe">
                 Emmett
               </a>
-              <br />
+
               <a target="_blank" href="https://github.com/grayson-poon">
                 Grayson
               </a>
-              <br />
+
               <a target="_blank" href="https://github.com/lyhourlay1">
                 Lee
               </a>
-              <br />
+         
               <a target="_blank" href="https://github.com/mjlomeli">
                 Mauricio
               </a>
 
-              <br />
-              <a className="github-link" href="https://github.com/lyhourlay1/Quickly-healthy" target="_blank">
-                <img
-                  src="https://raw.githubusercontent.com/lyhourlay1/Quickly-healthy/home-css-emmett/assets/splash/github.png"
-                  className="github-icon"
-                />
-              </a>
+   
+              
             </div>
           </div>
         </div>
 
         <div className="footer-bottom-container">
           <div className="terms-policies">
+          <a className="github-link" href="https://github.com/lyhourlay1/Quickly-healthy" target="_blank">
+                <img
+                  src="https://raw.githubusercontent.com/lyhourlay1/Quickly-healthy/home-css-emmett/assets/splash/github.png"
+                  className="github-icon"
+                />
+              </a>
             <p>2021 Quickly Healthy, Inc.</p>
           </div>
         </div>
       </div>
     );
   }
-};
+}
 
 const mSTP = (state, ownProps) => {
   return {
     url: ownProps.location.pathname
-  }
-}
+  };
+};
 
 export default withRouter(connect(mSTP)(Footer));
