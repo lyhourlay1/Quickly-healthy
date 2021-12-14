@@ -101,15 +101,17 @@ router.post('/user/:user_id', (req, res) => {
   }
 
   Doctor.findById(req.body.doctor_id).then((doctor) => {
+    console.log('appointment init', req.body, doctor)
     let temp = Object.assign({}, doctor.availabilityString);
     temp[req.body.date].splice(
       temp[req.body.date].indexOf(parseInt(req.body.selectedSlot)),
-      temp[req.body.date].indexOf(parseInt(req.body.selectedSlot)) + 1
+      1
     );
+    // console.log(temp)
     doctor.availabilityString = {};
     doctor.availabilityString = temp; 
     doctor.save();
-
+      // console.log('appoint end', doctor)
   });
 
   return User.findById(req.params.user_id)
