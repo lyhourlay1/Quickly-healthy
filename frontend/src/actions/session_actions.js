@@ -47,8 +47,7 @@ export const login = (user) => (dispatch) =>
   APIUtil.login(user).then(
     (res) => {
       const { token, payload } = res.data;
-      
-      console.log(res, "LOGIN RESPONSE");
+
       
       localStorage.setItem("jwtToken", token);
       APIUtil.setAuthToken(token);
@@ -66,23 +65,4 @@ export const logout = () => (dispatch) => {
 };
 
 
-export const updateUserImage = (userId, image) => (dispatch, getState) =>{
-    APIUtil.updateUserFiles(userId, image).then(
-        files => {
-            let user = getState().session;
 
-            return dispatch(receiveCurrentUser(user));
-        }
-    )
-}
-
-
-export const updateUserFiles = (userId, files) => (dispatch, getState) =>(
-    APIUtil.updateUserFiles(userId, files).then(
-        files => {
-            let user = getState().session;
-
-            return dispatch(receiveCurrentUser(user));
-        }
-    )
-)

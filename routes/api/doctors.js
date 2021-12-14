@@ -53,22 +53,15 @@ router.get("/:id", (req, res) => {
     let doctor = Doctor.findById(req.params.id);
     Doctor.findById(req.params.id)
         .then(dr => {
-            // console.log('doctor init', req.body, dr)
-            // debugger
-            // for (const k, v in nextThirtyDays) {
             for(let [k, v] of Object.entries(nextThirtyDays)) {
                 if(dr.availabilityString[k]) {
-                    // nextThirtyDays[k] = dr.availabilityString[k]
                     nextThirtyDays[k] = dr.availabilityString[k]
                 }
             }
             dr.availabilityString = nextThirtyDays;
             dr.save();
-            // console.log('doctor end', dr)
-            // console.log(dr.availabilityString["Tue Dec 14 2021"])
             return res.json(dr)
         })
-        // .then((doctor) => res.json(doctor))
         .catch((err) =>
             res.status(404).json(`No doctor found with ID: ${req.params.id}`)
         );

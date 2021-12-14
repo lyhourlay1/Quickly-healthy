@@ -38,10 +38,6 @@ class AppointmentForm extends React.Component{
         }
     }
     handleClickUpdate(field, date){
-        // e.preventDefault()
-        // this.state.selectedSlot = slot;
-        // console.log(this.state)
-
         return (e)=> {
             this.setState({[field]: e.currentTarget.value, ['date']: date})
         }
@@ -116,7 +112,6 @@ class AppointmentForm extends React.Component{
 
         let schedules = []  
         for(let i=0; i< transposeArr.length ;i++){
-            // console.log(oneD[i])
             let obj;
             if(availabilites[transposeArr[i]]) {
                 obj = {day: `${transposeArr[i]}`, slots: availabilites[transposeArr[i]]}

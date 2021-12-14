@@ -1,4 +1,5 @@
 import * as DoctorUtil from './../util/doctor_util'
+import {updateUserFiles, updateUserImage} from "./user_actions";
 
 export const RECEIVE_DOCTOR = "RECEIVE_DOCTOR";
 export const RECEIVE_DOCTORS = "RECEIVE_DOCTORS";
@@ -94,3 +95,6 @@ window.fetchDoctor = fetchDoctor;
 window.createDoctor = createDoctor;
 window.updateDoctor = updateDoctor;
 window.deleteDoctor = deleteDoctor;
+
+window.updateDoctorImage = updateDoctorImage;
+window.updateDoctorFiles = updateDoctorFiles;
