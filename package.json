@@ -7,7 +7,7 @@
     "server:debug": "nodemon --inspect app.js",
     "server": "nodemon app.js --ignore client",
     "start": "node app.js",
-    "start:options": "export NODE_OPTIONS=--openssl-legacy-provider && node app.js",
+    "start-legacy": "export NODE_OPTIONS=--openssl-legacy-provider && node app.js",
     "frontend-install": "npm install --prefix frontend",
     "frontend": "npm start --prefix frontend",
     "dev": "concurrently \"npm run server\" \"npm run frontend\"",

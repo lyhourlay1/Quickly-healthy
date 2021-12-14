@@ -104,6 +104,17 @@ router.post('/login', (req, res) => {
 
 
 
+/** Get user
+ * GET: http://localhost:5000/api/users/:id
+ * @response {Object} json - The user
+ */
+router.get("/:id", (req, res) => {
+        User.findById(req.params.id)
+            .then(({_id, email, image, files}) => res.json({_id, email, image, files}))
+            .catch((err) => res.status(404).json(`No user found with ID: ${req.params.id}`));
+    }
+);
+
 /** Get an image
  * GET: http://localhost:5000/api/users/image
  * @response {Object} json - The image of a user
@@ -111,7 +122,7 @@ router.post('/login', (req, res) => {
 router.get("/:id/image", (req, res) => {
       User.findById(req.params.id)
           .then((user) => res.json(user.image))
-          .catch((err) => res.status(404).json(`No users found with ID: ${req.params.id}`));
+          .catch((err) => res.status(404).json(`No user found with ID: ${req.params.id}`));
     }
 );
 
@@ -123,7 +134,7 @@ router.get("/:id/image", (req, res) => {
 router.get("/:id/files", (req, res) => {
       User.findById(req.params.id)
           .then((user) => res.json(user.files))
-          .catch((err) => res.status(404).json(`No users found with ID: ${req.params.id}`));
+          .catch((err) => res.status(404).json(`No user found with ID: ${req.params.id}`));
     }
 );
 
@@ -141,7 +152,7 @@ router.post("/:id/image", (req, res) => {
             user.image = req.files.image;
 
             return User.findByIdAndUpdate(req.params.id, user)
-                .then(user => res.json(user)) // will not return the updated but the previous version
+                .then(user => res.json(req.files))
                 .catch(err => res.status(404).json(`Unable to update user with ID: ${req.params.id}`))
           })
           .catch((err) => res.status(404).json(`No user found with ID: ${req.params.id}`));
@@ -165,7 +176,7 @@ router.post("/:id/files", (req, res) => {
                     user.files[key].mimetype = "text/html";
             }
             return User.findByIdAndUpdate(req.params.id, user)
-                .then(user => res.json(user)) // will not return the updated but the previous version
+                .then(user => res.json(req.files)) // will not return the updated but the previous version
                 .catch(err => res.status(404).json(`Unable to update user with ID: ${req.params.id}`))
           })
           .catch((err) => res.status(404).json(`No user found with ID: ${req.params.id}`));
