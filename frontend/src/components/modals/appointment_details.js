@@ -1,9 +1,10 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import { closeModal } from '../../actions/modal_actions';
 import { fetchDoctor } from "../../actions/doctor_actions";
 import './appointment_details.css';
-import { deleteAppointment } from "../../actions/appointment_actions";
+import { deleteAppointment, updateAppointment } from "../../actions/appointment_actions";
 
 class AppointmentDetails extends React.Component {
   constructor(props) {
@@ -25,18 +26,21 @@ class AppointmentDetails extends React.Component {
           <div><button onClick={closeModal}>close</button></div>
           <div>Date and time: {appointment.date} with Dr.{doctor.name}</div>
           <div>Reason for visit: {appointment.reason}</div>
-          <button className="button" id="edit" >Edit appointment details</button>
-          <button className="button" id="delete" onClick={() => this.handleClick("delete", appointment._id)}>Delete appointment</button>
+          {/* <button className="button" id="edit">Edit appointment details</button> */}
+
+          <Link onClick={closeModal} to={`/doctors/${appointment.doctor_id}/edit_appt/${appointment._id}`}>Edit appointment details</Link>
+          <button className="button" id="delete" onClick={() => this.handleClick("delete", appointment)}>Delete appointment</button>
         </div>
       </div>
     )
   }
 
-  handleClick(field, appointmentId) {
-    let { deleteAppointment, closeModal } = this.props;
+  handleClick(field, appointment) {
+    let { deleteAppointment, closeModal, updateAppointment } = this.props;
+
     return field === "delete"
-      ? deleteAppointment(appointmentId).then(() => closeModal())
-      : null;
+      ? deleteAppointment(appointment._id).then(() => closeModal())
+      : updateAppointment(appointment).then(() => closeModal());
   }
 };
 
@@ -51,7 +55,8 @@ const mDTP =(dispatch) => {
   return {
     closeModal: () => dispatch(closeModal()),
     fetchDoctor: (doctor_id) => dispatch(fetchDoctor(doctor_id)),
-    deleteAppointment: (appointmentId) => dispatch(deleteAppointment(appointmentId))
+    deleteAppointment: (appointmentId) => dispatch(deleteAppointment(appointmentId)),
+    updateAppointment: (appointment) => dispatch(updateAppointment(appointment))
   }
 }
 

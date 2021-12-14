@@ -153,6 +153,8 @@ router.patch('/:id/update', (req, res) => {
     return res.status(400).json(errors);
   }
 
+  console.log(req.params, "PARAMSDDD");
+  console.log(req.body, "BODY");
   return Appointment.findByIdAndUpdate(req.params.id, req.body)
     .then((appointment) => res.json(appointment)) // will not return the updated but the previous version
     .catch((err) => res.status(404).json(`Unable to update appointment with ID: ${req.params.id}`));
