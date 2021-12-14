@@ -13,9 +13,24 @@ class UserProfile extends React.Component {
 
     return(
       <div className="user-profile">
-        <div className="image-container">
-          <img src={DEFAULT_PROFILE_PICTURE} alt="" />
+        <div>
+          <div className="image-container">
+            <img src={DEFAULT_PROFILE_PICTURE} alt="" />
+          </div>
+          <div>
+            Name: {currentUser.handle}
+          </div>
+          <div>
+            Insurance: {currentUser.insurance}
+          </div>
+          <div id="update-profile">
+            <button onClick={() => openModal("updateProfile", {currentUser })}>
+              Update Profile
+            </button>
+          </div>
+
         </div>
+
         <AppointmentIndex 
           appointments={appointments ? appointments : null} 
           currentUser={currentUser} 

@@ -2,6 +2,7 @@ import React from "react";
 import { connect } from "react-redux";
 import { closeModal } from "../../actions/modal_actions";
 import AppointmentDetails from "./appointment_details";
+import UpdateProfileFormContainer from "./update_profile_form_container";
 
 const Modal = ({ modal }) => {
   if (!modal) {
@@ -15,6 +16,12 @@ const Modal = ({ modal }) => {
       return <AppointmentDetails 
         appointment={modal.entity.appointment}
         currentUser={modal.entity.currentUser} 
+      />;
+    case "updateProfile":
+      document.body.style.overflow = "hidden";
+      return <UpdateProfileFormContainer 
+        // appointment={modal.entity.appointment}
+        // currentUser={modal.entity.currentUser} 
       />;
     default:
       document.body.style.overflow = "scroll";
