@@ -1,3 +1,5 @@
+
+
 .session-box{
     background-color: lightgray;
     width: 400px;
@@ -16,7 +18,11 @@ form{
 .inputs{
     padding: 50px 0px 50px 0px;
     width: 70%;
+    font-family: Arial, Helvetica, sans-serif;
+    text-align: center;
+    font-size: 18px;
 }
+
 input{
     width: 100%;
     margin-top: 10px;
@@ -29,7 +35,12 @@ input[type="text"] , input[type="password"]{
 
 input[type="submit"] {
     margin-top: 20px;
-
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 18px;
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+    padding: 8px;
 }
 
 input[type="submit"]:hover{
@@ -37,9 +48,46 @@ input[type="submit"]:hover{
 }
 
 .static-already{
-    padding-top: 10px;
+    font-family: Arial, Helvetica, sans-serif;
+    padding-top: 24px;
+    font-size: 18px;
+    font-family: Arial, Helvetica, sans-serif;
 }
+
+.static-already a {
+    color: blue;
+    font-weight: 400;
+    text-decoration: none;
+    padding: 2px;
+}
+
+.static-already a:hover {
+    font-weight: 600;
+    text-decoration: underline;
+    padding: 1px;
+}
+
 .foot > .footer-container{
   bottom:0;
   position:fixed;
+}
+
+.insurance-list {
+    font-size: 16px;
+    font-family: Arial, Helvetica, sans-serif;
+    margin: 18px 0 8px 0;
+}
+
+select {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 16px;
+    border: none;
+    outline: none;
+    border-radius: 4px;
+    cursor: pointer;
+    text-align: center;
+}
+
+select:hover {
+    background-color: lightskyblue;
 }
