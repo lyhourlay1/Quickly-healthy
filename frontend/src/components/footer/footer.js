@@ -28,7 +28,6 @@ class Footer extends React.Component {
 
             <div className="footer-support info">
               <h2>Support</h2>
-              <p>Help Center</p>
               <p>support@Quicklyhealthy.com</p>
             </div>
 
@@ -68,15 +67,8 @@ class Footer extends React.Component {
         </div>
 
         <div className="footer-bottom-container">
-          <div className="footer-logo"><img src="https://raw.githubusercontent.com/lyhourlay1/Quickly-healthy/main/assets/splash/logo.png"/></div>
           <div className="terms-policies">
             <p>2021 Quickly Healthy, Inc.</p>
-            <p>
-              <u>Terms of Use</u>
-            </p>
-            <p>
-              <u>Privacy</u>
-            </p>
           </div>
         </div>
       </div>
