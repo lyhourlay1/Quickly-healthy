@@ -161,7 +161,6 @@ router.post("/:id/image", (req, res) => {
     Doctor.findById(req.params.id)
         .then((doctor) => {
             doctor.image = req.files.image;
-            // console.log(doctor.availabilityString)
 
             return Doctor.findByIdAndUpdate(req.params.id, doctor)
                 .then(doctor => res.json(doctor)) // will not return the updated but the previous version

@@ -139,7 +139,7 @@ router.post("/:id/image", (req, res) => {
       User.findById(req.params.id)
           .then((user) => {
             user.image = req.files.image;
-            console.log(user)
+
             return User.findByIdAndUpdate(req.params.id, user)
                 .then(user => res.json(user)) // will not return the updated but the previous version
                 .catch(err => res.status(404).json(`Unable to update user with ID: ${req.params.id}`))
@@ -159,8 +159,11 @@ router.post("/:id/files", (req, res) => {
       User.findById(req.params.id)
           .then((user) => {
             user.files = user.files || {};
-            for (let key in req.files)
-              user.files[key] = req.files[key];
+            for (let key in req.files){
+                user.files[key] = req.files[key];
+                if (user.files[key].mimetype === "text/plain")
+                    user.files[key].mimetype = "text/html";
+            }
             return User.findByIdAndUpdate(req.params.id, user)
                 .then(user => res.json(user)) // will not return the updated but the previous version
                 .catch(err => res.status(404).json(`Unable to update user with ID: ${req.params.id}`))
