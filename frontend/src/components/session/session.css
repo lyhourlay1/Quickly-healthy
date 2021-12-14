@@ -91,3 +91,7 @@ select {
 select:hover {
     background-color: lightskyblue;
 }
+
+.errors{
+    color: red;
+}

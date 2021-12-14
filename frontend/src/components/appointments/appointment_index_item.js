@@ -3,7 +3,7 @@ import React from 'react'
 class AppointmentIndexItem extends React.Component{
   render() {
     let { appointment, currentUser, openModal } = this.props;
-
+    
     return (
       <div className='appointment-index-item'>
         <div id="check-in">
