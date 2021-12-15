@@ -115,14 +115,10 @@ router.post('/user/:user_id', (req, res) => {
     doctor.save();
   });
 
-  console.log(req.params.user_id)
-
   return User.findById(req.params.user_id)
     .then(() => {
         const newAppointment = new Appointment(appointmentParams(req));
-        console.log(newAppointment);
         newAppointment.save().then((appointment) => {
-          console.log(appointment, "APPT");
           res.json(appointment)
         });
     })

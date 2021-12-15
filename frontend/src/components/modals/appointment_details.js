@@ -17,7 +17,7 @@ class AppointmentDetails extends React.Component {
   }
 
   render() {
-    let { appointment, currentUser, updateAppointment, closeModal, doctor, deleteAppointment } = this.props;
+    let { appointment, currentUser, closeModal, doctor } = this.props;
     if (!doctor) return null;
 
     return (
@@ -28,6 +28,7 @@ class AppointmentDetails extends React.Component {
             ? appointment.selectedSlot + " PM"
             : appointment.selectedSlot + " AM"
           } with Dr.{doctor.name}</div>
+          <div>Street address:{` ${doctor.address}`}</div>
           <div>Reason for visit: {appointment.reason}</div>
 
           <Link className="button" onClick={closeModal} to={`/doctors/${appointment.doctor_id}/edit_appt/${appointment._id}`}>Edit appointment details</Link>
