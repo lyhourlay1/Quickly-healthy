@@ -29,17 +29,11 @@ const Splash = () => {
           </div>
 
           <div className="splash-component">
-            <p className="splash-component-desc">
-              test text find me a doctor pls
-              asdfasdfasdf sdfasdfdfsdsdfaasdf sadf asdfaf sd asdf asdfasdf sdaf asdf asdf asdfasdfasfasdfasdf
-            </p>
+            <p className="splash-component-desc">You can use our system to find doctors, specialists and other providers that accept your plan. </p>
           </div>
 
           <div className="splash-component">
-            <p className="splash-component-desc">
-              Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy
-              text ever since the 1500s
-            </p>
+            <p className="splash-component-desc">Easily book appointments online to meet your awesome doctor as soon as possible!</p>
           </div>
 
           <div className="splash-component">
@@ -58,16 +52,12 @@ const Splash = () => {
 
           <div className="splash-component">
             <p className="splash-component-desc">
-              Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy
-              text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.
+              Select or update your insurance at anytime and we'll look for doctors who accept your plan
             </p>
           </div>
 
           <div className="splash-component">
-            <p className="splash-component-desc">
-              Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy
-              text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. 
-            </p>
+            <p className="splash-component-desc">Keep your doctor up to date by uploading your health records to your profile.</p>
           </div>
 
           <div className="splash-component">

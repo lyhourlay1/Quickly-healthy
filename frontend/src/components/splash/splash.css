@@ -114,4 +114,6 @@ div.splash-image-container img {
   line-height: 1.5;
   font-family: Arial, Helvetica, sans-serif;
   padding: 8px;
+  font-size: 1.5rem;
+  color: rgb(34, 60, 116);
 }
