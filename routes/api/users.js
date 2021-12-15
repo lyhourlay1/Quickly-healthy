@@ -55,9 +55,7 @@ router.post('/register', (req, res) => {
             .then((user) => {
               const payload = {};
 
-              Object.entries(user._doc).map(([key, value]) => {
-                key !== "password" ? payload[key] = value : null;
-              });
+              const payload = { id: user.id, handle: user.handle, insurance: user.insurance };
 
               jwt.sign(payload, keys.secretOrKey, { expiresIn: 3600 }, (err, token) => {
                 res.json({
@@ -94,9 +92,7 @@ router.post('/login', (req, res) => {
         if (isMatch) {
         const payload = {};
 
-        Object.entries(user._doc).map(([key, value]) => {
-          key !== "password" ? (payload[key] = value) : null;
-        });
+        const payload = { id: user.id, handle: user.handle, insurance: user.insurance };
 
         jwt.sign(payload, keys.secretOrKey, { expiresIn: 3600 }, (err, token) => {
 
