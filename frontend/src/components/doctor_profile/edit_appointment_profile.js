@@ -7,11 +7,9 @@ export default class EditAppointmentProfile extends React.Component {
   componentDidMount() {
     this.props.fetchDoctor(this.props.doctorId);
     this.props.fetchAppointment(this.props.appointmentId);
-    debugger
   }
 
   render() {
-    debugger
     let { doctor, currentUser, appointment, updateAppointment } = this.props;
     if (!doctor || !appointment) return null;
 
