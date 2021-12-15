@@ -161,10 +161,6 @@ router.patch('/:id/update', (req, res) => {
   console.log(req.body, "BODY");
 
   Doctor.findById(req.body.doctor_id).then((doctor) => {
-    console.log(doctor, "DOCTOR");
-
-    console.log(doctor.availabilityString[req.body.oldDate], " BEFORE UPDATED");
-
     let copy = doctor.availabilityString[req.body.oldDate];
     copy.push(parseInt(req.body.oldSelectedSlot));
 
@@ -177,8 +173,6 @@ router.patch('/:id/update', (req, res) => {
       1
     );
     
-    console.log(doctor.availabilityString[req.body.oldDate], "UPDATED");
-
     doctor.availabilityString = {};
     doctor.availabilityString = aS; 
     doctor.save();
