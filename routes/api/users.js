@@ -184,11 +184,11 @@ router.get("/:id/files", (req, res) => {
 router.post("/:id/image", (req, res) => {
       if (!req.files)
         return res.send("You must select a file");
-
+        
+      // debugger
       User.findById(req.params.id)
           .then((user) => {
             user.image = req.files.image;
-
             return User.findByIdAndUpdate(req.params.id, user)
                 .then(user => res.json(req.files))
                 .catch(err => res.status(404).json(`Unable to update user with ID: ${req.params.id}`))

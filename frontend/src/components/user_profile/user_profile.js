@@ -21,10 +21,10 @@ class UserProfile extends React.Component {
   handleUpload(e){
     e.preventDefault()
     let {updateUserImage, currentUser} = this.props
-    debugger
     var file = new File([this.state.image], "profile picture");
 
     updateUserImage(currentUser.id, file)
+    debugger
   }
 
   update(field) {
