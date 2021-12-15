@@ -50,7 +50,23 @@
   background-color: rgb(115, 193, 219);
 }
 
-button.button {
+.appointment-details .button {
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+  padding: 8px;
+  border-radius: 8px;
+  background-color: lightblue;
+  text-align: center;
+  color: black;
+  text-decoration: none;
+}
+
+.appointment-details .button:hover {
+  background-color: rgb(115, 193, 219);
+}
+
+.appointment-details .button {
   padding: 12px;
   margin: 16px 24px 0px 24px;
   font-size: 18px;
