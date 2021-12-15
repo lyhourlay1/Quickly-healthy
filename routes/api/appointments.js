@@ -115,10 +115,16 @@ router.post('/user/:user_id', (req, res) => {
     doctor.save();
   });
 
+  console.log(req.params.user_id)
+
   return User.findById(req.params.user_id)
     .then(() => {
         const newAppointment = new Appointment(appointmentParams(req));
-        newAppointment.save().then((appointment) => res.json(appointment));
+        console.log(newAppointment);
+        newAppointment.save().then((appointment) => {
+          console.log(appointment, "APPT");
+          res.json(appointment)
+        });
     })
     .catch((err) => res.status(404).json(`No user found with ID: ${req.params.user_id}`));
 });

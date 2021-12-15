@@ -88,7 +88,8 @@
 }
 
 .button-container button:focus {
-  color: rgb(255, 0, 0);
+  font-weight: 600;
+  font-size: 15px;
 }
 
 .button-container:hover {
