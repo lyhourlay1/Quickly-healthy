@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { DEFAULT_PROFILE_PICTURE } from "../../util/icons_and_images_util";
-import "./appointment_form.css";
+import '../doctor_profile/doctor_profile.css';
 
 class EditAppointmentForm extends React.Component {
   constructor(props) {

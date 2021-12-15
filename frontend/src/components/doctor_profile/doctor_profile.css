@@ -58,14 +58,16 @@
 }
 
 .grid > div {
+  /* width: 175px; */
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-evenly;
+  justify-content: flex-start;
 }
 
 .button-container {
-  width: 16px;
-  height: 16px;
+  min-width: fit-content;
+  width: 40px;
+  height: 40px;
   overflow: hidden;
   display: flex;
   justify-content: center;
@@ -79,8 +81,8 @@
 .button-container button {
   border: none;
   background-color: transparent;
-  width: 16px;
-  height: 16px;
+  width: 40px;
+  height: 40px;
   cursor: pointer;
   padding: 0px;
 }
