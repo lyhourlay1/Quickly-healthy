@@ -5,7 +5,7 @@ import './user_profile.css';
 
 class UserProfile extends React.Component {
   componentDidMount() {
-    this.props.fetchUserAppointments(this.props.currentUser.id);
+    this.props.fetchUserAppointments(this.props.currentUser._id);
   }
 
   render(){
