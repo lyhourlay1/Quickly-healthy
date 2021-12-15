@@ -63,6 +63,8 @@ class EditAppointmentForm extends React.Component {
       selectedSlot: this.state.selectedSlot,
       date: this.state.date,
       doctor_id: this.props.doctor._id,
+      oldSelectedSlot: this.props.appointment.selectedSlot,
+      oldDate: this.props.appointment.date,
     });
 
     this.setState({ ["selectedSlot"]: "" });

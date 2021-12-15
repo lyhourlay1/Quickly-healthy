@@ -11,7 +11,7 @@ const appointmentParams = (req) => {
   let schema = Object.keys(Appointment.schema.obj);
   let appt = {};
 
-  Object.entries(req.body).filter(([key, value]) => {
+  Object.entries(req).filter(([key, value]) => {
     schema.includes(key) ? appt[key] = value : null;
   });
 
@@ -71,21 +71,21 @@ router.get('/:id', (req, res) => {
  * @response {Object} json - The appointment created
  * @body - user {User}, reason {String}, date {Date}, checkin {Date}
  */
-router.post('/', passport.authenticate('jwt', { session: false }), (req, res) => {
-  const { errors, isValid } = validateAppointmentInput(req.body);
+// router.post('/', passport.authenticate('jwt', { session: false }), (req, res) => {
+//   const { errors, isValid } = validateAppointmentInput(req.body);
 
-  if (!isValid) {
-    return res.status(400).json(errors);
-  }
+//   if (!isValid) {
+//     return res.status(400).json(errors);
+//   }
 
-  return User.findById(req.user.id)
-    .then((user) => {
-        const newAppointment = new Appointment(appointmentParams(req));
-        newAppointment.user = req.user.id;
-        newAppointment.save().then((appointment) => res.json(appointment));
-    })
-    .catch((err) => res.status(404).json(`No user found with ID: ${req.user.id}`));
-});
+//   return User.findById(req.user.id)
+//     .then((user) => {
+//         const newAppointment = new Appointment(appointmentParams(req));
+//         newAppointment.user = req.user.id;
+//         newAppointment.save().then((appointment) => res.json(appointment));
+//     })
+//     .catch((err) => res.status(404).json(`No user found with ID: ${req.user.id}`));
+// });
 
 /** Create an appointment by user id
  * POST: http://localhost:5000/api/appointments/user/:user_id
@@ -153,10 +153,31 @@ router.patch('/:id/update', (req, res) => {
     return res.status(400).json(errors);
   }
 
-  console.log(req.params, "PARAMSDDD");
   console.log(req.body, "BODY");
-  return Appointment.findByIdAndUpdate(req.params.id, req.body)
-    .then((appointment) => res.json(appointment)) // will not return the updated but the previous version
+
+  Doctor.findById(req.body.doctor_id).then((doctor) => {
+    console.log(doctor, "DOCTOR");
+
+    doctor.availabilityString[req.body.oldDate].push(req.body.selectedSlot);
+    doctor.availabilityString[req.body.oldDate].sort((a,b) => a - b);
+    // doctor.availabilityString[req.body.oldDate] = sorted;
+
+    let temp = Object.assign({}, doctor.availabilityString);
+    temp[req.body.date].splice(
+      temp[req.body.date].indexOf(parseInt(req.body.selectedSlot)),
+      1
+    );
+    
+    console.log(doctor.availabilityString, "AS");
+    console.log(temp, "TEMP");
+
+    doctor.availabilityString = {};
+    doctor.availabilityString = temp; 
+    doctor.save();
+  });
+
+  return Appointment.findByIdAndUpdate(req.params.id, appointmentParams(req.body))
+    .then((appointment) => res.json(appointment))
     .catch((err) => res.status(404).json(`Unable to update appointment with ID: ${req.params.id}`));
 });
 
