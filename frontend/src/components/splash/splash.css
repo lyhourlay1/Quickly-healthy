@@ -63,7 +63,7 @@ div.splash-container {
 
 .splash-service {
   display: flex;
-  width: 100vw;
+  width: 70vw;
   align-items: center;
   justify-content: space-evenly;
   padding: 50px;
@@ -78,7 +78,7 @@ div.splash-component {
   align-items: center;
   flex-direction: column;
   padding: 10px;
-  margin-bottom: 45px;
+  margin-bottom: 70px;
 }
 
 div.splash-text {
@@ -104,7 +104,7 @@ div.splash-image-container {
 }
 
 div.splash-image-container img {
-  width: 500px;
+  width: 70%;
 }
 
 .splash-component-desc {
