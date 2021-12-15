@@ -104,8 +104,6 @@ router.post('/user/:user_id', (req, res) => {
     return res.status(400).json(errors);
   }
 
-  console.log(req.body);
-
   Doctor.findById(req.body.doctor_id).then((doctor) => {
     let temp = Object.assign({}, doctor.availabilityString);
     temp[req.body.date].splice(
@@ -157,8 +155,6 @@ router.patch('/:id/update', (req, res) => {
   if (!isValid) {
     return res.status(400).json(errors);
   }
-
-  console.log(req.body, "BODY");
 
   Doctor.findById(req.body.doctor_id).then((doctor) => {
     let copy = doctor.availabilityString[req.body.oldDate];
