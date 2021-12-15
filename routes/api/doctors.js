@@ -48,8 +48,8 @@ router.get("/:id", (req, res) => {
       if(!nextThirtyDays[stringDate]) {
         nextThirtyDays[stringDate] = [9, 10, 11, 12, 13, 14, 15, 16, 17];
       }
-      // nextThirtyDays[stringDate] = [9, 10, 11, 12, 13, 14, 15, 16, 17];
     }
+
     let doctor = Doctor.findById(req.params.id);
     Doctor.findById(req.params.id)
         .then(dr => {

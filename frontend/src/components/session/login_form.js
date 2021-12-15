@@ -20,7 +20,6 @@ class LoginForm extends React.Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    debugger
     if (nextProps.currentUser === true) {
       this.props.history.push("/home");
     }
@@ -48,7 +47,6 @@ class LoginForm extends React.Component {
   }
   handleSubmitDemo(e) {
     e.preventDefault();
-    debugger
     let user = {
       email: "demoUser@gmail.com",
       password: "password",

@@ -118,7 +118,9 @@ router.post('/user/:user_id', (req, res) => {
   return User.findById(req.params.user_id)
     .then(() => {
         const newAppointment = new Appointment(appointmentParams(req));
-        newAppointment.save().then((appointment) => res.json(appointment));
+        newAppointment.save().then((appointment) => {
+          res.json(appointment)
+        });
     })
     .catch((err) => res.status(404).json(`No user found with ID: ${req.params.user_id}`));
 });
@@ -156,8 +158,26 @@ router.patch('/:id/update', (req, res) => {
     return res.status(400).json(errors);
   }
 
-  return Appointment.findByIdAndUpdate(req.params.id, req.body)
-    .then((appointment) => res.json(appointment)) // will not return the updated but the previous version
+  Doctor.findById(req.body.doctor_id).then((doctor) => {
+    let copy = doctor.availabilityString[req.body.oldDate];
+    copy.push(parseInt(req.body.oldSelectedSlot));
+
+    let sorted = copy.sort((a,b) => a - b);
+    doctor.availabilityString[req.body.oldDate] = sorted;
+
+    let aS = Object.assign({}, doctor.availabilityString);
+    aS[req.body.date].splice(
+      aS[req.body.date].indexOf(parseInt(req.body.selectedSlot)),
+      1
+    );
+    
+    doctor.availabilityString = {};
+    doctor.availabilityString = aS; 
+    doctor.save();
+  });
+
+  return Appointment.findByIdAndUpdate(req.params.id, appointmentParams(req))
+    .then((appointment) => res.json(appointment))
     .catch((err) => res.status(404).json(`Unable to update appointment with ID: ${req.params.id}`));
 });
 

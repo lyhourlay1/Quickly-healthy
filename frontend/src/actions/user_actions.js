@@ -33,6 +33,21 @@ export const fetchUser = userId => (dispatch) => (
     )
 )
 
+/** API fetchUser gets a user from the database, given the user id
+ * @param {Object} user - The user id
+ * @type {(user: Object)  => (dispatch) => Promise}
+ * @returns {(dispatch) => Promise} - A redux dispatch promise of user
+ * @example
+ *  updateUser(user)(store.dispatch)
+ */
+export const updateUser = user => (dispatch) => (
+    SessionUtil.currentUser().then(
+        user => dispatch(receiveUser(user.data)),
+        err => dispatch(receiveUserError(err.response.data))
+    )
+)
+
+
 /** API updateUserImage creates or updates a user's profile image from the database and state
  * @param {String} userId - The user's id
  * @param {Object} image - The profile image
@@ -65,6 +80,6 @@ export const updateUserFiles = (userId, files) => dispatch =>(
 )
 
 
-//window.fetchUser = fetchUser;
+window.fetchUser = fetchUser;
 window.updateUserImage = updateUserImage;
 window.updateUserFiles = updateUserFiles;
