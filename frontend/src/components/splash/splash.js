@@ -29,6 +29,20 @@ const Splash = () => {
           </div>
 
           <div className="splash-component">
+            <p className="splash-component-desc">
+              test text find me a doctor pls
+              asdfasdfasdf sdfasdfdfsdsdfaasdf sadf asdfaf sd asdf asdfasdf sdaf asdf asdf asdfasdfasfasdfasdf
+            </p>
+          </div>
+
+          <div className="splash-component">
+            <p className="splash-component-desc">
+              Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy
+              text ever since the 1500s
+            </p>
+          </div>
+
+          <div className="splash-component">
             <div className="splash-image-container-appt splash-image-container">
               <img src="https://raw.githubusercontent.com/lyhourlay1/Quickly-healthy/home-css-emmett/assets/splash/appt.png" />
             </div>
@@ -40,6 +54,20 @@ const Splash = () => {
               <img src="https://raw.githubusercontent.com/lyhourlay1/Quickly-healthy/main/assets/splash/insurance.png" />
             </div>
             <div className="splash-text">Confirm your insurance</div>
+          </div>
+
+          <div className="splash-component">
+            <p className="splash-component-desc">
+              Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy
+              text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.
+            </p>
+          </div>
+
+          <div className="splash-component">
+            <p className="splash-component-desc">
+              Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy
+              text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. 
+            </p>
           </div>
 
           <div className="splash-component">
