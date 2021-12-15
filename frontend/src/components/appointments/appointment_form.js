@@ -1,7 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import './appointment_form.css'
-
+import "../doctor_profile/doctor_profile.css";
 
 class AppointmentForm extends React.Component{
     constructor(props){
@@ -60,7 +59,7 @@ class AppointmentForm extends React.Component{
         e.preventDefault()
         this.props.createAppointment({user_id: this.props.userId, name: this.state.name, reason: this.state.reason, selectedSlot: this.state.selectedSlot, date: this.state.date, doctor_id: this.props.doctor._id})
             .then(()=> {
-                this.props.fetchDoctor(this.props.doctorId)
+                this.props.fetchDoctor(this.props.doctorId);
             });
        
         this.setState({["selectedSlot"]: ""});
@@ -170,15 +169,16 @@ class AppointmentForm extends React.Component{
                     <div className= "grid">Saturday</div>
                     <div className= "grid">Sunday</div>
                     {this.state.grid.map((date, idx)=> 
-                        <div className ="grid">
+                        <div className="grid">
                             {date.day.split(" ")[2]}
                             <div className="timeslots-container">
-                                {date.slots.map((slot) => 
-                                    slot <= 12 
-                                        ? <div className="button-container"><button onClick={this.handleClickUpdate('selectedSlot', date.day)} value={slot}>{slot}</button></div>
-                                        : <div className="button-container"><button onClick={this.handleClickUpdate('selectedSlot', date.day)} value={slot}>{slot}</button></div>
+                                {date.slots.map((slot) => {
+                                    let ending = slot >= 12 ? "PM" : "AM";
+                                    return slot <= 12 
+                                        ? <div className="button-container"><button onClick={this.handleClickUpdate('selectedSlot', date.day)} value={slot}>{`${slot} ${ending}`}</button></div>
+                                        : <div className="button-container"><button onClick={this.handleClickUpdate('selectedSlot', date.day)} value={slot}>{`${slot % 12} ${ending}`}</button></div>
                                     
-                                )}
+                                    })}
                             </div>
                         </div>)}                 
                 </div>

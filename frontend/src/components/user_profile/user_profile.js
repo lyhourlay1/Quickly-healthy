@@ -15,7 +15,7 @@ class UserProfile extends React.Component {
     this.handleUpload = this.handleUpload.bind(this)
   }
   componentDidMount() {
-    this.props.fetchUserAppointments(this.props.currentUser.id);
+    this.props.fetchUserAppointments(this.props.currentUser._id);
   }
 
   handleUpload(e){

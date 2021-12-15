@@ -17,10 +17,13 @@ router.get('/', (req, res) => {
 
 const userParams = (req) => {
   let schema = Object.keys(User.schema.obj);
-  return Object.fromEntries(Object.entries(req.body).filter(pair => {
-      let [key, value] = pair;
-      return schema.includes(key);
-  }));
+  let user = {};
+
+  Object.entries(req.body).map(([key, value]) => {
+    schema.includes(key) ? (user[key] = value) : null;
+  });
+
+  return user;
 }
 
 
@@ -50,7 +53,11 @@ router.post('/register', (req, res) => {
           newUser
             .save()
             .then((user) => {
-                const payload = Object.fromEntries(Object.entries(user._doc).filter(pair => pair[0] !== "password"));
+              const payload = {};
+
+              Object.entries(user._doc).map(([key, value]) => {
+                key !== "password" ? payload[key] = value : null;
+              });
 
               jwt.sign(payload, keys.secretOrKey, { expiresIn: 3600 }, (err, token) => {
                 res.json({
@@ -85,9 +92,12 @@ router.post('/login', (req, res) => {
 
     bcrypt.compare(password, user.password).then((isMatch) => {
         if (isMatch) {
-        const payload = Object.fromEntries(Object.entries(user._doc).filter(pair => pair[0] !== "password"));
+        const payload = {};
 
-        console.log(user);
+        Object.entries(user._doc).map(([key, value]) => {
+          key !== "password" ? (payload[key] = value) : null;
+        });
+
         jwt.sign(payload, keys.secretOrKey, { expiresIn: 3600 }, (err, token) => {
 
           res.json({
@@ -105,14 +115,14 @@ router.post('/login', (req, res) => {
   });
 });
 
-router.patch('/:id', passport.authenticate('jwt', { session: false }), (req, res) => {
-  const { errors, isValid } = validateUserInput(req.body);
+router.patch("/:id", (req, res) => {
+  const {errors, isValid} = validateUserInput(req.body);
 
   if (!isValid) {
     return res.status(400).json(errors);
   }
 
-  return User.findByIdAndUpdate(req.user.id, userParams(req))
+  return User.findByIdAndUpdate(req.params.id, userParams(req))
     .then((user) => res.json(user))
     .catch((err) => res.status(404).json(`No user found with ID: ${req.params.id}`));
 });
