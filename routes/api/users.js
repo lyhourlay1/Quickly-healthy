@@ -7,6 +7,7 @@ const jwt = require('jsonwebtoken');
 const passport = require('passport');
 const validateRegisterInput = require('../../validation/register');
 const validateLoginInput = require('../../validation/login');
+const validateUserInput = require('../../validation/users')
 
 router.get('/', (req, res) => {
   User.find()
@@ -14,7 +15,13 @@ router.get('/', (req, res) => {
     .catch((err) => res.status(404).json({ nousersfound: 'No users found' }));
 });
 
-
+const userParams = (req) => {
+  let schema = Object.keys(User.schema.obj);
+  return Object.fromEntries(Object.entries(req.body).filter(pair => {
+      let [key, value] = pair;
+      return schema.includes(key);
+  }));
+}
 
 
 router.post('/register', (req, res) => {
@@ -99,6 +106,17 @@ router.post('/login', (req, res) => {
   });
 });
 
+router.patch('/:id', passport.authenticate('jwt', { session: false }), (req, res) => {
+  const { errors, isValid } = validateUserInput(req.body);
+
+  if (!isValid) {
+    return res.status(400).json(errors);
+  }
+
+  return User.findByIdAndUpdate(req.user.id, userParams(req))
+    .then((user) => res.json(user))
+    .catch((err) => res.status(404).json(`No user found with ID: ${req.params.id}`));
+});
 
 /** Get the current user (Authentication Required)
  * GET: http://localhost:5000/api/users/current
