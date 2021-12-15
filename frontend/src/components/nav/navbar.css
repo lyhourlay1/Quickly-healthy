@@ -48,12 +48,11 @@ div.right-buttons button {
   font-weight: 400;
   background-color: transparent;
   cursor: pointer;
-  border-radius: 8px;
   color: rgb(234, 238, 246);
 
 }
 
 div.right-buttons button:hover {
   /* background-color: rgb(72,129,235); */
-  border-bottom: 3px solid white;
+  border-bottom: 1px solid white;
 }
