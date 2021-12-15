@@ -33,8 +33,7 @@ router.post('/register', (req, res) => {
         handle: req.body.handle,
         email: req.body.email,
         password: req.body.password,
-        insurance: req.body.insurance,
-        imageUrl: req.body.imgUrl
+        insurance: req.body.insurance
       });
 
       bcrypt.genSalt(10, (err, salt) => {
@@ -44,7 +43,7 @@ router.post('/register', (req, res) => {
           newUser
             .save()
             .then((user) => {
-              const payload = { id: user._id, handle: user.handle, insurance: user.insurance };
+                const payload = Object.fromEntries(Object.entries(user._doc).filter(pair => pair[0] !== "password"));
 
               jwt.sign(payload, keys.secretOrKey, { expiresIn: 3600 }, (err, token) => {
                 res.json({
@@ -78,10 +77,12 @@ router.post('/login', (req, res) => {
     }
 
     bcrypt.compare(password, user.password).then((isMatch) => {
-      if (isMatch) {
-        const payload = { id: user._id, handle: user.handle, insurance: user.insurance };
+        if (isMatch) {
+        const payload = Object.fromEntries(Object.entries(user._doc).filter(pair => pair[0] !== "password"));
 
+        console.log(user);
         jwt.sign(payload, keys.secretOrKey, { expiresIn: 3600 }, (err, token) => {
+
           res.json({
             success: true,
             token: 'Bearer ' + token,
@@ -93,6 +94,7 @@ router.post('/login', (req, res) => {
         return res.status(400).json(errors);
       }
     });
+
   });
 });
 
