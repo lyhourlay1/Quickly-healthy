@@ -98,7 +98,6 @@ router.post('/login', (req, res) => {
           key !== "password" ? (payload[key] = value) : null;
         });
 
-        console.log(user);
         jwt.sign(payload, keys.secretOrKey, { expiresIn: 3600 }, (err, token) => {
 
           res.json({
