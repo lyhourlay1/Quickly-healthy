@@ -173,7 +173,7 @@ class AppointmentForm extends React.Component{
                             {date.day.split(" ")[2]}
                             <div className="timeslots-container">
                                 {date.slots.map((slot) => {
-                                    let ending = slot >= 12 ? "PM" : "AM"
+                                    let ending = slot >= 12 ? "PM" : "AM";
                                     return slot <= 12 
                                         ? <div className="button-container"><button onClick={this.handleClickUpdate('selectedSlot', date.day)} value={slot}>{`${slot} ${ending}`}</button></div>
                                         : <div className="button-container"><button onClick={this.handleClickUpdate('selectedSlot', date.day)} value={slot}>{`${slot % 12} ${ending}`}</button></div>

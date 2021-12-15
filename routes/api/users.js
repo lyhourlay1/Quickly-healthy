@@ -17,10 +17,13 @@ router.get('/', (req, res) => {
 
 const userParams = (req) => {
   let schema = Object.keys(User.schema.obj);
-  return Object.fromEntries(Object.entries(req.body).filter(pair => {
-      let [key, value] = pair;
-      return schema.includes(key);
-  }));
+  let user = {};
+
+  Object.entries(req.body).map(([key, value]) => {
+    schema.includes(key) ? (user[key] = value) : null;
+  });
+
+  return user;
 }
 
 
@@ -50,7 +53,11 @@ router.post('/register', (req, res) => {
           newUser
             .save()
             .then((user) => {
-                const payload = Object.fromEntries(Object.entries(user._doc).filter(pair => pair[0] !== "password"));
+              const payload = {};
+
+              Object.entries(user._doc).map(([key, value]) => {
+                key !== "password" ? payload[key] = value : null;
+              });
 
               jwt.sign(payload, keys.secretOrKey, { expiresIn: 3600 }, (err, token) => {
                 res.json({
@@ -85,7 +92,11 @@ router.post('/login', (req, res) => {
 
     bcrypt.compare(password, user.password).then((isMatch) => {
         if (isMatch) {
-        const payload = Object.fromEntries(Object.entries(user._doc).filter(pair => pair[0] !== "password"));
+        const payload = {};
+
+        Object.entries(user._doc).map(([key, value]) => {
+          key !== "password" ? (payload[key] = value) : null;
+        });
 
         console.log(user);
         jwt.sign(payload, keys.secretOrKey, { expiresIn: 3600 }, (err, token) => {

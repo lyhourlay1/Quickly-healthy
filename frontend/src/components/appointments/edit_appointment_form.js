@@ -172,7 +172,7 @@ class EditAppointmentForm extends React.Component {
             />
           </div>
           <Link to={`/profile`}>Cancel</Link>
-          <Link to="/profile" onClick={this.handleClickUpdateAppointment}>Submit</Link>
+          <Link id="update" to="/profile" onClick={this.handleClickUpdateAppointment}>Submit</Link>
         </div>
       );
     }
@@ -194,8 +194,9 @@ class EditAppointmentForm extends React.Component {
             <div className="grid">
               {date.day.split(" ")[2]}
               <div className="timeslots-container">
-                {date.slots.map((slot) =>
-                  slot <= 12 ? (
+                {date.slots.map((slot) => {
+                  let ending = slot >= 12 ? "PM" : "AM"; 
+                  return slot <= 12 ? (
                     <div className="button-container">
                       <button
                         onClick={this.handleClickUpdate(
@@ -204,7 +205,7 @@ class EditAppointmentForm extends React.Component {
                         )}
                         value={slot}
                       >
-                        {slot}
+                        {`${slot} ${ending}`}
                       </button>
                     </div>
                   ) : (
@@ -216,11 +217,11 @@ class EditAppointmentForm extends React.Component {
                         )}
                         value={slot}
                       >
-                        {slot}
+                        {`${slot % 12} ${ending}`}
                       </button>
                     </div>
                   )
-                )}
+                })}
               </div>
             </div>
           ))}

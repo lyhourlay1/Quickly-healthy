@@ -87,6 +87,10 @@
   padding: 0px;
 }
 
+.button-container button:focus {
+  color: rgb(255, 0, 0);
+}
+
 .button-container:hover {
   background-color: rgb(89, 162, 187);
 }
@@ -216,4 +220,14 @@
 
 .submission-form button:hover {
   background-color: lightgray;
+}
+
+a#update {
+  resize: none;
+  border: none;
+  outline: none;
+  margin: 8px;
+  padding: 8px;
+  background-color: rgb(240, 240, 240);
+  font-size: 18px;
 }
