@@ -4,6 +4,10 @@ import {
   RECEIVE_USER_SIGN_IN,
 } from "../actions/session_actions";
 
+import {
+  RECEIVE_USER,
+} from "../actions/user_actions";
+
 const initialState = {
   isAuthenticated: false,
   user: {},
@@ -27,6 +31,10 @@ const sessionReducer = (state = initialState, action) => {
         ...state,
         isSignedIn: true,
       };
+    case RECEIVE_USER:
+      let newState = Object.assign({}, state);
+      newState.user = {...newState.user, ...action.user}
+      return newState;
     default:
       return state;
   }
