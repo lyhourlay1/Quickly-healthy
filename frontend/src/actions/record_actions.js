@@ -31,7 +31,12 @@ const removeRecord = id =>({
 
 /*    Separation      */
 
-
+/** API fetchRecords gets all record from the database.
+ * @type {()  => (dispatch) => Promise}
+ * @returns {(dispatch) => Promise} - A redux dispatch promise of records
+ * @example
+ *  fetchRecords()(store.dispatch)
+ */
 export const fetchRecords = () => dispatch =>(
     RecordUtil.fetchRecords().then(
         records => {
@@ -41,13 +46,29 @@ export const fetchRecords = () => dispatch =>(
     )
 )
 
-export const fetchUserRecords = user_id => dispatch =>(
-    RecordUtil.fetchUserRecords(user_id).then(
+
+/** API fetchUserRecords gets records from the database, given a user id.
+ * @param {String} userId - The user id
+ * @type {(userId: String)  =>  (dispatch) => Promise}
+ * @returns {(dispatch) => Promise} - A redux dispatch promise of records
+ * @example
+ *  fetchUserRecords(user.id)(store.dispatch)
+ */
+export const fetchUserRecords = userId => dispatch =>(
+    RecordUtil.fetchUserRecords(userId).then(
         records => dispatch(receiveRecords(records.data)),
         err => dispatch(receiveRecordError(err.response.data))
     )
 )
 
+
+/** API fetchRecord gets a record from the database, given the record id.
+ * @param {String} recordId - The record id
+ * @type {(userId: String)  => (dispatch) => Promise}
+ * @returns {(dispatch) => Promise} - A redux dispatch promise of record
+ * @example
+ *  fetchRecord(record.id)(store.dispatch)
+ */
 export const fetchRecord = recordId => (dispatch) => {
     return RecordUtil.fetchRecord(recordId).then(
         record => dispatch(receiveRecord(record.data)),
@@ -55,6 +76,14 @@ export const fetchRecord = recordId => (dispatch) => {
     )
 }
 
+
+/** API createRecord creates a record into the database and state.
+ * @param {Object} record - The record
+ * @type {(record: Object)  => (dispatch) => Promise}
+ * @returns {(dispatch) => Promise} - A redux dispatch promise of record
+ * @example
+ *  createRecord(record)(store.dispatch)
+ */
 export const createRecord = record => dispatch =>(
     RecordUtil.createRecord(record).then(
         record => dispatch(receiveRecord(record.data)),
@@ -62,6 +91,14 @@ export const createRecord = record => dispatch =>(
     )
 )
 
+
+/** API updateRecord updates a record's info on the database and state.
+ * @param {Object} record - The record
+ * @type {(record: Object)  => (dispatch) => Promise}
+ * @returns {(dispatch) => Promise} - A redux dispatch promise of record
+ * @example
+ *  updateRecord(record)(store.dispatch)
+ */
 export const updateRecord = record => dispatch =>(
     RecordUtil.updateRecord(record).then(
         record => dispatch(receiveRecord(record.data)),
@@ -69,6 +106,14 @@ export const updateRecord = record => dispatch =>(
     )
 )
 
+
+/** API deleteRecord removes a record from the database and state.
+ * @param {String} recordId - The record
+ * @type {(recordId: String)  => (dispatch) => Promise}
+ * @returns {(dispatch) => Promise} - A redux dispatch promise of record
+ * @example
+    deleteRecord(record.id)(store.dispatch)
+ */
 export const deleteRecord = recordId => dispatch =>(
     RecordUtil.deleteRecord(recordId).then(
         record => dispatch(removeRecord(record.data._id)),

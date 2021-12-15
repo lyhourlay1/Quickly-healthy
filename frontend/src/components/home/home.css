@@ -4,4 +4,5 @@ div.home-container {
   bottom: 0px;
   width: 100%;
   object-fit: contain;
+  margin-top: 17px;
 }

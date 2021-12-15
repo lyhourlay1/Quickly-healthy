@@ -15,3 +15,15 @@ export const signup = (userData) => {
 export const login = (userData) => {
   return axios.post("/api/users/login", userData);
 };
+
+
+/** API currentUser gets the current user information
+ * @type {()  => Promise<User>}
+ * @returns {Promise<User>} - A promise of image
+ * @see {@link https://github.com/lyhourlay1/Quickly-healthy/blob/main/assets/tutorials/routes.md|Tutorials}
+ */
+export const currentUser = () => {
+  return axios.get("/api/users/current");
+}
+
+window.currentUser = currentUser;

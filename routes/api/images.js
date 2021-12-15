@@ -17,10 +17,8 @@ router.get('/images/:key', (req, res) => {
 });
 
 router.post('/images', upload.single('image'), async (req, res) => {
-  console.log(req.file);
   const result = await uploadFile(req.file);
   await unlinkFile(req.file.path);
-  console.log(result);
   res.send({
     imagePath: `/images/${result.Key}`
   });

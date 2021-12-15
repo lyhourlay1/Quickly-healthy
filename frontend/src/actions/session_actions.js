@@ -37,6 +37,9 @@ export const signup = (user) => (dispatch) =>
       localStorage.setItem("jwtToken", token); 
       APIUtil.setAuthToken(token);
       dispatch(receiveCurrentUser(payload));
+    })
+    .catch((err) => {
+      dispatch(receiveErrors(err.response.data));
     });
 
 // Upon login, set the session token and dispatch the current user. Dispatch errors on failure.
@@ -44,13 +47,13 @@ export const login = (user) => (dispatch) =>
   APIUtil.login(user).then(
     (res) => {
       const { token, payload } = res.data;
-      
-      console.log(res, "LOGIN RESPONSE");
+
       
       localStorage.setItem("jwtToken", token);
       APIUtil.setAuthToken(token);
       dispatch(receiveCurrentUser(payload));
-    }).catch((err) => {
+    })
+    .catch((err) => {
       dispatch(receiveErrors(err.response.data));
     });
 
@@ -60,3 +63,6 @@ export const logout = () => (dispatch) => {
   APIUtil.setAuthToken(false);
   dispatch(logoutUser());
 };
+
+
+

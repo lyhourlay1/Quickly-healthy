@@ -67,7 +67,7 @@ div.splash-container {
   align-items: center;
   justify-content: space-evenly;
   padding: 50px;
-  margin: 10px 5px;
+  margin: 10px 50px;
   flex-wrap: wrap;
 }
 
@@ -105,4 +105,13 @@ div.splash-image-container {
 
 div.splash-image-container img {
   width: 500px;
+}
+
+.splash-component-desc {
+  display: flex;
+  overflow-wrap: wrap;
+  width: 50%;
+  line-height: 1.5;
+  font-family: Arial, Helvetica, sans-serif;
+  padding: 8px;
 }

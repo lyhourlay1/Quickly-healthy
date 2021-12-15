@@ -53,6 +53,7 @@ export const deleteDoctor = (doctorId) => {
  * @param {String} doctorId - The doctor id
  * @type {(doctorId: String)  => Promise}
  * @returns {Promise} - A promise of image
+ * @see {@link https://github.com/lyhourlay1/Quickly-healthy/blob/main/assets/tutorials/routes.md|Tutorials}
  */
 export const fetchDoctorImage = (doctorId) => {
     return axios.get(`/api/doctors/${doctorId}/image`);
@@ -63,6 +64,7 @@ export const fetchDoctorImage = (doctorId) => {
  * @param {String} doctorId - The doctor id
  * @type {(doctorId: String)  => Promise}
  * @returns {Promise} - A promise of files
+ * @see {@link https://github.com/lyhourlay1/Quickly-healthy/blob/main/assets/tutorials/routes.md|Tutorials}
  */
 export const fetchDoctorFiles = (doctorId) => {
     return axios.get(`/api/doctors/${doctorId}/files`);
@@ -74,6 +76,7 @@ export const fetchDoctorFiles = (doctorId) => {
  * @param {Object} image - The image file
  * @type {(doctorId: String, image: Object)  => Promise}
  * @returns {Promise} - A promise of image
+ * @see {@link https://github.com/lyhourlay1/Quickly-healthy/blob/main/assets/tutorials/routes.md|Tutorials}
  */
 export const updateDoctorImage = (doctorId, image) => {
     return axios.post(`/api/doctors/${doctorId}/image`, image)
@@ -84,13 +87,9 @@ export const updateDoctorImage = (doctorId, image) => {
  * @param {Object} files - The files
  * @type {(doctorId: String, files: Object)  => Promise}
  * @returns {Promise} - A promise of files
+ * @see {@link https://github.com/lyhourlay1/Quickly-healthy/blob/main/assets/tutorials/routes.md|Tutorials}
  */
 export const updateDoctorFiles = (doctorId, files) => {
     return axios.post(`/api/doctors/${doctorId}/files`, files)
 }
 
-// window.fetchDoctors = fetchDoctors;
-// window.fetchDoctor = fetchDoctor;
-// window.createDoctor = createDoctor;
-// window.updateDoctor = updateDoctor;
-// window.deleteDoctor = deleteDoctor;

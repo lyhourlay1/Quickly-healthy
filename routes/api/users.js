@@ -14,14 +14,8 @@ router.get('/', (req, res) => {
     .catch((err) => res.status(404).json({ nousersfound: 'No users found' }));
 });
 
-router.get('/current', passport.authenticate('jwt', { session: false }), (req, res) => {
-  res.json({
-    id: req.user.id,
-    handle: req.user.handle,
-    email: req.user.email,
-    insurance: req.user.insurance
-  });
-});
+
+
 
 router.post('/register', (req, res) => {
   const { errors, isValid } = validateRegisterInput(req.body);
@@ -103,6 +97,31 @@ router.post('/login', (req, res) => {
 });
 
 
+/** Get the current user (Authentication Required)
+ * GET: http://localhost:5000/api/users/current
+ * @response {Object} json - The current user
+ */
+router.get('/current', passport.authenticate('jwt', { session: false }), (req, res) => {
+    let userId = req.user && req.user._id || null;
+    if (!userId)
+        return res.status(404).json(`No user is logged in`)
+
+    User.findById(userId)
+        .then(user => res.json(user))
+        .catch(err => res.status(404).json(`No user with ID: ${userId} does not exist in database`))
+});
+
+
+/** Get user
+ * GET: http://localhost:5000/api/users/:id
+ * @response {Object} json - The user
+ */
+router.get("/:id", (req, res) => {
+        User.findById(req.params.id)
+            .then(({_id, email, image, files}) => res.json({_id, email, image, files}))
+            .catch((err) => res.status(404).json(`No user found with ID: ${req.params.id}`));
+    }
+);
 
 /** Get an image
  * GET: http://localhost:5000/api/users/image
@@ -111,7 +130,7 @@ router.post('/login', (req, res) => {
 router.get("/:id/image", (req, res) => {
       User.findById(req.params.id)
           .then((user) => res.json(user.image))
-          .catch((err) => res.status(404).json(`No users found with ID: ${req.params.id}`));
+          .catch((err) => res.status(404).json(`No user found with ID: ${req.params.id}`));
     }
 );
 
@@ -123,7 +142,7 @@ router.get("/:id/image", (req, res) => {
 router.get("/:id/files", (req, res) => {
       User.findById(req.params.id)
           .then((user) => res.json(user.files))
-          .catch((err) => res.status(404).json(`No users found with ID: ${req.params.id}`));
+          .catch((err) => res.status(404).json(`No user found with ID: ${req.params.id}`));
     }
 );
 
@@ -139,9 +158,9 @@ router.post("/:id/image", (req, res) => {
       User.findById(req.params.id)
           .then((user) => {
             user.image = req.files.image;
-            console.log(user)
+
             return User.findByIdAndUpdate(req.params.id, user)
-                .then(user => res.json(user)) // will not return the updated but the previous version
+                .then(user => res.json(req.files))
                 .catch(err => res.status(404).json(`Unable to update user with ID: ${req.params.id}`))
           })
           .catch((err) => res.status(404).json(`No user found with ID: ${req.params.id}`));
@@ -159,10 +178,13 @@ router.post("/:id/files", (req, res) => {
       User.findById(req.params.id)
           .then((user) => {
             user.files = user.files || {};
-            for (let key in req.files)
-              user.files[key] = req.files[key];
+            for (let key in req.files){
+                user.files[key] = req.files[key];
+                if (user.files[key].mimetype === "text/plain")
+                    user.files[key].mimetype = "text/html";
+            }
             return User.findByIdAndUpdate(req.params.id, user)
-                .then(user => res.json(user)) // will not return the updated but the previous version
+                .then(user => res.json(req.files)) // will not return the updated but the previous version
                 .catch(err => res.status(404).json(`Unable to update user with ID: ${req.params.id}`))
           })
           .catch((err) => res.status(404).json(`No user found with ID: ${req.params.id}`));
