@@ -62,9 +62,6 @@ class AppointmentForm extends React.Component{
         this.props.createAppointment({user_id: this.props.userId, name: this.state.name, reason: this.state.reason, selectedSlot: this.state.selectedSlot, date: this.state.date, doctor_id: this.props.doctor._id})
             .then(()=> {
             this.props.fetchDoctor(this.props.doctorId)
-            // this.setState({["grid"]: this.generateCalenderList(0)})
-            // debugger
-            // ()=>this.setState({["grid"]: this.generateCalenderList(0, this.props.doctor)})
             })
        
         this.setState({["selectedSlot"]: ""})

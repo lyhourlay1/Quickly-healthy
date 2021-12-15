@@ -65,6 +65,6 @@ export const updateUserFiles = (userId, files) => dispatch =>(
 )
 
 
-//window.fetchUser = fetchUser;
+window.fetchUser = fetchUser;
 window.updateUserImage = updateUserImage;
 window.updateUserFiles = updateUserFiles;

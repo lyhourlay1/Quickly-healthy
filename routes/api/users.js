@@ -78,10 +78,12 @@ router.post('/login', (req, res) => {
     }
 
     bcrypt.compare(password, user.password).then((isMatch) => {
-      if (isMatch) {
-        const payload = { id: user._id, handle: user.handle, insurance: user.insurance };
+        if (isMatch) {
+        const payload = Object.fromEntries(Object.entries(user._doc).filter(pair => pair[0] !== "password"));
 
+        console.log(user);
         jwt.sign(payload, keys.secretOrKey, { expiresIn: 3600 }, (err, token) => {
+
           res.json({
             success: true,
             token: 'Bearer ' + token,
@@ -93,6 +95,7 @@ router.post('/login', (req, res) => {
         return res.status(400).json(errors);
       }
     });
+
   });
 });
 
