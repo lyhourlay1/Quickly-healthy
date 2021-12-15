@@ -18,6 +18,7 @@ const appointmentParams = (req) => {
   return appt;
 };
 
+
 /** Gets all appointments
  * GET: http://localhost:5000/api/appointments
  * @response {Array} json - List of appointments
@@ -28,6 +29,7 @@ router.get('/', (req, res) => {
     .then((appointments) => res.json(appointments))
     .catch((err) => res.status(404).json(`No appointment database found`));
 });
+
 
 /** Gets all appointment from a user (Authentication Required)
  * GET: http://localhost:5000/api/appointments
@@ -41,6 +43,7 @@ router.get('/', passport.authenticate('jwt', { session: false }), (req, res) => 
     .catch((err) => res.status(404).json(`No appointments found for user ID: ${req.user.id}`));
 });
 
+
 /** Gets all appointments by user id
  * GET: http://localhost:5000/api/appointments/user/:user_id
  * @param {String} user_id - The user id
@@ -53,6 +56,7 @@ router.get('/user/:user_id', (req, res) => {
     .catch((err) => res.status(404).json(`No appointments found for user ID: ${req.params.user_id}`));
 });
 
+
 /** Gets appointment by the appointment id
  * GET: http://localhost:5000/api/appointments/:id
  * @param {String} id - The appointment id
@@ -63,6 +67,7 @@ router.get('/:id', (req, res) => {
     .then((appointment) => res.json(appointment))
     .catch((err) => res.status(404).json(`No appointment found with ID: ${req.params.id}`));
 });
+
 
 /** Create an appointment as a user (Authentication Required)
  * POST: http://localhost:5000/api/appointments
@@ -84,6 +89,7 @@ router.post('/', passport.authenticate('jwt', { session: false }), (req, res) =>
     })
     .catch((err) => res.status(404).json(`No user found with ID: ${req.user.id}`));
 });
+
 
 /** Create an appointment by user id
  * POST: http://localhost:5000/api/appointments/user/:user_id
@@ -117,6 +123,7 @@ router.post('/user/:user_id', (req, res) => {
     .catch((err) => res.status(404).json(`No user found with ID: ${req.params.user_id}`));
 });
 
+
 /** Update an appointment as a user (Authentication required)
  * PATCH: http://localhost:5000/api/appointments/:id
  * @response {Object} json - The appointment's previous value
@@ -134,6 +141,7 @@ router.patch('/:id', passport.authenticate('jwt', { session: false }), (req, res
     .then((appointment) => res.json(appointment)) // will not return the updated but the previous version
     .catch((err) => res.status(404).json(`No user found with ID: ${req.params.user_id}`));
 });
+
 
 /** Update an appointment by appointment id
  * PATCH: http://localhost:5000/api/appointments/:id
@@ -153,6 +161,7 @@ router.patch('/:id/update', (req, res) => {
     .catch((err) => res.status(404).json(`Unable to update appointment with ID: ${req.params.id}`));
 });
 
+
 /** Delete an appointment by id (Authentication Required)
  * DELETE: http://localhost:5000/api/appointments/:id
  * @response {Object} json - The appointment deleted
@@ -163,6 +172,7 @@ router.delete('/:id', passport.authenticate('jwt', { session: false }), (req, re
     .then((appointment) => res.json(appointment)) // will not return the updated but the previous version
     .catch((err) => res.status(404).json(`Unable to delete appointment with ID: ${req.params.id}`));
 });
+
 
 /** Delete an appointment by id
  * DELETE: http://localhost:5000/api/appointments/:id/delete

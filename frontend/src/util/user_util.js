@@ -5,21 +5,17 @@ import axios from "axios";
  * @type {(userId: String)  => Promise<User>}
  * @returns {Promise<User>} - A promise of user
  * @see {@link https://github.com/lyhourlay1/Quickly-healthy/blob/main/assets/tutorials/routes.md|Tutorials}
- * @example
-    fetchUser(user.id)(store.dispatch)
  */
-export const fetchUser = (userId) => {
+export const updateUser = (userId) => {
     return axios.get(`/api/users/${userId}`);
 };
 
 
-/** API fetchUserImage gets an image from the database, given the user id
- * @param {String} userId - The user id
- * @type {(userId: String)  => Promise<User>}
+/** API updateUser updates the user given the user id
+ * @param {Object} user - The user
+ * @type {(user: Object)  => Promise<User>}
  * @returns {Promise<User>} - A promise of image
  * @see {@link https://github.com/lyhourlay1/Quickly-healthy/blob/main/assets/tutorials/routes.md|Tutorials}
- * @example
-    fetchUserImage(user.id)
  */
 export const fetchUserImage = (userId) => {
     return axios.get(`/api/users/${userId}/image`);
@@ -31,8 +27,6 @@ export const fetchUserImage = (userId) => {
  * @type {(userId: String)  => Promise<User>}
  * @returns {Promise<User>} - A promise of files
  * @see {@link https://github.com/lyhourlay1/Quickly-healthy/blob/main/assets/tutorials/routes.md|Tutorials}
- * @example
-    fetchUserFiles(user.id)
  */
 export const fetchUserFiles = (userId) => {
     return axios.get(`/api/users/${userId}/files`);

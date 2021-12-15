@@ -86,7 +86,7 @@ export const createDoctor = doctor => dispatch =>(
  */
 export const updateDoctor = doctor => dispatch =>(
     DoctorUtil.updateDoctor(doctor).then(
-        doctor => dispatch(receiveDoctor(doctor.data)),
+        databaseDoctor => dispatch(receiveDoctor({...databaseDoctor.data, ...doctor})),
         err => dispatch(receiveDoctorError(err.response.data))
     )
 )

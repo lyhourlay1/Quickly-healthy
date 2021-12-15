@@ -14,14 +14,8 @@ router.get('/', (req, res) => {
     .catch((err) => res.status(404).json({ nousersfound: 'No users found' }));
 });
 
-router.get('/current', passport.authenticate('jwt', { session: false }), (req, res) => {
-  res.json({
-    id: req.user.id,
-    handle: req.user.handle,
-    email: req.user.email,
-    insurance: req.user.insurance
-  });
-});
+
+
 
 router.post('/register', (req, res) => {
   const { errors, isValid } = validateRegisterInput(req.body);
@@ -102,6 +96,20 @@ router.post('/login', (req, res) => {
   });
 });
 
+
+/** Get the current user (Authentication Required)
+ * GET: http://localhost:5000/api/users/current
+ * @response {Object} json - The current user
+ */
+router.get('/current', passport.authenticate('jwt', { session: false }), (req, res) => {
+    let userId = req.user && req.user._id || null;
+    if (!userId)
+        return res.status(404).json(`No user is logged in`)
+
+    User.findById(userId)
+        .then(user => res.json(user))
+        .catch(err => res.status(404).json(`No user with ID: ${userId} does not exist in database`))
+});
 
 
 /** Get user

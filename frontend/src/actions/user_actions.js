@@ -1,4 +1,5 @@
 import * as UserUtil from './../util/user_util'
+import * as SessionUtil from './../util/session_api_util'
 
 export const RECEIVE_USER = "RECEIVE_USER";
 export const RECEIVE_USER_ERROR = "RECEIVE_USER_ERROR";
@@ -25,13 +26,12 @@ const receiveUserError = error =>({
  * @example
  *  fetchUser(user.id)(store.dispatch)
  */
-export const fetchUser = userId => (dispatch) => {
-    return UserUtil.fetchUser(userId).then(
+export const fetchUser = userId => (dispatch) => (
+    SessionUtil.currentUser().then(
         user => dispatch(receiveUser(user.data)),
         err => dispatch(receiveUserError(err.response.data))
     )
-}
-
+)
 
 /** API updateUserImage creates or updates a user's profile image from the database and state
  * @param {String} userId - The user's id
@@ -65,6 +65,6 @@ export const updateUserFiles = (userId, files) => dispatch =>(
 )
 
 
-window.fetchUser = fetchUser;
+//window.fetchUser = fetchUser;
 window.updateUserImage = updateUserImage;
 window.updateUserFiles = updateUserFiles;
