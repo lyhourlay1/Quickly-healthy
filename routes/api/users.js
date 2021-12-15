@@ -105,14 +105,14 @@ router.post('/login', (req, res) => {
   });
 });
 
-router.patch('/:id', passport.authenticate('jwt', { session: false }), (req, res) => {
-  const { errors, isValid } = validateUserInput(req.body);
+router.patch("/:id", (req, res) => {
+  const {errors, isValid} = validateUserInput(req.body);
 
   if (!isValid) {
     return res.status(400).json(errors);
   }
 
-  return User.findByIdAndUpdate(req.user.id, userParams(req))
+  return User.findByIdAndUpdate(req.params.id, userParams(req))
     .then((user) => res.json(user))
     .catch((err) => res.status(404).json(`No user found with ID: ${req.params.id}`));
 });
