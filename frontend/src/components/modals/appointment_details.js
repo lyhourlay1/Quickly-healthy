@@ -24,8 +24,8 @@ class AppointmentDetails extends React.Component {
       <div className="appointment-details-modal-background">
         <div className="appointment-details">
           <div><button onClick={closeModal}>close</button></div>
-          <div>Date and time: {appointment.date} at {appointment.selectedSlot >= 12
-            ? appointment.selectedSlot + " PM"
+          <div>Date and time: {appointment.date} at {appointment.selectedSlot == 12 ? appointment.selectedSlot + " PM" : appointment.selectedSlot >= 12
+            ? appointment.selectedSlot % 12 + " PM"
             : appointment.selectedSlot + " AM"
           } with Dr.{doctor.name}</div>
           <div>Street address:{` ${doctor.address}`}</div>
