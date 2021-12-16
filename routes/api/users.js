@@ -5,7 +5,6 @@ const bcrypt = require('bcryptjs');
 const keys = require('../../config/keys');
 const jwt = require('jsonwebtoken');
 const passport = require('passport');
-const fs = require('fs');
 const validateRegisterInput = require('../../validation/register');
 const validateLoginInput = require('../../validation/login');
 const validateUserInput = require('../../validation/users')
@@ -54,11 +53,7 @@ router.post('/register', (req, res) => {
           newUser
             .save()
             .then((user) => {
-              const payload = {};
-
-              Object.entries(user._doc).map(([key, value]) => {
-                key !== "password" ? payload[key] = value : null;
-              });
+              const payload = { id: user.id, handle: user.handle, insurance: user.insurance };
 
               jwt.sign(payload, keys.secretOrKey, { expiresIn: 3600 }, (err, token) => {
                 res.json({
@@ -93,11 +88,7 @@ router.post('/login', (req, res) => {
 
     bcrypt.compare(password, user.password).then((isMatch) => {
         if (isMatch) {
-        const payload = {};
-
-        Object.entries(user._doc).map(([key, value]) => {
-          key !== "password" ? (payload[key] = value) : null;
-        });
+        const payload = { id: user.id, handle: user.handle, insurance: user.insurance };
 
         jwt.sign(payload, keys.secretOrKey, { expiresIn: 3600 }, (err, token) => {
 

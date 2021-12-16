@@ -31,10 +31,6 @@ const sessionReducer = (state = initialState, action) => {
         ...state,
         isSignedIn: true,
       };
-    case RECEIVE_USER:
-      let newState = Object.assign({}, state);
-      newState.user = {...newState.user, ...action.user}
-      return newState;
     default:
       return state;
   }
