@@ -7,13 +7,17 @@ class UpdateProfileForm extends React.Component{
     constructor(props){
         super(props)
         this.state = {
-            handle: "",
-            insurance: ""
+            id: this.props.currentUser.id,
+            handle: this.props.currentUser.handle,
+            insurance: this.props.currentUser.insurance
         }
-
         this.handleSubmit = this.handleSubmit.bind(this)
     }
     
+    componentDidMount() {
+      this.props.fetchUser(this.props.currentUser._id);
+      
+    }
     
     update(field) {
     return (e) =>
@@ -23,31 +27,48 @@ class UpdateProfileForm extends React.Component{
     }
 
     handleSubmit(e) {
-    e.preventDefault();
-    this.props.updateUser(this.state);
-  }
+  
+      e.preventDefault();
+      this.props.updateUser(this.state);
+      this.props.closeModal()
+    }
 
 
     render(){
-    debugger
-    let {currentUser, closeModal, } = this.props;
+    let {user, closeModal } = this.props;
 
     return (
       <div className="profile-update-form-modal-background">
-        <form className="profile-update-form">
+        <form className="profile-update-form" onSubmit={this.handleSubmit}>
             <div><button onClick={closeModal}>close</button></div>
              Name: <input
                 type="text"
                 value={this.state.handle}
                 onChange={this.update("handle")}
-                placeholder={currentUser.handle}
+                placeholder={user.handle}
               />
-             Insurance: <input
-                type="text"
-                value={this.state.insurance}
-                onChange={this.update("handle")}
-                placeholder= {currentUser.insurance}
-              />
+             Insurance:
+            <select onChange={this.update("insurance")}>
+                <option selected disabled hidden>
+                  choose one...
+                </option>
+                <option value="None">None</option>
+                <option value="Aetna">Aetna</option>
+                <option value="Blue Cross Blue Shield">
+                  Blue Cross Blue Shield
+                </option>
+                <option value="Blue Shield of CA">Blue Shield of CA</option>
+                <option value="Cigna">Cigna</option>
+                <option value="UnitedHealthCare">UnitedHealthCare</option>
+                <option value="Kaiser Permanente">Kaiser Permanente</option>
+                <option value="Medicare">Medicare</option>
+                <option value="Medi-Cal">Medi-Cal</option>
+                <option value="Sutter Health">Sutter Health</option>
+                <option value="Health Net">Health Net</option>
+                <option value="Centene">Centene</option>
+                <option value="CVS Health">CVS Health</option>
+                <option value="Humana">Humana</option>
+              </select>
             <input type="submit" value="Submit" />
 
         </form>

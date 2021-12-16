@@ -3,13 +3,16 @@ import AppointmentIndex from "../appointments/appointment_index";
 import { DEFAULT_PROFILE_PICTURE } from "../../util/icons_and_images_util";
 import './user_profile.css';
 
+
 class UserProfile extends React.Component {
   componentDidMount() {
     this.props.fetchUserAppointments(this.props.currentUser._id);
+    this.props.fetchUser(this.props.currentUser._id);
+
   }
 
   render(){
-    let { appointments, currentUser, openModal } = this.props;
+    let { appointments, currentUser, openModal, user } = this.props;
 
     return(
       <div className="user-profile">
@@ -18,13 +21,13 @@ class UserProfile extends React.Component {
             <img src={DEFAULT_PROFILE_PICTURE} alt="" />
           </div>
           <div>
-            Name: {currentUser.handle}
+            Name: {user.handle}
           </div>
           <div>
-            Insurance: {currentUser.insurance}
+            Insurance: {user.insurance}
           </div>
           <div id="update-profile">
-            <button onClick={() => openModal("updateProfile", {currentUser })}>
+            <button onClick={() => openModal("updateProfile", {user })}>
               Update Profile
             </button>
           </div>
@@ -33,7 +36,7 @@ class UserProfile extends React.Component {
 
         <AppointmentIndex 
           appointments={appointments ? appointments : null} 
-          currentUser={currentUser} 
+          currentUser={user} 
           openModal={openModal} 
         />
       </div>
