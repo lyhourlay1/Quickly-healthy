@@ -3,6 +3,7 @@ import axios from "axios";
 /** API fetchRecords gets all records from the database
  * @returns {Promise} - A promise of records as an array
  * @type {()  => Promise}
+ * @see {@link https://github.com/lyhourlay1/Quickly-healthy/blob/main/assets/tutorials/routes.md|Tutorials}
  */
 export const fetchRecords = () => {
     return axios.get('/api/records');
@@ -13,6 +14,7 @@ export const fetchRecords = () => {
  * @param {String} recordId - The record id
  * @type {(recordId: String)  => Promise}
  * @returns {Promise} - A promise of record
+ * @see {@link https://github.com/lyhourlay1/Quickly-healthy/blob/main/assets/tutorials/routes.md|Tutorials}
  */
 export const fetchRecord = (recordId) => {
     return axios.get(`/api/records/${recordId}`);
@@ -23,6 +25,7 @@ export const fetchRecord = (recordId) => {
  * @param {String} userId - The user id
  * @type {(userId: String)  => Promise}
  * @returns {Promise} - A promise of records as an array
+ * @see {@link https://github.com/lyhourlay1/Quickly-healthy/blob/main/assets/tutorials/routes.md|Tutorials}
  */
 export const fetchUserRecords = (userId) => {
     return axios.get(`/api/records/user/${userId}`);
@@ -34,6 +37,7 @@ export const fetchUserRecords = (userId) => {
  * @param {Object} record - The record
  * @type {(record: Object)  => Promise}
  * @returns {Promise} - A promise of record
+ * @see {@link https://github.com/lyhourlay1/Quickly-healthy/blob/main/assets/tutorials/routes.md|Tutorials}
  */
 export const createRecord = (record) => {
     return axios.post(`/api/records/user/${record.user_id}`, record);
@@ -44,6 +48,7 @@ export const createRecord = (record) => {
  * @param {Object} record - The record
  * @type {(record: Object)  => Promise}
  * @returns {Promise} - A promise of record of its previous state
+ * @see {@link https://github.com/lyhourlay1/Quickly-healthy/blob/main/assets/tutorials/routes.md|Tutorials}
  */
 export const updateRecord = (record) => {
     return axios.patch(`/api/records/${record._id}/update`, record);
@@ -54,6 +59,7 @@ export const updateRecord = (record) => {
  * @param {String} recordId - The record id
  * @type {(recordId: String)  => Promise}
  * @returns {Promise} - A promise of record
+ * @see {@link https://github.com/lyhourlay1/Quickly-healthy/blob/main/assets/tutorials/routes.md|Tutorials}
  */
 export const deleteRecord = (recordId) => {
     return axios.delete(`/api/records/${recordId}/delete`);

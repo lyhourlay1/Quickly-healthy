@@ -9,6 +9,7 @@ import ProfileContainer from "./user_profile/user_profile_container";
 import Splash from "./splash/splash";
 import HomeContainer from "./home/home_container";
 import DoctorProfileContainer from "./doctor_profile/doctor_profile_container";
+import EditAppointmentProfileContainer from "./doctor_profile/edit_appointment_profile_container";
 import Modal from "./modals/modal";
 import Footer from './footer/footer';
 import './reset.css';
@@ -16,9 +17,10 @@ import './reset.css';
 
 const App = () => (
   <div className="page-container">
-    <Modal />
+      <Modal />
     <NavBarContainer />
     <Switch>
+      <ProtectedRoute exact path="/doctors/:doctor_id/edit_appt/:appointment_id" component={EditAppointmentProfileContainer} />
       <AuthRoute exact path="/login" component={LoginFormContainer} />
       <AuthRoute exact path="/signup" component={SignupFormContainer} />
       <ProtectedRoute path="/home" component={HomeContainer} />

@@ -21,6 +21,14 @@ class SignupForm extends React.Component {
     this.clearedErrors = false;
   }
 
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.signedIn === true) {
+      this.props.history.push("/login");
+    }
+
+    this.setState({ errors: nextProps.errors });
+  }
+
   update(field) {
     return (e) =>
       this.setState({
@@ -42,8 +50,9 @@ class SignupForm extends React.Component {
   }
 
   renderErrors() {
+    
     return (
-      <ul>
+      <ul className = 'errors'>
         {Object.keys(this.state.errors).map((error, i) => (
           <li key={`error-${i}`}>{this.state.errors[error]}</li>
         ))}
@@ -54,7 +63,7 @@ class SignupForm extends React.Component {
   render() {
     return (
       <div className="signup-form-container">
-        <form onSubmit={this.handleSubmit}>
+        <form onSubmit={this.handleSubmit} className="form-session">
           <div className="session-box">
             <div className="inputs">
               <h1>Welcome to Quickly Healthy!</h1>
@@ -70,7 +79,7 @@ class SignupForm extends React.Component {
                 type="text"
                 value={this.state.handle}
                 onChange={this.update("handle")}
-                placeholder="Handle"
+                placeholder="Name"
               />
               <br />
               <input

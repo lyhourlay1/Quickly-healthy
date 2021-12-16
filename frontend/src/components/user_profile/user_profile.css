@@ -71,3 +71,58 @@ div#date {
   background-color: lightblue;
 }
 
+.img-container {
+  width: fit-content;
+  height: fit-content;
+  background: aliceblue;
+  border: lightblue 20px solid;
+  border-radius: 30px;
+  justify-content: center;
+  display: flex;
+  margin-top: 16px;
+  overflow: hidden;
+  text-align: center;
+}
+
+.img-container img {
+  height: 300px;
+}
+/* button.upload-pic-button {
+    float: left;
+} */
+
+.user-detail {
+    background: beige;
+    width: 60%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.user-description{
+  padding-top: 10px;
+  padding-bottom: 10px;
+  font-size: 20px;
+}
+
+
+.update-profile-button{
+  border-radius: 5px;
+  border: 1px lightgrey solid;
+  height: 30px;
+}
+.update-profile-button:hover{
+  background-color: lightblue;
+}
+
+
+.upload-pic-button{
+  border-radius: 5px;
+  border: 1px lightgrey solid;
+  height: 30px
+  
+}
+.upload-pic-button:hover{
+  background-color: beige;
+
+}

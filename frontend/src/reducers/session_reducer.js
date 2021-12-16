@@ -4,6 +4,10 @@ import {
   RECEIVE_USER_SIGN_IN,
 } from "../actions/session_actions";
 
+import {
+  RECEIVE_USER,
+} from "../actions/user_actions";
+
 const initialState = {
   isAuthenticated: false,
   user: {},
@@ -12,7 +16,6 @@ const initialState = {
 const sessionReducer = (state = initialState, action) => {
   switch (action.type) {
     case RECEIVE_CURRENT_USER:
-      // debugger
       return {
         ...state,
         isAuthenticated: !!action.currentUser,

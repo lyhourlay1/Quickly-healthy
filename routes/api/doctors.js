@@ -38,37 +38,30 @@ router.get("/:id", (req, res) => {
     let nextDay = new Date(date);
 
     for (let i = 0; i < 30; i++) {
-    let currentStringDate = date.toString().split(' ').slice(0, -5).join(' ')
-    nextThirtyDays[currentStringDate] = [9, 10, 11, 12, 13, 14, 15, 16, 17];
-    
-    nextDay.setDate(nextDay.getDate() + 1);
-    
-    nextDay = new Date(nextDay);
-    let stringDate = nextDay.toString().split(' ').slice(0, -5).join(' ');
-      if(!nextThirtyDays[stringDate]) {
-        nextThirtyDays[stringDate] = [9, 10, 11, 12, 13, 14, 15, 16, 17];
-      }
-      // nextThirtyDays[stringDate] = [9, 10, 11, 12, 13, 14, 15, 16, 17];
+        let currentStringDate = date.toString().split(' ').slice(0, -5).join(' ')
+        nextThirtyDays[currentStringDate] = [9, 10, 11, 12, 13, 14, 15, 16, 17];
+
+        nextDay.setDate(nextDay.getDate() + 1);
+
+        nextDay = new Date(nextDay);
+        let stringDate = nextDay.toString().split(' ').slice(0, -5).join(' ');
+        if (!nextThirtyDays[stringDate]) {
+            nextThirtyDays[stringDate] = [9, 10, 11, 12, 13, 14, 15, 16, 17];
+        }
     }
+
     let doctor = Doctor.findById(req.params.id);
     Doctor.findById(req.params.id)
         .then(dr => {
-            // console.log('doctor init', req.body, dr)
-            // debugger
-            // for (const k, v in nextThirtyDays) {
-            for(let [k, v] of Object.entries(nextThirtyDays)) {
-                if(dr.availabilityString[k]) {
-                    // nextThirtyDays[k] = dr.availabilityString[k]
+            for (let [k, v] of Object.entries(nextThirtyDays)) {
+                if (dr.availabilityString[k]) {
                     nextThirtyDays[k] = dr.availabilityString[k]
                 }
             }
             dr.availabilityString = nextThirtyDays;
             dr.save();
-            // console.log('doctor end', dr)
-            // console.log(dr.availabilityString["Tue Dec 14 2021"])
             return res.json(dr)
         })
-        // .then((doctor) => res.json(doctor))
         .catch((err) =>
             res.status(404).json(`No doctor found with ID: ${req.params.id}`)
         );
@@ -78,17 +71,16 @@ router.get("/:id", (req, res) => {
 /** Create a doctor
  * POST: http://localhost:5000/api/doctors
  * @response {Object} json - The doctor created
- * @param {String} user_id - The user id
+ * @param {String} doctorId - The doctor id
  * @body - reason {String}, date {Date}, checkin {Date}
  */
 router.post("/", (req, res) => {
         const {errors, isValid} = validateDoctorInput(req.body);
         if (!isValid) {
             return res.status(400).json(errors);
-        }     
-    
+        }
+
         const newDoctor = new Doctor(doctorParams(req));
-        newDoctor._id = newDoctor._id;
         newDoctor.save().then(doc => res.json(doc));
     }
 );
@@ -102,9 +94,7 @@ router.post("/", (req, res) => {
 router.patch("/:id", (req, res) => {
         const {errors, isValid} = validateDoctorInput(req.body);
 
-        if (!isValid) {
-            return res.status(400).json(errors);
-        }
+        if (!isValid) return res.status(400).json(errors);
 
         return Doctor.findByIdAndUpdate(req.params.id, doctorParams(req))
             .then(doctor => res.json(doctor)) // will not return the updated but the previous version
@@ -155,19 +145,26 @@ router.get("/:id/files", (req, res) => {
  * @response {Object} json - The doctor's previous state
  */
 router.post("/:id/image", (req, res) => {
-    if (!req.files)
-        return res.send("You must select a file");
+        let image = null;
+        if (req.files) {
+            let base64data = new Buffer(req.files.image.data);
+            let data = base64data.toString('base64');
+            image = req.files.image;
+            image.data = data;
+            image.source = `data:${image.mimetype};base64,${data}`
+        } else if (req.body && req.body.image)
+            image = req.body.image
+        else
+            return res.send("You must select a file");
 
-    Doctor.findById(req.params.id)
-        .then((doctor) => {
-            doctor.image = req.files.image;
-            // console.log(doctor.availabilityString)
-
-            return Doctor.findByIdAndUpdate(req.params.id, doctor)
-                .then(doctor => res.json(doctor)) // will not return the updated but the previous version
-                .catch(err => res.status(404).json(`Unable to update doctor with ID: ${req.params.id}`))
-        })
-        .catch((err) => res.status(404).json(`No doctor found with ID: ${req.params.id}`));
+        Doctor.findById(req.params.id)
+            .then((doctor) => {
+                doctor.image = image;
+                return Doctor.findByIdAndUpdate(req.params.id, doctor)
+                    .then(doctor => res.json(image)) // will not return the updated but the previous version
+                    .catch(err => res.status(404).json(`Unable to update doctor with ID: ${req.params.id}`))
+            })
+            .catch((err) => res.status(404).json(`No doctor found with ID: ${req.params.id}`));
     }
 );
 
@@ -176,17 +173,26 @@ router.post("/:id/image", (req, res) => {
  * @response {Object} json - The doctor's previous state
  */
 router.post("/:id/files", (req, res) => {
-        if (!req.files)
+        let files = null;
+        if (req.files) {
+            files = req.files;
+            for (let key in files) {
+                files[key] = req.files[key];
+                let base64data = new Buffer(files[key].data);
+                let data = base64data.toString('base64');
+                if (files[key].mimetype === "text/plain")
+                    files[key].mimetype = "text/html";
+                files[key].data = data;
+                files[key].source = `data:${files[key].mimetype};base64,${data}`
+            }
+        } else if (req.body && req.body.files)
+            files = req.body.files
+        else
             return res.send("You must select a file");
-
         Doctor.findById(req.params.id)
             .then((doctor) => {
                 doctor.files = doctor.files || {};
-                for (let key in req.files) {
-                    doctor.files[key] = req.files[key];
-                    if (doctor.files[key].mimetype === "text/plain")
-                        doctor.files[key].mimetype = "text/html";
-                }
+                doctor.files = {...doctor.files, ...files}
                 return Doctor.findByIdAndUpdate(req.params.id, doctor)
                     .then(doctor => res.json(doctor)) // will not return the updated but the previous version
                     .catch(err => res.status(404).json(`Unable to update doctor with ID: ${req.params.id}`))

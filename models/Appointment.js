@@ -47,6 +47,10 @@ const AppointmentSchema = new Schema({
     type: String,
     required: false
   },
+  check_in:{
+    type: Boolean,
+    default: false
+  },
   dateCreated: {
     type: Date,
     default: Date.now,

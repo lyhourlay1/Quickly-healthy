@@ -12,7 +12,7 @@ const receiveAppointments = appointments =>({
 
 const receiveAppointment = appointment => ({
     type: RECEIVE_APPOINTMENT,
-    appointment,
+    appointment, 
 })
 
 const removeAppointment = (res) => ({
@@ -32,6 +32,14 @@ export const createAppointment = (appointment) => dispatch => (
     ApiAppointmentUtil.createAppointment(appointment).then((appointment=> dispatch(receiveAppointment(appointment.data))))
 )
 
+export const updateAppointment = (appointment) => dispatch => (
+    ApiAppointmentUtil.updateAppointment(appointment).then((appointment) => dispatch(receiveAppointment(appointment.data)))
+)
+
 export const deleteAppointment = (appointmentId) => (dispatch) => (
     ApiAppointmentUtil.deleteAppointment(appointmentId).then(res => dispatch(removeAppointment(res)))
+)
+
+export const checkInAppointment =  (appointmentId) => dispatch=> (
+    ApiAppointmentUtil.checkInAppointment(appointmentId).then(appointment => dispatch(receiveAppointment(appointment.data)) )
 )
