@@ -7,9 +7,9 @@ class UpdateProfileForm extends React.Component{
     constructor(props){
         super(props)
         this.state = {
-            id: this.props.user._id,
-            handle: this.props.user.handle,
-            insurance: this.props.user.insurance
+          id: this.props.user._id,
+          handle: this.props.user.handle,
+          insurance: this.props.user.insurance
         }
         this.handleSubmit = this.handleSubmit.bind(this)
     }

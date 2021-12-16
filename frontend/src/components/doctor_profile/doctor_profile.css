@@ -87,7 +87,7 @@
   padding: 0px;
 }
 
-.button-container button:focus {
+.button-container button:active {
   font-weight: 600;
   font-size: 15px;
 }
@@ -130,6 +130,7 @@
 .image-container > img {
   width: 300px;
   height: 300px;
+  object-fit: cover;
 }
 
 .form-container {
