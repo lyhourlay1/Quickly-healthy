@@ -12,7 +12,7 @@ const receiveAppointments = appointments =>({
 
 const receiveAppointment = appointment => ({
     type: RECEIVE_APPOINTMENT,
-    appointment,
+    appointment, 
 })
 
 const removeAppointment = (res) => ({
