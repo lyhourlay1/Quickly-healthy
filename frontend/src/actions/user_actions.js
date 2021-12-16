@@ -19,6 +19,20 @@ const receiveUserError = error =>({
 /*    Separation      */
 
 
+/** API fetchCurrentUser gets the current user from the database
+ * @type {()  => (dispatch) => Promise<User>}
+ * @returns {(dispatch) => Promise<User>} - A redux dispatch promise of user
+ * @example
+ *  fetchCurrentUser()(store.dispatch)
+ */
+export const fetchCurrentUser = () => (dispatch) => (
+    SessionUtil.currentUser().then(
+        user => dispatch(receiveUser(user.data)),
+        err => dispatch(receiveUserError(err.response.data))
+    )
+)
+
+
 /** API fetchUser gets a user from the database, given the user id
  * @param {String} userId - The user id
  * @type {(userId: String)  => (dispatch) => Promise}
@@ -27,7 +41,7 @@ const receiveUserError = error =>({
  *  fetchUser(user.id)(store.dispatch)
  */
 export const fetchUser = userId => (dispatch) => (
-    SessionUtil.currentUser().then(
+    SessionUtil.fetchUser(userId).then(
         user => dispatch(receiveUser(user.data)),
         err => dispatch(receiveUserError(err.response.data))
     )
