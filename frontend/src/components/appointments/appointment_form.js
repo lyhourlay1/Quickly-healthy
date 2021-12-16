@@ -57,7 +57,7 @@ class AppointmentForm extends React.Component{
 
     handleClickCreateAppointment(e){
         e.preventDefault()
-        debugger
+
         this.props.createAppointment({user_id: this.props.currentUser.id, name: this.state.name, reason: this.state.reason, selectedSlot: this.state.selectedSlot, date: this.state.date, doctor_id: this.props.doctor._id})
             .then(()=> {
                 this.props.fetchDoctor(this.props.doctorId);
@@ -128,9 +128,11 @@ class AppointmentForm extends React.Component{
               <div className="submission-form">
                 <div>
                   Appointment on {this.state.date} at{" "}
-                  {this.state.selectedSlot <= 12
-                    ? this.state.selectedSlot
-                    : this.state.selectedSlot % 12}{" "}
+                  {this.state.selectedSlot >= 12
+                    ? this.state.selectedSlot > 12
+                      ? (this.state.selectedSlot % 12) + " PM"
+                      : this.state.selectedSlot + " PM"
+                    : this.state.selectedSlot + " AM"}{" "}
                   with Dr.{this.props.doctor.name}
                 </div>
                 <div>

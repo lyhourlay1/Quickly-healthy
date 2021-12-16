@@ -10,13 +10,10 @@ const receiveAppointments = appointments =>({
     appointments,
 })
 
-const receiveAppointment = appointment => {
-    // debugger
-    return {
-        type: RECEIVE_APPOINTMENT,
-        appointment, 
-    }
-}
+const receiveAppointment = appointment => ({
+    type: RECEIVE_APPOINTMENT,
+    appointment, 
+})
 
 const removeAppointment = (res) => ({
     type: REMOVE_APPOINTMENT,
