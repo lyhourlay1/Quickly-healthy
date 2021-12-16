@@ -58,7 +58,7 @@ export const updateUser = user => (dispatch) => (
  */
 export const updateUserImage = (userId, image) => dispatch =>(
     UserUtil.updateUserImage(userId, image).then(
-        image => dispatch(receiveUser({image: image})),
+        image => dispatch(receiveUser({image: image.data})),
         err => dispatch(receiveUserError(err.response.data))
     )
 )
@@ -74,7 +74,7 @@ export const updateUserImage = (userId, image) => dispatch =>(
  */
 export const updateUserFiles = (userId, files) => dispatch =>(
     UserUtil.updateUserFiles(userId, files).then(
-        files => dispatch(receiveUser({files: files})),
+        files => dispatch(receiveUser({files: files.data})),
         err => dispatch(receiveUserError(err.response.data))
     )
 )

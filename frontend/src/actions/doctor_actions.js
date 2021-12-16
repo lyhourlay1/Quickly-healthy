@@ -117,7 +117,7 @@ export const deleteDoctor = doctorId => dispatch =>(
  */
 export const updateDoctorImage = (doctorId, image) => dispatch =>(
     DoctorUtil.updateDoctorImage(doctorId, image).then(
-        image => dispatch(receiveDoctor({_id: doctorId, image})),
+        image => dispatch(receiveDoctor({_id: doctorId, image: image.data})),
         err => dispatch(receiveDoctorError(err.response.data))
     )
 )
@@ -133,7 +133,7 @@ export const updateDoctorImage = (doctorId, image) => dispatch =>(
  */
 export const updateDoctorFiles = (doctorId, files) => dispatch =>(
     DoctorUtil.updateDoctorFiles(doctorId, files).then(
-        files => dispatch(receiveDoctor({_id: doctorId, files})),
+        files => dispatch(receiveDoctor({_id: doctorId, files: files.data})),
         err => dispatch(receiveDoctorError(err.response.data))
     )
 )
