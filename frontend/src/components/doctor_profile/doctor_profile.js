@@ -23,8 +23,8 @@ export default class DoctorProfile extends React.Component {
               <div id="address">{doctor.address}</div>
               <div id="insurances">
                 <div>Accepted insurance providers:</div>
-                {doctor.insurances.map((insurance) => (
-                  <div>{insurance}</div>
+                {doctor.insurances.map((insurance, idx) => (
+                  <div key={idx} >{insurance}</div>
                 ))}
               </div>
             </div>

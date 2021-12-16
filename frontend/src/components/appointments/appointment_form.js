@@ -170,14 +170,14 @@ class AppointmentForm extends React.Component{
                     <div className= "grid">Saturday</div>
                     <div className= "grid">Sunday</div>
                     {this.state.grid.map((date, idx)=> 
-                        <div className="grid">
+                        <div key={idx} className="grid">
                             {date.day.split(" ")[2]}
                             <div className="timeslots-container">
-                                {date.slots.map((slot) => {
+                                {date.slots.map((slot, idx) => {
                                     let ending = slot >= 12 ? "PM" : "AM";
                                     return slot <= 12 
-                                        ? <div className="button-container"><button id="cal-date" onClick={this.handleClickUpdate('selectedSlot', date.day)} value={slot}>{`${slot} ${ending}`}</button></div>
-                                        : <div className="button-container"><button id="cal-date" onClick={this.handleClickUpdate('selectedSlot', date.day)} value={slot}>{`${slot % 12} ${ending}`}</button></div>
+                                        ? <div className="button-container" key={idx}><button onClick={this.handleClickUpdate('selectedSlot', date.day)} value={slot}>{`${slot} ${ending}`}</button></div>
+                                        : <div className="button-container" key={idx}><button onClick={this.handleClickUpdate('selectedSlot', date.day)} value={slot}>{`${slot % 12} ${ending}`}</button></div>
                                     
                                     })}
                             </div>
