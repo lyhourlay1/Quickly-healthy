@@ -183,18 +183,27 @@ router.get("/:id/files", (req, res) => {
  * @response {Object} json - The user's previous state
  */
 router.post("/:id/image", (req, res) => {
-      if (!req.files)
-        return res.send("You must select a file");
+        let image = null;
+        if (req.files) {
+            let base64data = new Buffer(req.files.image.data);
+            let data = base64data.toString('base64');
+            image = req.files.image;
+            image.data = data;
+            image.source = `data:${image.mimetype};base64,${data}`
+        }
+        else if (req.body && req.body.image)
+            image = req.body.image
+        else
+            return res.send("You must select a file");
 
-      User.findById(req.params.id)
-          .then((user) => {
-            user.image = req.files.image;
-
-            return User.findByIdAndUpdate(req.params.id, user)
-                .then(user => res.json(req.files))
-                .catch(err => res.status(404).json(`Unable to update user with ID: ${req.params.id}`))
-          })
-          .catch((err) => res.status(404).json(`No user found with ID: ${req.params.id}`));
+        User.findById(req.params.id)
+            .then((user) => {
+                user.image = image;
+                return User.findByIdAndUpdate(req.params.id, user)
+                    .then(user => res.json(image))
+                    .catch(err => res.status(404).json(`Unable to update user with ID: ${req.params.id}`))
+            })
+            .catch((err) => res.status(404).json(`No user found with ID: ${req.params.id}`));
     }
 );
 
