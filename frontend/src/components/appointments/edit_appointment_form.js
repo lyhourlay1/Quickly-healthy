@@ -55,6 +55,7 @@ class EditAppointmentForm extends React.Component {
   }
 
   handleClickUpdateAppointment(e) {
+    debugger
     this.props.updateAppointment({
       id: this.props.appointment._id,
       user_id: this.props.currentUser._id,

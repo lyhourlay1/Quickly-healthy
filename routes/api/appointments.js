@@ -14,7 +14,8 @@ const appointmentParams = (req) => {
   Object.entries(req.body).filter(([key, value]) => {
     schema.includes(key) ? appt[key] = value : null;
   });
-
+  
+  console.log(appt, "PARAMS APPT");
   return appt;
 };
 
@@ -104,8 +105,6 @@ router.post('/user/:user_id', (req, res) => {
     return res.status(400).json(errors);
   }
 
-  console.log(req.body, "req.body");
-
   Doctor.findById(req.body.doctor_id).then((doctor) => {
     let temp = Object.assign({}, doctor.availabilityString);
     temp[req.body.date].splice(
@@ -119,13 +118,10 @@ router.post('/user/:user_id', (req, res) => {
     doctor.save();
   });
 
-  console.log(req.params, "REQ PARAMS ID");
-
   return User.findById(req.params.user_id)
     .then(() => {
         const newAppointment = new Appointment(appointmentParams(req));
         newAppointment.save().then((appointment) => {
-          console.log(appointment, "APPT");
           res.json(appointment)
         });
     })
@@ -165,9 +161,13 @@ router.patch('/:id/update', (req, res) => {
     return res.status(400).json(errors);
   }
 
+  console.log(req.body, "REQ BODY");
+
   Doctor.findById(req.body.doctor_id).then((doctor) => {
     let copy = doctor.availabilityString[req.body.oldDate];
     copy.push(parseInt(req.body.oldSelectedSlot));
+
+    console.log(doctor.availabilityString, "old AS");
 
     let sorted = copy.sort((a,b) => a - b);
     doctor.availabilityString[req.body.oldDate] = sorted;
@@ -177,14 +177,21 @@ router.patch('/:id/update', (req, res) => {
       aS[req.body.date].indexOf(parseInt(req.body.selectedSlot)),
       1
     );
+
+    console.log(doctor.availabilityString, "new AS");
     
     doctor.availabilityString = {};
     doctor.availabilityString = aS; 
     doctor.save();
   });
 
+  console.log(req.params.id);
+
   return Appointment.findByIdAndUpdate(req.params.id, appointmentParams(req))
-    .then((appointment) => res.json(appointment))
+    .then((appointment) => {
+      console.log(appointment, "APPT");
+      res.json(appointment)
+    })
     .catch((err) => res.status(404).json(`Unable to update appointment with ID: ${req.params.id}`));
 });
 
