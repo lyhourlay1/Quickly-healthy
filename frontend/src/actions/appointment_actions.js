@@ -39,3 +39,7 @@ export const updateAppointment = (appointment) => dispatch => (
 export const deleteAppointment = (appointmentId) => (dispatch) => (
     ApiAppointmentUtil.deleteAppointment(appointmentId).then(res => dispatch(removeAppointment(res)))
 )
+
+export const checkInAppointment =  (appointmentId) => dispatch=> (
+    ApiAppointmentUtil.checkInAppointment(appointmentId).then(appointment => dispatch(receiveAppointment(appointment.data)) )
+)

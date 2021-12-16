@@ -188,12 +188,6 @@ router.patch('/:id/update', (req, res) => {
  * @body - reason {String}, date {Date}, checkin {Date}
  */
 router.patch('/:id/checkin', (req, res) => {
-  const { errors, isValid } = validateAppointmentInput(req.body);
-
-  if (!isValid) {
-    return res.status(400).json(errors);
-  }
-
   Appointment.findById(req.params.id)
     .then((appointment) => {
     appointment.check_in = true;

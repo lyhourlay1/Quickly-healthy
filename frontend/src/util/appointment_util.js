@@ -48,6 +48,15 @@ export const updateAppointment = (appointment) => {
     return axios.patch(`/api/appointments/${appointment.id}/update`, appointment);
 };
 
+/** API checkInAppointment updates a appointment from the database
+ * @param {Object} appointment - The appointment
+ * @type {(appointment: Object)  => Promise}
+ * @returns {Promise} - A promise of appointment of its previous state
+ */
+export const checkInAppointment = (appointmentId) => {
+    return axios.patch(`/api/appointments/${appointmentId}/checkin`);
+};
+
 
 /** API deleteAppointment deletes a appointment from the database
  * @param {String} appointmentId - The appointment id
@@ -65,3 +74,4 @@ export const deleteAppointment = (appointmentId) => {
 // window.createAppointment = createAppointment;
 // window.updateAppointment = updateAppointment;
 // window.deleteAppointment = deleteAppointment;
+// window.checkInAppointment = checkInAppointment;
