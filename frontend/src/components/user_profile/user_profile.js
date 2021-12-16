@@ -12,19 +12,19 @@ class UserProfile extends React.Component {
     super(props)
 
     this.state = {
-      image: null
+      image: null,
     }
     this.onImageChange = this.onImageChange.bind(this);
     this.handleUpload = this.handleUpload.bind(this)
   }
   componentDidMount() {
+    
     if (isEmpty(this.props.user)) {
       this.props.fetchUser(this.props.userId);
       this.props.fetchUserAppointments(this.props.userId);
     }
     if (!this.state.image && this.props.user && this.props.user.image)
       this.setState({image: this.props.user.image})
-
   }
 
   handleUpload(e){
@@ -39,6 +39,7 @@ class UserProfile extends React.Component {
         [field]: e.currentTarget.value,
       });
   }
+
 
   onImageChange = event => {
 
@@ -84,7 +85,7 @@ class UserProfile extends React.Component {
               Insurance: {user.insurance}
           </div>
           <div id="update-profile">
-              <button onClick={() => openModal("updateProfile", {user })}>
+              <button onClick={() => openModal("updateProfile", {user})}>
                   Update Profile
               </button>
           </div>

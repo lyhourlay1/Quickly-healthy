@@ -19,9 +19,10 @@ const Modal = ({ modal }) => {
       />;
     case "updateProfile":
       document.body.style.overflow = "hidden";
+      
       return <UpdateProfileFormContainer 
         // appointment={modal.entity.appointment}
-        // currentUser={modal.entity.currentUser} 
+        // history={modal.entity.history} 
       />;
     default:
       document.body.style.overflow = "scroll";

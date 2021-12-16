@@ -1,5 +1,6 @@
 import React from 'react'
 import './update_profile_form.css'
+import { push } from 'react-router-redux';
 
 
 class UpdateProfileForm extends React.Component{
@@ -7,16 +8,15 @@ class UpdateProfileForm extends React.Component{
     constructor(props){
         super(props)
         this.state = {
-            id: this.props.currentUser.id,
-            handle: this.props.currentUser.handle,
-            insurance: this.props.currentUser.insurance
+            id: this.props.user._id,
+            handle: this.props.user.handle,
+            insurance: this.props.user.insurance
         }
         this.handleSubmit = this.handleSubmit.bind(this)
     }
     
     componentDidMount() {
-      this.props.fetchUser(this.props.currentUser._id);
-      
+      this.props.fetchUser(this.props.currentUser.id);      
     }
     
     update(field) {
@@ -26,10 +26,13 @@ class UpdateProfileForm extends React.Component{
       });
     }
 
-    handleSubmit(e) {
-  
+    handleSubmit(e) {  
       e.preventDefault();
-      this.props.updateUser(this.state);
+      this.props.updateUser(this.state)
+      .then(()=> {
+        this.props.fetchUser(this.props.currentUser.id);
+      });
+      
       this.props.closeModal()
     }
 
