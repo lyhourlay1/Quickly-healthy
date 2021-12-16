@@ -4,6 +4,11 @@ import { DEFAULT_PROFILE_PICTURE } from "../../util/icons_and_images_util";
 import "./doctor_profile.css";
 
 export default class EditAppointmentProfile extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {image: null};
+    }
+
   componentDidMount() {
     this.props.fetchDoctor(this.props.doctorId);
     this.props.fetchAppointment(this.props.appointmentId);
@@ -12,12 +17,13 @@ export default class EditAppointmentProfile extends React.Component {
   render() {
     let { doctor, currentUser, appointment, updateAppointment } = this.props;
     if (!doctor || !appointment) return null;
+    let source = doctor.image && doctor.image.source;
 
     return (
       <div className="doctor-profile">
         <div className="doctor-profile-header">
           <div className="image-container">
-            <img src={DEFAULT_PROFILE_PICTURE} alt="" width="300px" />
+            <img src={source || DEFAULT_PROFILE_PICTURE} alt="" width="300px" />
             <div className="doctors-titles" id="profile">
               <div>{doctor.name}</div>
               <div>{doctor.specialty}</div>
