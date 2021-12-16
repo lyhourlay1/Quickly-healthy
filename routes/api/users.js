@@ -109,7 +109,8 @@ router.post('/login', (req, res) => {
 
 router.patch("/:id", (req, res) => {
   const {errors, isValid} = validateUserInput(req.body);
-
+  console.log(req.params)
+  console.log(req.body)
   if (!isValid) {
     return res.status(400).json(errors);
   }
