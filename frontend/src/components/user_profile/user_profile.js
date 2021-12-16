@@ -3,6 +3,10 @@ import AppointmentIndex from "../appointments/appointment_index";
 import { DEFAULT_PROFILE_PICTURE } from "../../util/icons_and_images_util";
 import './user_profile.css';
 
+function isEmpty(obj){
+  return !!(obj && Object.keys(obj).length === 0)
+}
+
 class UserProfile extends React.Component {
   constructor(props){
     super(props)
@@ -14,16 +18,19 @@ class UserProfile extends React.Component {
     this.handleUpload = this.handleUpload.bind(this)
   }
   componentDidMount() {
-    if (this.props.userId) {
+    if (isEmpty(this.props.user)) {
       this.props.fetchUser(this.props.userId);
       this.props.fetchUserAppointments(this.props.userId);
     }
+    if (!this.state.image && this.props.user && this.props.user.image)
+      this.setState({image: this.props.user.image})
+
   }
 
   handleUpload(e){
     e.preventDefault()
     let {updateUserImage, user} = this.props
-    updateUserImage(user.id, {image: this.state.image})
+    updateUserImage(user._id, {image: this.state.image})
   }
 
   update(field) {
@@ -52,11 +59,12 @@ class UserProfile extends React.Component {
 
 
   render(){
-    let { appointments, openModal, user } = this.props;
-    let source = this.state.image && this.state.image.source;
+    let { appointments, openModal } = this.props;
+    let user = this.props.user
+    let source = user && user.image && user.image.source;
     return(
       <div className="user-profile">
-        <form onSubmit={this.handleUpload} method="post" action={`/api/users/${this.props.userId}/image`}>
+        <form onSubmit={this.handleUpload}>
           <div className="image-container">
             <img src={source || DEFAULT_PROFILE_PICTURE} alt="" />
             <input type="file"

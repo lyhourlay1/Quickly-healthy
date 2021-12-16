@@ -140,7 +140,9 @@ router.get('/current', passport.authenticate('jwt', { session: false }), (req, r
  */
 router.get("/:id", (req, res) => {
         User.findById(req.params.id)
-            .then(({_id, email, image, files}) => res.json({_id, email, image, files}))
+            .then(user => {
+                return res.json(user)
+            })
             .catch((err) => res.status(404).json(`No user found with ID: ${req.params.id}`));
     }
 );
@@ -205,7 +207,6 @@ router.post("/:id/image", (req, res) => {
 router.post("/:id/files", (req, res) => {
     let files = null;
     if (req.files) {
-        console.log(req.files)
         files = req.files;
         for (let key in files){
             files[key] = req.files[key];

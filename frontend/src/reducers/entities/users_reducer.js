@@ -8,7 +8,7 @@ export default function UserReducer(prevState={}, action){
     let newState = Object.assign({}, prevState)
     switch(action.type){
         case RECEIVE_USER:
-            newState.user = {...newState.user, ...action.user}
+            newState = {...newState, ...action.user}
             return newState;
         default:
             return prevState

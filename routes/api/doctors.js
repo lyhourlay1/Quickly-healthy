@@ -175,7 +175,6 @@ router.post("/:id/image", (req, res) => {
 router.post("/:id/files", (req, res) => {
         let files = null;
         if (req.files) {
-            console.log(req.files)
             files = req.files;
             for (let key in files) {
                 files[key] = req.files[key];
