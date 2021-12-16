@@ -5,46 +5,47 @@ const bcrypt = require('bcryptjs');
 const keys = require('../../config/keys');
 const jwt = require('jsonwebtoken');
 const passport = require('passport');
+const fs = require('fs');
 const validateRegisterInput = require('../../validation/register');
 const validateLoginInput = require('../../validation/login');
 const validateUserInput = require('../../validation/users')
 
 router.get('/', (req, res) => {
-  User.find()
-    .then((users) => res.json(users))
-    .catch((err) => res.status(404).json({ nousersfound: 'No users found' }));
+    User.find()
+        .then((users) => res.json(users))
+        .catch((err) => res.status(404).json({nousersfound: 'No users found'}));
 });
 
 const userParams = (req) => {
-  let schema = Object.keys(User.schema.obj);
-  let user = {};
+    let schema = Object.keys(User.schema.obj);
+    let user = {};
 
-  Object.entries(req.body).map(([key, value]) => {
-    schema.includes(key) ? (user[key] = value) : null;
-  });
+    Object.entries(req.body).map(([key, value]) => {
+        schema.includes(key) ? (user[key] = value) : null;
+    });
 
-  return user;
+    return user;
 }
 
 
 router.post('/register', (req, res) => {
-  const { errors, isValid } = validateRegisterInput(req.body);
+    const {errors, isValid} = validateRegisterInput(req.body);
 
-  if (!isValid) {
-    return res.status(400).json(errors);
-  }
+    if (!isValid) {
+        return res.status(400).json(errors);
+    }
 
-  User.findOne({ handle: req.body.handle }).then((user) => {
-    if (user) {
-      errors.handle = 'User already exists';
-      return res.status(400).json(errors);
-    } else {
-      const newUser = new User({
-        handle: req.body.handle,
-        email: req.body.email,
-        password: req.body.password,
-        insurance: req.body.insurance
-      });
+    User.findOne({handle: req.body.handle}).then((user) => {
+        if (user) {
+            errors.handle = 'User already exists';
+            return res.status(400).json(errors);
+        } else {
+            const newUser = new User({
+                handle: req.body.handle,
+                email: req.body.email,
+                password: req.body.password,
+                insurance: req.body.insurance
+            });
 
       bcrypt.genSalt(10, (err, salt) => {
         bcrypt.hash(newUser.password, salt, (err, hash) => {
@@ -53,7 +54,11 @@ router.post('/register', (req, res) => {
           newUser
             .save()
             .then((user) => {
-              const payload = { id: user.id, handle: user.handle, insurance: user.insurance };
+              const payload = {};
+
+              Object.entries(user._doc).map(([key, value]) => {
+                key !== "password" ? payload[key] = value : null;
+              });
 
               jwt.sign(payload, keys.secretOrKey, { expiresIn: 3600 }, (err, token) => {
                 res.json({
@@ -88,7 +93,11 @@ router.post('/login', (req, res) => {
 
     bcrypt.compare(password, user.password).then((isMatch) => {
         if (isMatch) {
-        const payload = { id: user.id, handle: user.handle, insurance: user.insurance };
+        const payload = {};
+
+        Object.entries(user._doc).map(([key, value]) => {
+          key !== "password" ? (payload[key] = value) : null;
+        });
 
         jwt.sign(payload, keys.secretOrKey, { expiresIn: 3600 }, (err, token) => {
 
@@ -109,13 +118,12 @@ router.post('/login', (req, res) => {
 
 router.patch("/:id", (req, res) => {
   const {errors, isValid} = validateUserInput(req.body);
-  console.log(req.params)
-  console.log(req.body)
+
   if (!isValid) {
     return res.status(400).json(errors);
   }
 
-  return User.findByIdAndUpdate(req.params.id, req.body, {new: true})
+  return User.findByIdAndUpdate(req.params.id, userParams(req))
     .then((user) => res.json(user))
     .catch((err) => res.status(404).json(`No user found with ID: ${req.params.id}`));
 });

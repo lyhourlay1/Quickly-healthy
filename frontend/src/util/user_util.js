@@ -51,6 +51,7 @@ export const fetchUserFiles = (userId) => {
         "md5": "323c01c696523119d251844e4ec52678"})
  */
 export const updateUserImage = (userId, image) => {
+    
     return axios.post(`/api/users/${userId}/image`, image)
 }
 

@@ -17,7 +17,7 @@ import './reset.css';
 
 const App = () => (
   <div className="page-container">
-    <Modal />
+      <Modal />
     <NavBarContainer />
     <Switch>
       <ProtectedRoute exact path="/doctors/:doctor_id/edit_appt/:appointment_id" component={EditAppointmentProfileContainer} />
