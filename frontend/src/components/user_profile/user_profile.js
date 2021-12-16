@@ -11,19 +11,19 @@ class UserProfile extends React.Component {
       image: null
     }
     this.onImageChange = this.onImageChange.bind(this);
-
     this.handleUpload = this.handleUpload.bind(this)
   }
   componentDidMount() {
-    this.props.fetchUserAppointments(this.props.currentUser._id);
-    this.props.fetchUser(this.props.currentUser._id);
-
+    if (this.props.userId) {
+      this.props.fetchUser(this.props.userId);
+      this.props.fetchUserAppointments(this.props.userId);
+    }
   }
 
   handleUpload(e){
     e.preventDefault()
-    let {updateUserImage, currentUser} = this.props
-    updateUserImage(currentUser._id, {image: this.state.image})
+    let {updateUserImage, user} = this.props
+    updateUserImage(user.id, {image: this.state.image})
   }
 
   update(field) {
@@ -52,13 +52,13 @@ class UserProfile extends React.Component {
 
 
   render(){
-    let { appointments, currentUser, openModal, user } = this.props;
-
+    let { appointments, openModal, user } = this.props;
+    let source = this.state.image && this.state.image.source;
     return(
       <div className="user-profile">
-        <form onSubmit={this.handleUpload} method="post" action={`/api/users/${this.props.currentUser._id}/image`}>
+        <form onSubmit={this.handleUpload} method="post" action={`/api/users/${this.props.userId}/image`}>
           <div className="image-container">
-            <img src={DEFAULT_PROFILE_PICTURE} alt="" />
+            <img src={source || DEFAULT_PROFILE_PICTURE} alt="" />
             <input type="file"
                 id="avatar" name="image"
                 accept="image/png, image/jpeg"

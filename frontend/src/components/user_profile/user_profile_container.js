@@ -8,7 +8,7 @@ import { fetchUser} from "../../actions/user_actions";
 
 const mSTP = (state) => {
   return {
-    currentUser: state.session.user,
+    userId: state.session.user.id,
     appointments: Object.values(state.entities.appointments),
     user: state.entities.user
   };
