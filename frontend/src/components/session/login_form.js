@@ -69,7 +69,7 @@ class LoginForm extends React.Component {
   render() {
     return (
       <div className="session-form-container">
-        <form onSubmit={this.handleSubmit}>
+        <form onSubmit={this.handleSubmit} className= "form-session">
           <div className ='session-box'>
             <div className='inputs'>
               Welcome back! Please Sign In!

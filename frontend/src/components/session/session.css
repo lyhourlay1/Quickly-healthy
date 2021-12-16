@@ -10,7 +10,7 @@
     border-radius: 10px;
 
 }
-form{
+.form-session{
     display: flex;
     justify-content: center;
 }

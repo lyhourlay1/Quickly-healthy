@@ -65,30 +65,32 @@ class UserProfile extends React.Component {
     let source = user && user.image && user.image.source;
     return(
       <div className="user-profile">
-        <form onSubmit={this.handleUpload}>
-          <div className="image-container">
-            <img src={source || DEFAULT_PROFILE_PICTURE} alt="" />
-            <input type="file"
-                id="avatar" name="image"
-                accept="image/png, image/jpeg"
-                onChange={this.onImageChange} multiple/>
-            <div>
-              <button type="submit">Upload</button>
+          <div className="img-container">
+            <form onSubmit={this.handleUpload} className="profile-img-container">
+                <img src={source || DEFAULT_PROFILE_PICTURE} alt="" />
+                <input type="file"
+                    id="avatar" name="image"
+                    accept="image/png, image/jpeg"
+                    onChange={this.onImageChange} multiple/>
+                <div>
+                  <button type="submit" className="upload-pic-button">Upload</button>
+                </div>
+            </form>
+            <div className="user-detail">
+              <div className= "user-description">
+                  Name: {user.handle}
+              </div>
+              <div className= "user-description">
+                  Insurance: {user.insurance}
+              </div>
+              <div id="update-profile" className= "user-description">
+                  <button className="update-profile-button" onClick={() => openModal("updateProfile", {user})}>
+                      Update Profile
+                  </button>
+              </div>
             </div>
           </div>
-        </form>
 
-          <div>
-              Name: {user.handle}
-          </div>
-          <div>
-              Insurance: {user.insurance}
-          </div>
-          <div id="update-profile">
-              <button onClick={() => openModal("updateProfile", {user})}>
-                  Update Profile
-              </button>
-          </div>
 
         <AppointmentIndex 
           appointments={appointments ? appointments : null} 
