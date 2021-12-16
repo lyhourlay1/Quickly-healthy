@@ -203,17 +203,29 @@ router.post("/:id/image", (req, res) => {
  * @response {Object} json - The user's previous state
  */
 router.post("/:id/files", (req, res) => {
-      if (!req.files)
+    let files = null;
+    if (req.files) {
+        console.log(req.files)
+        files = req.files;
+        for (let key in files){
+            files[key] = req.files[key];
+            let base64data = new Buffer(files[key].data);
+            let data = base64data.toString('base64');
+            if (files[key].mimetype === "text/plain")
+                files[key].mimetype = "text/html";
+            files[key].data = data;
+            files[key].source = `data:${files[key].mimetype};base64,${data}`
+        }
+    }
+    else if (req.body && req.body.files)
+        files = req.body.files
+    else
         return res.send("You must select a file");
 
       User.findById(req.params.id)
           .then((user) => {
             user.files = user.files || {};
-            for (let key in req.files){
-                user.files[key] = req.files[key];
-                if (user.files[key].mimetype === "text/plain")
-                    user.files[key].mimetype = "text/html";
-            }
+            user.files = {...user.files, ...files}
             return User.findByIdAndUpdate(req.params.id, user)
                 .then(user => res.json(req.files)) // will not return the updated but the previous version
                 .catch(err => res.status(404).json(`Unable to update user with ID: ${req.params.id}`))
