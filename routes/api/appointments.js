@@ -114,7 +114,7 @@ router.post('/user/:user_id', (req, res) => {
     doctor.availabilityString = temp; 
     doctor.save();
   });
-
+  console.log(req.params)
   return User.findById(req.params.user_id)
     .then(() => {
         const newAppointment = new Appointment(appointmentParams(req));
@@ -178,6 +178,28 @@ router.patch('/:id/update', (req, res) => {
 
   return Appointment.findByIdAndUpdate(req.params.id, appointmentParams(req))
     .then((appointment) => res.json(appointment))
+    .catch((err) => res.status(404).json(`Unable to update appointment with ID: ${req.params.id}`));
+});
+
+/** Update an appointment's check status by appointment id after checkin
+ * PATCH: http://localhost:5000/api/appointments/:id/checkin
+ * @response {Object} json - The appointment's previous value
+ * @param {String} id - The appointment id
+ * @body - reason {String}, date {Date}, checkin {Date}
+ */
+router.patch('/:id/checkin', (req, res) => {
+  const { errors, isValid } = validateAppointmentInput(req.body);
+
+  if (!isValid) {
+    return res.status(400).json(errors);
+  }
+
+  Appointment.findById(req.params.id)
+    .then((appointment) => {
+    appointment.check_in = true;
+    appointment.save();
+    res.json(appointment)
+  })
     .catch((err) => res.status(404).json(`Unable to update appointment with ID: ${req.params.id}`));
 });
 
