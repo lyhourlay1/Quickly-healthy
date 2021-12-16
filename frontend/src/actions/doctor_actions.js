@@ -12,10 +12,13 @@ const receiveDoctors = doctors =>({
     doctors: doctors
 })
 
-const receiveDoctor = doctor =>({
-    type: RECEIVE_DOCTOR,
-    doctor: doctor
-})
+const receiveDoctor = doctor => {
+    debugger
+    return {
+        type: RECEIVE_DOCTOR,
+        doctor: doctor
+    }
+}
 
 const receiveDoctorError = error =>({
     type: RECEIVE_DOCTOR_ERROR,
