@@ -63,11 +63,11 @@ div.splash-container {
 
 .splash-service {
   display: flex;
-  width: 100vw;
+  width: 70vw;
   align-items: center;
   justify-content: space-evenly;
   padding: 50px;
-  margin: 10px 5px;
+  margin: 10px 50px;
   flex-wrap: wrap;
 }
 
@@ -78,7 +78,7 @@ div.splash-component {
   align-items: center;
   flex-direction: column;
   padding: 10px;
-  margin-bottom: 45px;
+  margin-bottom: 70px;
 }
 
 div.splash-text {
@@ -104,5 +104,16 @@ div.splash-image-container {
 }
 
 div.splash-image-container img {
-  width: 500px;
+  width: 70%;
+}
+
+.splash-component-desc {
+  display: flex;
+  overflow-wrap: wrap;
+  width: 50%;
+  line-height: 1.5;
+  font-family: Arial, Helvetica, sans-serif;
+  padding: 8px;
+  font-size: 1.5rem;
+  color: rgb(34, 60, 116);
 }

@@ -7,6 +7,7 @@ const jwt = require('jsonwebtoken');
 const passport = require('passport');
 const validateRegisterInput = require('../../validation/register');
 const validateLoginInput = require('../../validation/login');
+const validateUserInput = require('../../validation/users')
 
 router.get('/', (req, res) => {
   User.find()
@@ -14,14 +15,17 @@ router.get('/', (req, res) => {
     .catch((err) => res.status(404).json({ nousersfound: 'No users found' }));
 });
 
-router.get('/current', passport.authenticate('jwt', { session: false }), (req, res) => {
-  res.json({
-    id: req.user.id,
-    handle: req.user.handle,
-    email: req.user.email,
-    insurance: req.user.insurance
+const userParams = (req) => {
+  let schema = Object.keys(User.schema.obj);
+  let user = {};
+
+  Object.entries(req.body).map(([key, value]) => {
+    schema.includes(key) ? (user[key] = value) : null;
   });
-});
+
+  return user;
+}
+
 
 router.post('/register', (req, res) => {
   const { errors, isValid } = validateRegisterInput(req.body);
@@ -39,8 +43,7 @@ router.post('/register', (req, res) => {
         handle: req.body.handle,
         email: req.body.email,
         password: req.body.password,
-        insurance: req.body.insurance,
-        imageUrl: req.body.imgUrl
+        insurance: req.body.insurance
       });
 
       bcrypt.genSalt(10, (err, salt) => {
@@ -50,7 +53,7 @@ router.post('/register', (req, res) => {
           newUser
             .save()
             .then((user) => {
-              const payload = { id: user._id, handle: user.handle, insurance: user.insurance };
+              const payload = { id: user.id, handle: user.handle, insurance: user.insurance };
 
               jwt.sign(payload, keys.secretOrKey, { expiresIn: 3600 }, (err, token) => {
                 res.json({
@@ -84,10 +87,11 @@ router.post('/login', (req, res) => {
     }
 
     bcrypt.compare(password, user.password).then((isMatch) => {
-      if (isMatch) {
-        const payload = { id: user._id, handle: user.handle, insurance: user.insurance };
+        if (isMatch) {
+        const payload = { id: user.id, handle: user.handle, insurance: user.insurance };
 
         jwt.sign(payload, keys.secretOrKey, { expiresIn: 3600 }, (err, token) => {
+
           res.json({
             success: true,
             token: 'Bearer ' + token,
@@ -99,9 +103,35 @@ router.post('/login', (req, res) => {
         return res.status(400).json(errors);
       }
     });
+
   });
 });
 
+router.patch("/:id", (req, res) => {
+  const {errors, isValid} = validateUserInput(req.body);
+
+  if (!isValid) {
+    return res.status(400).json(errors);
+  }
+
+  return User.findByIdAndUpdate(req.params.id, req.body, {new: true})
+    .then((user) => res.json(user))
+    .catch((err) => res.status(404).json(`No user found with ID: ${req.params.id}`));
+});
+
+/** Get the current user (Authentication Required)
+ * GET: http://localhost:5000/api/users/current
+ * @response {Object} json - The current user
+ */
+router.get('/current', passport.authenticate('jwt', { session: false }), (req, res) => {
+    let userId = req.user && req.user._id || null;
+    if (!userId)
+        return res.status(404).json(`No user is logged in`)
+
+    User.findById(userId)
+        .then(user => res.json(user))
+        .catch(err => res.status(404).json(`No user with ID: ${userId} does not exist in database`))
+});
 
 
 /** Get user

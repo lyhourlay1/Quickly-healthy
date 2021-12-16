@@ -1,6 +1,6 @@
 import React from 'react'
-import './appointment_form.css'
-
+import { Link } from 'react-router-dom'
+import "../doctor_profile/doctor_profile.css";
 
 class AppointmentForm extends React.Component{
     constructor(props){
@@ -28,46 +28,41 @@ class AppointmentForm extends React.Component{
         if(prevProps.doctor.availabilityString !== this.props.doctor.availabilityString){
             this.setState({'grid': this.generateCalenderList(0)})
         }
-        // if(prevProps)
-        // this.generateCalenderList(0)
     }
 
     update(field){
         return (e)=>{
+            e.preventDefault();
             this.setState({[field]: e.target.value})
         }
     }
     handleClickUpdate(field, date){
         return (e)=> {
+            e.preventDefault();
             this.setState({[field]: e.currentTarget.value, ['date']: date})
         }
 
     }
     handleClickNext(field){
-        this.month = this.month +1
-        let newGrid = this.generateCalenderList(+1)
-        this.setState({[field]: newGrid})
+        this.month = this.month + 1;
+        let newGrid = this.generateCalenderList(+1);
+        this.setState({[field]: newGrid});
  
     }
     handleClickBack(field){
-
-        this.month = this.month -1
-        let newGrid = this.generateCalenderList(-1)
-        this.setState({[field]: newGrid})
-
+        this.month = this.month - 1;
+        let newGrid = this.generateCalenderList(-1);
+        this.setState({[field]: newGrid});
     }
 
     handleClickCreateAppointment(e){
         e.preventDefault()
         this.props.createAppointment({user_id: this.props.userId, name: this.state.name, reason: this.state.reason, selectedSlot: this.state.selectedSlot, date: this.state.date, doctor_id: this.props.doctor._id})
             .then(()=> {
-            this.props.fetchDoctor(this.props.doctorId)
-            // this.setState({["grid"]: this.generateCalenderList(0)})
-            // debugger
-            // ()=>this.setState({["grid"]: this.generateCalenderList(0, this.props.doctor)})
-            })
+                this.props.fetchDoctor(this.props.doctorId);
+            });
        
-        this.setState({["selectedSlot"]: ""})
+        this.setState({["selectedSlot"]: ""});
     }
 
     generateCalenderList(num){
@@ -123,9 +118,6 @@ class AppointmentForm extends React.Component{
         return schedules
     }
     render(){
-        // if(!this.state.doctor){
-        //     return null
-        // }
         if (!this.props.doctor){
             return null;
         }
@@ -158,6 +150,7 @@ class AppointmentForm extends React.Component{
                     placeholder="reason..."
                   />
                 </div>
+                <Link to={`/home`}>Cancel</Link>
                 <button onClick={this.handleClickCreateAppointment}>
                   Submit
                 </button>
@@ -176,15 +169,16 @@ class AppointmentForm extends React.Component{
                     <div className= "grid">Saturday</div>
                     <div className= "grid">Sunday</div>
                     {this.state.grid.map((date, idx)=> 
-                        <div className ="grid">
+                        <div className="grid">
                             {date.day.split(" ")[2]}
                             <div className="timeslots-container">
-                                {date.slots.map((slot) => 
-                                    slot <= 12 
-                                        ? <div className="button-container"><button onClick={this.handleClickUpdate('selectedSlot', date.day)} value={slot}>{slot}</button></div>
-                                        : <div className="button-container"><button onClick={this.handleClickUpdate('selectedSlot', date.day)} value={slot}>{slot}</button></div>
+                                {date.slots.map((slot) => {
+                                    let ending = slot >= 12 ? "PM" : "AM";
+                                    return slot <= 12 
+                                        ? <div className="button-container"><button onClick={this.handleClickUpdate('selectedSlot', date.day)} value={slot}>{`${slot} ${ending}`}</button></div>
+                                        : <div className="button-container"><button onClick={this.handleClickUpdate('selectedSlot', date.day)} value={slot}>{`${slot % 12} ${ending}`}</button></div>
                                     
-                                )}
+                                    })}
                             </div>
                         </div>)}                 
                 </div>

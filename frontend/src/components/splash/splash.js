@@ -29,6 +29,14 @@ const Splash = () => {
           </div>
 
           <div className="splash-component">
+            <p className="splash-component-desc">You can use our system to find doctors, specialists and other providers that accept your plan. </p>
+          </div>
+
+          <div className="splash-component">
+            <p className="splash-component-desc">Easily book appointments online to meet your awesome doctor as soon as possible!</p>
+          </div>
+
+          <div className="splash-component">
             <div className="splash-image-container-appt splash-image-container">
               <img src="https://raw.githubusercontent.com/lyhourlay1/Quickly-healthy/home-css-emmett/assets/splash/appt.png" />
             </div>
@@ -40,6 +48,16 @@ const Splash = () => {
               <img src="https://raw.githubusercontent.com/lyhourlay1/Quickly-healthy/main/assets/splash/insurance.png" />
             </div>
             <div className="splash-text">Confirm your insurance</div>
+          </div>
+
+          <div className="splash-component">
+            <p className="splash-component-desc">
+              Select or update your insurance at anytime and we'll look for doctors who accept your plan
+            </p>
+          </div>
+
+          <div className="splash-component">
+            <p className="splash-component-desc">Keep your doctor up to date by uploading your health records to your profile.</p>
           </div>
 
           <div className="splash-component">

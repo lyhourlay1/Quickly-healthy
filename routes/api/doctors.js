@@ -48,8 +48,8 @@ router.get("/:id", (req, res) => {
       if(!nextThirtyDays[stringDate]) {
         nextThirtyDays[stringDate] = [9, 10, 11, 12, 13, 14, 15, 16, 17];
       }
-      // nextThirtyDays[stringDate] = [9, 10, 11, 12, 13, 14, 15, 16, 17];
     }
+
     let doctor = Doctor.findById(req.params.id);
     Doctor.findById(req.params.id)
         .then(dr => {
@@ -95,9 +95,7 @@ router.post("/", (req, res) => {
 router.patch("/:id", (req, res) => {
         const {errors, isValid} = validateDoctorInput(req.body);
 
-        if (!isValid) {
-            return res.status(400).json(errors);
-        }
+        if (!isValid) return res.status(400).json(errors);
 
         return Doctor.findByIdAndUpdate(req.params.id, doctorParams(req))
             .then(doctor => res.json(doctor)) // will not return the updated but the previous version
