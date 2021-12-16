@@ -114,7 +114,7 @@ router.patch("/:id", (req, res) => {
     return res.status(400).json(errors);
   }
 
-  return User.findByIdAndUpdate(req.params.id, userParams(req))
+  return User.findByIdAndUpdate(req.params.id, req.body, {new: true})
     .then((user) => res.json(user))
     .catch((err) => res.status(404).json(`No user found with ID: ${req.params.id}`));
 });

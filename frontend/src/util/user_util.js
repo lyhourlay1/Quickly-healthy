@@ -6,8 +6,8 @@ import axios from "axios";
  * @returns {Promise<User>} - A promise of user
  * @see {@link https://github.com/lyhourlay1/Quickly-healthy/blob/main/assets/tutorials/routes.md|Tutorials}
  */
-export const updateUser = (userId) => {
-    return axios.get(`/api/users/${userId}`);
+export const updateUser = (user) => {
+    return axios.patch(`/api/users/${user.id}`, user);
 };
 
 

@@ -3,8 +3,8 @@ const validText = require('./valid-text');
 
 module.exports = function validateUserInput(user) {
   let errors = {};
-  if (Object.keys(user).length === 0) {
-    errors.data = 'Input must be given to update a user';
+  if (Validator.isEmpty(user.insurance)) {
+    errors.reason = "The insurance field can not be empty";
   }
 
   return {
