@@ -7,8 +7,6 @@ import jwt_decode from "jwt-decode";
 import { setAuthToken } from "./util/session_api_util";
 import { logout } from "./actions/session_actions";
 
-import {updateUser} from './actions/user_actions';
-
 document.addEventListener("DOMContentLoaded", () => {
   let store;
 
@@ -32,6 +30,5 @@ document.addEventListener("DOMContentLoaded", () => {
   
   const root = document.getElementById("root");
   window.store = store;
-  window.updateUser = updateUser
   ReactDOM.render(<Root store={store} />, root);
 });
