@@ -148,9 +148,11 @@ class EditAppointmentForm extends React.Component {
         <div className="submission-form">
           <div>
             Appointment on {this.state.date} at{" "}
-            {this.state.selectedSlot <= 12
-              ? this.state.selectedSlot
-              : this.state.selectedSlot % 12}{" "}
+            {this.state.selectedSlot >= 12
+              ? this.state.selectedSlot > 12
+                ? (this.state.selectedSlot % 12) + " PM"
+                : this.state.selectedSlot + " PM"
+              : this.state.selectedSlot + " AM"}{" "}
             with Dr.{this.props.doctor.name}
           </div>
           <div>
@@ -172,7 +174,13 @@ class EditAppointmentForm extends React.Component {
             />
           </div>
           <Link to={`/profile`}>Cancel</Link>
-          <Link id="update" to="/profile" onClick={this.handleClickUpdateAppointment}>Submit</Link>
+          <Link
+            id="update"
+            to="/profile"
+            onClick={this.handleClickUpdateAppointment}
+          >
+            Submit
+          </Link>
         </div>
       );
     }
