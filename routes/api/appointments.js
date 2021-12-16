@@ -114,7 +114,7 @@ router.post('/user/:user_id', (req, res) => {
     doctor.availabilityString = temp; 
     doctor.save();
   });
-  console.log(req.params)
+  // console.log(req.params)
   return User.findById(req.params.user_id)
     .then(() => {
         const newAppointment = new Appointment(appointmentParams(req));
@@ -138,6 +138,24 @@ router.patch('/:id', passport.authenticate('jwt', { session: false }), (req, res
   if (!isValid) {
     return res.status(400).json(errors);
   }
+
+  Doctor.findById(req.body.doctor_id).then((doctor) => {
+    let copy = doctor.availabilityString[req.body.oldDate];
+    copy.push(parseInt(req.body.oldSelectedSlot));
+
+    let sorted = copy.sort((a,b) => a - b);
+    doctor.availabilityString[req.body.oldDate] = sorted;
+
+    let aS = Object.assign({}, doctor.availabilityString);
+    aS[req.body.date].splice(
+      aS[req.body.date].indexOf(parseInt(req.body.selectedSlot)),
+      1
+    );
+    
+    doctor.availabilityString = {};
+    doctor.availabilityString = aS; 
+    doctor.save();
+  });
 
   return Appointment.findByIdAndUpdate(req.appointment.id, appointmentParams(req))
     .then((appointment) => res.json(appointment)) // will not return the updated but the previous version

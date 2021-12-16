@@ -11,8 +11,8 @@ class AppointmentIndexItem extends React.Component{
         </div>
         <div id="date">
           {appointment.date} at{" "}
-          {appointment.selectedSlot >= 12
-            ? appointment.selectedSlot + " PM"
+          {appointment.selectedSlot > 12
+            ? appointment.selectedSlot % 12 + " PM"
             : appointment.selectedSlot + " AM"}
         </div>
         <div id="edit">

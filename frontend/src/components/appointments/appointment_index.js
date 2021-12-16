@@ -16,7 +16,8 @@ export default class AppointmentIndex extends React.Component {
         }
 
         <ul className="appointment-list">
-          {appointments.map((appointment, idx) => (
+          {console.log('1', appointments)}
+          {appointments.sort((a, b) => new Date(b.date) - new Date(a.date)).map((appointment, idx) => (
             <AppointmentIndexItem
               key={idx} 
               appointment={appointment} 
