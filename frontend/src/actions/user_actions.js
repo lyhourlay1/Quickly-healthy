@@ -41,7 +41,7 @@ export const fetchUser = userId => (dispatch) => (
  *  updateUser(user)(store.dispatch)
  */
 export const updateUser = user => (dispatch) => (
-    SessionUtil.currentUser().then(
+    UserUtil.updateUser(user).then(
         user => dispatch(receiveUser(user.data)),
         err => dispatch(receiveUserError(err.response.data))
     )
