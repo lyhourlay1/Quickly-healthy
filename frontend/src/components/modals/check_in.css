@@ -1,0 +1,42 @@
+.yes-no{
+    display: flex;
+}
+
+.form-divider-container{
+    display: flex;
+    justify-content: space-between;
+}
+.question{
+    display: flex;
+    width: 80%
+}
+
+.question p {
+    /* display: flex; */
+    /* justify-content: center; */
+    flex-direction: column;
+    display: flex;
+    justify-content: center;
+}
+
+input.input-if-yes {
+    width: 63%;
+    margin-left: 10px;
+    border: 1px solid grey;
+    border-radius: 5px;
+}
+label.label-if-yes {
+    width: 100%;
+    font-size: 15px;
+}
+label.label-if-yes {
+    width: 100%;
+}
+div#if-yes {
+    padding-left: 5%;
+}
+
+div#check-in-details {
+    top: 49%;
+    min-height: 400px;
+}

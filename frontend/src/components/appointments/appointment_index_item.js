@@ -3,11 +3,21 @@ import React from 'react'
 class AppointmentIndexItem extends React.Component{
   render() {
     let { appointment, currentUser, openModal } = this.props;
-    
+    let display ;
+    if (appointment.check_in){
+      display = <span className="green-check">Check-in &#9989;</span>
+    }else{
+      display= 
+        <button
+          onClick={() =>
+            openModal("checkIn", { appointment})}>
+            Check-In
+        </button>
+    }
     return (
       <div className="appointment-index-item">
         <div id="check-in">
-          <button>Check-in</button>
+          {display}
         </div>
         <div id="date">
           {appointment.date} at{" "}
