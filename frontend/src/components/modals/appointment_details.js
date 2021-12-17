@@ -21,7 +21,7 @@ class AppointmentDetails extends React.Component {
     if (!doctor) return null;
 
     return (
-      <div className="appointment-details-modal-background">
+      <div className="appointment-details-modal-background" onClick={closeModal}>
         <div className="appointment-details">
           <div><button onClick={closeModal}>close</button></div>
           <div>Date and time: {appointment.date} at {appointment.selectedSlot == 12 ? appointment.selectedSlot + " PM" : appointment.selectedSlot >= 12
