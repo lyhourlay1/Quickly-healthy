@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 import { closeModal } from "../../actions/modal_actions";
 import AppointmentDetails from "./appointment_details";
 import UpdateProfileFormContainer from "./update_profile_form_container";
+import CheckInContainer from "./check_in_container"
 
 const Modal = ({ modal }) => {
   if (!modal) {
@@ -22,6 +23,12 @@ const Modal = ({ modal }) => {
       
       return <UpdateProfileFormContainer 
         // appointment={modal.entity.appointment}
+        // history={modal.entity.history} 
+      />;
+    case "checkIn":
+      document.body.style.overflow = "hidden";
+      return <CheckInContainer 
+        appointment={modal.entity.appointment}
         // history={modal.entity.history} 
       />;
     default:

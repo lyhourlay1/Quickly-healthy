@@ -114,7 +114,6 @@ router.post('/user/:user_id', (req, res) => {
     doctor.availabilityString = temp; 
     doctor.save();
   });
-  console.log(req.params)
   return User.findById(req.params.user_id)
     .then(() => {
         const newAppointment = new Appointment(appointmentParams(req));

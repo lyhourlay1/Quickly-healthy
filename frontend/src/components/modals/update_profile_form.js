@@ -1,7 +1,5 @@
 import React from 'react'
 import './update_profile_form.css'
-import { push } from 'react-router-redux';
-
 
 class UpdateProfileForm extends React.Component{
 

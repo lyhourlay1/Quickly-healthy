@@ -126,3 +126,7 @@ div#date {
   background-color: beige;
 
 }
+
+.green-check {
+    content: "\2705";
+}
