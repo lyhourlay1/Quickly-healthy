@@ -15,7 +15,7 @@ export default class EditAppointmentProfile extends React.Component {
   }
 
   render() {
-    let { doctor, currentUser, appointment, updateAppointment } = this.props;
+    let { doctor, currentUser, appointment, updateAppointment, fetchAppointment } = this.props;
     if (!doctor || !appointment) return null;
     let source = doctor.image && doctor.image.source;
 
@@ -48,6 +48,7 @@ export default class EditAppointmentProfile extends React.Component {
             appointment={appointment}
             currentUser={currentUser}
             updateAppointment={updateAppointment}
+            fetchAppointment={fetchAppointment}
           />
         </div>
       </div>

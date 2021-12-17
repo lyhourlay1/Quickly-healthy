@@ -56,17 +56,21 @@ class EditAppointmentForm extends React.Component {
 
   handleClickUpdateAppointment(e) {
     debugger
-    this.props.updateAppointment({
-      id: this.props.appointment._id,
-      user_id: this.props.currentUser._id,
-      name: this.state.name,
-      reason: this.state.reason,
-      selectedSlot: this.state.selectedSlot,
-      date: this.state.date,
-      doctor_id: this.props.doctor._id,
-      oldSelectedSlot: this.props.appointment.selectedSlot,
-      oldDate: this.props.appointment.date,
-    });
+    this.props
+      .updateAppointment({
+        id: this.props.appointment._id,
+        user_id: this.props.currentUser._id,
+        name: this.state.name,
+        reason: this.state.reason,
+        selectedSlot: this.state.selectedSlot,
+        date: this.state.date,
+        doctor_id: this.props.doctor._id,
+        oldSelectedSlot: this.props.appointment.selectedSlot,
+        oldDate: this.props.appointment.date,
+      })
+      .then(() => {
+        this.props.fetchAppointment(this.props.appointment._id);
+      });
 
     this.setState({ ["selectedSlot"]: "" });
   }

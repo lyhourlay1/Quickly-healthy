@@ -161,13 +161,9 @@ router.patch('/:id/update', (req, res) => {
     return res.status(400).json(errors);
   }
 
-  console.log(req.body, "REQ BODY");
-
   Doctor.findById(req.body.doctor_id).then((doctor) => {
     let copy = doctor.availabilityString[req.body.oldDate];
     copy.push(parseInt(req.body.oldSelectedSlot));
-
-    console.log(doctor.availabilityString, "old AS");
 
     let sorted = copy.sort((a,b) => a - b);
     doctor.availabilityString[req.body.oldDate] = sorted;
@@ -178,20 +174,13 @@ router.patch('/:id/update', (req, res) => {
       1
     );
 
-    console.log(doctor.availabilityString, "new AS");
-    
     doctor.availabilityString = {};
     doctor.availabilityString = aS; 
     doctor.save();
   });
 
-  console.log(req.params.id);
-
   return Appointment.findByIdAndUpdate(req.params.id, appointmentParams(req))
-    .then((appointment) => {
-      console.log(appointment, "APPT");
-      res.json(appointment)
-    })
+    .then((appointment) => res.json(appointment))
     .catch((err) => res.status(404).json(`Unable to update appointment with ID: ${req.params.id}`));
 });
 
