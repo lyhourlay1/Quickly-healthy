@@ -34,6 +34,7 @@ router.get("/", (req, res) => {
 router.get("/:id", (req, res) => {
     let today = Date.now();
     let date = new Date(today);
+    date.setDate(date.getDate() +1)
     let nextThirtyDays = {};
     let nextDay = new Date(date);
 
