@@ -19,7 +19,7 @@ class UserProfile extends React.Component {
   }
   componentDidMount() {
     
-    if (isEmpty(this.props.user)) {
+    if (this.props.user) {
       this.props.fetchUser(this.props.userId);
       this.props.fetchUserAppointments(this.props.userId);
     }
