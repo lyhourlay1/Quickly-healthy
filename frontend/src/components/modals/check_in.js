@@ -14,8 +14,11 @@ class CheckIn extends React.Component{
     handleSubmit(e){
         e.preventDefault()
         this.props.checkInAppointment(this.props.appointment._id).then(
-            this.props.fetchUserAppointments(this.props.appointment.user_id))       
-        this.props.closeModal()
+            ()=> {
+                this.props.fetchUserAppointments(this.props.appointment.user_id).then(
+                    ()=>this.props.closeModal()
+                )
+            })       
     }
 
     render(){
