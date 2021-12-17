@@ -15,7 +15,6 @@ const appointmentParams = (req) => {
     schema.includes(key) ? appt[key] = value : null;
   });
   
-  console.log(appt, "PARAMS APPT");
   return appt;
 };
 
@@ -114,7 +113,6 @@ router.post('/user/:user_id', (req, res) => {
     doctor.availabilityString = {};
     doctor.availabilityString = temp; 
 
-    console.log(doctor.availabilityString, "AS");
     doctor.save();
   });
 
@@ -219,11 +217,23 @@ router.delete('/:id', passport.authenticate('jwt', { session: false }), (req, re
  * @param {String} id - The appointment id
  */
 router.delete('/:id/delete', (req, res) => {
-  return Appointment.findByIdAndDelete(req.params.id)
-    .then((appointment) => {
-      res.json(appointment);
-    })
-    .catch((err) => res.status(404).json(`No appointment found with ID: ${req.params.id}`));
+  return Appointment.findByIdAndDelete(req.params.id).then((appointment) => {
+    Doctor.findById(appointment.doctor_id).then((doctor) => {
+      let copy = doctor.availabilityString[appointment.date];
+      copy.push(parseInt(appointment.selectedSlot));
+      
+      let sorted = copy.sort((a, b) => a - b);
+      doctor.availabilityString[appointment.date] = sorted;
+      
+      let aS = Object.assign({}, doctor.availabilityString);
+      doctor.availabilityString = {};
+      doctor.availabilityString = aS;
+
+      doctor.save();
+    });
+
+    return res.json(appointment);
+  });
 });
 
 module.exports = router;
