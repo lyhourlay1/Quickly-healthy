@@ -1,7 +1,6 @@
 import React from 'react'
 import './update_profile_form.css'
 
-
 class UpdateProfileForm extends React.Component{
 
     constructor(props){
@@ -40,7 +39,7 @@ class UpdateProfileForm extends React.Component{
     let {user, closeModal } = this.props;
 
     return (
-      <div className="profile-update-form-modal-background">
+      <div className="profile-update-form-modal-background" onClick={closeModal}>
         <form className="profile-update-form" onSubmit={this.handleSubmit}>
             <div><button onClick={closeModal}>close</button></div>
              Name: <input

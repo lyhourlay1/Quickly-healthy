@@ -21,7 +21,7 @@ class AppointmentDetails extends React.Component {
     if (!doctor) return null;
 
     return (
-      <div className="appointment-details-modal-background">
+      <div className="appointment-details-modal-background" onClick={closeModal}>
         <div className="appointment-details">
           <div>
             <button onClick={closeModal}>close</button>
