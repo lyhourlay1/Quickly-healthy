@@ -29,9 +29,10 @@ class UpdateProfileForm extends React.Component{
       this.props.updateUser(this.state)
       .then(()=> {
         this.props.fetchUser(this.props.currentUser.id);
+        debugger
       });
       
-      this.props.closeModal()
+      this.props.closeModal();
     }
 
 
@@ -39,7 +40,7 @@ class UpdateProfileForm extends React.Component{
     let {user, closeModal } = this.props;
 
     return (
-      <div className="profile-update-form-modal-background" onClick={closeModal}>
+      <div className="profile-update-form-modal-background">
         <form className="profile-update-form" onSubmit={this.handleSubmit}>
             <div><button onClick={closeModal}>close</button></div>
              Name: <input
@@ -71,7 +72,6 @@ class UpdateProfileForm extends React.Component{
                 <option value="Humana">Humana</option>
               </select>
             <input type="submit" value="Submit" />
-
         </form>
       </div>
     )
