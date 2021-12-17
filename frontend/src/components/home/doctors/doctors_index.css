@@ -23,6 +23,13 @@
   border-bottom: 1px solid black;
 }
 
+.proof-of-concept {
+  text-align: center;
+  margin-top: 16px;
+  font-size: 14px;
+  font-weight: 400;
+}
+
 .doctors-list {
   display: flex;
   flex-direction: column;

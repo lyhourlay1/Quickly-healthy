@@ -1,6 +1,7 @@
 import React from "react";
 import './doctors_index.css';
 import DoctorIndexItem from "./doctors_index_item";
+import ProofOfConcept from "./proof_of_concept";
 
 export default class DoctorIndex extends React.Component {
   render() {
@@ -12,12 +13,14 @@ export default class DoctorIndex extends React.Component {
         <div className="doctors-index-header">
           {currentUser.insurance === "None" ? (
             <div>
-              Doctors Near: San Francisco, CA that don't require insurance
+              Doctors Near: San Francisco, CA that don't require insurance.
+              <ProofOfConcept />
             </div>
           ) : (
             <div>
               Doctors Near: San Francisco, CA that are in-network with
-              {` ${currentUser.insurance}`}
+              {` ${currentUser.insurance}.`}
+              <ProofOfConcept />
             </div>
           )}
         </div>
