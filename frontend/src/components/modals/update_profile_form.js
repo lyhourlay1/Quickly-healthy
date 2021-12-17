@@ -42,14 +42,19 @@ class UpdateProfileForm extends React.Component{
     return (
       <div className="profile-update-form-modal-background">
         <form className="profile-update-form" onSubmit={this.handleSubmit}>
-            <div><button onClick={closeModal}>close</button></div>
-             Name: <input
-                type="text"
-                value={this.state.handle}
-                onChange={this.update("handle")}
-                placeholder={user.handle}
-              />
-             Insurance:
+            <div className= "close-button"><button onClick={closeModal}>close</button></div>
+            <div className= "row-container">
+              <p>Name:</p> 
+              <input
+                  type="text"
+                  value={this.state.handle}
+                  onChange={this.update("handle")}
+                  placeholder={user.handle}
+                  id = "name-input"
+                />
+            </div>
+            <div className= "row-container">
+             <p>Insurance:</p>
             <select onChange={this.update("insurance")}>
                 <option selected disabled hidden>
                   choose one...
@@ -71,6 +76,7 @@ class UpdateProfileForm extends React.Component{
                 <option value="CVS Health">CVS Health</option>
                 <option value="Humana">Humana</option>
               </select>
+              </div>
             <input type="submit" value="Submit" />
         </form>
       </div>
