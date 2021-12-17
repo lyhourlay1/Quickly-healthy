@@ -135,14 +135,6 @@ class AppointmentForm extends React.Component{
                   with Dr.{this.props.doctor.name}
                 </div>
                 <div>
-                  <label>Name:</label>
-                  <input
-                    type="text"
-                    value={this.state.name}
-                    onChange={this.update("name")}
-                  />
-                </div>
-                <div>
                   <label>Reason:</label>
                   <textarea
                     type="text"

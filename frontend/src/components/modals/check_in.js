@@ -21,19 +21,8 @@ class CheckIn extends React.Component{
 
     render(){
         let { closeModal} = this.props;
-        let display = 
-        <div className="yes-no">
-           <label>
-                <input type="radio" name="choice-radio"/>
-                Yes
-            </label>
-            <label>
-                <input type="radio" name="choice-radio"/>
-                No
-            </label>
-        </div>
         let ifYes = <div id="if-yes">
-           <label className= "label-if-yes">*if yes, please specify 
+           <label className= "label-if-yes">if yes, please specify 
                 <input type="text" className= "input-if-yes"/>             
             </label>
         </div>
