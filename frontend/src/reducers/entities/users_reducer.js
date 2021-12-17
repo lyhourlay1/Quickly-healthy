@@ -10,7 +10,8 @@ export default function UserReducer(prevState={}, action){
     let newState = Object.assign({}, prevState);
     switch(action.type){
         case RECEIVE_USER:
-            newState = action.user;
+            for (let key in action.user)
+                newState[key] = action.user[key]
             return newState;
         case RECEIVE_USER_LOGOUT:
             return {}

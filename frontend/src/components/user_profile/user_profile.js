@@ -65,7 +65,6 @@ class UserProfile extends React.Component {
     let source = user && user.image && user.image.source;
     return(
       <div className="user-profile">
-          <div className="white-background"></div>
           <div className="img-container">
             <form onSubmit={this.handleUpload} className="profile-img-container">
                 <img src={source || DEFAULT_PROFILE_PICTURE} alt="" />

@@ -1,22 +1,15 @@
-.white-background {
-  position: fixed;
-  top: 0px;
-  left: 0px;
-  background-color: white;
-  width: 100vw;
-  height: 100vh;
-  z-index: -5;
-}
-
 .user-profile {
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
+  background-color: white;
+  width: 100vw;
+  height: 100vh;
 }
 
 .appointment-index {
-  margin: 24px 0 36px 0;
+  margin: 36px 0 36px 0;
   display: flex;
   flex-direction: column;
   background-color: aliceblue;

@@ -14,26 +14,14 @@ class CheckIn extends React.Component{
     handleSubmit(e){
         e.preventDefault()
         this.props.checkInAppointment(this.props.appointment._id).then(
-            this.props.fetchUserAppointments(this.props.appointment.user_id)        
-            )
+            this.props.fetchUserAppointments(this.props.appointment.user_id))       
         this.props.closeModal()
     }
 
     render(){
         let { closeModal} = this.props;
-        let display = 
-        <div className="yes-no">
-           <label>
-                <input type="radio" name="choice-radio"/>
-                Yes
-            </label>
-            <label>
-                <input type="radio" name="choice-radio"/>
-                No
-            </label>
-        </div>
         let ifYes = <div id="if-yes">
-           <label className= "label-if-yes">*if yes, please specify 
+           <label className= "label-if-yes">if yes, please specify 
                 <input type="text" className= "input-if-yes"/>             
             </label>
         </div>
