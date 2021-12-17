@@ -1,7 +1,5 @@
 import { RECEIVE_APPOINTMENT, RECEIVE_APPOINTMENTS, REMOVE_APPOINTMENT } from '../../actions/appointment_actions';
 
-const date1 = new Date('Dec 19, 2021 12:00:00');
-
 const AppointmentsReducer = (state = {}, action) => {
   let newState = Object.assign({}, state);
   switch (action.type) {
