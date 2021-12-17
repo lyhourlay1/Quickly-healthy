@@ -4,6 +4,7 @@ const mongoose = require('mongoose');
 const passport = require('passport');
 
 const Doctor = require('../../models/Doctor');
+const User = require('../../models/User')
 const Appointment = require('../../models/Appointment');
 const validateAppointmentInput = require('../../validation/appointments');
 
@@ -38,7 +39,6 @@ router.get('/', (req, res) => {
  */
 router.get('/', passport.authenticate('jwt', { session: false }), (req, res) => {
   Appointment.find({ user: req.user.id })
-    .sort({ date: -1 })
     .then((appointments) => res.json(appointments))
     .catch((err) => res.status(404).json(`No appointments found for user ID: ${req.user.id}`));
 });
@@ -50,8 +50,13 @@ router.get('/', passport.authenticate('jwt', { session: false }), (req, res) => 
  * @response {Array} json - List of appointments by user_id, sorted from most recent to least recent
  */
 router.get('/user/:user_id', (req, res) => {
+  // let today = Date.now();
+  // let todayDate = new Date(today);
+  // Appointment.findById(req.params.user_id).then((appointment) => {
+  //   Object.keys(appointment.date).map(date => date.filter(date >= todayDate))
+  // })
+
   return Appointment.find({ user_id: req.params.user_id })
-    .sort({ date: -1 })
     .then((appointments) => res.json(appointments))
     .catch((err) => res.status(404).json(`No appointments found for user ID: ${req.params.user_id}`));
 });
