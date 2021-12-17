@@ -20,6 +20,11 @@ class EditAppointmentForm extends React.Component {
     this.handleClickUpdateAppointment =
       this.handleClickUpdateAppointment.bind(this);
     this.generateCalenderList = this.generateCalenderList.bind(this);
+
+    this.chosenButton = null;
+    this.onmouseenterbutton = this.onMouseEnterButton.bind(this);
+    this.onmouseleavebutton = this.onMouseLeaveButton.bind(this);
+    this.onclickbutton = this.onClickButton.bind(this);
   }
 
   componentDidUpdate(prevProps) {
@@ -29,6 +34,22 @@ class EditAppointmentForm extends React.Component {
     ) {
       this.setState({ grid: this.generateCalenderList(0) });
     }
+  }
+
+  onMouseEnterButton(e) {
+    if (e.currentTarget !== this.chosenButton)
+      e.currentTarget.classList.toggle("hover-effect")
+  }
+
+  onMouseLeaveButton(e) {
+    if (e.currentTarget !== this.chosenButton)
+      e.currentTarget.classList.toggle("hover-effect")
+  }
+
+  onClickButton(e) {
+    if (this.chosenButton && this.chosenButton !== e.currentTarget)
+      this.chosenButton.classList.toggle("hover-effect")
+    this.chosenButton = this.chosenButton === e.currentTarget ? null : e.currentTarget;
   }
 
   update(field) {
@@ -55,7 +76,10 @@ class EditAppointmentForm extends React.Component {
   }
 
   handleClickUpdateAppointment(e) {
-    
+    if (this.chosenButton){
+      this.chosenButton.classList.toggle("hover-effect")
+      this.chosenButton = null;
+    }
     this.props
       .updateAppointment({
         id: this.props.appointment._id,
@@ -210,8 +234,11 @@ class EditAppointmentForm extends React.Component {
                 {date.slots.map((slot) => {
                   let ending = slot >= 12 ? "PM" : "AM"; 
                   return slot <= 12 ? (
-                    <div className="button-container">
-                      <button
+                    <div className="button-container"
+                         onMouseEnter={this.onmouseenterbutton}
+                         onMouseLeave={this.onmouseleavebutton}
+                         onClick={this.onclickbutton}>
+                      <button className="button-appt"
                         onClick={this.handleClickUpdate(
                           "selectedSlot",
                           date.day
@@ -222,8 +249,11 @@ class EditAppointmentForm extends React.Component {
                       </button>
                     </div>
                   ) : (
-                    <div className="button-container">
-                      <button
+                    <div className="button-container"
+                         onMouseEnter={this.onmouseenterbutton}
+                         onMouseLeave={this.onmouseleavebutton}
+                         onClick={this.onclickbutton}>
+                      <button className="button-appt"
                         onClick={this.handleClickUpdate(
                           "selectedSlot",
                           date.day
