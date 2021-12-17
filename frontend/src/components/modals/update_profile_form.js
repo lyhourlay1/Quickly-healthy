@@ -29,7 +29,6 @@ class UpdateProfileForm extends React.Component{
       this.props.updateUser(this.state)
       .then(()=> {
         this.props.fetchUser(this.props.currentUser.id);
-        // debugger
       });
       
       this.props.closeModal();

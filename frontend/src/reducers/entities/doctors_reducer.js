@@ -11,7 +11,7 @@ export default function DoctorReducer(prevState={}, action){
     switch(action.type){
         case RECEIVE_DOCTORS:
             action.doctors.map((doctor) => {
-                newState[doctor._id] = doctor;
+                return newState[doctor._id] = doctor;
             });
             return newState;
         case RECEIVE_DOCTOR:
