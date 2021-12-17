@@ -106,6 +106,7 @@ router.post('/user/:user_id', (req, res) => {
 
   Doctor.findById(req.body.doctor_id).then((doctor) => {
     let temp = Object.assign({}, doctor.availabilityString);
+
     temp[req.body.date].splice(
       temp[req.body.date].indexOf(parseInt(req.body.selectedSlot)),
       1
@@ -114,16 +115,17 @@ router.post('/user/:user_id', (req, res) => {
     doctor.availabilityString = temp; 
 
     doctor.save();
-  });
-
-  return User.findById(req.params.user_id)
-    .then(() => {
+    return User.findById(req.params.user_id)
+      .then(() => {
         const newAppointment = new Appointment(appointmentParams(req));
         newAppointment.save().then((appointment) => {
-          res.json(appointment)
+          res.json(appointment);
         });
-    })
-    .catch((err) => res.status(404).json(`No user found with ID: ${req.params.user_id}`));
+      })
+      .catch((err) =>
+        res.status(404).json(`No user found with ID: ${req.params.user_id}`)
+      );
+  });
 });
 
 
