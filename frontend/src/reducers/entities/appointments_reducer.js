@@ -13,7 +13,9 @@ const AppointmentsReducer = (state = {}, action) => {
       });
       return newState;
     case RECEIVE_APPOINTMENT:
+      if(new Date(action.appointment.date + " " + action.appointment.selectedSlot + ':00:00').getTime() > new Date(Date.now()).getTime()) {
       newState[action.appointment._id] = action.appointment;
+      }
       return newState;
     case REMOVE_APPOINTMENT:
       delete newState[action.appointmentId];
