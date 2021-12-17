@@ -23,19 +23,38 @@ class AppointmentDetails extends React.Component {
     return (
       <div className="appointment-details-modal-background" onClick={closeModal}>
         <div className="appointment-details">
-          <div><button onClick={closeModal}>close</button></div>
-          <div>Date and time: {appointment.date} at {appointment.selectedSlot == 12 ? appointment.selectedSlot + " PM" : appointment.selectedSlot >= 12
-            ? appointment.selectedSlot % 12 + " PM"
-            : appointment.selectedSlot + " AM"
-          } with Dr.{doctor.name}</div>
+          <div>
+            <button onClick={closeModal}>close</button>
+          </div>
+          <div>
+            Date and time: {appointment.date} at{" "}
+            {appointment.selectedSlot >= 12
+              ? appointment.selectedSlot > 12
+                ? (appointment.selectedSlot % 12) + " PM"
+                : appointment.selectedSlot + " PM"
+              : appointment.selectedSlot + " AM"}{" "}
+            with Dr.{doctor.name}
+          </div>
           <div>Street address:{` ${doctor.address}`}</div>
           <div>Reason for visit: {appointment.reason}</div>
 
-          <Link className="button" onClick={closeModal} to={`/doctors/${appointment.doctor_id}/edit_appt/${appointment._id}`}>Edit appointment details</Link>
-          <button className="button" id="delete" onClick={() => this.handleClick("delete", appointment)}>Delete appointment</button>
+          <Link
+            className="button"
+            onClick={closeModal}
+            to={`/doctors/${appointment.doctor_id}/edit_appt/${appointment._id}`}
+          >
+            Edit appointment details
+          </Link>
+          <button
+            className="button"
+            id="delete"
+            onClick={() => this.handleClick("delete", appointment)}
+          >
+            Delete appointment
+          </button>
         </div>
       </div>
-    )
+    );
   }
 
   handleClick(field, appointment) {

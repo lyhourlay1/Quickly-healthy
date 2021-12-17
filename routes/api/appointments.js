@@ -15,7 +15,7 @@ const appointmentParams = (req) => {
   Object.entries(req.body).filter(([key, value]) => {
     schema.includes(key) ? appt[key] = value : null;
   });
-
+  
   return appt;
 };
 
@@ -111,23 +111,26 @@ router.post('/user/:user_id', (req, res) => {
 
   Doctor.findById(req.body.doctor_id).then((doctor) => {
     let temp = Object.assign({}, doctor.availabilityString);
+
     temp[req.body.date].splice(
       temp[req.body.date].indexOf(parseInt(req.body.selectedSlot)),
       1
     );
     doctor.availabilityString = {};
     doctor.availabilityString = temp; 
+
     doctor.save();
-  });
-  // console.log(req.params)
-  return User.findById(req.params.user_id)
-    .then(() => {
+    return User.findById(req.params.user_id)
+      .then(() => {
         const newAppointment = new Appointment(appointmentParams(req));
         newAppointment.save().then((appointment) => {
-          res.json(appointment)
+          res.json(appointment);
         });
-    })
-    .catch((err) => res.status(404).json(`No user found with ID: ${req.params.user_id}`));
+      })
+      .catch((err) =>
+        res.status(404).json(`No user found with ID: ${req.params.user_id}`)
+      );
+  });
 });
 
 
@@ -193,7 +196,7 @@ router.patch('/:id/update', (req, res) => {
       aS[req.body.date].indexOf(parseInt(req.body.selectedSlot)),
       1
     );
-    
+
     doctor.availabilityString = {};
     doctor.availabilityString = aS; 
     doctor.save();
@@ -239,11 +242,23 @@ router.delete('/:id', passport.authenticate('jwt', { session: false }), (req, re
  * @param {String} id - The appointment id
  */
 router.delete('/:id/delete', (req, res) => {
-  return Appointment.findByIdAndDelete(req.params.id)
-    .then((appointment) => {
-      res.json(appointment);
-    })
-    .catch((err) => res.status(404).json(`No appointment found with ID: ${req.params.id}`));
+  return Appointment.findByIdAndDelete(req.params.id).then((appointment) => {
+    Doctor.findById(appointment.doctor_id).then((doctor) => {
+      let copy = doctor.availabilityString[appointment.date];
+      copy.push(parseInt(appointment.selectedSlot));
+      
+      let sorted = copy.sort((a, b) => a - b);
+      doctor.availabilityString[appointment.date] = sorted;
+      
+      let aS = Object.assign({}, doctor.availabilityString);
+      doctor.availabilityString = {};
+      doctor.availabilityString = aS;
+
+      doctor.save();
+    });
+
+    return res.json(appointment);
+  });
 });
 
 module.exports = router;

@@ -55,17 +55,22 @@ class EditAppointmentForm extends React.Component {
   }
 
   handleClickUpdateAppointment(e) {
-    this.props.updateAppointment({
-      id: this.props.appointment._id,
-      user_id: this.props.currentUser._id,
-      name: this.state.name,
-      reason: this.state.reason,
-      selectedSlot: this.state.selectedSlot,
-      date: this.state.date,
-      doctor_id: this.props.doctor._id,
-      oldSelectedSlot: this.props.appointment.selectedSlot,
-      oldDate: this.props.appointment.date,
-    });
+    debugger
+    this.props
+      .updateAppointment({
+        id: this.props.appointment._id,
+        user_id: this.props.currentUser._id,
+        name: this.state.name,
+        reason: this.state.reason,
+        selectedSlot: this.state.selectedSlot,
+        date: this.state.date,
+        doctor_id: this.props.doctor._id,
+        oldSelectedSlot: this.props.appointment.selectedSlot,
+        oldDate: this.props.appointment.date,
+      })
+      .then(() => {
+        this.props.fetchAppointment(this.props.appointment._id);
+      });
 
     this.setState({ ["selectedSlot"]: "" });
   }
@@ -148,9 +153,11 @@ class EditAppointmentForm extends React.Component {
         <div className="submission-form">
           <div>
             Appointment on {this.state.date} at{" "}
-            {this.state.selectedSlot <= 12
-              ? this.state.selectedSlot
-              : this.state.selectedSlot % 12}{" "}
+            {this.state.selectedSlot >= 12
+              ? this.state.selectedSlot > 12
+                ? (this.state.selectedSlot % 12) + " PM"
+                : this.state.selectedSlot + " PM"
+              : this.state.selectedSlot + " AM"}{" "}
             with Dr.{this.props.doctor.name}
           </div>
           <div>
@@ -172,7 +179,13 @@ class EditAppointmentForm extends React.Component {
             />
           </div>
           <Link to={`/profile`}>Cancel</Link>
-          <Link id="update" to="/profile" onClick={this.handleClickUpdateAppointment}>Submit</Link>
+          <Link
+            id="update"
+            to="/profile"
+            onClick={this.handleClickUpdateAppointment}
+          >
+            Submit
+          </Link>
         </div>
       );
     }

@@ -5,7 +5,7 @@ import './footer.css';
 
 class Footer extends React.Component {
   render() {
-    return this.props.url === '/signup' || this.props.url === '/login' || this.props.url === '/home' || this.props.url === '/profile' ? null : this.displayFooter();
+    return this.props.url === '/signup' || this.props.url === '/login' || this.props.url === '/home' ? null : this.displayFooter();
   }
 
   displayFooter() {
