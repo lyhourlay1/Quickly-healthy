@@ -62,7 +62,7 @@ class AppointmentForm extends React.Component{
                 this.props.fetchDoctor(this.props.doctorId);
             });
        
-        this.setState({["selectedSlot"]: ""});
+        this.setState({["selectedSlot"]: "", ['reason']: ''});
     }
 
     generateCalenderList(num){
