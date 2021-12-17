@@ -6,11 +6,13 @@ import Footer from '../footer/footer';
 
 export default class Home extends React.Component {
   componentDidMount() {
+    this.props.fetchUser(this.props.currentUserId);
     this.props.fetchDoctors();
   }
 
   render() {
     let { doctors, currentUser } = this.props;
+    if (!currentUser) return null;
     if (Object.values(doctors).length === 0) return null;
 
     return (
