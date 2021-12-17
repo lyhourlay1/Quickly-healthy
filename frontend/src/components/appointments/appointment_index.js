@@ -12,8 +12,8 @@ export default class AppointmentIndex extends React.Component {
 
         <ul className="appointment-list">
           {appointments
-            .sort((a, b) => b.selectedSlot - a.selectedSlot)
-            .sort((a, b) => new Date(b.date) - new Date(a.date))
+            .sort((a, b) => a.selectedSlot - b.selectedSlot)
+            .sort((a, b) => new Date(a.date) - new Date(b.date))
             .map((appointment, idx) => (
               <AppointmentIndexItem key={idx} appointment={appointment} currentUser={currentUser} openModal={openModal} />
             ))}
