@@ -13,6 +13,7 @@ class UserProfile extends React.Component {
 
     this.state = {
       image: null,
+      errors: ""
     }
     this.onImageChange = this.onImageChange.bind(this);
     this.handleUpload = this.handleUpload.bind(this)
@@ -46,23 +47,49 @@ class UserProfile extends React.Component {
     if (event.target.files && event.target.files[0]) {
       let file = event.target.files[0];
       const reader = new FileReader();
-      reader.onload = function(evt) {
-        let image = evt.target;
-        let imageSrc = image.result;
-        const metadata = {name: file.name, mimetype: file.type, size: file.size, encoding: "FileReader", source: imageSrc};
-        this.setState({
-          image: metadata
-        });
-      }.bind(this);
-      reader.readAsDataURL(file)
+      debugger
+      if(file.size > 75000){
+        this.setState({errors: "Image exceeds 75kb! Select Again!"})
+      }else{
+        reader.onload = function(evt) {
+          let image = evt.target;
+          let imageSrc = image.result;
+          const metadata = {name: file.name, mimetype: file.type, size: file.size, encoding: "FileReader", source: imageSrc};
+          this.setState({
+            image: metadata,
+            errors: ""
+          });
+        }.bind(this);
+        reader.readAsDataURL(file)
+      }
     }
   };
+
+  renderErrors() {
+    
+    return (
+      <ul className = 'errors'>
+        {Object.keys(this.state.errors).map((error, i) => (
+          <li key={`error-${i}`}>{this.state.errors[error]}</li>
+        ))}
+      </ul>
+    );
+  }
 
 
   render(){
     let { appointments, openModal } = this.props;
     let user = this.props.user
     let source = user && user.image && user.image.source;
+    let display;
+    if(this.state.errors){
+      display= <div className= "user-errors">{this.state.errors}</div>
+    }else{
+      display = <div>
+                  <button type="submit" className="upload-pic-button">Upload</button>
+                </div>
+
+    }
     return(
       <div className="user-profile">
           <div className="img-container">
@@ -72,9 +99,11 @@ class UserProfile extends React.Component {
                     id="avatar" name="image"
                     accept="image/png, image/jpeg"
                     onChange={this.onImageChange} multiple/>
+                {/* <div className= "user-errors">{this.state.errors}</div>
                 <div>
                   <button type="submit" className="upload-pic-button">Upload</button>
-                </div>
+                </div> */}
+                {display}
             </form>
             <div className="user-detail">
               <div className= "user-description">
