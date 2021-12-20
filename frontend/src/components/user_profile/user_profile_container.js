@@ -10,7 +10,9 @@ const mSTP = (state) => {
   return {
     userId: state.session.user.id,
     appointments: Object.values(state.entities.appointments),
-    user: state.entities.user
+    user: state.entities.user,
+    // errors: state.errors.session,
+
   };
 };
 

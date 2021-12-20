@@ -133,3 +133,6 @@ div#date {
 .green-check {
     content: "\2705";
 }
+.user-errors{
+  color: red;
+}

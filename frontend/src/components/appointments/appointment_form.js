@@ -82,6 +82,10 @@ class AppointmentForm extends React.Component {
 
     handleClickCreateAppointment(e) {
         e.preventDefault()
+        if (this.chosenButton){
+            this.chosenButton.classList.toggle("hover-effect")
+            this.chosenButton = null;
+        }
         this.props.createAppointment({
             user_id: this.props.currentUser.id,
             name: this.state.name,

@@ -68,7 +68,7 @@ const Splash = () => {
                             Select or update your insurance at anytime and we'll look for doctors who accept your plan
                         </p>
                     </div>
-
+{/* 
                     <div className="splash-component">
                         <p className="splash-component-desc">Keep your doctor up to date by uploading your health
                             records to your profile.</p>
@@ -82,7 +82,7 @@ const Splash = () => {
                             </div>
                             <div className="splash-text">Upload health records</div>
                         </Link>
-                    </div>
+                    </div> */}
                 </div>
             </div>
         </div>

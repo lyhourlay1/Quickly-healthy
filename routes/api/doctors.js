@@ -34,14 +34,16 @@ router.get("/", (req, res) => {
 router.get("/:id", (req, res) => {
     let today = Date.now();
     let date = new Date(today);
-    date.setDate(date.getDate() +1)
+    let pstDate = date.toLocaleString("en-US", {timeZone: "America/Los_Angeles"})
+    
+    date.setDate(parseInt(pstDate.split("/")[1]))
     let nextThirtyDays = {};
     let nextDay = new Date(date);
 
     for (let i = 0; i < 30; i++) {
         let currentStringDate = date.toString().split(' ').slice(0, -5).join(' ')
-        nextThirtyDays[currentStringDate] = [9, 10, 11, 12, 13, 14, 15, 16, 17];
-
+        // nextThirtyDays[currentStringDate] = [9, 10, 11, 12, 13, 14, 15, 16, 17];
+        
         nextDay.setDate(nextDay.getDate() + 1);
 
         nextDay = new Date(nextDay);
