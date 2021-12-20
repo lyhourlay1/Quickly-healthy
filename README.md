@@ -78,7 +78,7 @@ Lee/Grayson
 
 ### Day 2
 Emmett
-* connect aws to backend
+* begin doctors(backend)
 
 Lee
 * implement appointments/check in (backend)
@@ -87,10 +87,10 @@ Grayson
 * start splash page and connect map to the front end
 
 Mauricio
-* setup health record (backend)
+* setup image upload(backend)
 ### Day 3
 Emmett
-* work on appointment backend
+* complete doctors/ begin appointment backend
 
 Lee
 * implement appointments/check in (frontend)
@@ -99,7 +99,7 @@ Grayson
 * work on frontend map
 
 Mauricio
-* finish health record (backend) and connect to frontend
+* finish image uploads/ seed doctors
 ### Day 4
 Emmett
 * complete backend/test/debug
@@ -111,6 +111,6 @@ Grayson
 * finish map on front end
 
 Mauricio
-* complete health records and assist with finishing frontend map
+* assist with remaining frontend/backend tasks
 ### Day 5
 * update readMe, deploy to heroku
