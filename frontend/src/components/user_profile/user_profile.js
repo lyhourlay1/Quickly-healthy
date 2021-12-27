@@ -29,7 +29,8 @@ class UserProfile extends React.Component {
   handleUpload(e) {
     e.preventDefault();
     let { updateUserImage, user } = this.props;
-    updateUserImage(user._id, { image: this.state.image });
+    updateUserImage(user._id, { image: this.state.image })
+    .then(this.setState({image: null}))
   }
 
   update(field) {
@@ -78,7 +79,7 @@ class UserProfile extends React.Component {
     let display;
     if (this.state.errors) {
       display = <div className="user-errors">{this.state.errors}</div>;
-    } else {
+    } else if(this.state.image) {
       display = (
         <div>
           <button type="submit" className="upload-pic-button">
