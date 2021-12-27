@@ -1,9 +1,11 @@
 import React from "react";
 import mapboxgl from "mapbox-gl";
 import './map.css';
+import { Redirect, Route, withRouter } from "react-router-dom";
+import { bindActionCreators } from "redux";
 require("dotenv").config();
 
-export default class Map extends React.Component {
+class Map extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -24,7 +26,7 @@ export default class Map extends React.Component {
   }
 
   render() {
-    let { doctors, currentUser } = this.props;
+    let { doctors, currentUser, history } = this.props;
     if (Object.values(doctors).length === 0) return null;
 
     if (this.state.map) {
@@ -34,18 +36,37 @@ export default class Map extends React.Component {
           doctor.insurances.includes("Insurance not required")
         ) {
           let description = `
-            <div class="popup-text">
-              <div>${doctor.name}</div>
-              <div>${doctor.specialty}</div>
-              <div>${doctor.address}</div>
-            </div>
-          `;
+              <div class="popup-text" id="doctor-${doctor._id}">
+                <div>${doctor.name}</div>
+                <div>${doctor.specialty}</div>
+                <div>${doctor.address}</div>
+              </div>
+            `;
 
           let popup = new mapboxgl.Popup().setHTML(description);
-          return new mapboxgl.Marker({ color: "red" })
+          let marker = new mapboxgl.Marker({ color: "red" })
             .setLngLat(doctor.location)
             .setPopup(popup)
             .addTo(this.state.map);
+
+          marker._element.id = `marker-${doctor._id}`;
+          let handleClick = (marker) => {
+            marker.togglePopup();
+            if (
+              document.getElementById(`doctor-${marker._element.id.slice(7)}`)
+            ) {
+              document
+                .getElementById(`doctor-${marker._element.id.slice(7)}`)
+                .addEventListener("click", () => {
+                  history.push(`/doctors/${marker._element.id.slice(7)}`);
+                });
+            }
+            marker.togglePopup();
+          };
+
+          marker.getElement().addEventListener("click", () => {
+            handleClick(marker);
+          });
         }
       });
     };
@@ -55,3 +76,6 @@ export default class Map extends React.Component {
     )
   }
 };
+
+
+export default withRouter(Map);
