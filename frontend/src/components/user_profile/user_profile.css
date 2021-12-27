@@ -4,7 +4,7 @@
   justify-content: flex-start;
   align-items: center;
   background-color: white;
-  width: 100vw;
+  width: 90vw;
   height: 100vh;
 }
 
@@ -89,50 +89,84 @@ div#date {
 
 .img-container img {
   height: 300px;
+  margin: 30px;
 }
-/* button.upload-pic-button {
-    float: left;
-} */
+
+.user-img-btns {
+  margin-left: 30px;
+  margin-bottom: 15px;
+}
+
+/* styling for image upload button */
+.file {
+  opacity: 0;
+  width: 0.1px;
+  height: 0.1px;
+  position: absolute;
+}
+
+.file-input label {
+  content: 'Select some files';
+  display: block;
+  position: relative;
+  font-family: Arial, Helvetica, sans-serif;
+  width: 95px;
+  height: 30px;
+  border-radius: 5px;
+  border: 1px solid lightgray;
+  background: rgb(239, 239, 239);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: rgb(0, 0, 0);
+  cursor: pointer;
+  margin-left: 89px;
+  margin-bottom: 10px;
+  font-size: 13.33px;
+}
+
+input:hover + label{
+  background-color: lightblue;
+}
+/* styling for image upload button */
 
 .user-detail {
-    background: beige;
-    width: 60%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
+  background: beige;
+  width: 60%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
-.user-description{
+.user-description {
   padding-top: 10px;
   padding-bottom: 10px;
   font-size: 20px;
 }
 
-
-.update-profile-button{
+.update-profile-button {
   border-radius: 5px;
   border: 1px lightgrey solid;
   height: 30px;
+  cursor: pointer;
 }
-.update-profile-button:hover{
+.update-profile-button:hover {
   background-color: lightblue;
 }
 
-
-.upload-pic-button{
+.upload-pic-button {
   border-radius: 5px;
   border: 1px lightgrey solid;
-  height: 30px
-  
+  height: 30px;
+  cursor: pointer;
 }
-.upload-pic-button:hover{
-  background-color: beige;
-
+.upload-pic-button:hover {
+  background-color: lightblue;
 }
 
 .green-check {
-    content: "\2705";
+  content: '\2705';
 }
-.user-errors{
+.user-errors {
   color: red;
 }
