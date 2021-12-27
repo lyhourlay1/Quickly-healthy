@@ -85,9 +85,15 @@ class UserProfile extends React.Component {
     if(this.state.errors){
       display= <div className= "user-errors">{this.state.errors}</div>
     }else{
-      display = <div>
-                  <button type="submit" className="upload-pic-button">Upload</button>
-                </div>
+      if(this.state.image){
+
+        display = <div>
+                    <button type="submit" className="upload-pic-button">Upload</button>
+                  </div>
+      }
+      else{
+        display = <div className ="empty-space"></div>
+      }
 
     }
     return(
