@@ -18,11 +18,18 @@
   font-family: Arial, Helvetica, sans-serif;
 }
 
-#profile.doctors-titles > div:first-child {
+.doctors-titles-name {
+  color: rgba(0, 0, 0, 0.8);
+  text-decoration: none;
+  font-size: 1.2rem;
+  font-weight: 600;
+}
+
+/* #profile.doctors-titles > div:first-child {
   font-family: Arial, Helvetica, sans-serif;
   font-size: 24px;
   font-weight: 600;
-}
+} */
 
 #profile.doctors-titles > div {
   font-family: Arial, Helvetica, sans-serif;

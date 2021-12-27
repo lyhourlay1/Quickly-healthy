@@ -35,6 +35,10 @@
   flex-direction: column;
 }
 
+.doctors-list > a {
+  text-decoration: none;
+}
+
 .doctors-index-item {
   display: flex;
   flex-direction: column;
