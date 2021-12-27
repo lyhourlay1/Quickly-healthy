@@ -97,6 +97,13 @@ div#date {
   margin-bottom: 15px;
 }
 
+.profile-img-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
 /* styling for image upload button */
 .file {
   opacity: 0;
@@ -110,8 +117,8 @@ div#date {
   display: block;
   position: relative;
   font-family: Arial, Helvetica, sans-serif;
-  width: 95px;
-  height: 30px;
+  width: 90px;
+  height: 27px;
   border-radius: 5px;
   border: 1px solid lightgray;
   background: rgb(239, 239, 239);
@@ -120,9 +127,9 @@ div#date {
   justify-content: center;
   color: rgb(0, 0, 0);
   cursor: pointer;
-  margin-left: 89px;
   margin-bottom: 10px;
-  font-size: 13.33px;
+  font-size: 0.833rem;
+  padding: 0 5px;
 }
 
 input:hover + label{

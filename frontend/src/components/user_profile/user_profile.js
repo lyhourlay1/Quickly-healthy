@@ -112,8 +112,8 @@ class UserProfile extends React.Component {
                   <button type="submit" className="upload-pic-button">Upload</button>
                 </div> */}
               </div>
-            </form>
                 {display}
+            </form>
 
           </div>
         </div>
