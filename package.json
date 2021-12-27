@@ -32,6 +32,7 @@
     "dotenv": "^10.0.0",
     "express": "^4.17.1",
     "express-fileupload": "^1.2.1",
+    "jquery": "^3.6.0",
     "jsonwebtoken": "^8.5.1",
     "mapbox-gl": "^1.10.1",
     "mongoose": "^5.10.10",
