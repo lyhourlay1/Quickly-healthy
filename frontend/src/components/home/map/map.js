@@ -1,8 +1,7 @@
 import React from "react";
 import mapboxgl from "mapbox-gl";
 import './map.css';
-import { Redirect, Route, withRouter } from "react-router-dom";
-import { bindActionCreators } from "redux";
+import { withRouter } from "react-router-dom";
 require("dotenv").config();
 
 class Map extends React.Component {
