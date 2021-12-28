@@ -53,6 +53,7 @@ class App extends React.Component {
             <Modal/>
             <NavBarContainer/>
             <Switch>
+                <AuthRoute exact path="/" component={Splash}/>
                 <ProtectedRoute exact path="/doctors/:doctor_id/edit_appt/:appointment_id"
                                 component={EditAppointmentProfileContainer}/>
                 <AuthRoute exact path="/login" component={LoginFormContainer}/>
@@ -60,7 +61,6 @@ class App extends React.Component {
                 <ProtectedRoute path="/home" component={HomeContainer}/>
                 <ProtectedRoute path="/profile" component={ProfileContainer}/>
                 <ProtectedRoute path="/doctors/:id" component={DoctorProfileContainer}/>
-                <AuthRoute exact path="/" component={Splash}/>
             </Switch>
             <Route path="/" component={Footer}/>
         </div>
