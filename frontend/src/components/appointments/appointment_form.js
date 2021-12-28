@@ -169,7 +169,7 @@ class AppointmentForm extends React.Component {
                                 ? (this.state.selectedSlot % 12) + " PM"
                                 : this.state.selectedSlot + " PM"
                             : this.state.selectedSlot + " AM"}{" "}
-                        with Dr.{this.props.doctor.name}
+                        with Dr. {this.props.doctor.name}
                     </div>
                     <div>
                         <label>Reason:</label>
@@ -182,9 +182,11 @@ class AppointmentForm extends React.Component {
                         />
                     </div>
                     <Link to={`/home`}>Cancel</Link>
-                    <button onClick={this.handleClickCreateAppointment}>
-                        Submit
-                    </button>
+                    {this.state.reason.length >0 ? (
+                        <button onClick={this.handleClickCreateAppointment}>
+                            Submit
+                        </button>
+                    ) : null}
                 </div>
             );
         }

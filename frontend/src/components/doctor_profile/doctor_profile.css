@@ -13,9 +13,8 @@
 }
 
 #profile.doctors-titles {
-  background: beige;
-  padding: 12px;
   font-family: Arial, Helvetica, sans-serif;
+  
 }
 
 .doctors-titles-name {
@@ -38,7 +37,7 @@
 }
 
 #insurances {
-  margin: 24px;
+  margin: 24px 24px 0 24px;
 }
 
 #insurances div:not(:first-child) {
@@ -136,6 +135,7 @@
   justify-content: center;
   margin-top: 16px;
   overflow: hidden;
+  align-items: center;
 }
 
 .image-container > img {
@@ -243,4 +243,8 @@ a#update {
   padding: 8px;
   background-color: rgb(240, 240, 240);
   font-size: 18px;
+}
+
+.doctors-titles :first-child{
+  text-decoration: underline;
 }
