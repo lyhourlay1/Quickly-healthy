@@ -13,7 +13,7 @@ import EditAppointmentProfileContainer from "./doctor_profile/edit_appointment_p
 import Modal from "./modals/modal";
 import Footer from './footer/footer';
 import './reset.css';
-import './appointments/appointment.css'
+import './app.css'
 import {connect} from "react-redux";
 import {deleteAlert, createAlert} from "../actions/alert_actions";
 
@@ -40,7 +40,7 @@ class App extends React.Component {
 
     alert() {
         return Object.keys(this.props.alert).length ? <div className={`alert alert-block alert-${this.props.alert.type} fade in`}>
-            <button type="button" className="close" onLoad={setTimeout(this.alertClose.bind(this), 10000)}
+            <button type="button" className="close" onLoad={setTimeout(this.alertClose.bind(this), 5000)}
                     onClick={this.alertClose.bind(this)}>×
             </button>
             {this.props.alert.message}

@@ -1,7 +1,7 @@
 import React from 'react'
 import {Link} from 'react-router-dom'
 import "../doctor_profile/doctor_profile.css";
-import "./appointment.css"
+import "../app.css"
 
 class AppointmentForm extends React.Component {
     constructor(props) {
