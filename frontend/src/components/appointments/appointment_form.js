@@ -1,6 +1,8 @@
 import React from 'react'
 import {Link} from 'react-router-dom'
 import "../doctor_profile/doctor_profile.css";
+import "./appointment.css"
+import {unmountComponentAtNode} from "react-dom";
 
 class AppointmentForm extends React.Component {
     constructor(props) {
@@ -13,7 +15,8 @@ class AppointmentForm extends React.Component {
             date: "",
             selectedSlot: "",
             doctor: this.props.doctor,
-            grid: this.generateCalenderList(0)
+            grid: this.generateCalenderList(0),
+            alert: null
         }
 
         this.month = "";
@@ -98,7 +101,8 @@ class AppointmentForm extends React.Component {
                 this.props.fetchDoctor(this.props.doctorId);
             });
 
-        this.setState({["selectedSlot"]: "", ['reason']: ''});
+        this.setState({["selectedSlot"]: "", ['reason']: '',
+            alert: {type: "success", message: "Appointment was successfully created."}});
     }
 
     generateCalenderList(num) {
@@ -154,6 +158,17 @@ class AppointmentForm extends React.Component {
         return schedules
     }
 
+    alertClose(){
+        this.setState({alert: null})
+    }
+
+    alert(){
+        return !!this.state.alert ? <div className={`alert alert-block alert-${this.state.alert.type} fade in`}>
+            <button type="button" className="close" onLoad={setTimeout(this.alertClose.bind(this), 6000)} onClick={this.alertClose.bind(this)}>×</button>
+            {this.state.alert.message}
+        </div> : null
+    }
+
     render() {
         if (!this.props.doctor) {
             return null;
@@ -190,6 +205,7 @@ class AppointmentForm extends React.Component {
         }
         return (
             <div className="form-container">
+                {this.alert()}
                 <div
                     className="month-year">{this.state.grid[15].day.split(" ")[1]} {this.state.grid[15].day.split(" ")[3]}</div>
                 <div className="grid-flex">
