@@ -1,6 +1,7 @@
 import React from 'react'
 import {Link} from 'react-router-dom'
 import "../doctor_profile/doctor_profile.css";
+import "../app.css"
 
 class AppointmentForm extends React.Component {
     constructor(props) {
@@ -99,6 +100,8 @@ class AppointmentForm extends React.Component {
             });
 
         this.setState({["selectedSlot"]: "", ['reason']: ''});
+
+        this.props.createAlert("success", "You have created an appointment");
     }
 
     generateCalenderList(num) {
