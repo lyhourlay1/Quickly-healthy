@@ -5,6 +5,8 @@ import { closeModal } from '../../actions/modal_actions';
 import { fetchDoctor } from "../../actions/doctor_actions";
 import './appointment_details.css';
 import { deleteAppointment, updateAppointment } from "../../actions/appointment_actions";
+import {createAlert} from "../../actions/alert_actions"
+
 
 class AppointmentDetails extends React.Component {
   constructor(props) {
@@ -59,10 +61,13 @@ class AppointmentDetails extends React.Component {
 
   handleClick(field, appointment) {
     let { deleteAppointment, closeModal, updateAppointment } = this.props;
-
-    return field === "delete"
-      ? deleteAppointment(appointment._id).then(() => closeModal())
-      : updateAppointment(appointment).then(() => closeModal());
+    if (field === "delete"){
+      this.props.createAlert("success", "You have deleted an appointment")
+      return deleteAppointment(appointment._id).then(() => closeModal())
+    } 
+    else{
+      return updateAppointment(appointment).then(() => closeModal());
+    }
   }
 };
 
@@ -78,7 +83,9 @@ const mDTP =(dispatch) => {
     closeModal: () => dispatch(closeModal()),
     fetchDoctor: (doctor_id) => dispatch(fetchDoctor(doctor_id)),
     deleteAppointment: (appointmentId) => dispatch(deleteAppointment(appointmentId)),
-    updateAppointment: (appointment) => dispatch(updateAppointment(appointment))
+    updateAppointment: (appointment) => dispatch(updateAppointment(appointment)),
+    createAlert: (type, message) => dispatch(createAlert(type, message))
+
   }
 }
 
