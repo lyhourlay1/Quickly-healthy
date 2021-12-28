@@ -23,7 +23,7 @@ class UserProfile extends React.Component {
       this.props.fetchUser(this.props.userId);
       this.props.fetchUserAppointments(this.props.userId);
     }
-    if (!this.state.image && this.props.user && this.props.user.image) this.setState({ image: this.props.user.image });
+    if (!this.state.image && this.props.user && this.props.user.image) this.setState({ image: null }); //this.props.user.image
   }
 
   handleUpload(e) {
