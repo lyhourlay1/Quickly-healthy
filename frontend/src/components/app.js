@@ -13,23 +13,58 @@ import EditAppointmentProfileContainer from "./doctor_profile/edit_appointment_p
 import Modal from "./modals/modal";
 import Footer from './footer/footer';
 import './reset.css';
+import './appointments/appointment.css'
+import {connect} from "react-redux";
+import {deleteAlert, createAlert} from "../actions/alert_actions";
 
 
-const App = () => (
-  <div className="page-container">
-      <Modal />
-    <NavBarContainer />
-    <Switch>
-      <ProtectedRoute exact path="/doctors/:doctor_id/edit_appt/:appointment_id" component={EditAppointmentProfileContainer} />
-      <AuthRoute exact path="/login" component={LoginFormContainer} />
-      <AuthRoute exact path="/signup" component={SignupFormContainer} />
-      <ProtectedRoute path="/home" component={HomeContainer} />
-      <ProtectedRoute path="/profile" component={ProfileContainer} />
-      <ProtectedRoute path="/doctors/:id" component={DoctorProfileContainer} />
-      <AuthRoute exact path="/" component={Splash} />
-    </Switch>
-    <Route path="/" component={Footer} />
-  </div>
-);
+const mSTP = (state, ownProps)=> ({
+    alert: state.ui.alerts
+})
 
-export default App;
+const mDTP = dispatch => ({
+    createAlert: (type, message) => dispatch(createAlert(type, message)),
+    deleteAlert: () => dispatch(deleteAlert())
+})
+
+class App extends React.Component {
+    constructor(props) {
+        super(props);
+    }
+
+    alertClose(){
+        if (Object.keys(this.props.alert).length) {
+            this.props.deleteAlert()
+        }
+    }
+
+    alert() {
+        return Object.keys(this.props.alert).length ? <div className={`alert alert-block alert-${this.props.alert.type} fade in`}>
+            <button type="button" className="close" onLoad={setTimeout(this.alertClose.bind(this), 10000)}
+                    onClick={this.alertClose.bind(this)}>×
+            </button>
+            {this.props.alert.message}
+        </div> : null
+    }
+
+    render() {
+        return <div className="page-container">
+            {this.alert()}
+            <Modal/>
+            <NavBarContainer/>
+            <Switch>
+                <ProtectedRoute exact path="/doctors/:doctor_id/edit_appt/:appointment_id"
+                                component={EditAppointmentProfileContainer}/>
+                <AuthRoute exact path="/login" component={LoginFormContainer}/>
+                <AuthRoute exact path="/signup" component={SignupFormContainer}/>
+                <ProtectedRoute path="/home" component={HomeContainer}/>
+                <ProtectedRoute path="/profile" component={ProfileContainer}/>
+                <ProtectedRoute path="/doctors/:id" component={DoctorProfileContainer}/>
+                <AuthRoute exact path="/" component={Splash}/>
+            </Switch>
+            <Route path="/" component={Footer}/>
+        </div>
+    }
+}
+
+export default connect(mSTP, mDTP)(App)
