@@ -10,8 +10,7 @@ const Splash = () => {
                 <div className="header-text">
                     <h1 className="header-title">Making Health Care Easy</h1>
                     <p className="header-description">
-                        Quickly Healthy makes it simple to find a doctor that fits your needs. Easily upload health
-                        records and check your appointments.
+                        Quickly Healthy makes it simple to find a doctor that fits your needs. Easily create and check your appointments.
                     </p>
                 </div>
                 <img
@@ -39,8 +38,7 @@ const Splash = () => {
                     </div>
 
                     <div className="splash-component">
-                        <p className="splash-component-desc">Easily book appointments online to meet your awesome doctor
-                            as soon as possible!</p>
+                        <p className="splash-component-desc">Easily book appointments online as early as tomorrow to meet your doctor as soon as possible!</p>
                     </div>
 
                     <div className="splash-component">
