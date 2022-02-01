@@ -1,6 +1,7 @@
 # Making changes to readme: 2/1/2022
 ## Estimated Readme finished by: 2/2/2022
 
+
 # Quickly-healthy
 ## Live link - [Quickly-healthy](https://quickly-healthy.herokuapp.com/#/)
 ## Background and Overview
@@ -15,6 +16,7 @@ challenges are expressed in the following ideals:
 <img src="https://github.com/lyhourlay1/Quickly-healthy/wiki/images/walkthrough.gif" alt="walkthrough">
 <img src="https://github.com/lyhourlay1/Quickly-healthy/wiki/images/appointment.gif" alt="appointment">
 <img src="https://github.com/lyhourlay1/Quickly-healthy/wiki/images/details.gif" alt="details">
+
 
 ### Auth-feature: Signup/Login as patient
 
