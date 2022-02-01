@@ -1,4 +1,4 @@
-// import appointments from "../../../../validation/appointments";
+
 import {
     RECEIVE_ALERT,
     REMOVE_ALERT
