@@ -31,11 +31,13 @@ signup tab and fill out your email, name, password, and select your insurance pr
 logging in select to log in as a "Demo User".
 
 <img src="https://github.com/lyhourlay1/Quickly-healthy/wiki/images/login.gif" alt="details">
+<br />
 
 ## Locality
 This is exciting! The interactive map will show you location of nearby providers with accepted insurances.
 Office locations are rendered within the view of the map. Click on the nearest provider's location to get more information.
 If you need a better view, drag the map until it's been focused to your liking. Zooming in and out is also applicable with your mouse wheel.
+<br />
 
 ## Making an appointment
 
@@ -44,6 +46,7 @@ has given you a calendar schedule listing all their availabilities. Go ahead, cl
 Provide a short detailed reason for your visit and presto, submit. You have your first appointment, fast!
 
 <img src="https://github.com/lyhourlay1/Quickly-healthy/wiki/images/appointment.gif" alt="appointment">
+<br />
 
 ## Appointment details
 If for whatever reason you've forgotten the details of your appointment, we've got you covered. 
@@ -52,7 +55,7 @@ Click onto the profile tab in the top right corner. There you'll find a list of 
 To check in, click on your profile tab and click on "Check-In" down below where you can see upcoming appointments.
 
 <img src="https://github.com/lyhourlay1/Quickly-healthy/wiki/images/details.gif" alt="details">
-
+<br />
 
 ## Editing appointments
 Sometimes things change and being ready to adjust to it might need you to change the date of your appointment. 
@@ -61,9 +64,11 @@ Click on "Details" and make your selection for "Edit appointment details". Click
 submit.
 
 <img src="https://github.com/lyhourlay1/Quickly-healthy/wiki/images/edit.gif" alt="edit">
+<br />
 
 ## Canceling appointments
 Click on your profile tab and down below find the "Details" of your appointment. Click on "Details" and make your 
 selection for "delete appointment". 
 
 <img src="https://github.com/lyhourlay1/Quickly-healthy/wiki/images/delete.gif" alt="delete">
+<br />
