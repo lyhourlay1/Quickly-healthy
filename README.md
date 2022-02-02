@@ -1,37 +1,42 @@
 # Making changes to readme: 2/1/2022
 ## Estimated Readme finished by: 2/2/2022
 
+# <a href="https://quickly-healthy.herokuapp.com/#/"> <img src="https://github.com/lyhourlay1/Quickly-healthy/wiki/images/logo.png" alt="login"></a>
 
-# Quickly-healthy
-## Live link - [Quickly-healthy](https://quickly-healthy.herokuapp.com/#/)
-## Background and Overview
-
+# Background and Overview
 Quickly Healthy is a minimal viable product that serves as a proof of concept for 
 application development, software engineering, and the user experience. These 
 challenges are expressed in the following ideals:
 
-<img src="https://github.com/lyhourlay1/Quickly-healthy/wiki/images/login.gif" alt="login">
-<img src="https://github.com/lyhourlay1/Quickly-healthy/wiki/images/edit.gif" alt="edit">
-<img src="https://github.com/lyhourlay1/Quickly-healthy/wiki/images/delete.gif" alt="delete">
 <img src="https://github.com/lyhourlay1/Quickly-healthy/wiki/images/walkthrough.gif" alt="walkthrough">
+
+
+## Logging in
+User authorization with sign in and log out functions.
+Create an account and make a patient profile.
+
+<img src="https://github.com/lyhourlay1/Quickly-healthy/wiki/images/login.gif" alt="details">
+
+## Making an appointment
+
 <img src="https://github.com/lyhourlay1/Quickly-healthy/wiki/images/appointment.gif" alt="appointment">
+
+## Appointment details
+
 <img src="https://github.com/lyhourlay1/Quickly-healthy/wiki/images/details.gif" alt="details">
 
 
-### Auth-feature: Signup/Login as patient
+## Editing appointments
 
-| Feature       | Patient                                                                       | Doctor                           |
-|---------------|-------------------------------------------------------------------------------|----------------------------------|
-| User          | Sign-in Sign-up update insurance                                              | sign-in sign-up verify doctor id |
-| Health Record | View, upload, delete, update                                                  | Create, delete, view, and update |
-| Map API       | Locate doctors that accept the insurance and currently accepting new patients | Create location when sign up     |
-| Appointment Checkin | View todo list, medications, etc. | Create todo list and customize medication | 
-| Chat | Like Slack | Like Slack |
+<img src="https://github.com/lyhourlay1/Quickly-healthy/wiki/images/edit.gif" alt="edit">
 
-## Functionality and MVP
 
-- [ ] User authorization with sign in and log out functions
-- [ ] Create an account and make a patient profile
+## Canceling appointments
+
+<img src="https://github.com/lyhourlay1/Quickly-healthy/wiki/images/delete.gif" alt="delete">
+
+
+- [ ] 
 - [ ] Uploading, editing, and removing health records
 - [ ] Interactive map to show location of nearby providers that accept user's insurance
 - [ ] Add/edit/delete appointments
