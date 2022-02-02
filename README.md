@@ -21,8 +21,8 @@ Quickly Healthy is a healthcare directory for the San Francisco Bay Area. This a
 healthcare providers along with peace of mind that your health insurance will be covered. You'll have access to
 their geolocation for easy access.  
 
-<img width="550em" src="https://github.com/lyhourlay1/Quickly-healthy/wiki/images/walkthrough.gif" alt="walkthrough">
-
+<img width="500em" src="https://github.com/lyhourlay1/Quickly-healthy/wiki/images/walkthrough.gif" alt="walkthrough">
+<br />
 
 ## Logging in
 
