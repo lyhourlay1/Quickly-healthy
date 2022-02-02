@@ -46,18 +46,24 @@ Provide a short detailed reason for your visit and presto, submit. You have your
 <img src="https://github.com/lyhourlay1/Quickly-healthy/wiki/images/appointment.gif" alt="appointment">
 
 ## Appointment details
+If for whatever reason you've forgotten the details of your appointment, we've got you covered. 
+Click onto the profile tab in the top right corner. There you'll find a list of all the appointments you've schedules.
+
+To check in, click on your profile tab and click on "Check-In" down below where you can see upcoming appointments.
 
 <img src="https://github.com/lyhourlay1/Quickly-healthy/wiki/images/details.gif" alt="details">
 
 
 ## Editing appointments
-In-app appointment check-in
-Uploading, editing, and removing health records
+Sometimes things change and being ready to adjust to it might need you to change the date of your appointment. 
+We've got you covered. Click on your profile tab and down below find the "Details" of your appointment. 
+Click on "Details" and make your selection for "Edit appointment details". Click your new date or change the reason and
+submit.
 
 <img src="https://github.com/lyhourlay1/Quickly-healthy/wiki/images/edit.gif" alt="edit">
 
-
 ## Canceling appointments
-
+Click on your profile tab and down below find the "Details" of your appointment. Click on "Details" and make your 
+selection for "delete appointment". 
 
 <img src="https://github.com/lyhourlay1/Quickly-healthy/wiki/images/delete.gif" alt="delete">
