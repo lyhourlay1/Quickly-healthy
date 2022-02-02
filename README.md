@@ -74,7 +74,7 @@ selection for "delete appointment".
 <br />
 
 
-
+<br />
 <table>
   <tr>
       <td id="lyhour" align="center">
