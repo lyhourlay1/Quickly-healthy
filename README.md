@@ -5,7 +5,7 @@
 
 | Technologies   | References                  |
 |---------------|------------------------------|
-| Documentation | **[Wiki Technical Details](https://github.com/lyhourlay1/Quickly-healthy/wiki)** |
+| Documentation | **[Wiki Technical Overview](https://github.com/lyhourlay1/Quickly-healthy/wiki)** |
 | Google Maps   | [![Google Maps](https://img.shields.io/badge/Google_Maps-2ea44f?logo=Google+maps&logoColor=red)](https://cloud.google.com/) |
 | Generated Photos | [![> - Generated Photos](https://img.shields.io/badge/>-Generated_Photos-5162FF)](https://generated.photos/) |
 | MongoDB | [![MongoDB](https://img.shields.io/badge/MongoDB-white?logo=mongodb)](https://www.mongodb.com/) |
