@@ -39,6 +39,7 @@ This is exciting! The interactive map will show you location of nearby providers
 Office locations are rendered within the view of the map. Click on the nearest provider's location to get more information.
 If you need a better view, drag the map until it's been focused to your liking. Zooming in and out is also applicable with your mouse wheel.
 <br />
+<br />
 
 ## Making an appointment
 
