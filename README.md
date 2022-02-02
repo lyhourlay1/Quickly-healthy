@@ -65,7 +65,7 @@ We've got you covered. Click on your profile tab and down below find the "Detail
 Click on "Details" and make your selection for "Edit appointment details". Click your new date or change the reason and
 submit.
 
-<img width="500em" src="https://github.com/lyhourlay1/Quickly-healthy/wiki/images/edit.gif" alt="edit">
+<img style="max-width:500em" src="https://github.com/lyhourlay1/Quickly-healthy/wiki/images/edit.gif" alt="edit">
 <br />
 
 ## Canceling appointments
