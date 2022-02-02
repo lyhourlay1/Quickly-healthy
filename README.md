@@ -72,3 +72,34 @@ selection for "delete appointment".
 
 <img width="500" src="https://github.com/lyhourlay1/Quickly-healthy/wiki/images/delete.gif" alt="delete">
 <br />
+
+
+
+<table>
+  <tr>
+      <td id="lyhour" align="center">
+         <a href="https://github.com/lyhourlay1">
+         <img src="https://avatars.githubusercontent.com/u/61680337?v=4" width="100px;" alt=""/><br />
+         <sub><b>Lyhour Lay</b></sub></a><br />
+         <label>Lead Developer</label>
+      </td>
+      <td id="grayson" align="center">
+         <a href="https://github.com/grayson-poon">
+         <img src="https://avatars.githubusercontent.com/u/77777464?v=4" width="100px;" alt=""/><br />
+         <sub><b>Grayson Poon</b></sub></a><br />
+         <label>Frontend Developer</label>
+      </td>
+      <td id="emmet" align="center">
+         <a href="https://github.com/emmetthe">
+         <img src="https://avatars.githubusercontent.com/u/82421498?v=4" width="100px;" alt=""/><br />
+         <sub><b>Emmet Le</b></sub></a><br />
+         <label>Core Developer</label>
+      </td>
+      <td id="mauricio" align="center">
+         <a href="https://www.linkedin.com/in/mauricio-l-759796172/">
+         <img src="https://avatars.githubusercontent.com/u/46548793?v=4" width="100px;" alt=""/><br />
+         <sub><b>Mauricio Lomeli</b></sub></a><br />
+         <label>Full Stack</label>
+      </td>
+   </tr>
+</table>
