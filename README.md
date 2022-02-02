@@ -3,7 +3,7 @@
 
 # <a href="https://quickly-healthy.herokuapp.com/#/"> <img src="https://github.com/lyhourlay1/Quickly-healthy/wiki/images/logo.png" alt="login"></a>
 
-| Index         | References                   |
+| Technologies   | References                  |
 |---------------|------------------------------|
 | Documentation | **[Wiki technicals](https://github.com/lyhourlay1/Quickly-healthy/wiki)** |
 | Google Maps   | [![Google Maps](https://img.shields.io/badge/Google_Maps-2ea44f?logo=Google+maps&logoColor=red)](https://cloud.google.com/) |
