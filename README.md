@@ -22,7 +22,7 @@ Quickly Healthy is a healthcare directory for the San Francisco Bay Area. This a
 healthcare providers along with peace of mind that your health insurance will be covered. You'll have access to
 their geolocation for easy access.  
 
-<img width="500em" src="https://github.com/lyhourlay1/Quickly-healthy/wiki/images/walkthrough.gif" alt="walkthrough">
+<img width="500" src="https://github.com/lyhourlay1/Quickly-healthy/wiki/images/walkthrough.gif" alt="walkthrough">
 <br />
 
 ## Logging in
@@ -31,7 +31,7 @@ There are two types of user authorization, user logging in or a demo. To creat a
 signup tab and fill out your email, name, password, and select your insurance provider. Otherwise, try the demo by 
 logging in select to log in as a "Demo User".
 
-<img width="500em" src="https://github.com/lyhourlay1/Quickly-healthy/wiki/images/login.gif" alt="details">
+<img width="500" src="https://github.com/lyhourlay1/Quickly-healthy/wiki/images/login.gif" alt="details">
 <br />
 
 ## Locality
@@ -47,7 +47,7 @@ Now that you're happy with your choice, lets get you healthy fast. Click the pro
 has given you a calendar schedule listing all their availabilities. Go ahead, click on a time you're available to meet.
 Provide a short detailed reason for your visit and presto, submit. You have your first appointment, fast!
 
-<img width="500em" src="https://github.com/lyhourlay1/Quickly-healthy/wiki/images/appointment.gif" alt="appointment">
+<img width="500" src="https://github.com/lyhourlay1/Quickly-healthy/wiki/images/appointment.gif" alt="appointment">
 <br />
 
 ## Appointment details
@@ -56,7 +56,7 @@ Click onto the profile tab in the top right corner. There you'll find a list of 
 
 To check in, click on your profile tab and click on "Check-In" down below where you can see upcoming appointments.
 
-<img width="500em" src="https://github.com/lyhourlay1/Quickly-healthy/wiki/images/details.gif" alt="details">
+<img width="500" src="https://github.com/lyhourlay1/Quickly-healthy/wiki/images/details.gif" alt="details">
 <br />
 
 ## Editing appointments
@@ -65,12 +65,12 @@ We've got you covered. Click on your profile tab and down below find the "Detail
 Click on "Details" and make your selection for "Edit appointment details". Click your new date or change the reason and
 submit.
 
-<img style="max-width:20em" src="https://github.com/lyhourlay1/Quickly-healthy/wiki/images/edit.gif" alt="edit">
+<img width="500" src="https://github.com/lyhourlay1/Quickly-healthy/wiki/images/edit.gif" alt="edit">
 <br />
 
 ## Canceling appointments
 Click on your profile tab and down below find the "Details" of your appointment. Click on "Details" and make your 
 selection for "delete appointment". 
 
-<img width="500em" src="https://github.com/lyhourlay1/Quickly-healthy/wiki/images/delete.gif" alt="delete">
+<img width="500" src="https://github.com/lyhourlay1/Quickly-healthy/wiki/images/delete.gif" alt="delete">
 <br />
