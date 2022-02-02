@@ -26,18 +26,22 @@ their geolocation for easy access.
 
 ## Logging in
 
-User authorization with sign in and log out functions.
-Create an account and make a patient profile.
+There are two types of user authorization, user logging in or a demo. To creat an account simply click on the 
+signup tab and fill out your email, name, password, and select your insurance provider. Otherwise, try the demo by 
+logging in select to log in as a "Demo User".
 
 <img src="https://github.com/lyhourlay1/Quickly-healthy/wiki/images/login.gif" alt="details">
 
+## Locality
+This is exciting! The interactive map will show you location of nearby providers with accepted insurances.
+Office locations are rendered within the view of the map. Click on the nearest provider's location to get more information.
+If you need a better view, drag the map until it's been focused to your liking. Zooming in and out is also applicable with your mouse wheel.
+
 ## Making an appointment
 
-Interactive map to show location of nearby providers that accept user's insurance
-* Fetching a new list of doctors that have offices within the view of the map as the user pans through the map
-* Pinning each of the doctor's offices on the map
-* The user should be able to drag the map around and scroll through it, without affecting or scrolling through the side-list of doctors (and vice-versa)
-
+Now that you're happy with your choice, lets get you healthy fast. Click the provider on the left pane. Your provider
+has given you a calendar schedule listing all their availabilities. Go ahead, click on a time you're available to meet.
+Provide a short detailed reason for your visit and presto, submit. You have your first appointment, fast!
 
 <img src="https://github.com/lyhourlay1/Quickly-healthy/wiki/images/appointment.gif" alt="appointment">
 
