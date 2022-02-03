@@ -1,5 +1,5 @@
 
-# <a href="https://quickly-healthy.herokuapp.com/" target="_blank"> <img src="https://github.com/lyhourlay1/Quickly-healthy/wiki/images/logo_hd.png" alt="login"></a>
+# <a href="https://quickly-healthy.herokuapp.com/" target="_blank"> <img width="500" src="https://github.com/lyhourlay1/Quickly-healthy/wiki/images/logo_hd.png" alt="login"></a>
 
 | Technologies   | References                  |
 |---------------|------------------------------|
