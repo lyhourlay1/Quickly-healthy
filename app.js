@@ -5,6 +5,7 @@ const mongoose = require("mongoose");
 const bodyParser = require("body-parser");
 const passport = require('passport');
 const fileUpload = require('express-fileupload');
+const path = require('path');
 
 if (process.env.NODE_ENV === "production") {
   app.use(express.static("frontend/build"));
