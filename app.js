@@ -9,12 +9,15 @@ var cors = require('cors')
 
 
 if (process.env.NODE_ENV === "production") {
-  // app.use(express.static("frontend/build"));
-  // app.get("/", (req, res) => {
-  //   // res.setHeader("Access-Control-Allow-Credentials", "true");
-  //   // res.setHeader("Access-Control-Allow-Origin", "true");
-  //   res.sendFile(path.resolve(__dirname, "frontend", "build", "index.html"));
-  // });
+  app.use(express.static("frontend/build"));
+  app.get("/", (req, res) => {
+    // res.setHeader("Access-Control-Allow-Credentials", "true");
+    // res.setHeader("Access-Control-Allow-Origin", "true");
+    res.sendFile(path.resolve(__dirname, "frontend", "build", "index.html"));
+  });
+  app.use(cors({
+    origin: '*'
+}));
   app.use((req, res, next) => {
   res.setHeader(
     "Access-Control-Allow-Origin",
@@ -63,9 +66,6 @@ app.use('/api/users', users);
 app.use('/api/appointments', appointments);
 app.use('/api/records', records);
 app.use('/api/doctors', doctors);
-app.use(cors({
-    origin: '*'
-}));
 // app.use("/seed");
 
 const port = process.env.PORT || 8000;
