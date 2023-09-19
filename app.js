@@ -5,6 +5,8 @@ const mongoose = require("mongoose");
 const bodyParser = require("body-parser");
 const passport = require('passport');
 const fileUpload = require('express-fileupload');
+var cors = require('cors')
+
 
 if (process.env.NODE_ENV === "production") {
   app.use(express.static("frontend/build"));
@@ -38,6 +40,9 @@ app.use('/api/users', users);
 app.use('/api/appointments', appointments);
 app.use('/api/records', records);
 app.use('/api/doctors', doctors);
+app.use(cors({
+  origin: ["http://localhost:3000", "https://quickly-healthy-fe.onrender.com"]
+}))
 // app.use("/seed");
 
 const port = process.env.PORT || 8000;
