@@ -13,7 +13,9 @@ export const signup = (userData) => {
 };
 
 export const login = (userData) => {
-  return  axios.post("api/users/login", userData);
+  const rq = axios.post("api/users/login", userData);
+  console.log(rq)
+  return rq
 };
 
 
