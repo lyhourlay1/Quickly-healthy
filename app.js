@@ -11,8 +11,8 @@ var cors = require('cors')
 if (process.env.NODE_ENV === "production") {
   app.use(express.static("frontend/build"));
   app.get("/", (req, res) => {
-    res.setHeader("Access-Control-Allow-Credentials", "true");
-    res.setHeader("Access-Control-Allow-Origin", "true");
+    // res.setHeader("Access-Control-Allow-Credentials", "true");
+    // res.setHeader("Access-Control-Allow-Origin", "true");
     res.sendFile(path.resolve(__dirname, "frontend", "build", "index.html"));
   });
 }
@@ -41,33 +41,10 @@ app.use('/api/users', users);
 app.use('/api/appointments', appointments);
 app.use('/api/records', records);
 app.use('/api/doctors', doctors);
-// app.use(cors({
-//   origin: ["http://localhost:3000", "https://quickly-healthy-fe.onrender.com"]
-// }))
-// app.use("/seed");
-
-var allowedOrigins = ['http://localhost:3000"',
-                      'https://quickly-healthy-fe.onrender.com',
-                   ];
-
 app.use(cors({
-
-  origin: function(origin, callback){
-    // allow requests with no origin
-    // (like mobile apps or curl requests)
-    if(!origin) return callback(null, true);
-    if(allowedOrigins.indexOf(origin) === -1){
-      var msg = 'The CORS policy for this site does not ' +
-                'allow access from the specified Origin.';
-      return callback(new Error(msg), false);
-    }
-    return callback(null, true);
-  },
-
-  exposedHeaders: ['Content-Length', 'X-Foo', 'X-Bar'],
-
-  credentials: true,
+    origin: '*'
 }));
+// app.use("/seed");
 
 const port = process.env.PORT || 8000;
 // app.listen(port, () => console.log(`Server is running on port ${port}`));
