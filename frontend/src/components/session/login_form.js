@@ -51,8 +51,7 @@ class LoginForm extends React.Component {
       email: "demoUser@gmail.com",
       password: "password",
     };
-    console.log('user', user)
-
+    console.log(process.env.NODE_ENV)
     this.props.login(user);
   }
 
