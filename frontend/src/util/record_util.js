@@ -6,7 +6,7 @@ import axios from "axios";
  * @see {@link https://github.com/lyhourlay1/Quickly-healthy/blob/main/assets/tutorials/routes.md|Tutorials}
  */
 export const fetchRecords = () => {
-    return axios.get('/api/records');
+    return axios.get('https://quickly-healthy-be.onrender.com//api/records');
 };
 
 
@@ -17,7 +17,7 @@ export const fetchRecords = () => {
  * @see {@link https://github.com/lyhourlay1/Quickly-healthy/blob/main/assets/tutorials/routes.md|Tutorials}
  */
 export const fetchRecord = (recordId) => {
-    return axios.get(`/api/records/${recordId}`);
+    return axios.get(`https://quickly-healthy-be.onrender.com//api/records/${recordId}`);
 };
 
 
@@ -28,7 +28,7 @@ export const fetchRecord = (recordId) => {
  * @see {@link https://github.com/lyhourlay1/Quickly-healthy/blob/main/assets/tutorials/routes.md|Tutorials}
  */
 export const fetchUserRecords = (userId) => {
-    return axios.get(`/api/records/user/${userId}`);
+    return axios.get(`https://quickly-healthy-be.onrender.com//api/records/user/${userId}`);
 };
 
 
@@ -40,7 +40,7 @@ export const fetchUserRecords = (userId) => {
  * @see {@link https://github.com/lyhourlay1/Quickly-healthy/blob/main/assets/tutorials/routes.md|Tutorials}
  */
 export const createRecord = (record) => {
-    return axios.post(`/api/records/user/${record.user_id}`, record);
+    return axios.post(`https://quickly-healthy-be.onrender.com//api/records/user/${record.user_id}`, record);
 };
 
 
@@ -51,7 +51,7 @@ export const createRecord = (record) => {
  * @see {@link https://github.com/lyhourlay1/Quickly-healthy/blob/main/assets/tutorials/routes.md|Tutorials}
  */
 export const updateRecord = (record) => {
-    return axios.patch(`/api/records/${record._id}/update`, record);
+    return axios.patch(`https://quickly-healthy-be.onrender.com//api/records/${record._id}/update`, record);
 };
 
 
@@ -62,7 +62,7 @@ export const updateRecord = (record) => {
  * @see {@link https://github.com/lyhourlay1/Quickly-healthy/blob/main/assets/tutorials/routes.md|Tutorials}
  */
 export const deleteRecord = (recordId) => {
-    return axios.delete(`/api/records/${recordId}/delete`);
+    return axios.delete(`https://quickly-healthy-be.onrender.com//api/records/${recordId}/delete`);
 };
 
 // window.fetchRecords = fetchRecords;
