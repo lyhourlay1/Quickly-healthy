@@ -7,7 +7,7 @@ import axios from "axios";
  * @see {@link https://github.com/lyhourlay1/Quickly-healthy/blob/main/assets/tutorials/routes.md|Tutorials}
  */
 export const updateUser = (user) => {
-    return axios.patch(`https://quickly-healthy-be.onrender.com/api/users/${user.id}`, user);
+    return axios.patch(`api/users/${user.id}`, user);
 };
 
 
@@ -18,7 +18,7 @@ export const updateUser = (user) => {
  * @see {@link https://github.com/lyhourlay1/Quickly-healthy/blob/main/assets/tutorials/routes.md|Tutorials}
  */
 export const fetchUserImage = (userId) => {
-    return axios.get(`https://quickly-healthy-be.onrender.com/api/users/${userId}/image`);
+    return axios.get(`api/users/${userId}/image`);
 };
 
 
@@ -29,7 +29,7 @@ export const fetchUserImage = (userId) => {
  * @see {@link https://github.com/lyhourlay1/Quickly-healthy/blob/main/assets/tutorials/routes.md|Tutorials}
  */
 export const fetchUserFiles = (userId) => {
-    return axios.get(`https://quickly-healthy-be.onrender.com/api/users/${userId}/files`);
+    return axios.get(`api/users/${userId}/files`);
 };
 
 
@@ -52,7 +52,7 @@ export const fetchUserFiles = (userId) => {
  */
 export const updateUserImage = (userId, image) => {
     
-    return axios.post(`https://quickly-healthy-be.onrender.com/api/users/${userId}/image`, image)
+    return axios.post(`api/users/${userId}/image`, image)
 }
 
 /** API updateUserFiles creates or updates a user's files in the database
@@ -74,5 +74,5 @@ export const updateUserImage = (userId, image) => {
             "md5": "da2274dc28a9d7ea4034e93932b6db25"}})
  */
 export const updateUserFiles = (userId, files) => {
-    return axios.post(`https://quickly-healthy-be.onrender.com/api/users/${userId}/files`, files)
+    return axios.post(`api/users/${userId}/files`, files)
 }
