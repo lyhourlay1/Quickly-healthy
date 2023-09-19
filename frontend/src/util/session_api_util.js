@@ -9,11 +9,12 @@ export const setAuthToken = (token) => {
 };
 
 export const signup = (userData) => {
-  return axios.post("https://quickly-healthy-fe.onrender.com/api/users/register", userData);
+  return axios.post("api/users/register", userData);
 };
 
 export const login = (userData) => {
-  return axios.post("https://quickly-healthy-fe.onrender.com/api/users/login", userData);
+  const req = axios.post("api/users/login", userData);
+  return req
 };
 
 
@@ -23,7 +24,7 @@ export const login = (userData) => {
  * @see {@link https://github.com/lyhourlay1/Quickly-healthy/blob/main/assets/tutorials/routes.md|Tutorials}
  */
 export const currentUser = () => {
-  return axios.get("https://quickly-healthy-fe.onrender.com/api/users/current");
+  return axios.get("api/users/current");
 }
 
 /** API fetchUser gets a user information
@@ -33,7 +34,7 @@ export const currentUser = () => {
  * @see {@link https://github.com/lyhourlay1/Quickly-healthy/blob/main/assets/tutorials/routes.md|Tutorials}
  */
 export const fetchUser = userId => {
-  return axios.get(`https://quickly-healthy-fe.onrender.com/api/users/${userId}`);
+  return axios.get(`\api/users/${userId}`);
 }
 
 window.currentUser = currentUser;
