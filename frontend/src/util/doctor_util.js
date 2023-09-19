@@ -5,7 +5,7 @@ import axios from "axios";
  * @type {()  => Promise}
  */
 export const fetchDoctors = () => {
-    return axios.get('https://quickly-healthy-be.onrender.com//api/doctors');
+    return axios.get('https://quickly-healthy-be.onrender.com/api/doctors');
 };
 
 
@@ -15,7 +15,7 @@ export const fetchDoctors = () => {
  * @returns {Promise} - A promise of doctor
  */
 export const fetchDoctor = (doctorId) => {
-    return axios.get(`https://quickly-healthy-be.onrender.com//api/doctors/${doctorId}`);
+    return axios.get(`https://quickly-healthy-be.onrender.com/api/doctors/${doctorId}`);
 };
 
 
@@ -25,7 +25,7 @@ export const fetchDoctor = (doctorId) => {
  * @returns {Promise} - A promise of doctor
  */
 export const createDoctor = (doctor) => {
-    return axios.post(`https://quickly-healthy-be.onrender.com//api/doctors`, doctor)
+    return axios.post(`https://quickly-healthy-be.onrender.com/api/doctors`, doctor)
 }
 
 
@@ -35,7 +35,7 @@ export const createDoctor = (doctor) => {
  * @returns {Promise} - A promise of doctor of its previous state
  */
 export const updateDoctor = (doctor) => {
-    return axios.patch(`https://quickly-healthy-be.onrender.com//api/doctors/${doctor._id}`, doctor);
+    return axios.patch(`https://quickly-healthy-be.onrender.com/api/doctors/${doctor._id}`, doctor);
 };
 
 
@@ -45,7 +45,7 @@ export const updateDoctor = (doctor) => {
  * @returns {Promise} - A promise of doctor
  */
 export const deleteDoctor = (doctorId) => {
-    return axios.delete(`https://quickly-healthy-be.onrender.com//api/doctors/${doctorId}`);
+    return axios.delete(`https://quickly-healthy-be.onrender.com/api/doctors/${doctorId}`);
 };
 
 
@@ -56,7 +56,7 @@ export const deleteDoctor = (doctorId) => {
  * @see {@link https://github.com/lyhourlay1/Quickly-healthy/blob/main/assets/tutorials/routes.md|Tutorials}
  */
 export const fetchDoctorImage = (doctorId) => {
-    return axios.get(`https://quickly-healthy-be.onrender.com//api/doctors/${doctorId}/image`);
+    return axios.get(`https://quickly-healthy-be.onrender.com/api/doctors/${doctorId}/image`);
 };
 
 
@@ -67,7 +67,7 @@ export const fetchDoctorImage = (doctorId) => {
  * @see {@link https://github.com/lyhourlay1/Quickly-healthy/blob/main/assets/tutorials/routes.md|Tutorials}
  */
 export const fetchDoctorFiles = (doctorId) => {
-    return axios.get(`https://quickly-healthy-be.onrender.com//api/doctors/${doctorId}/files`);
+    return axios.get(`https://quickly-healthy-be.onrender.com/api/doctors/${doctorId}/files`);
 };
 
 
@@ -79,7 +79,7 @@ export const fetchDoctorFiles = (doctorId) => {
  * @see {@link https://github.com/lyhourlay1/Quickly-healthy/blob/main/assets/tutorials/routes.md|Tutorials}
  */
 export const updateDoctorImage = (doctorId, image) => {
-    return axios.post(`https://quickly-healthy-be.onrender.com//api/doctors/${doctorId}/image`, image)
+    return axios.post(`https://quickly-healthy-be.onrender.com/api/doctors/${doctorId}/image`, image)
 }
 
 /** API updateDoctorFiles creates or updates a doctor's files in the database
@@ -90,6 +90,6 @@ export const updateDoctorImage = (doctorId, image) => {
  * @see {@link https://github.com/lyhourlay1/Quickly-healthy/blob/main/assets/tutorials/routes.md|Tutorials}
  */
 export const updateDoctorFiles = (doctorId, files) => {
-    return axios.post(`https://quickly-healthy-be.onrender.com//api/doctors/${doctorId}/files`, files)
+    return axios.post(`https://quickly-healthy-be.onrender.com/api/doctors/${doctorId}/files`, files)
 }
 

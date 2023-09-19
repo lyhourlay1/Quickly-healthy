@@ -5,7 +5,7 @@ import axios from "axios";
  * @type {()  => Promise}
  */
 export const fetchAppointments = () => {
-    return axios.get('/api/appointments');
+    return axios.get('https://quickly-healthy-be.onrender.com/api/appointments');
 };
 
 
@@ -15,7 +15,7 @@ export const fetchAppointments = () => {
  * @returns {Promise} - A promise of appointment
  */
 export const fetchAppointment = (appointmentId) => {
-    return axios.get(`/api/appointments/${appointmentId}`);
+    return axios.get(`https://quickly-healthy-be.onrender.com/api/appointments/${appointmentId}`);
 };
 
 /** API fetchUserAppointments gets the appointments of a user from the database, given the user's id
@@ -24,7 +24,7 @@ export const fetchAppointment = (appointmentId) => {
  * @returns {Promise} - A promise of appointments as an array
  */
 export const fetchUserAppointments = (userId) => {
-    return axios.get(`https://quickly-healthy-be.onrender.com//api/appointments/user/${userId}`);
+    return axios.get(`https://quickly-healthy-be.onrender.com/api/appointments/user/${userId}`);
 };
 
 
@@ -35,7 +35,7 @@ export const fetchUserAppointments = (userId) => {
  * @returns {Promise} - A promise of appointment
  */
 export const createAppointment = (appointment) => {
-    return axios.post(`https://quickly-healthy-be.onrender.com//api/appointments/user/${appointment.user_id}`, appointment)
+    return axios.post(`https://quickly-healthy-be.onrender.com/api/appointments/user/${appointment.user_id}`, appointment)
 }
 
 
@@ -45,7 +45,7 @@ export const createAppointment = (appointment) => {
  * @returns {Promise} - A promise of appointment of its previous state
  */
 export const updateAppointment = (appointment) => {
-    return axios.patch(`https://quickly-healthy-be.onrender.com//api/appointments/${appointment.id}/update`, appointment);
+    return axios.patch(`https://quickly-healthy-be.onrender.com/api/appointments/${appointment.id}/update`, appointment);
 };
 
 /** API checkInAppointment updates a appointment from the database
@@ -54,7 +54,7 @@ export const updateAppointment = (appointment) => {
  * @returns {Promise} - A promise of appointment of its previous state
  */
 export const checkInAppointment = (appointmentId) => {
-    return axios.patch(`https://quickly-healthy-be.onrender.com//api/appointments/${appointmentId}/checkin`);
+    return axios.patch(`https://quickly-healthy-be.onrender.com/api/appointments/${appointmentId}/checkin`);
 };
 
 
@@ -64,7 +64,7 @@ export const checkInAppointment = (appointmentId) => {
  * @returns {Promise} - A promise of appointment
  */
 export const deleteAppointment = (appointmentId) => {
-    return axios.delete(`https://quickly-healthy-be.onrender.com//api/appointments/${appointmentId}/delete`);
+    return axios.delete(`https://quickly-healthy-be.onrender.com/api/appointments/${appointmentId}/delete`);
 };
 
 

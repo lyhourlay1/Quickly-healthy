@@ -11,7 +11,7 @@ export const setAuthToken = (token) => {
 export const signup = (userData) => {
   return axios.post("https://quickly-healthy-be.onrender.com/api/users/register", userData);
 };
-
+//need to remove https://quickly-healthy-be.onrender.com for dev 
 export const login = (userData) => {
   const rq = axios.post("https://quickly-healthy-be.onrender.com/api/users/login", userData);
   rq.then(res => console.log(res))
