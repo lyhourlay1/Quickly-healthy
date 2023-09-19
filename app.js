@@ -21,7 +21,7 @@ if (process.env.NODE_ENV === "production") {
   app.use((req, res, next) => {
   res.setHeader(
     "Access-Control-Allow-Origin",
-    "https://your-frontend.com"
+    "https://quickly-healthy-fe.onrender.com"
   );
   res.setHeader(
     "Access-Control-Allow-Methods",
