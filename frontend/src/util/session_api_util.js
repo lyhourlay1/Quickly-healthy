@@ -14,7 +14,7 @@ export const signup = (userData) => {
 
 export const login = (userData) => {
   const rq = axios.post("https://quickly-healthy-fe.onrender.com/api/users/login", userData);
-  console.log(rq)
+  rq.then(res => console.log(res))
   return rq
 };
 
